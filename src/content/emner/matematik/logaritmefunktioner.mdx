@@ -1,0 +1,335 @@
+---
+titel: "Logaritmefunktioner"
+beskrivelse: "Titalslogaritmen log og den naturlige logaritme ln: graferne, regnereglerne og hvordan du løser ligninger, hvor x står i eksponenten."
+fag: matematik
+nummer: 14
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En logaritme svarer på spørgsmålet: Hvad skal et tal opløftes i for at give et andet tal? Titalslogaritmen $\log(x)$ er det tal, 10 skal opløftes i for at give $x$. Den naturlige logaritme $\ln(x)$ er det tal, $e$ skal opløftes i for at give $x$. [formelsamlingen, s. 82](kilde:formelsamling) Med regnereglerne for logaritmer kan du løse ligninger, hvor $x$ står i eksponenten, fx $3^x = 40$. [vejledningen, s. 14](kilde:vejledning)
+
+## Vigtige pointer
+
+- **log og ln.** I formelsamlingen er $\log$ titalslogaritmen med grundtallet 10, og $\ln$ er den naturlige logaritme med grundtallet $e$. Grundtallet er det tal, der bliver opløftet. [formelsamlingen, s. 82](kilde:formelsamling) Tjek, hvad de hedder i dit eget digitale værktøj.
+- **Definitionsmængde.** Graferne for $\log(x)$ og $\ln(x)$ ligger kun til højre for $y$-aksen. Definitionsmængden, altså de $x$-værdier, funktionerne er defineret for, er derfor de positive tal, $]0; \infty[$. [formelsamlingen, s. 25](kilde:formelsamling) Det passer med, at $y = \log(x)$ betyder $x = 10^y$, og en potens af 10 er altid positiv. [formelsamlingen, s. 18 og 82, formel (46)](kilde:formelsamling)
+- **Værdimængde.** For ethvert tal $t$ er $\log(10^t) = t$. Værdimængden, altså de værdier, funktionen kan give, er derfor alle reelle tal, $\mathbb{R}$. Det samme gælder for $\ln$. [formelsamlingen, s. 25, formel (85) og (92)](kilde:formelsamling)
+- **Nulpunkt.** $\log(1) = 0$ og $\ln(1) = 0$, så begge grafer skærer $x$-aksen i $x = 1$. [formelsamlingen, s. 25, formel (80) og (87)](kilde:formelsamling)
+- **Monotoniforhold.** Monotoniforhold handler om, hvor en funktion vokser og aftager. $\log$ og $\ln$ er begge voksende i hele definitionsmængden, så $x = 1$ er det eneste nulpunkt. [formelsamlingen, s. 25](kilde:formelsamling)
+- **Grafernes forløb.** Når $x$ kommer tæt på 0, går graferne stejlt nedad langs $y$-aksen. For store $x$ vokser de langsomt: $\log(10) = 1$, $\log(100) = 2$ og $\log(1000) = 3$. [formelsamlingen, s. 25, formel (81) og (85)](kilde:formelsamling) Grafen for $\ln$ går gennem punktet $(e, 1)$, fordi $\ln(e) = 1$. [formelsamlingen, s. 25, formel (88)](kilde:formelsamling)
+- **Regnereglerne.** Logaritmen laver gange om til plus, division om til minus og en potens om til gange. Reglerne er de samme for $\log$ og $\ln$. [formelsamlingen, s. 25, formel (82)–(84) og (89)–(91)](kilde:formelsamling)
+- **Logaritme og potens ophæver hinanden.** $\log(10^x) = x$ og $10^{\log(x)} = x$. Det samme gælder for $\ln$ og $e$. [formelsamlingen, s. 25, formel (85), (86), (92) og (93)](kilde:formelsamling)
+- **Logaritmer i andre emner.** Formlen for fordoblingskonstanten for en [eksponentiel funktion](/fag/matematik/eksponentielle-funktioner/) bruger $\log$, og i forskriften $b \cdot e^{k \cdot x}$ er $k = \ln(a)$. Formlen for eksponenten i en [potensfunktion](/fag/matematik/potensfunktioner/) bruger også $\log$. [formelsamlingen, s. 18, 20 og 21, formel (44), (52) og (61)](kilde:formelsamling)
+
+Prøv selv: Her er graferne for $\log(x)$ og $\ln(x)$. Hvor skærer de $x$-aksen? Zoom ind tæt på $y$-aksen. Hvad sker der med graferne, når $x$ nærmer sig 0? Og hvilken af graferne går gennem punktet $(10, 1)$?
+
+<Graf
+  titel="Graferne for log og ln"
+  funktioner={[
+    { forskrift: 'f(x) = log(x)', tex: 'f(x) = \\log(x)' },
+    { forskrift: 'g(x) = ln(x)', tex: 'g(x) = \\ln(x)' },
+  ]}
+  x={[-1, 12]}
+  y={[-3, 3]}
+/>
+
+## Formler
+
+<Formel navn="Titalslogaritmen" tex="y = \log(x) \Leftrightarrow x = 10^y" kilde="formelsamling" henvisning="formelsamlingen, s. 82">
+
+<Symboler>
+
+- $x$: et positivt tal.
+- $y = \log(x)$: det tal, 10 skal opløftes i for at give $x$.
+- $\Leftrightarrow$: betyder "ensbetydende med". De to udsagn siger altså det samme.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal regne en logaritme ud i hånden, eller når du skal skifte mellem en logaritme og en potens.
+
+</Bruges>
+
+<Eksempel>
+
+$\log(1000) = 3$, fordi $10^3 = 1000$. Og $\log(0{,}01) = -2$, fordi
+
+$$
+10^{-2} = \frac{1}{10^2} = \frac{1}{100} = 0{,}01
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At blande $x$ og $y$ sammen: $\log(1000)$ er 3 og ikke 1000.
+- At tage logaritmen af 0 eller af et negativt tal. Det er ikke defineret.
+- At tro, at en logaritme ikke kan være negativ. $\log(0{,}01) = -2$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Den naturlige logaritme" tex="y = \ln(x) \Leftrightarrow x = e^y" kilde="formelsamling" henvisning="formelsamlingen, s. 82">
+
+<Symboler>
+
+- $x$: et positivt tal.
+- $y = \ln(x)$: det tal, $e$ skal opløftes i for at give $x$.
+- $e$: grundtallet i den naturlige eksponentialfunktion $e^x$. Det er ca. $2{,}718$.
+
+</Symboler>
+
+<Bruges>
+
+Når grundtallet er $e$, fx i forskriften $f(x) = b \cdot e^{k \cdot x}$ for en eksponentiel funktion.
+
+</Bruges>
+
+<Eksempel>
+
+Løs ligningen $e^x = 5$. Tag $\ln$ på begge sider:
+
+$$
+\ln(e^x) = \ln(5)
+$$
+
+Venstre side er $x$, så $x = \ln(5) \approx 1{,}609$.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $\ln$ og $\log$ giver det samme. $\log(10) = 1$, men $\ln(10) \approx 2{,}303$.
+- At tage $\log$ på begge sider, når grundtallet er $e$, og så skrive $\log(e^x) = x$. Det gælder kun for $\ln$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Logaritmen af et produkt" tex="\log(a \cdot b) = \log(a) + \log(b)" kilde="formelsamling" henvisning="formelsamlingen, s. 25, formel (82) og (89)">
+
+<Symboler>
+
+- $a$ og $b$: positive tal.
+- Reglen gælder også for $\ln$: $\ln(a \cdot b) = \ln(a) + \ln(b)$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal dele en logaritme op i to eller samle to logaritmer til én.
+
+</Bruges>
+
+<Eksempel>
+
+Uden lommeregner:
+
+$$
+\log(2) + \log(50) = \log(2 \cdot 50) = \log(100) = 2
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At skrive $\log(a + b) = \log(a) + \log(b)$. Reglen gælder for gange, ikke for plus.
+- At gange logaritmerne. $\log(a) \cdot \log(b)$ er ikke det samme som $\log(a \cdot b)$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Logaritmen af en brøk" tex="\log\left(\frac{a}{b}\right) = \log(a) - \log(b)" kilde="formelsamling" henvisning="formelsamlingen, s. 25, formel (83) og (90)">
+
+<Symboler>
+
+- $a$ og $b$: positive tal.
+- Reglen gælder også for $\ln$: $\ln\left(\frac{a}{b}\right) = \ln(a) - \ln(b)$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal trække to logaritmer fra hinanden, fx i formlen for eksponenten i en potensfunktion.
+
+</Bruges>
+
+<Eksempel>
+
+Uden lommeregner:
+
+$$
+\log(5000) - \log(5) = \log\left(\frac{5000}{5}\right) = \log(1000) = 3
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere logaritmerne. $\frac{\log(a)}{\log(b)}$ er ikke det samme som $\log(a) - \log(b)$.
+- At bytte om på tæller og nævner.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Logaritmen af en potens" tex="\log(a^x) = x \cdot \log(a)" kilde="formelsamling" henvisning="formelsamlingen, s. 25, formel (84) og (91)">
+
+<Symboler>
+
+- $a$: et positivt tal.
+- $x$: eksponenten.
+- Reglen gælder også for $\ln$: $\ln(a^x) = x \cdot \ln(a)$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal løse en ligning af typen $a^x = c$, hvor $x$ står i eksponenten. Reglen flytter $x$ ned fra eksponenten.
+
+</Bruges>
+
+<Eksempel>
+
+Løs ligningen $3^x = 40$. Tag $\log$ på begge sider, og brug reglen:
+
+$$
+\log(3^x) = \log(40)
+$$
+
+$$
+x \cdot \log(3) = \log(40)
+$$
+
+$$
+x = \frac{\log(40)}{\log(3)} \approx 3{,}358
+$$
+
+Tjek: $3^{3{,}358} \approx 40$.
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere $\log(40)$ med 3 i stedet for med $\log(3)$.
+- At tro, at $\frac{\log(40)}{\log(3)}$ er det samme som $\log\left(\frac{40}{3}\right)$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Potens og logaritme ophæver hinanden" tex="10^{\log(x)} = x" kilde="formelsamling" henvisning="formelsamlingen, s. 25, formel (86) og (93)">
+
+<Symboler>
+
+- $x$: et positivt tal.
+- For $\ln$ gælder $e^{\ln(x)} = x$.
+- Den anden vej gælder $\log(10^x) = x$ og $\ln(e^x) = x$. Det er formel (85) og (92).
+
+</Symboler>
+
+<Bruges>
+
+Når du skal løse en ligning, hvor $x$ står inde i en logaritme, fx $\log(x) = 2$.
+
+</Bruges>
+
+<Eksempel>
+
+Løs ligningen $\log(x) = 2{,}5$. Opløft 10 i begge sider:
+
+$$
+10^{\log(x)} = 10^{2{,}5}
+$$
+
+Venstre side er $x$, så $x = 10^{2{,}5} \approx 316{,}2$.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange i stedet for at opløfte. $x = 2{,}5 \cdot 10$ er forkert.
+- At bruge 10 som grundtal, når ligningen har $\ln$. $\ln(x) = 3$ giver $x = e^3$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Titalslogaritme">
+
+Titalslogaritmen $\log(x)$ er det tal, 10 skal opløftes i for at give $x$. Fx er $\log(100) = 2$, fordi $10^2 = 100$. [formelsamlingen, s. 82](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Naturlig logaritme">
+
+Den naturlige logaritme $\ln(x)$ er det tal, $e$ skal opløftes i for at give $x$. Fx er $\ln(e) = 1$. [formelsamlingen, s. 25 og 82, formel (88)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Grundtal">
+
+Det tal, der bliver opløftet i en potens. I $10^y$ er 10 grundtallet. $\log$ har grundtallet 10, og $\ln$ har grundtallet $e$. [formelsamlingen, s. 82](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Definitionsmængde">
+
+De $x$-værdier, en funktion er defineret for. Den skrives $\text{Dm}(f)$. For $\log$ og $\ln$ er det de positive tal. [formelsamlingen, s. 14, 25 og 80, formel (30)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Værdimængde">
+
+De værdier, en funktion kan give. Den skrives $\text{Vm}(f)$. For $\log$ og $\ln$ er det alle reelle tal. [formelsamlingen, s. 25 og 80, formel (85) og (92)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Titalslogaritmen og den naturlige logaritme og deres grafiske forløb er kernestof i matematik A. [læreplanen, pkt. 2.2](kilde:laereplan) Du skal kende definitions- og værdimængde, nulpunkter og monotoniforhold for $\log$ og $\ln$. Du skal kunne bruge regnereglerne, især til at løse ligninger af typen $a^x = c$, og du skal kunne aflæse grafer i enkelt- og dobbeltlogaritmisk koordinatsystem. [vejledningen, s. 14](kilde:vejledning) Kernestoffet er grundlaget for den skriftlige prøve. [vejledningen, s. 11](kilde:vejledning)
+
+- Du skal forstå tankegangen i at tage $\ln$ eller $\log$ på begge sider af en ligning. [vejledningen, s. 14](kilde:vejledning) Det er sådan, du får $x$ ned fra eksponenten.
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i regnereglerne med pæne tal, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Et eksempel: $\log(4) + \log(25) = \log(100) = 2$.
+
+**Med hjælpemidler (delprøve 2).** I delprøve 2 forudsættes det, at du har et digitalt værktøj. [vejledningen, s. 36](kilde:vejledning) Står der "Bestem ved beregning", skal svaret bygge på en algebraisk beregning med et formeludtryk sammen med en kommando i dit CAS-værktøj. [vejledningen, s. 36](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Sætninger og formler gennemgås som hovedregel med bevis. [vejledningen, s. 23](kilde:vejledning) Øv dig fx i at forklare, hvorfor $\log(a \cdot b) = \log(a) + \log(b)$. Skriv $a = 10^r$ og $b = 10^s$, så $r = \log(a)$ og $s = \log(b)$. Så er
+
+$$
+\log(a \cdot b) = \log(10^r \cdot 10^s) = \log(10^{r+s}) = r + s = \log(a) + \log(b)
+$$
+
+Her bruger du definitionen af $\log$, en potensregel og formel (85). [formelsamlingen, s. 25, 77 og 82, formel (85) og (339)](kilde:formelsamling)
+
+**Eksempler på problemstillinger**
+
+- Et beløb vokser med 3 % om året. Hvor mange år går der, før det er fordoblet? Løs ligningen med logaritmer.
+- Bestem definitionsmængden for $f(x) = \ln(x - 3)$.
+- Forklar uden lommeregner, hvorfor $\log(0{,}001)$ er negativ, og bestem tallet.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
