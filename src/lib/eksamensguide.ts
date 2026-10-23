@@ -36,6 +36,11 @@ function tilAttribut(tekst: string): string {
   return tekst.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
 }
 
+/** Holder fx "s. 15", "pkt. 4.2.1" og "§ 27" samlet på én linje. */
+function holdSammen(tekst: string): string {
+  return tekst.replace(/(^|\s)(§§?|pkt\.|s\.|stk\.|nr\.) /g, '$1$2\u00a0');
+}
+
 /**
  * Laver links til `kilde:<id>` om til små kildehenvisninger i parentes, der
  * linker direkte til kilden. Står to henvisninger lige efter hinanden, kommer
@@ -45,20 +50,21 @@ export function indsaetKildehenvisninger(
   html: string,
   kilder: readonly Kilde[],
 ): { html: string; fejl: string[] } {
-  const fejl: string[] = [];
+  const ukendte = new Set<string>();
   const ny = html
     .replace(KILDELINK, (link, id: string, resten: string, tekst: string) => {
       const kilde = kilder.find((k) => k.id === id);
       if (!kilde) {
-        fejl.push(`Henvisningen "kilde:${id}" peger ikke på en kilde i frontmatter.`);
+        ukendte.add(id);
         return link;
       }
       return (
         `<span class="kilde">(<a href="${tilAttribut(kilde.url)}"${resten}>` +
-        `<span class="skjult-visuelt">Kilde: </span>${tekst}</a>)</span>`
+        `<span class="skjult-visuelt">Kilde: </span>${holdSammen(tekst)}</a>)</span>`
       );
     })
     .replace(/\)<\/span>\s*<span class="kilde">\(/g, '; ');
+  const fejl = [...ukendte].map((id) => `Henvisningen "kilde:${id}" peger ikke på en kilde i frontmatter.`);
   return { html: ny, fejl };
 }
 

@@ -26,7 +26,7 @@ describe('indsaetKildehenvisninger', () => {
     assert.equal(
       html,
       '<li>10 skoledage. <span class="kilde">(<a href="https://uvm.dk/laereplan.pdf">' +
-        '<span class="skjult-visuelt">Kilde: </span>læreplanen, pkt. 4.2.1</a>)</span></li>',
+        '<span class="skjult-visuelt">Kilde: </span>læreplanen, pkt.\u00a04.2.1</a>)</span></li>',
     );
   });
 
@@ -41,7 +41,7 @@ describe('indsaetKildehenvisninger', () => {
       KILDER,
     );
     assert.equal((html.match(/class="kilde"/g) ?? []).length, 1);
-    assert.match(html, /pkt\. 4\.4<\/a>; <a href="https:\/\/www\.retsinformation\.dk/);
+    assert.match(html, /pkt\.\u00a04\.4<\/a>; <a href="https:\/\/www\.retsinformation\.dk/);
   });
 
   test('henvisninger med tekst imellem holdes adskilt', () => {
@@ -52,14 +52,24 @@ describe('indsaetKildehenvisninger', () => {
     assert.equal((html.match(/class="kilde"/g) ?? []).length, 2);
   });
 
+  test('sidetal, punkter og paragraffer holdes samlet med hårde mellemrum', () => {
+    const { html } = indsaetKildehenvisninger(
+      '<a href="kilde:pb">prøvebekendtgørelsen § 66, stk. 1, nr. 1 og 4</a> <a href="kilde:laereplan">vejledningen, s. 15</a> <a href="kilde:laereplan">pkt. 4.2.1 og §§ 25</a>',
+      KILDER,
+    );
+    assert.match(html, /prøvebekendtgørelsen §\u00a066, stk\.\u00a01, nr\.\u00a01 og 4</);
+    assert.match(html, /vejledningen, s\.\u00a015</);
+    assert.match(html, /pkt\.\u00a04\.2\.1 og §§\u00a025</);
+  });
+
   test('almindelige links røres ikke', () => {
     const html = '<p><a href="https://emu.dk/">emu.dk</a> og <a href="#kilder">kilderne</a></p>';
     assert.deepEqual(indsaetKildehenvisninger(html, KILDER), { html, fejl: [] });
   });
 
-  test('et ukendt id giver en fejl', () => {
+  test('et ukendt id giver én fejl, også når det bruges flere gange', () => {
     const { fejl } = indsaetKildehenvisninger(
-      '<a href="kilde:vejledning">s. 15</a> <a href="kilde:">x</a> <a href="kilde:laereplan">y</a>',
+      '<a href="kilde:vejledning">s. 15</a> <a href="kilde:">x</a> <a href="kilde:laereplan">y</a> <a href="kilde:vejledning">s. 16</a>',
       KILDER,
     );
     assert.deepEqual(fejl, [
