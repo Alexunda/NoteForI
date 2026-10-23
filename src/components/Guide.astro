@@ -1,0 +1,177 @@
+---
+// Viser en eksamensguide fra src/content/eksamen/. Titel, beskrivelse og
+// klassetrin skal være de samme som i src/data/navigation.ts, så menuen og
+// siden ikke siger noget forskelligt. Buildet stopper ellers, og det gør
+// det også, hvis en kildehenvisning eller et fast afsnit mangler.
+import { render, type CollectionEntry } from 'astro:content';
+import Side from '../layouts/Side.astro';
+import Maerkat from './Maerkat.astro';
+import { klassetrinNavn } from '../data/klassetrin';
+import { findSide } from '../data/navigation';
+import { delIAfsnit, indsaetKildehenvisninger, tjekAfsnit } from '../lib/eksamensguide';
+import { udenBase, url } from '../lib/sti';
+
+interface Props {
+  guide: CollectionEntry<'eksamen'>;
+}
+
+const { guide } = Astro.props;
+const { titel, beskrivelse, klassetrin, grundlag, tjekket, kilder, verificeret } = guide.data;
+const side = findSide(udenBase(Astro.url.pathname));
+const { headings } = await render(guide);
+
+const { html, fejl } = indsaetKildehenvisninger(guide.rendered?.html ?? '', kilder);
+fejl.push(...tjekAfsnit(headings));
+if (side.navn !== titel) fejl.push(`Titlen skal være "${side.navn}" som i src/data/navigation.ts.`);
+if (side.beskrivelse !== beskrivelse) {
+  fejl.push(`Beskrivelsen skal være "${side.beskrivelse}" som i src/data/navigation.ts.`);
+}
+if ((side.klassetrin ?? []).join() !== klassetrin.join()) {
+  fejl.push(`Klassetrin skal være [${(side.klassetrin ?? []).join(', ')}] som i src/data/navigation.ts.`);
+}
+if (fejl.length > 0) {
+  throw new Error(`Fejl i src/content/eksamen/${guide.id}.md:\n- ${fejl.join('\n- ')}`);
+}
+
+const dato = new Intl.DateTimeFormat('da-DK', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+<Side titel={titel} beskrivelse={beskrivelse}>
+  <article class="guide">
+    <header>
+      <p class="guide-omraade"><a href={url('/eksamen/')}>Eksamen</a></p>
+      <h1>{titel}</h1>
+      <p class="ingress">{beskrivelse}</p>
+      <p class="guide-trin">
+        {
+          klassetrin.map((trin) => (
+            <span class="trin" data-trin={trin}>
+              {klassetrinNavn(trin)}
+            </span>
+          ))
+        }
+      </p>
+      <p class="guide-grundlag">
+        Bygger på {grundlag}. Reglerne er tjekket {dato.format(tjekket)}.
+      </p>
+      {!verificeret && <Maerkat />}
+    </header>
+
+    <div class="guide-indhold" set:html={delIAfsnit(html)} />
+
+    <section aria-labelledby="kilder">
+      <h2 id="kilder">Kilder</h2>
+      <ul class="guide-kilder">
+        {
+          kilder.map((kilde) => (
+            <li>
+              <a href={kilde.url}>{kilde.navn}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Side>
+
+<style>
+  .guide {
+    max-width: var(--tekstbredde);
+  }
+
+  .guide-omraade {
+    margin-bottom: var(--afstand-1);
+  }
+
+  .guide-omraade a,
+  .guide-kilder a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+  }
+
+  .guide-omraade a {
+    font-weight: 600;
+  }
+
+  .guide-trin {
+    display: flex;
+    gap: var(--afstand-1);
+  }
+
+  .guide-grundlag {
+    color: var(--farve-tekst-svag);
+  }
+
+  .guide-indhold :global(:is(ul, ol)) {
+    padding-left: 1.375rem;
+  }
+
+  .guide-indhold :global(li + li) {
+    margin-top: var(--afstand-2);
+  }
+
+  .guide-indhold :global(li > ul) {
+    margin-top: var(--afstand-2);
+    margin-bottom: 0;
+  }
+
+  /* Kildehenvisningen sidst i et punkt: lille og afdæmpet */
+  .guide-indhold :global(.kilde) {
+    color: var(--farve-tekst-svag);
+    font-size: var(--skrift-lille);
+  }
+
+  .guide-indhold :global(.kilde a) {
+    color: inherit;
+  }
+
+  /* Kort fortalt og skolens egne regler står i hver sin boks */
+  .guide-indhold :global(:is([data-afsnit='kort-fortalt'], [data-afsnit='det-bestemmer-din-skole'])) {
+    margin-block: var(--afstand-6);
+    padding: var(--afstand-4);
+    border: 1px solid var(--farve-kant);
+    border-radius: var(--radius-m);
+    background: var(--farve-flade);
+  }
+
+  .guide-indhold :global([data-afsnit='kort-fortalt']) {
+    border-left: 4px solid var(--farve-accent);
+  }
+
+  .guide-indhold :global(:is([data-afsnit='kort-fortalt'], [data-afsnit='det-bestemmer-din-skole']) h2) {
+    margin-top: 0;
+  }
+
+  .guide-indhold :global(:is([data-afsnit='kort-fortalt'], [data-afsnit='det-bestemmer-din-skole']) > :last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Tjeklisten får tomme felter i stedet for prikker */
+  .guide-indhold :global([data-afsnit='tjekliste'] ul) {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .guide-indhold :global([data-afsnit='tjekliste'] li) {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .guide-indhold :global([data-afsnit='tjekliste'] li::before) {
+    content: '';
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid var(--farve-kant-staerk);
+    border-radius: var(--radius-s);
+  }
+
+  @media (min-width: 60rem) {
+    .guide-indhold :global(:is([data-afsnit='kort-fortalt'], [data-afsnit='det-bestemmer-din-skole'])) {
+      padding: var(--afstand-5);
+    }
+  }
+</style>

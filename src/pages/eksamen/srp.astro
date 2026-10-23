@@ -1,5 +1,9 @@
 ---
-import Pladsholder from '../../components/Pladsholder.astro';
+import { getEntry } from 'astro:content';
+import Guide from '../../components/Guide.astro';
+
+const guide = await getEntry('eksamen', 'srp');
+if (!guide) throw new Error('src/content/eksamen/srp.md findes ikke');
 ---
 
-<Pladsholder />
+<Guide guide={guide} />

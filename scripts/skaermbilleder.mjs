@@ -69,7 +69,7 @@ function startServer() {
 function findSmaaTrykflader() {
   const smaa = [];
   for (const el of document.querySelectorAll('a, button, input, select, textarea, summary')) {
-    if (el.closest('p, .emne-indhold') && el.tagName === 'A') continue;
+    if (el.closest('p, .emne-indhold, .guide-indhold') && el.tagName === 'A') continue;
     const boks = el.getBoundingClientRect();
     if (boks.width === 0 && boks.height === 0) continue;
     if (getComputedStyle(el).visibility === 'hidden') continue;
