@@ -8,6 +8,7 @@ import { describe, test } from 'node:test';
 import { markdownToHtml, mdxToJs } from 'satteri';
 import { katexPlugin, texTilHtml } from '../src/lib/markdown/katex.ts';
 import { holdSammen, kildehenvisninger } from '../src/lib/markdown/kilder.ts';
+import { interneLinks } from '../src/lib/markdown/links.ts';
 
 const kilder = [
   { id: 'formelsamling', navn: 'Formelsamling stx A', url: 'https://uvm.dk/formelsamling.pdf' },
@@ -19,7 +20,7 @@ const guideFil = pathToFileURL('/projekt/src/content/eksamen/srp.md');
 function indstillinger(fileURL = emneFil) {
   return {
     features: { math: true },
-    mdastPlugins: [kildehenvisninger],
+    mdastPlugins: [kildehenvisninger, interneLinks('/NoteForI')],
     hastPlugins: [katexPlugin],
     fileURL,
     data: { astro: { frontmatter: { kilder } } },
@@ -106,5 +107,19 @@ describe('kildehenvisninger', () => {
 
   test('holdSammen holder sidetal og paragraffer på én linje', () => {
     assert.equal(holdSammen('s. 12 og § 27, stk. 3, formel (34)'), 's. 12 og § 27, stk. 3, formel (34)');
+  });
+});
+
+describe('interne links', () => {
+  test('interne links får base-stien, men eksterne og ankre bliver, som de er', () => {
+    const html = md('[a](/eksamen/srp/) [b](https://uvm.dk/) [c](#kort-fortalt) [d](/NoteForI/fag/)');
+    assert.match(html, /href="\/NoteForI\/eksamen\/srp\/"/);
+    assert.match(html, /href="https:\/\/uvm.dk\/"/);
+    assert.match(html, /href="#kort-fortalt"/);
+    assert.match(html, /href="\/NoteForI\/fag\/"/);
+  });
+
+  test('eksamensguiderne bliver ikke rørt', () => {
+    assert.match(md('[a](/eksamen/srp/)', guideFil), /href="\/eksamen\/srp\/"/);
   });
 });

@@ -1,13 +1,16 @@
 ---
+// En liste over emnesider med klassetrin og eventuelt beskrivelsen.
 import { klassetrinNavn } from '../data/klassetrin';
 import { emneSti, type Emne } from '../lib/emner';
 import { url } from '../lib/sti';
 
 interface Props {
   emner: Emne[];
+  /** Vis emnets beskrivelse under titlen */
+  beskrivelse?: boolean;
 }
 
-const { emner } = Astro.props;
+const { emner, beskrivelse = false } = Astro.props;
 ---
 
 {
@@ -15,7 +18,13 @@ const { emner } = Astro.props;
     <ul class="emneliste">
       {emner.map((emne) => (
         <li>
-          <a href={url(emneSti(emne))}>{emne.data.titel}</a>
+          <a href={url(emneSti(emne))}>
+            <span class="emneliste-titel">
+              {emne.data.titel}
+              {emne.data.pladsholder && <span class="emneliste-pladsholder">pladsholder</span>}
+            </span>
+            {beskrivelse && <span class="emneliste-beskrivelse">{emne.data.beskrivelse}</span>}
+          </a>
           {emne.data.klassetrin !== 'ukendt' && (
             <span class="emneliste-trin">
               {emne.data.klassetrin.map((trin) => (
@@ -36,7 +45,7 @@ const { emner } = Astro.props;
 <style>
   .emneliste {
     max-width: var(--tekstbredde);
-    margin: 0;
+    margin: 0 0 var(--afstand-4);
     padding: 0;
     border-top: 1px solid var(--farve-kant);
     list-style: none;
@@ -53,10 +62,37 @@ const { emner } = Astro.props;
   a {
     display: flex;
     flex: 1 1 auto;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     min-height: var(--trykflade);
     padding-block: var(--afstand-2);
+    text-decoration: none;
+  }
+
+  .emneliste-titel {
     font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  a:hover .emneliste-titel {
+    text-decoration-thickness: 2px;
+  }
+
+  .emneliste-beskrivelse {
+    color: var(--farve-tekst-svag);
+  }
+
+  .emneliste-pladsholder {
+    margin-left: var(--afstand-2);
+    padding: 0 var(--afstand-2);
+    border: 1px dashed var(--farve-kant-staerk);
+    border-radius: var(--radius-rund);
+    color: var(--farve-tekst-svag);
+    font-size: var(--skrift-lille);
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .emneliste-trin {

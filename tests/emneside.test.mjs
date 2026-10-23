@@ -131,3 +131,26 @@ Den procent, en størrelse vokser med pr. periode, skrevet som $r$. [læreplanen
     assert.throws(() => udtraekBegreber(`${kilde}\n<Begreb navn="Vækstrate">\n\nIgen\n\n</Begreb>\n`), /to gange/);
   });
 });
+
+describe('fagenes overbliksside', async () => {
+  const { grupperEfterOmraade, tjekFagAfsnit } = await import('../src/lib/fagside.ts');
+
+  test('afsnittene skal være "Det handler faget om" og "Prøverne"', () => {
+    assert.deepEqual(tjekFagAfsnit(h2('Det handler faget om', 'Prøverne')), []);
+    assert.equal(tjekFagAfsnit(h2('Prøverne', 'Det handler faget om')).length, 1);
+    assert.equal(tjekFagAfsnit(h2('Det handler faget om')).length, 1);
+  });
+
+  test('emnerne grupperes efter område i den rækkefølge, områderne kommer', () => {
+    const emne = (titel, omraade) => ({ titel, data: { omraade } });
+    const grupper = grupperEfterOmraade([emne('a', 'Tal'), emne('b', 'Geometri'), emne('c', 'Tal'), emne('d')]);
+    assert.deepEqual(
+      grupper.map((g) => [g.omraade, g.emner.map((e) => e.titel).join('')]),
+      [
+        ['Tal', 'ac'],
+        ['Geometri', 'b'],
+        [null, 'd'],
+      ],
+    );
+  });
+});
