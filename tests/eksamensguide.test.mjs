@@ -124,6 +124,16 @@ describe('tjekAfsnit', () => {
     assert.deepEqual(tjekAfsnit(andetNavn), []);
   });
 
+  test('en guide, der ikke handler om en prøveform, skal kun starte og slutte rigtigt', () => {
+    const afsnit = [h2(FOERSTE_AFSNIT), h2('Før prøven'), h2(SIDSTE_AFSNIT)];
+    assert.deepEqual(tjekAfsnit(afsnit, false), []);
+    assert.equal(tjekAfsnit(afsnit).length, FASTE_AFSNIT.length);
+    assert.deepEqual(tjekAfsnit([h2('Før prøven')], false), [
+      'Det første afsnit skal hedde "Kort fortalt".',
+      'Det sidste afsnit skal hedde "Tjekliste".',
+    ]);
+  });
+
   test('manglende og forkert placerede afsnit findes', () => {
     assert.deepEqual(tjekAfsnit([h2('Det sker der'), h2('Kort fortalt'), { depth: 3, text: 'Tjekliste' }]), [
       'Det første afsnit skal hedde "Kort fortalt".',

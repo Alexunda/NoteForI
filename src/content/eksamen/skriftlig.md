@@ -50,7 +50,7 @@ kilder:
     url: https://uvm.dk/uddannelse-til-unge/gymnasiale-uddannelser/proever-og-eksamen/afholdelse-af-proever/vejledning-om-digitale-hjaelpemidler-og-snyd/hvad-er-snyd-ved-proeverne/
 ---
 
-Guiden handler om de skriftlige prøver, du bliver udtrukket til. [SRP](/eksamen/srp/) og [årsprøverne](/eksamen/aarsproever/) har deres egne guides.
+Guiden handler om de skriftlige prøver, du bliver udtrukket til. [SRP](/eksamen/srp/) og [årsprøverne](/eksamen/aarsproever/) har deres egne guider.
 
 ## Kort fortalt
 

@@ -20,7 +20,10 @@ export interface Overskrift {
   text: string;
 }
 
-/** De afsnit, en guide skal have (projektplan afsnit 6.2). Står der flere navne, er ét af dem nok. */
+/**
+ * De afsnit, en guide om en prøveform skal have (projektplan afsnit 6.2).
+ * Står der flere navne, er ét af dem nok.
+ */
 export const FASTE_AFSNIT: readonly (readonly string[])[] = [
   ['Det sker der'],
   ['Det bliver du bedømt på'],
@@ -88,13 +91,17 @@ export function delIAfsnit(html: string): string {
     .join('');
 }
 
-/** Giver en liste over de afsnit, der mangler eller står forkert. Den er tom, hvis alt er i orden. */
-export function tjekAfsnit(overskrifter: readonly Overskrift[]): string[] {
+/**
+ * Giver en liste over de afsnit, der mangler eller står forkert. Den er tom,
+ * hvis alt er i orden. Alle guider starter med "Kort fortalt" og slutter med
+ * "Tjekliste". Kun guider om en prøveform skal have de faste afsnit.
+ */
+export function tjekAfsnit(overskrifter: readonly Overskrift[], proeveform = true): string[] {
   const afsnit = overskrifter.filter((o) => o.depth === 2).map((o) => o.text);
   const fejl: string[] = [];
   if (afsnit[0] !== FOERSTE_AFSNIT) fejl.push(`Det første afsnit skal hedde "${FOERSTE_AFSNIT}".`);
   if (afsnit.at(-1) !== SIDSTE_AFSNIT) fejl.push(`Det sidste afsnit skal hedde "${SIDSTE_AFSNIT}".`);
-  for (const navne of FASTE_AFSNIT) {
+  for (const navne of proeveform ? FASTE_AFSNIT : []) {
     if (!navne.some((navn) => afsnit.includes(navn))) fejl.push(`Afsnittet "${navne.join('" eller "')}" mangler.`);
   }
   return fejl;

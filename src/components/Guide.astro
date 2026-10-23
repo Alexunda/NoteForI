@@ -16,12 +16,12 @@ interface Props {
 }
 
 const { guide } = Astro.props;
-const { titel, beskrivelse, klassetrin, grundlag, tjekket, kilder, verificeret } = guide.data;
+const { titel, beskrivelse, klassetrin, grundlag, tjekket, kilder, verificeret, proeveform } = guide.data;
 const side = findSide(udenBase(Astro.url.pathname));
 const { headings } = await render(guide);
 
 const { html, fejl } = indsaetKildehenvisninger(guide.rendered?.html ?? '', kilder);
-fejl.push(...tjekAfsnit(headings));
+fejl.push(...tjekAfsnit(headings, proeveform));
 if (side.navn !== titel) fejl.push(`Titlen skal være "${side.navn}" som i src/data/navigation.ts.`);
 if (side.beskrivelse !== beskrivelse) {
   fejl.push(`Beskrivelsen skal være "${side.beskrivelse}" som i src/data/navigation.ts.`);

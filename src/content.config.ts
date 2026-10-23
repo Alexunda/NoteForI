@@ -23,7 +23,7 @@ const emner = defineCollection({
   }),
 });
 
-// Eksamensguides. Filen src/content/eksamen/<id>.md vises af siden
+// Eksamensguider. Filen src/content/eksamen/<id>.md vises af siden
 // src/pages/eksamen/<id>.astro. En regel får sin kilde med et link til
 // kilde:<id>, se src/lib/eksamensguide.ts.
 const eksamen = defineCollection({
@@ -32,6 +32,11 @@ const eksamen = defineCollection({
     titel: z.string().min(1),
     beskrivelse: z.string().min(1),
     klassetrin: z.array(z.enum(KLASSETRIN)).min(1),
+    /**
+     * Guider om en prøveform skal have alle afsnittene fra projektplan afsnit
+     * 6.2. Andre guider, fx om eksamensdagen, sætter den til false.
+     */
+    proeveform: z.boolean().default(true),
     /** Læreplanens version, hvis guiden bygger på en læreplan, fx "2017" for SRP */
     laereplan: z
       .string()
