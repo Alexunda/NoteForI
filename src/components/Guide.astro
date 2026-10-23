@@ -6,9 +6,9 @@
 import { render, type CollectionEntry } from 'astro:content';
 import Side from '../layouts/Side.astro';
 import Maerkat from './Maerkat.astro';
-import { klassetrinNavn } from '../data/klassetrin';
+import { KLASSETRIN, klassetrinNavn } from '../data/klassetrin';
 import { findSide } from '../data/navigation';
-import { delIAfsnit, indsaetKildehenvisninger, tjekAfsnit } from '../lib/eksamensguide';
+import { delIAfsnit, indsaetBaseSti, indsaetKildehenvisninger, tjekAfsnit } from '../lib/eksamensguide';
 import { udenBase, url } from '../lib/sti';
 
 interface Props {
@@ -26,8 +26,10 @@ if (side.navn !== titel) fejl.push(`Titlen skal være "${side.navn}" som i src/d
 if (side.beskrivelse !== beskrivelse) {
   fejl.push(`Beskrivelsen skal være "${side.beskrivelse}" som i src/data/navigation.ts.`);
 }
-if ((side.klassetrin ?? []).join() !== klassetrin.join()) {
-  fejl.push(`Klassetrin skal være [${(side.klassetrin ?? []).join(', ')}] som i src/data/navigation.ts.`);
+// En side uden klassetrin i navigation.ts er til alle klassetrin
+const forventetTrin = side.klassetrin ?? KLASSETRIN;
+if (forventetTrin.join() !== klassetrin.join()) {
+  fejl.push(`Klassetrin skal være [${forventetTrin.join(', ')}] som i src/data/navigation.ts.`);
 }
 if (fejl.length > 0) {
   throw new Error(`Fejl i src/content/eksamen/${guide.id}.md:\n- ${fejl.join('\n- ')}`);
@@ -57,7 +59,7 @@ const dato = new Intl.DateTimeFormat('da-DK', { day: 'numeric', month: 'long', y
       {!verificeret && <Maerkat />}
     </header>
 
-    <div class="guide-indhold" set:html={delIAfsnit(html)} />
+    <div class="guide-indhold" set:html={delIAfsnit(indsaetBaseSti(html, url('')))} />
 
     <section aria-labelledby="kilder">
       <h2 id="kilder">Kilder</h2>

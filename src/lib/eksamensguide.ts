@@ -68,6 +68,11 @@ export function indsaetKildehenvisninger(
   return { html: ny, fejl };
 }
 
+/** Giver interne links base-stien, så fx "/vaerktoejer/pensum/" også virker på GitHub Pages. */
+export function indsaetBaseSti(html: string, base: string): string {
+  return html.replace(/href="\/(?!\/)/g, `href="${base}/`);
+}
+
 /**
  * Pakker hvert afsnit (fra en h2 til den næste) ind i et <section> med
  * overskriftens id i data-afsnit, så siden kan give fx "Kort fortalt" sit

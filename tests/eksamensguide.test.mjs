@@ -6,6 +6,7 @@ import {
   delIAfsnit,
   FASTE_AFSNIT,
   FOERSTE_AFSNIT,
+  indsaetBaseSti,
   indsaetKildehenvisninger,
   SIDSTE_AFSNIT,
   tjekAfsnit,
@@ -76,6 +77,17 @@ describe('indsaetKildehenvisninger', () => {
       'Henvisningen "kilde:vejledning" peger ikke på en kilde i frontmatter.',
       'Henvisningen "kilde:" peger ikke på en kilde i frontmatter.',
     ]);
+  });
+});
+
+describe('indsaetBaseSti', () => {
+  test('interne links får base-stien, andre links røres ikke', () => {
+    const html =
+      '<a href="/vaerktoejer/pensum/">a</a> <a href="https://uvm.dk/">b</a> <a href="//cdn.dk/x">c</a> <a href="#kilder">d</a>';
+    assert.equal(
+      indsaetBaseSti(html, '/NoteForI'),
+      '<a href="/NoteForI/vaerktoejer/pensum/">a</a> <a href="https://uvm.dk/">b</a> <a href="//cdn.dk/x">c</a> <a href="#kilder">d</a>',
+    );
   });
 });
 
