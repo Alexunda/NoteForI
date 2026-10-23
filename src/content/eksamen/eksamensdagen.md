@@ -11,7 +11,7 @@ kilder:
     navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/3
   - id: hjaelpemidler
-    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, april 2026 (uvm.dk, PDF)"
+    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, senest opdateret 23. februar 2026 (uvm.dk, PDF)"
     url: https://uvm.dk/media/odslzaxr/260407-25_31776-4-hjaelpemiddeloversigt-til-de-gymnasiale-proever-2026-april-2002218_1_1.pdf
   - id: mundtlige
     navn: "Information til den eksamensansvarlige om mundtlige prøver, maj 2026 (uvm.dk, PDF)"

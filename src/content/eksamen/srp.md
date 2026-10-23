@@ -20,7 +20,7 @@ kilder:
     navn: "Lov om de gymnasiale uddannelser, lovbekendtgørelse nr. 624 af 18. juni 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/624
   - id: hjaelpemidler
-    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, april 2026 (uvm.dk, PDF)"
+    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, senest opdateret 23. februar 2026 (uvm.dk, PDF)"
     url: https://uvm.dk/media/odslzaxr/260407-25_31776-4-hjaelpemiddeloversigt-til-de-gymnasiale-proever-2026-april-2002218_1_1.pdf
   - id: snyd
     navn: "Snyd ved de gymnasiale prøver (uvm.dk)"
@@ -115,14 +115,14 @@ Her lægges der vægt på: [læreplanen, pkt. 4.4](kilde:laereplan)
 - **Skriv lidt om metode.** Det er ikke et krav, men du kan skrive et kort afsnit om dine metoder eller forklare i indledningen, hvorfor du valgte dem. Det kan du bygge videre på til den mundtlige prøve. [vejledningen, s. 20](kilde:vejledning)
 - **Øv præsentationen.** Den må vare op til 10 minutter. Kortere kan også være fint og giver mere tid til samtalen. Få dine overvejelser om metode og videnskabsteori med. [vejledningen, s. 21](kilde:vejledning)
 - **Vær klar til at forklare dit fagvalg.** Det gælder også, hvis du kun skrev i ét fag. [vejledningen, s. 22](kilde:vejledning)
-- **Tag noter med.** Til den mundtlige prøve må du have materiale med på papir eller gemt på din egen computer. Du må ikke have mobil eller smartwatch med, og du må ikke bruge internettet. [prøvebekendtgørelsen § 30, stk. 1](kilde:pb) [hjælpemiddeloversigten, s. 4–6](kilde:hjaelpemidler)
+- **Tag noter med.** Til den mundtlige prøve må du have materiale med på papir eller gemt på din egen computer. Du må ikke have mobil eller smartwatch med, og du må ikke bruge internettet. [prøvebekendtgørelsen § 30, stk. 1, § 32 og § 33, stk. 1](kilde:pb) [hjælpemiddeloversigten, s. 4–6](kilde:hjaelpemidler)
 
 ## Fejl, du kan undgå
 
-- **Brug ikke generativ AI.** Du må ikke bruge generativ AI, fx ChatGPT, i dit SRP. [prøvebekendtgørelsen § 30, stk. 2](kilde:pb) [hjælpemiddeloversigten, s. 7 og 23](kilde:hjaelpemidler) Der er kun to undtagelser:
+- **Brug ikke generativ AI.** Du må ikke bruge generativ AI, fx ChatGPT, i dit SRP. [prøvebekendtgørelsen § 30, stk. 2](kilde:pb) [hjælpemiddeloversigten, s. 6–7 og 23](kilde:hjaelpemidler) Der er kun to undtagelser:
    - Du må gerne have AI som emne. Så må chatbotten kun være det, du undersøger. Svar fra den skal være tydeligt markeret og have en fuld kildehenvisning. [hjælpemiddeloversigten, s. 23](kilde:hjaelpemidler)
    - Er et af dine fag et fag, hvor AI er tilladt til prøven, fx it A, må du bruge AI i forbindelse med det fag på samme måde som i undervisningen. Men aldrig i forbindelse med dine andre fag, og aldrig til at skrive, disponere eller lave dele af opgaven. Opgaven skal stadig være helt din egen. [hjælpemiddeloversigten, s. 23](kilde:hjaelpemidler)
-- **Henvis til dine egne gamle opgaver.** Du må gerne bygge videre på en opgave, du har afleveret før. Men bruger du oplysninger eller citater fra den, skal du henvise til den som til alle andre kilder. Ellers er det snyd. [vejledningen, s. 15](kilde:vejledning) [prøvebekendtgørelsen § 25, nr. 4](kilde:pb) [Snyd ved de gymnasiale prøver](kilde:snyd)
+- **Henvis til dine egne gamle opgaver.** Du må gerne bygge videre på en opgave, du har afleveret før. Men bruger du oplysninger eller citater fra den, skal du henvise til den som til alle andre kilder. Ellers er det snyd. [vejledningen, s. 15](kilde:vejledning) [prøvebekendtgørelsen § 25, nr. 4](kilde:pb) [Snyd ved de gymnasiale prøver](kilde:snyd) Du må ikke genbruge afsnit fra en opgave, der er afleveret og rettet. [læreplanen, pkt. 4.2.1](kilde:laereplan)
 - **Skriv selv.** Skriver I om samme område, må I gerne dele viden, men I må ikke skrive opgaven eller dele af den sammen. [vejledningen, s. 19](kilde:vejledning)
 - **Brug mere end én metode.** Det gælder også, hvis du kun skriver i ét fag. [vejledningen, s. 7](kilde:vejledning)
 - **Aflever problemformuleringen til tiden.** Uden den kan dine vejledere ikke lave din opgaveformulering. [FAQ om SRP](kilde:faq)
@@ -138,8 +138,8 @@ Her lægges der vægt på: [læreplanen, pkt. 4.4](kilde:laereplan)
    - Er du syg i kort tid, kan skolen forlænge din afleveringsfrist inden for samme prøvetermin. Er du syg længere, kan skolen give dig en ny skriveperiode i en senere termin. Så får du ny vejledning og en ny opgaveformulering. [Generelle regler om prøver og eksamen](kilde:generelle-regler)
 - **Du er syg på dagen for den mundtlige prøve.** Kontakt skolen, før prøven begynder. Du skal kunne dokumentere sygdommen, fx med en lægeerklæring. Så bliver prøven flyttet til senere i samme termin eller til næste termin. Bliver du syg under prøven, bliver den afbrudt. [prøvebekendtgørelsen § 16, stk. 1](kilde:pb) [mundtlige prøver, maj 2026](kilde:mundtlige)
 - **Du udebliver.** Kommer du ikke til en prøve, har du brugt dit prøveforsøg, medmindre skolen vurderer, at du havde en rimelig grund, fx sygdom, som du kan dokumentere. En elev, der har brugt sit prøveforsøg, bliver udskrevet af uddannelsen. [prøvebekendtgørelsen § 27, stk. 1](kilde:pb)
-- **Du kommer for sent.** Så må du kun være med, hvis skolen finder, at forsinkelsen er rimeligt begrundet. Prøvetiden bliver kun forlænget i undtagelsestilfælde. [prøvebekendtgørelsen § 27, stk. 2](kilde:pb)
-- **Du afleverer for sent.** Din skole bestemmer afleveringsfristen, og hvad der sker, hvis du afleverer for sent. Læs skolens eksamensreglement. [prøvebekendtgørelsen § 7, stk. 2](kilde:pb)
+- **Du kommer for sent.** Så må du kun være med, hvis skolen finder, at forsinkelsen er rimeligt begrundet, og hvis skolen er sikker på, at du ikke kan have fået oplysninger om opgaven. Prøvetiden bliver kun forlænget i undtagelsestilfælde. [prøvebekendtgørelsen § 27, stk. 2](kilde:pb)
+- **Du kan ikke nå at aflevere.** Din frist er slutningen af dine 10 skoledage, og skolen bestemmer, hvornår de ligger. [læreplanen, pkt. 4.2.1](kilde:laereplan) [vejledningen, s. 15](kilde:vejledning) [FAQ om SRP](kilde:faq) Kontakt skolen med det samme, og læs skolens eksamensreglement. [prøvebekendtgørelsen § 7, stk. 2](kilde:pb)
 - **Der er mistanke om snyd.** Så gennemføres den mundtlige prøve helt som normalt, og du får en karakter, som om du ikke har snydt. Bagefter undersøger skolens leder sagen og træffer en afgørelse. [prøvebekendtgørelsen § 36, stk. 1–2](kilde:pb) [mundtlige prøver, maj 2026](kilde:mundtlige)
    - Afgør lederen, at du har snydt, bliver du bortvist fra prøven, eller du får karakteren -3. [prøvebekendtgørelsen § 37, stk. 1 og 3](kilde:pb)
    - Bliver du bortvist, bortfalder karakteren. Du kan tage prøven igen i den næste termin, hvor skolen alligevel holder prøven, dog inden for et år. Sygeterminen i august kan ikke bruges. [prøvebekendtgørelsen § 38](kilde:pb)
@@ -150,31 +150,31 @@ Her lægges der vægt på: [læreplanen, pkt. 4.4](kilde:laereplan)
 
 ## Det bestemmer din skole
 
-Nogle regler og frister bestemmer din skole selv. De står i skolens eksamensreglement, som skal ligge på skolens hjemmeside. [prøvebekendtgørelsen § 7, stk. 2](kilde:pb) Se også dine egne datoer og beskeder i Lectio.
+Nogle regler og frister bestemmer din skole selv. De står i skolens eksamensreglement, som skal ligge på skolens hjemmeside. [prøvebekendtgørelsen § 7, stk. 2](kilde:pb) Se også dine egne datoer og beskeder i skolens system, fx Lectio.
 
 - hvornår projektperioden ligger [vejledningen, s. 15](kilde:vejledning)
 - hvordan og hvornår du afleverer problemformuleringen [FAQ om SRP](kilde:faq)
 - hvem dine vejledere er, og hvordan vejledningen foregår [læreplanen, pkt. 4.2.2](kilde:laereplan) [vejledningen, s. 16](kilde:vejledning)
-- afleveringsfristen, og hvad der sker, hvis du afleverer for sent [vejledningen, s. 15](kilde:vejledning) [prøvebekendtgørelsen § 7, stk. 2](kilde:pb)
+- afleveringsfristen, altså hvornår dine 10 skoledage ligger [læreplanen, pkt. 4.2.1](kilde:laereplan) [vejledningen, s. 15](kilde:vejledning)
 - regler og frister for sygemelding [prøvebekendtgørelsen § 7, stk. 3, nr. 3](kilde:pb)
 - regler for opførsel og brug af computer og andre elektroniske enheder til prøverne [prøvebekendtgørelsen § 7, stk. 3, nr. 4](kilde:pb)
-- hvilket system til kildehenvisninger du skal bruge [vejledningen, s. 8](kilde:vejledning)
-- om du må skrive på engelsk, tysk eller fransk. Det skal skolens leder godkende. [læreplanen, pkt. 4.2.3](kilde:laereplan)
+- hvilket system til kildehenvisninger der er praksis på skolen og i dine fag. Det vigtigste er, at du er konsekvent [vejledningen, s. 8 og 20](kilde:vejledning)
+- om du må skrive helt eller delvist på engelsk, tysk eller fransk eller på et fremmedsprog, der indgår i dit SRP. Det skal skolens leder godkende. [læreplanen, pkt. 4.2.3](kilde:laereplan)
 
 ## Tjekliste
 
 ### Før projektperioden
 
 - Jeg har læst evalueringen af min SRO igen. [vejledningen, s. 13](kilde:vejledning)
-- Jeg kender datoerne for projektperioden og fristen for problemformuleringen.
+- Jeg kender datoerne for projektperioden og fristen for problemformuleringen. [vejledningen, s. 15](kilde:vejledning) [FAQ om SRP](kilde:faq)
 - Mine fag følger reglerne: mindst ét på A-niveau og mindst ét studieretningsfag, eller ét fag på A-niveau, som min vejleder har godkendt. [læreplanen, pkt. 4.2.1](kilde:laereplan)
 - Min problemformulering siger, hvad jeg vil undersøge og analysere, og hvilke materialer og metoder jeg vil bruge. [læreplanen, pkt. 4.2.2](kilde:laereplan)
 
 ### I projektperioden
 
-- Jeg har læst hele opgaveformuleringen, også bilagene.
+- Jeg har læst hele opgaveformuleringen, også eventuelle bilag. [læreplanen, pkt. 4.2.2](kilde:laereplan)
 - Jeg har en tidsplan og har talt med min vejleder om den. [vejledningen, s. 18](kilde:vejledning)
-- Jeg bruger ikke generativ AI til at skrive, disponere eller lave dele af opgaven. [hjælpemiddeloversigten, s. 23](kilde:hjaelpemidler)
+- Jeg bruger ikke generativ AI i mit SRP, medmindre det hører under en af de to undtagelser, og aldrig til at skrive, disponere eller lave dele af opgaven. [prøvebekendtgørelsen § 30, stk. 2](kilde:pb) [hjælpemiddeloversigten, s. 6 og 23](kilde:hjaelpemidler)
 
 ### Før jeg afleverer
 

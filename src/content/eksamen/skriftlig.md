@@ -13,7 +13,7 @@ kilder:
     navn: "Lov om de gymnasiale uddannelser, lovbekendtgørelse nr. 624 af 18. juni 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/624
   - id: hjaelpemidler
-    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, april 2026 (uvm.dk, PDF)"
+    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, senest opdateret 23. februar 2026 (uvm.dk, PDF)"
     url: https://uvm.dk/media/odslzaxr/260407-25_31776-4-hjaelpemiddeloversigt-til-de-gymnasiale-proever-2026-april-2002218_1_1.pdf
   - id: skriftlige
     navn: "Information til den eksamensansvarlige om skriftlige prøver, maj 2026 (uvm.dk, PDF)"

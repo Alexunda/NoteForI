@@ -16,7 +16,7 @@ kilder:
     navn: "Bekendtgørelse om de gymnasiale uddannelser, nr. 497 af 18. maj 2017, med senere ændringer (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2017/497
   - id: hjaelpemidler
-    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, april 2026 (uvm.dk, PDF)"
+    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, senest opdateret 23. februar 2026 (uvm.dk, PDF)"
     url: https://uvm.dk/media/odslzaxr/260407-25_31776-4-hjaelpemiddeloversigt-til-de-gymnasiale-proever-2026-april-2002218_1_1.pdf
   - id: mundtlige
     navn: "Information til den eksamensansvarlige om mundtlige prøver, maj 2026 (uvm.dk, PDF)"
