@@ -23,7 +23,8 @@ Den fulde plan står i `docs/projektplan.md`. Læs den, før du starter en ny fa
 ## Regler, der ikke må brydes
 1. **Intet fagligt indhold fra hukommelsen.** Formler, faglige påstande og eksamensregler slås op i officielle kilder (uvm.dk-læreplaner og -vejledninger, emu.dk, prøvebanken.dk, retsinformation.dk) før de skrives. Kilden angives i frontmatter.
 2. **Læreplanversion.** Mærk alt indhold med `laereplan`. Flere fag har nye læreplaner (fx matematik 2024 og dansk A 2026), og brugerne kan være på forskellige versioner.
-3. **Nyt indhold får `verificeret: false`.** Kun et menneske sætter `true`.
+3. **Nyt indhold får `verificeret: false`.** Kun repoets ejer sætter `true`, og først når siden er gennemlæst. "Gennemlæst" betyder, at hver formel og regel på sidens gennemlæsningsliste er tjekket mod sin kilde.
+   - Før ejeren læser en side, tjekker en separat agent, som ikke har skrevet siden, hver kildehenvisning mod kilde-PDF'en og lister afvigelserne. Afvigelserne rettes, og så får ejeren gennemlæsningslisten: de vigtigste formler og påstande med kilde.
 4. **Ingen kopi af lærebøger.** Officielle PDF'er linkes og genudgives ikke.
 5. **Ingen modelbesvarelser af eksamenssæt.** Siden er til forberedelse, ikke et hjælpemiddel under eksamen.
 6. **Ingen personoplysninger** om brugerne (navn, skole, klasse). Repoet er offentligt.
@@ -45,6 +46,7 @@ Den fulde plan står i `docs/projektplan.md`. Læs den, før du starter en ny fa
 - Fejler et build på GitHub, bliver den gamle version liggende. Tjek fanen Actions og ret fejlen, før du laver noget andet.
 
 ## Netværk
+- Prøvebanken (www.xn--prvebanken-1cb.dk) må kun bruges til det, der er offentligt. Prøv aldrig at logge ind, og bed ikke om et UNI-login. Kan noget ikke nås, så skriv, hvad det er, og link til det i stedet.
 - I skyen kan du kun nå de domæner, der står på miljøets netværksliste. Bliver en side blokeret, så prøv ikke at komme uden om det med andre værktøjer eller spejlsider. Stop, og skriv, hvilket domæne jeg skal tilføje.
 
 ## Arbejdsgang

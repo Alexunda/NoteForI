@@ -294,5 +294,5 @@ Konteksten for tidsplanen er, at den store ungdomsuddannelsesreform (epx, skærp
 - [ ] Niveauet i kemi
 - [ ] Hvilket CAS-værktøj bruger skolen (fx GeoGebra, WordMat, TI-Nspire eller Maple)? Siden linker til det, og lommeregnerens skrivemåde bør ligne det
 - [ ] Sidens navn
-- [ ] Hvem læser indhold igennem og sætter `verificeret: true`? Forslag: ejeren af repoet, og brugerne melder fejl, de finder
+- [x] Hvem læser indhold igennem og sætter `verificeret: true`? Ejeren af repoet, når hver formel og regel på gennemlæsningslisten er tjekket mod sin kilde. Før det tjekker en separat agent kildehenvisningerne (CLAUDE.md, regel 3)
 - [ ] Eksamensdatoer kendes først fra Lectio i foråret. Nedtællingen lader brugerne selv indtaste datoerne
