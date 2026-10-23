@@ -3,6 +3,9 @@
 // klassetrin skal være de samme som i src/data/navigation.ts, så menuen og
 // siden ikke siger noget forskelligt. Buildet stopper ellers, og det gør
 // det også, hvis en kildehenvisning eller et fast afsnit mangler.
+//
+// Indhold i slot="foer" vises mellem sidehovedet og guiden, fx listen over
+// guiderne på /eksamen/.
 import { render, type CollectionEntry } from 'astro:content';
 import Side from '../layouts/Side.astro';
 import Maerkat from './Maerkat.astro';
@@ -41,7 +44,13 @@ const dato = new Intl.DateTimeFormat('da-DK', { day: 'numeric', month: 'long', y
 <Side titel={titel} beskrivelse={beskrivelse}>
   <article class="guide">
     <header>
-      <p class="guide-omraade"><a href={url('/eksamen/')}>Eksamen</a></p>
+      {
+        side.sti !== '/eksamen/' && (
+          <p class="guide-omraade">
+            <a href={url('/eksamen/')}>Eksamen</a>
+          </p>
+        )
+      }
       <h1>{titel}</h1>
       <p class="ingress">{beskrivelse}</p>
       <p class="guide-trin">
@@ -58,6 +67,8 @@ const dato = new Intl.DateTimeFormat('da-DK', { day: 'numeric', month: 'long', y
       </p>
       {!verificeret && <Maerkat />}
     </header>
+
+    <slot name="foer" />
 
     <div class="guide-indhold" set:html={delIAfsnit(indsaetBaseSti(html, url('')))} />
 
