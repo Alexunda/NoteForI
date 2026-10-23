@@ -31,6 +31,9 @@ kilder:
   - id: faq
     navn: "FAQ: Studieretningsprojektet (emu.dk)"
     url: https://emu.dk/stx/studieretningsprojektet/faq/faq-studieretningsprojektet
+  - id: generelle-regler
+    navn: "Generelle regler om prøver og eksamen (uvm.dk)"
+    url: https://uvm.dk/uddannelse-til-unge/gymnasiale-uddannelser/proever-og-eksamen/generelle-regler-om-proever-og-eksamen/
 ---
 
 ## Kort fortalt
@@ -131,7 +134,8 @@ Her lægges der vægt på: [læreplanen, pkt. 4.4](kilde:laereplan)
 ## Hvis noget går galt
 
 - **Du bliver syg i projektperioden.** Kontakt skolen, og følg skolens regler og frister for sygemelding. [prøvebekendtgørelsen § 7, stk. 3, nr. 3](kilde:pb)
-   - Kan du dokumentere, at du var syg, skal du have mulighed for at tage prøven så hurtigt som muligt. Skolen kan forlænge din frist eller give dig en ny projektperiode. [prøvebekendtgørelsen § 16](kilde:pb) [FAQ om SRP](kilde:faq)
+   - Kan du dokumentere, at du var syg, skal du have mulighed for at tage prøven så hurtigt som muligt. [prøvebekendtgørelsen § 16](kilde:pb)
+   - Er du syg i kort tid, kan skolen forlænge din afleveringsfrist inden for samme prøvetermin. Er du syg længere, kan skolen give dig en ny skriveperiode i en senere termin. Så får du ny vejledning og en ny opgaveformulering. [Generelle regler om prøver og eksamen](kilde:generelle-regler)
 - **Du er syg på dagen for den mundtlige prøve.** Kontakt skolen, før prøven begynder. Du skal kunne dokumentere sygdommen, fx med en lægeerklæring. Så bliver prøven flyttet til senere i samme termin eller til næste termin. Bliver du syg under prøven, bliver den afbrudt. [prøvebekendtgørelsen § 16, stk. 1](kilde:pb) [mundtlige prøver, maj 2026](kilde:mundtlige)
 - **Du udebliver.** Kommer du ikke til en prøve, har du brugt dit prøveforsøg, medmindre skolen vurderer, at du havde en rimelig grund, fx sygdom, som du kan dokumentere. En elev, der har brugt sit prøveforsøg, bliver udskrevet af uddannelsen. [prøvebekendtgørelsen § 27, stk. 1](kilde:pb)
 - **Du kommer for sent.** Så må du kun være med, hvis skolen finder, at forsinkelsen er rimeligt begrundet. Prøvetiden bliver kun forlænget i undtagelsestilfælde. [prøvebekendtgørelsen § 27, stk. 2](kilde:pb)
