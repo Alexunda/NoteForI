@@ -6,6 +6,9 @@ import { render } from 'astro:content';
 import Side from '../../../layouts/Side.astro';
 import Emneliste from '../../../components/Emneliste.astro';
 import Maerkat from '../../../components/Maerkat.astro';
+import Forskel from '../../../components/emne/Forskel.astro';
+import Plan from '../../../components/emne/Plan.astro';
+import '../../../styles/emne.css';
 import { FAG_IDER, FAG_NAVNE, type FagId } from '../../../data/fag';
 import { hentEmner } from '../../../lib/emner';
 import { hentFagside } from '../../../lib/fag';
@@ -65,7 +68,7 @@ const beskrivelse = side?.data.beskrivelse ?? `Emner og eksamen i ${navn.toLower
     {
       Content && (
         <div class="fagside-indhold">
-          <Content />
+          <Content components={{ Forskel, Plan }} />
         </div>
       )
     }

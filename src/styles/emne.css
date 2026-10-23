@@ -224,3 +224,47 @@
     padding: var(--afstand-5);
   }
 }
+
+/* ---------- Forskel på læreplaner ---------- */
+
+.forskel {
+  margin-block: var(--afstand-5);
+  padding: var(--afstand-4);
+  border: 1px solid var(--farve-kant);
+  border-left: 4px solid var(--farve-gul);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.forskel-titel {
+  font-weight: 700;
+}
+
+.forskel-maerke {
+  display: block;
+  color: var(--farve-tekst-svag);
+  font-size: var(--skrift-lille);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.forskel-planer {
+  display: grid;
+  gap: var(--afstand-4);
+}
+
+.forskel-aar {
+  margin-bottom: var(--afstand-2);
+  font-weight: 700;
+}
+
+.forskel-plan > :last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 40rem) {
+  .forskel-planer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
