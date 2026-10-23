@@ -54,6 +54,14 @@ describe('formler', () => {
     assert.doesNotMatch(html, /xmlns/);
   });
 
+  test('tegn lige efter en formel holdes på samme linje som formlen', () => {
+    const html = md('Grafen skærer $y$-aksen. Og $a$ og $b$.');
+    assert.match(html, /<span class="formel-ord"><span class="katex">.*?<\/span>-aksen\.<\/span> Og /s);
+    assert.match(html, /<span class="formel-ord"><span class="katex">(?:(?!formel-ord).)*?<\/span>\.<\/span><\/p>/s);
+    // Med mellemrum efter formlen sker der ingenting
+    assert.match(html, / Og <span class="katex">/);
+  });
+
   test('decimalkomma skal skrives som {,}', () => {
     assert.match(texTilHtml('2{,}5', false), /class="katex"/);
     assert.throws(() => texTilHtml('2,5', false), /Skriv decimalkomma som \{,\}/);

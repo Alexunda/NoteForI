@@ -130,6 +130,12 @@ a:hover {
   background: var(--farve-flade);
 }
 
+/* En formel og tegnene lige efter den, fx punktum, står på samme linje
+   (src/lib/markdown/katex.ts) */
+.formel-ord {
+  white-space: nowrap;
+}
+
 /* Klassetrin-mærker. Det klassetrin, man har valgt på forsiden, fremhæves. */
 .trin {
   display: inline-block;

@@ -42,7 +42,22 @@ export const katexPlugin = defineHastPlugin({
         const kode = node.children.find((barn) => harKlasser(barn, 'language-math', 'math-display'));
         if (kode) ctx.replaceNode(node, tilNoder(texTilHtml(ctx.textContent(kode), true)));
       } else if (harKlasser(node, 'language-math', 'math-inline')) {
-        ctx.replaceNode(node, tilNoder(texTilHtml(ctx.textContent(node), false)));
+        const formel = tilNoder(texTilHtml(ctx.textContent(node), false));
+        // Tegn lige efter formlen, fx punktum eller "-aksen" i "$y$-aksen", holdes
+        // på samme linje som formlen, så de ikke ender alene på næste linje
+        const naeste = ctx.parent(node)?.children[(ctx.indexOf(node) ?? -2) + 1];
+        const efter = naeste?.type === 'text' ? (/^\S+/.exec(naeste.value)?.[0] ?? '') : '';
+        if (naeste?.type === 'text' && efter) {
+          ctx.replaceNode(naeste, { type: 'text', value: naeste.value.slice(efter.length) });
+          ctx.replaceNode(node, {
+            type: 'element',
+            tagName: 'span',
+            properties: { className: ['formel-ord'] },
+            children: [...formel, { type: 'text', value: efter }],
+          } as HastNode);
+        } else {
+          ctx.replaceNode(node, formel);
+        }
       }
     },
   },
