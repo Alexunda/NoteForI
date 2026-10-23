@@ -1,5 +1,63 @@
 ---
-import Pladsholder from '../../components/Pladsholder.astro';
+import Side from '../../layouts/Side.astro';
+import Ikon from '../../components/Ikon.astro';
+import Pensumtjekliste from '../../components/pensum/Pensumtjekliste';
+import { findSide } from '../../data/navigation';
+import { FASTE_PUNKTER, GENERISK_PENSUM } from '../../data/pensum';
+import { emneSti, hentEmner } from '../../lib/emner';
+import { tjekGeneriskPensum } from '../../lib/generisk-pensum';
+import { url } from '../../lib/sti';
+import '../../styles/pensum.css';
+
+const side = findSide('/vaerktoejer/pensum/');
+
+// Det generiske lag tjekkes her, så buildet stopper, hvis en liste har fejl
+const emneUrl = new Map((await hentEmner()).map((emne) => [emne.id, url(emneSti(emne))]));
+const fejl = tjekGeneriskPensum(GENERISK_PENSUM, new Set(emneUrl.keys()));
+if (fejl.length > 0) {
+  throw new Error(`Fejl i det generiske lag i src/data/pensum.ts:\n- ${fejl.join('\n- ')}`);
+}
 ---
 
-<Pladsholder />
+<Side titel={side.navn} beskrivelse={side.beskrivelse}>
+  <h1>{side.navn}</h1>
+  <p class="ingress">{side.beskrivelse}</p>
+
+  <details class="pensum-forklaring">
+    <summary>Sådan virker det <Ikon navn="pil-ned" class="pensum-forklaring-pil" /></summary>
+    <div class="pensum-forklaring-indhold">
+      <p>
+        Pensum til en mundtlig eksamen står i fagets undervisningsbeskrivelse på Lectio. Opret dine fag her, og skriv
+        forløbene ind. Du kan også kopiere listen over forløb og sætte den ind på én gang.
+      </p>
+      <p>Hvert forløb har fem punkter, som du krydser af, når du kan dem:</p>
+      <ul>{FASTE_PUNKTER.map((punkt) => <li>{punkt.tekst}</li>)}</ul>
+      <p>Laver I ikke øvelsesopgaver i et forløb, kan du sætte det sidste punkt til "Ikke relevant".</p>
+      <ul class="pensum-forklaring-status">
+        <li>
+          <span class="pensum-statusikon pensum-statusikon-roed"><Ikon navn="status-roed" /></span>
+          Ikke i gang: intet er krydset af.
+        </li>
+        <li>
+          <span class="pensum-statusikon pensum-statusikon-gul"><Ikon navn="status-gul" /></span>
+          I gang: noget er krydset af.
+        </li>
+        <li>
+          <span class="pensum-statusikon pensum-statusikon-groen"><Ikon navn="status-groen" /></span>
+          Klar: alle punkter er krydset af.
+        </li>
+      </ul>
+      <p>
+        Det, du skriver, gemmes kun i din browser. Du skal ikke logge ind, og ingen andre kan se det. Sletter du
+        browserens data, forsvinder tjeklisten også.
+      </p>
+    </div>
+  </details>
+
+  <Pensumtjekliste client:only="preact">
+    <p slot="fallback" class="pensum-henter">Henter din tjekliste …</p>
+  </Pensumtjekliste>
+  <noscript>
+    <p class="ikke-faerdig">Tjeklisten virker kun, når JavaScript er slået til i din browser.</p>
+  </noscript>
+</Side>

@@ -1,0 +1,457 @@
+/*
+ * Pensumtjeklisten (src/components/pensum/). Øen er lavet i Preact, så
+ * Astros scopede stilarter rammer den ikke. Alle klasser starter derfor med
+ * pensum-. Farver og mål kommer fra tokens.css.
+ */
+
+/* ---------- Siden ---------- */
+
+.pensum-forklaring {
+  max-width: var(--tekstbredde);
+  margin-bottom: var(--afstand-5);
+  border: 1px solid var(--farve-kant);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.pensum-forklaring summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--afstand-2);
+  min-height: var(--trykflade);
+  padding: var(--afstand-2) var(--afstand-4);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Safari viser ellers sin egen trekant ved siden af pilen */
+.pensum-forklaring summary::-webkit-details-marker {
+  display: none;
+}
+
+.pensum-forklaring-pil {
+  flex-shrink: 0;
+  color: var(--farve-accent);
+}
+
+.pensum-forklaring[open] .pensum-forklaring-pil {
+  transform: rotate(180deg);
+}
+
+.pensum-forklaring-indhold {
+  padding: 0 var(--afstand-4) var(--afstand-2);
+}
+
+.pensum-forklaring-status {
+  padding: 0;
+  list-style: none;
+}
+
+.pensum-forklaring-status li {
+  display: flex;
+  align-items: center;
+  gap: var(--afstand-2);
+  margin-bottom: var(--afstand-2);
+}
+
+/* Teksten vises kun, mens øen indlæses. Uden JavaScript står <noscript> i stedet. */
+html:not(.js) .pensum-henter {
+  display: none;
+}
+
+.pensum-henter {
+  color: var(--farve-tekst-svag);
+}
+
+/* ---------- Øen ---------- */
+
+.pensum {
+  max-width: var(--tekstbredde);
+  scroll-margin-top: var(--afstand-4);
+}
+
+.pensum h2 {
+  margin-top: var(--afstand-5);
+}
+
+.pensum h2:first-child {
+  margin-top: 0;
+}
+
+/* Overskrifter, der kun får fokus fra koden, skal ikke have en ring om sig */
+.pensum [tabindex='-1']:focus {
+  outline: none;
+}
+
+.pensum-svag {
+  color: var(--farve-tekst-svag);
+}
+
+.pensum-kort {
+  display: block;
+  padding: var(--afstand-4);
+  border: 1px solid var(--farve-kant);
+  border-radius: var(--radius-l);
+  background: var(--farve-flade);
+  color: var(--farve-tekst);
+}
+
+.pensum-advarsel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--afstand-3);
+  margin-bottom: var(--afstand-5);
+  padding: var(--afstand-3) var(--afstand-4);
+  border: 1px solid var(--farve-gul);
+  border-left-width: 4px;
+  border-radius: var(--radius-m);
+  background: var(--farve-gul-svag);
+  color: var(--farve-tekst);
+}
+
+.pensum-advarsel .ikon {
+  flex-shrink: 0;
+  color: var(--farve-gul);
+}
+
+/* ---------- Knapper og felter ---------- */
+
+.pensum-knap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--afstand-2);
+  min-width: var(--trykflade);
+  min-height: var(--trykflade);
+  padding: var(--afstand-1) var(--afstand-4);
+  border: 1px solid var(--farve-kant-staerk);
+  border-radius: var(--radius-rund);
+  background: var(--farve-flade);
+  color: var(--farve-tekst);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pensum-knap:hover {
+  border-color: var(--farve-accent);
+  color: var(--farve-accent);
+}
+
+.pensum-knap .ikon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.pensum-knap-primaer,
+.pensum-knap-primaer:hover {
+  border-color: var(--farve-accent);
+  background: var(--farve-accent);
+  color: var(--farve-paa-accent);
+}
+
+.pensum-knap-primaer:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.pensum-knap[aria-disabled='true'] {
+  border-color: var(--farve-kant);
+  color: var(--farve-tekst-svag);
+  cursor: default;
+}
+
+.pensum-knapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--afstand-2);
+}
+
+.pensum-knapper .pensum-knap-primaer {
+  flex: 1 1 12rem;
+}
+
+.pensum-input {
+  width: 100%;
+  min-height: var(--trykflade);
+  padding: var(--afstand-2) var(--afstand-3);
+  border: 1px solid var(--farve-kant-staerk);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+  color: var(--farve-tekst);
+  font: inherit;
+}
+
+.pensum-input::placeholder {
+  color: var(--farve-tekst-svag);
+  opacity: 1;
+}
+
+.pensum-fejl {
+  margin: 0 0 var(--afstand-3);
+  color: var(--farve-roed);
+  font-weight: 600;
+}
+
+.pensum-fejl:empty {
+  margin: 0;
+}
+
+/* ---------- Formularen til fag ---------- */
+
+.pensum-formular {
+  margin-top: var(--afstand-4);
+}
+
+.pensum-formular-overskrift {
+  margin-bottom: var(--afstand-3);
+}
+
+.pensum-felt {
+  margin: 0 0 var(--afstand-4);
+  padding: 0;
+  border: 0;
+}
+
+/* float lægger overskriften inde i feltet i stedet for på kanten */
+.pensum-felt legend {
+  float: left;
+  width: 100%;
+  margin-bottom: var(--afstand-2);
+  padding: 0;
+  font-weight: 600;
+}
+
+.pensum-chips {
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+  gap: var(--afstand-2);
+}
+
+.pensum-chips-niveau .pensum-chip {
+  flex: 1;
+}
+
+.pensum-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--trykflade);
+  min-height: var(--trykflade);
+  padding: 0 var(--afstand-4);
+  border: 1px solid var(--farve-kant-staerk);
+  border-radius: var(--radius-rund);
+  background: var(--farve-flade);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Den rigtige radioknap ligger usynligt over hele mærket, så tastatur og skærmlæser virker */
+.pensum-chip input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pensum-chip:has(input:checked) {
+  border-color: var(--farve-accent);
+  background: var(--farve-accent);
+  color: var(--farve-paa-accent);
+}
+
+.pensum-chip:has(input:checked) span::before {
+  content: '✓ ';
+  content: '✓ ' / '';
+}
+
+.pensum-chip:has(input:focus-visible) {
+  outline: 3px solid var(--farve-accent);
+  outline-offset: 2px;
+}
+
+.pensum-tekstfelt {
+  margin-top: var(--afstand-3);
+}
+
+.pensum-tekstfelt label {
+  display: block;
+  margin-bottom: var(--afstand-1);
+  font-weight: 600;
+}
+
+/* ---------- Oversigten ---------- */
+
+.pensum-kom-i-gang ol {
+  padding-left: 1.5rem;
+}
+
+.pensum-samlet h2 {
+  margin-bottom: var(--afstand-3);
+  font-size: var(--skrift-h3);
+}
+
+.pensum-fagliste {
+  display: grid;
+  gap: var(--afstand-3);
+  margin: 0 0 var(--afstand-4);
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .pensum-fagliste {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pensum-fagkort {
+  height: 100%;
+  text-decoration: none;
+}
+
+.pensum-fagkort:hover {
+  border-color: var(--farve-accent);
+}
+
+.pensum-fagkort-hoved {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--afstand-2);
+  margin-bottom: var(--afstand-2);
+}
+
+.pensum-fagkort-navn {
+  color: var(--farve-accent);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.pensum-fagkort-hoved .ikon {
+  flex-shrink: 0;
+  color: var(--farve-accent);
+}
+
+/* ---------- Fremdrift ---------- */
+
+.pensum-fremdrift {
+  display: block;
+}
+
+.pensum-fremdrift-tal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--afstand-3);
+}
+
+.pensum-procent {
+  font-size: 1.25rem;
+}
+
+/* Måleren er kun for øjnene: sporet er en lys tone af accentfarven */
+.pensum-maaler {
+  display: block;
+  height: 0.5rem;
+  margin: var(--afstand-2) 0;
+  overflow: hidden;
+  border-radius: var(--radius-rund);
+  background: var(--farve-accent-svag);
+}
+
+.pensum-maaler-fyld {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-rund);
+  background: var(--farve-accent);
+}
+
+@media (forced-colors: active) {
+  .pensum-maaler {
+    border: 1px solid CanvasText;
+  }
+
+  .pensum-maaler-fyld {
+    background: CanvasText;
+  }
+}
+
+.pensum-statustal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--afstand-1) var(--afstand-4);
+}
+
+.pensum-statustal-del {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--afstand-1);
+}
+
+.pensum-statustal-del .pensum-statusikon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.pensum-statustal-del .pensum-statusikon .ikon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ---------- Status ---------- */
+
+.pensum-statusikon {
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.pensum-statusikon .ikon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.pensum-statusikon-roed {
+  background: var(--farve-roed-svag);
+  color: var(--farve-roed);
+}
+
+.pensum-statusikon-gul {
+  background: var(--farve-gul-svag);
+  color: var(--farve-gul);
+}
+
+.pensum-statusikon-groen {
+  background: var(--farve-groen-svag);
+  color: var(--farve-groen);
+}
+
+/* ---------- Ét fag ---------- */
+
+.pensum-tilbage {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--afstand-1);
+  min-height: var(--trykflade);
+  margin-bottom: var(--afstand-2);
+  padding-right: var(--afstand-3);
+  font-weight: 600;
+}
+
+.pensum-fag h2 {
+  margin-top: 0;
+}
