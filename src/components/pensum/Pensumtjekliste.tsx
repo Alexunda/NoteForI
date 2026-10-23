@@ -4,8 +4,20 @@
 // tilbage-knap virker.
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
+import type { PunktId } from '../../data/pensum';
 import { NOEGLER, gem, hentJson, kanGemme } from '../../lib/lager';
-import { fagFejl, findFag, laesPensum, tilfoejFag, type NytFag, type Pensum } from '../../lib/pensum';
+import {
+  fagFejl,
+  findFag,
+  forloebStatus,
+  laesPensum,
+  saetPunkt,
+  tilfoejFag,
+  tilfoejForloeb,
+  type NytFag,
+  type Pensum,
+  type Svar,
+} from '../../lib/pensum';
 import FagVisning from './FagVisning';
 import Oversigt from './Oversigt';
 
@@ -128,12 +140,33 @@ export default function Pensumtjekliste() {
     return null;
   }
 
+  function haandterTilfoejForloeb(fagId: string, navne: string[]) {
+    const resultat = tilfoejForloeb(nu.current, fagId, navne);
+    aendr(resultat.pensum);
+    return resultat;
+  }
+
+  function haandterPunkt(fagId: string, forloebId: string, punkt: PunktId, svar: Svar | null) {
+    const foer = findFag(nu.current, fagId)?.forloeb.find((f) => f.id === forloebId);
+    aendr(saetPunkt(nu.current, fagId, forloebId, punkt, svar));
+    const efter = findFag(nu.current, fagId)?.forloeb.find((f) => f.id === forloebId);
+    if (foer && efter && forloebStatus(foer).status !== 'groen' && forloebStatus(efter).status === 'groen') {
+      meddel(`${efter.navn} er klar.`);
+    }
+  }
+
   return (
     <div class="pensum" ref={rod}>
       {!gemmer && <p class="pensum-advarsel">Din browser gemmer ikke data fra siden.</p>}
 
       {aktivtFag ? (
-        <FagVisning fag={aktivtFag} onVisOversigt={visOversigt} />
+        <FagVisning
+          key={aktivtFag.id}
+          fag={aktivtFag}
+          onVisOversigt={visOversigt}
+          onTilfoejForloeb={(navne) => haandterTilfoejForloeb(aktivtFag.id, navne)}
+          onPunkt={(forloebId, punkt, svar) => haandterPunkt(aktivtFag.id, forloebId, punkt, svar)}
+        />
       ) : (
         <Oversigt pensum={pensum} onTilfoejFag={haandterTilfoejFag} onVisFag={visFag} />
       )}

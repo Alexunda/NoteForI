@@ -455,3 +455,214 @@ html:not(.js) .pensum-henter {
 .pensum-fag h2 {
   margin-top: 0;
 }
+
+.pensum-fag h3 {
+  margin-top: var(--afstand-5);
+  margin-bottom: var(--afstand-3);
+}
+
+/* ---------- Forløb ---------- */
+
+.pensum-forloebsliste {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--farve-kant);
+  border-radius: var(--radius-l);
+  background: var(--farve-flade);
+  list-style: none;
+}
+
+.pensum-forloeb + .pensum-forloeb {
+  border-top: 1px solid var(--farve-kant);
+}
+
+.pensum-forloeb-knap {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--afstand-3);
+  width: 100%;
+  min-height: 4rem;
+  padding: var(--afstand-3) var(--afstand-4);
+  border: 0;
+  background: none;
+  color: var(--farve-tekst);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pensum-forloeb-knap:hover {
+  background: var(--farve-accent-svag);
+}
+
+/* Fokusringen tegnes indenfor, så listens runde hjørner ikke skærer den af */
+.pensum-forloeb-knap:focus-visible {
+  outline-offset: -3px;
+}
+
+.pensum-forloeb-tekst {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pensum-forloeb-navn {
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.pensum-pil {
+  flex-shrink: 0;
+  color: var(--farve-tekst-svag);
+}
+
+[aria-expanded='true'] > .pensum-pil {
+  transform: rotate(180deg);
+}
+
+.pensum-forloeb-detaljer {
+  padding: 0 var(--afstand-2) var(--afstand-3);
+}
+
+/* ---------- Afkrydsning ---------- */
+
+.pensum-punkter {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pensum-punkt + .pensum-punkt {
+  margin-top: var(--afstand-1);
+}
+
+.pensum-afkrydsning {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--afstand-3);
+  min-height: 3rem;
+  padding: var(--afstand-3) var(--afstand-2);
+  border-radius: var(--radius-m);
+  cursor: pointer;
+}
+
+.pensum-afkrydsning:hover {
+  background: var(--farve-accent-svag);
+}
+
+/* Den rigtige afkrydsningsboks ligger usynligt over hele rækken */
+.pensum-afkrydsning input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pensum-boks {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.05rem;
+  border: 2px solid var(--farve-kant-staerk);
+  border-radius: var(--radius-s);
+  background: var(--farve-flade);
+  color: var(--farve-paa-accent);
+}
+
+.pensum-boks .ikon {
+  width: 1.125rem;
+  height: 1.125rem;
+  stroke-width: 3;
+  visibility: hidden;
+}
+
+.pensum-afkrydsning input:checked + .pensum-boks {
+  border-color: var(--farve-accent);
+  background: var(--farve-accent);
+}
+
+.pensum-afkrydsning input:checked + .pensum-boks .ikon {
+  visibility: visible;
+}
+
+.pensum-afkrydsning:has(input:focus-visible) {
+  outline: 3px solid var(--farve-accent);
+  outline-offset: -3px;
+}
+
+.pensum-afkrydsning-irrelevant,
+.pensum-afkrydsning-irrelevant input {
+  cursor: default;
+}
+
+.pensum-afkrydsning-irrelevant:hover {
+  background: none;
+}
+
+.pensum-afkrydsning-irrelevant .pensum-boks {
+  border-style: dashed;
+  background: none;
+}
+
+.pensum-afkrydsning-irrelevant .pensum-afkrydsning-tekst {
+  color: var(--farve-tekst-svag);
+}
+
+.pensum-knap-lille {
+  min-height: var(--trykflade);
+  padding: 0 var(--afstand-3);
+  font-weight: 500;
+}
+
+.pensum-irrelevant-knap {
+  margin-left: calc(1.5rem + var(--afstand-3) + var(--afstand-2));
+}
+
+.pensum-knap[aria-pressed='true'] {
+  border-color: var(--farve-accent);
+  background: var(--farve-accent-svag);
+  color: var(--farve-accent);
+}
+
+.pensum-knap[aria-pressed='true']::before {
+  content: '✓';
+  content: '✓' / '';
+}
+
+/* ---------- Hurtig indtastning ---------- */
+
+.pensum-hurtig h3 label {
+  cursor: pointer;
+}
+
+.pensum-hurtig .pensum-svag {
+  margin-bottom: var(--afstand-2);
+}
+
+.pensum-hurtig-felt {
+  display: block;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.pensum-hurtig-knap {
+  width: 100%;
+  margin-top: var(--afstand-2);
+}
+
+.pensum-besked {
+  margin: var(--afstand-2) 0 0;
+}
+
+.pensum-besked:empty {
+  margin: 0;
+}
