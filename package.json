@@ -8,8 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && node scripts/tjek-links.mjs",
+    "build": "npm test && astro check && astro build && node scripts/tjek-links.mjs",
     "preview": "astro preview",
+    "test": "node --test \"tests/**/*.test.mjs\"",
     "astro": "astro",
     "tjek:eksterne-links": "NODE_USE_ENV_PROXY=1 node scripts/tjek-eksterne-links.mjs",
     "skaermbilleder": "node scripts/skaermbilleder.mjs"
