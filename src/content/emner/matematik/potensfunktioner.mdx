@@ -1,0 +1,295 @@
+---
+titel: "Potensfunktioner"
+beskrivelse: "Forskriften b · xᵃ, hvad a og b betyder, og procent-procentvækst, hvor en procentvis ændring i x giver en procentvis ændring i f(x)."
+fag: matematik
+nummer: 13
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En potensfunktion har en forskrift af typen $f(x) = b \cdot x^a$. Her står $x$ i grundtallet, altså det tal, der bliver opløftet, og eksponenten $a$ er et fast tal. [formelsamlingen, s. 21 og 82, formel (58)](kilde:formelsamling) Det er omvendt af en [eksponentiel funktion](/fag/matematik/eksponentielle-funktioner/) $b \cdot a^x$, hvor $x$ står i eksponenten. [formelsamlingen, s. 18, formel (44)](kilde:formelsamling) Er $a$ positiv, er potensfunktionen voksende, og er $a$ negativ, er den aftagende. [formelsamlingen, s. 21, formel (59)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Fortegnet på $a$ bestemmer retningen.** Er $a$ positiv, vokser funktionen. Er $a$ negativ, aftager den. For $a = 1$ er grafen en ret linje gennem $(0, 0)$. For $a > 1$ bliver grafen stejlere og stejlere, og for $0 < a < 1$ bliver den fladere og fladere. [formelsamlingen, s. 21, formel (59)](kilde:formelsamling)
+- **$b$ er funktionsværdien i 1.** Sætter du $x = 1$ ind, får du $f(1) = b \cdot 1^a = b$. Du kan altså aflæse $b$ på grafen, der hvor $x = 1$. [formelsamlingen, s. 21, formel (60)](kilde:formelsamling)
+- **Positive $x$.** Graferne i formelsamlingen er kun tegnet for positive $x$. [formelsamlingen, s. 21, formel (59)](kilde:formelsamling) Formlen for $a$ bruger også logaritmer af koordinaterne, og [logaritmer](/fag/matematik/logaritmefunktioner/) findes kun af positive tal. [formelsamlingen, s. 21 og 25, formel (61)](kilde:formelsamling)
+- **Når $x$ ganges med $k$, ganges $f(x)$ med $k^a$.** Bliver $x$ fordoblet, bliver $f(x)$ altså ganget med $2^a$. [formelsamlingen, s. 21, formel (63)](kilde:formelsamling)
+- **Procent-procentvækst.** Ændrer du $x$ med en bestemt procent, ændres $f(x)$ også med en bestemt procent. Sammenhængen står i formel (64). [formelsamlingen, s. 21, formel (64)](kilde:formelsamling) Den slags vækst kaldes procent-procentvækst, og den hører til potensfunktioner i matematik A. [vejledningen, s. 14](kilde:vejledning)
+- **To punkter er nok.** Kender du to punkter på grafen, kan du beregne $a$ og derefter $b$. [formelsamlingen, s. 21, formel (61) og (62)](kilde:formelsamling)
+- **Proportionalitet er et særtilfælde.** Med $a = 1$ får du $f(x) = b \cdot x$, og så er $y$ ligefrem proportional med $x$. Med $a = -1$ får du $f(x) = b \cdot \frac{1}{x}$, fordi $x^{-1} = \frac{1}{x}$, og så er $x$ og $y$ omvendt proportionale. [formelsamlingen, s. 24 og 77, formel (76), (78) og (345)](kilde:formelsamling)
+
+Prøv selv: Træk i skyderne, og se, hvad $a$ og $b$ gør ved grafen. Hvad sker der, når $a$ bliver negativ? Og hvilken værdi har $f(1)$, uanset hvad $a$ er?
+
+<Graf
+  titel="Potensfunktion med skydere"
+  funktioner={[{ forskrift: 'f(x) = b · x^a', tex: 'f(x) = b \\cdot x^a' }]}
+  parametre={{ a: { min: -2, max: 3, start: 0.5, trin: 0.1 }, b: { min: 0.5, max: 5, start: 2, trin: 0.5 } }}
+  x={[0, 6]}
+  y={[-1, 10]}
+/>
+
+## Formler
+
+<Formel navn="Forskriften for en potensfunktion" tex="f(x) = b \cdot x^a" kilde="formelsamling" henvisning="formelsamlingen, s. 21, formel (58)">
+
+<Symboler>
+
+- $f(x)$: funktionsværdien.
+- $x$: den variable. Den er et positivt tal.
+- $a$: eksponenten. Er den positiv, er funktionen voksende. Er den negativ, er funktionen aftagende.
+- $b$: en konstant, som også er funktionsværdien, når $x = 1$.
+
+</Symboler>
+
+<Bruges>
+
+Når en opgave giver dig en model af typen $f(x) = b \cdot x^a$, og du skal regne funktionsværdier ud eller forklare, hvad $a$ og $b$ betyder.
+
+</Bruges>
+
+<Eksempel>
+
+I en model koster en pizza $f(x) = 0{,}1 \cdot x^2$ kr., hvor $x$ er diameteren i cm. Her er $b = 0{,}1$ og $a = 2$. En pizza med diameteren 30 cm koster
+
+$$
+f(30) = 0{,}1 \cdot 30^2 = 0{,}1 \cdot 900 = 90
+$$
+
+altså 90 kr.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange, før du opløfter: $0{,}1 \cdot 30^2$ er $0{,}1 \cdot 900$ og ikke $3^2$.
+- At blande potensfunktioner og eksponentielle funktioner sammen. I $b \cdot x^a$ står $x$ i grundtallet, og i $b \cdot a^x$ står $x$ i eksponenten.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Eksponenten ud fra to punkter" tex="a = \frac{\log(y_2) - \log(y_1)}{\log(x_2) - \log(x_1)}" kilde="formelsamling" henvisning="formelsamlingen, s. 21, formel (61)">
+
+<Symboler>
+
+- $(x_1, y_1)$ og $(x_2, y_2)$: to punkter på grafen.
+- $a$: eksponenten.
+- $\log$: titalslogaritmen.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to punkter på grafen eller to værdier i en tabel og skal finde forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+Grafen for en potensfunktion går gennem punkterne $(2, 12)$ og $(4, 48)$. Så er
+
+$$
+a = \frac{\log(48) - \log(12)}{\log(4) - \log(2)} = 2
+$$
+
+Uden lommeregner kan du bruge regnereglerne for [logaritmer](/fag/matematik/logaritmefunktioner/):
+
+$$
+a = \frac{\log\left(\frac{48}{12}\right)}{\log\left(\frac{4}{2}\right)} = \frac{\log(4)}{\log(2)} = \frac{2 \cdot \log(2)}{\log(2)} = 2
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om, så $x$-værdierne står i tælleren.
+- At glemme log og regne $\frac{y_2 - y_1}{x_2 - x_1}$. Det er hældningen for en lineær funktion.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Konstanten b ud fra ét punkt" tex="b = \frac{y_1}{x_1^a}" kilde="formelsamling" henvisning="formelsamlingen, s. 21, formel (62)">
+
+<Symboler>
+
+- $(x_1, y_1)$: et punkt på grafen.
+- $a$: eksponenten, som du skal kende i forvejen.
+- $b$: konstanten i forskriften.
+
+</Symboler>
+
+<Bruges>
+
+Når du har fundet $a$ og mangler $b$ for at kunne skrive forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: $a = 2$, og punktet $(2, 12)$ ligger på grafen. Så er
+
+$$
+b = \frac{12}{2^2} = \frac{12}{4} = 3
+$$
+
+og forskriften er $f(x) = 3 \cdot x^2$. Tjek med det andet punkt: $f(4) = 3 \cdot 4^2 = 48$.
+
+</Eksempel>
+
+<Fejl>
+
+- At opløfte $y_1$ i stedet for $x_1$.
+- At regne $b$ ud med det ene punkt uden at tjekke med det andet.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Når x ganges med et tal" tex="f(k \cdot x) = k^a \cdot f(x)" kilde="formelsamling" henvisning="formelsamlingen, s. 21, formel (63)">
+
+<Symboler>
+
+- $k$: det tal, $x$ bliver ganget med.
+- $k^a$: det tal, funktionsværdien så bliver ganget med.
+- $a$: eksponenten.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde ud af, hvad der sker med $f(x)$, når $x$ fx bliver fordoblet eller halveret.
+
+</Bruges>
+
+<Eksempel>
+
+I pizzamodellen $f(x) = 0{,}1 \cdot x^2$ er $a = 2$. Fordobler du diameteren, er $k = 2$, og prisen bliver ganget med
+
+$$
+k^a = 2^2 = 4
+$$
+
+Tjek: $f(30) = 90$ og $f(60) = 0{,}1 \cdot 60^2 = 360$, og $4 \cdot 90 = 360$.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $f(x)$ også bliver fordoblet, når $x$ bliver fordoblet. Det gælder kun, når $a = 1$.
+- At regne $a^k$ i stedet for $k^a$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Procent-procentvækst" tex="1 + r_y = (1 + r_x)^a" kilde="formelsamling" henvisning="formelsamlingen, s. 21, formel (64)">
+
+<Symboler>
+
+- $r_x$: den relative ændring i $x$, skrevet som decimaltal. 10 % skrives $0{,}10$.
+- $r_y$: den relative ændring i $y$-værdien, skrevet som decimaltal.
+- $a$: eksponenten.
+
+</Symboler>
+
+<Bruges>
+
+Når $x$ ændres med en procent, og du skal finde ud af, hvor mange procent funktionsværdien ændres.
+
+</Bruges>
+
+<Eksempel>
+
+I pizzamodellen er $a = 2$. Bliver diameteren 10 % større, er $r_x = 0{,}10$, og
+
+$$
+1 + r_y = (1 + 0{,}10)^2 = 1{,}21
+$$
+
+så $r_y = 0{,}21$. Prisen stiger altså med 21 %.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange procenten med $a$. 10 % større diameter giver ikke 20 % højere pris, men 21 %.
+- At glemme 1-tallerne og regne $0{,}10^2$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Potensfunktion">
+
+En funktion med en forskrift af typen $f(x) = b \cdot x^a$. Er $a$ positiv, er den voksende, og er $a$ negativ, er den aftagende. [formelsamlingen, s. 21, formel (58) og (59)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Eksponent">
+
+Det tal, et grundtal bliver opløftet i. I $x^a$ er $a$ eksponenten og $x$ grundtallet. En potensfunktion har en fast eksponent. [formelsamlingen, s. 82](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Relativ ændring">
+
+En ændring regnet i forhold til startværdien og skrevet som decimaltal. Vokser $x$ med 10 %, er den relative ændring $0{,}10$. [formelsamlingen, s. 8 og 21, formel (1), (4) og (64)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Procent-procentvækst">
+
+Vækst, hvor en procentvis ændring i $x$ giver en procentvis ændring i $y$. Den hører til potensfunktioner. [vejledningen, s. 14](kilde:vejledning) [formelsamlingen, s. 21, formel (64)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Potensfunktioner og deres grafiske forløb er kernestof i matematik A. [læreplanen, pkt. 2.2](kilde:laereplan) Du skal kende de karakteristiske egenskaber, fx hvad konstanterne betyder, og monotoniforholdene, altså hvor funktionen vokser og aftager. For potensfunktioner indgår også procent-procentvækst. [vejledningen, s. 14](kilde:vejledning) Kernestoffet er grundlaget for den skriftlige prøve. [vejledningen, s. 11](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i at bruge formel (62), (63) og (64) i hånden med pæne tal, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
+
+- Du skal kunne løse grundligninger for funktionstyperne, også når $x$ står i grundtallet. [vejledningen, s. 12](kilde:vejledning) Et eksempel: $x^4 = 81$ giver $x = \sqrt[4]{81} = 3$, når $x$ er positiv. [formelsamlingen, s. 77, formel (341) og (350)](kilde:formelsamling)
+
+**Med hjælpemidler (delprøve 2).** Her skal du kunne lave regression, også med potensfunktioner, og tegne data og model i et passende grafvindue. [vejledningen, s. 15](kilde:vejledning)
+
+- Modeltypen står altid i opgaven, så du skal ikke selv vælge den. [vejledningen, s. 37](kilde:vejledning)
+- Vurdér, om modellen faktisk beskriver data, eller om punkterne afviger systematisk fra grafen. [vejledningen, s. 15](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Sætninger og formler gennemgås som hovedregel med bevis. [vejledningen, s. 23](kilde:vejledning) Øv dig fx i at forklare, hvorfor formel (63) gælder:
+
+$$
+f(k \cdot x) = b \cdot (k \cdot x)^a = b \cdot k^a \cdot x^a = k^a \cdot f(x)
+$$
+
+Her bruger du potensreglen om et produkt i en potens. [formelsamlingen, s. 77, formel (342)](kilde:formelsamling) Ændres $x$ med $r_x$, bliver $x$ ganget med $k = 1 + r_x$, og så giver formel (63) formel (64).
+
+**Eksempler på problemstillinger**
+
+- Sammenhængen mellem to størrelser er en potensfunktion med $a = 3$. Hvor mange procent vokser $y$, når $x$ vokser med 20 %?
+- Hvad sker der med funktionsværdien for $f(x) = 5 \cdot x^{-2}$, når $x$ bliver halveret?
+- To målinger i en tabel ligger på grafen for en potensfunktion. Bestem $a$ og $b$, og afgør, om funktionen er voksende eller aftagende.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
