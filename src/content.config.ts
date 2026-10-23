@@ -91,8 +91,8 @@ const eksamen = defineCollection({
      * 6.2. Andre guider, fx om eksamensdagen, sætter den til false.
      */
     proeveform: z.boolean().default(true),
-    /** Læreplanens version, hvis guiden bygger på en læreplan, fx "2017" for SRP */
-    laereplan: aarstal.optional(),
+    /** Læreplanens version, hvis guiden bygger på en læreplan, fx "2017" for SRP eller ["2017", "2020"] */
+    laereplan: laereplaner.optional(),
     /** Vises på siden: "Bygger på …", fx "læreplanen fra 2017 og prøvebekendtgørelsen fra 2026" */
     grundlag: z.string().min(1),
     /** Den dag, reglerne sidst blev tjekket mod kilderne */
