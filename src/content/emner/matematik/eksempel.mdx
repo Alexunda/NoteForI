@@ -35,6 +35,19 @@ $$
 \frac{a + b}{2} \cdot \sqrt{c}
 $$
 
+En graf med skydere. Træk i skyderne, og flyt og zoom med fingrene eller musen.
+
+<Graf
+  titel="Pladsholdergraf"
+  funktioner={[
+    { forskrift: 'f(x) = a · x^2 + b', tex: 'f(x) = a \\cdot x^2 + b' },
+    { forskrift: 'g(x) = b · 1,2^x', tex: 'g(x) = b \\cdot 1{,}2^x' },
+  ]}
+  parametre={{ a: { min: -3, max: 3, start: 0.5 }, b: { min: -5, max: 5, start: 1 } }}
+  x={[-6, 6]}
+  y={[-4, 10]}
+/>
+
 ## Formler
 
 <Formel navn="Pladsholderformel" tex="y = a \cdot x + b" kilde="formelsamling" henvisning="formelsamlingen (side og formelnummer kommer her)">

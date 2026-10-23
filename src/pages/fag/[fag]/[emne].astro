@@ -14,6 +14,7 @@ import Bruges from '../../../components/emne/Bruges.astro';
 import Eksempel from '../../../components/emne/Eksempel.astro';
 import Fejl from '../../../components/emne/Fejl.astro';
 import Begreb from '../../../components/emne/Begreb.astro';
+import Graf from '../../../components/emne/Graf.astro';
 import { FAG_NAVNE } from '../../../data/fag';
 import { klassetrinNavn } from '../../../data/klassetrin';
 import { udtraekBegreber } from '../../../lib/begreber';
@@ -41,7 +42,7 @@ if (udtraekBegreber(emne.body ?? '').length === 0) {
 }
 if (fejl.length > 0) throw new Error(`Fejl i ${emne.filePath}:\n- ${fejl.join('\n- ')}`);
 
-const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb };
+const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb, Graf };
 ---
 
 <Side titel={titel} beskrivelse={beskrivelse}>

@@ -35,6 +35,13 @@
   --farve-groen: #18794e;
   --farve-groen-svag: #dcf3e5;
 
+  /* Kurverne i grafkomponenten. Mindst 3:1 mod fladen, og hver kurve har
+     også sit eget stregmønster, så farven ikke er det eneste signal. */
+  --farve-graf-1: #2b4cc4;
+  --farve-graf-2: #c2410c;
+  --farve-graf-3: #15803d;
+  --farve-graf-4: #9333ea;
+
   /* Skrift */
   --skrift: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --skrift-broed: 1.0625rem; /* 17 px */
@@ -85,4 +92,9 @@
   --farve-gul-svag: #43350f;
   --farve-groen: #6dd58c;
   --farve-groen-svag: #173a26;
+
+  --farve-graf-1: #93abff;
+  --farve-graf-2: #fb923c;
+  --farve-graf-3: #4ade80;
+  --farve-graf-4: #c084fc;
 }

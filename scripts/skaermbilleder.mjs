@@ -107,6 +107,16 @@ for (const side of SIDER) {
       fane.on('pageerror', (fejl) => konsolfejl.push(fejl.message));
 
       await fane.goto(sideUrl, { waitUntil: 'networkidle' });
+      // Rul siden igennem, så øer med client:visible (fx grafer) bliver indlæst og tegnet
+      await fane.evaluate(async () => {
+        for (let y = 0; y < document.documentElement.scrollHeight; y += window.innerHeight / 2) {
+          window.scrollTo(0, y);
+          await new Promise((ok) => setTimeout(ok, 60));
+        }
+        window.scrollTo(0, 0);
+      });
+      await fane.waitForLoadState('networkidle');
+      await fane.waitForTimeout(300);
       const vandretScroll = await fane.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
       const smaa = await fane.evaluate(findSmaaTrykflader);
 
