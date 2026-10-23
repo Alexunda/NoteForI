@@ -154,12 +154,15 @@ export default function Pensumtjekliste({ generisk }: Props) {
 
   /* ---------- Data ---------- */
 
-  /** Gemmer nye data. Vil browseren ikke gemme, virker siden videre uden. */
+  /**
+   * Gemmer nye data. Vil browseren ikke gemme, virker siden videre uden, og
+   * beskeden øverst vises. Lykkes det senere, forsvinder beskeden igen.
+   */
   function aendr(ny: Pensum) {
     if (ny === nu.current) return;
     nu.current = ny;
     saetPensum(ny);
-    if (!gem(NOEGLER.pensum, JSON.stringify(ny))) saetGemmer(false);
+    saetGemmer(gem(NOEGLER.pensum, JSON.stringify(ny)));
   }
 
   /** En kort besked til skærmlæsere */
