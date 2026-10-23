@@ -1,10 +1,16 @@
 ---
+import { getEntry } from 'astro:content';
+import Guide from '../../components/Guide.astro';
 import Linkliste from '../../components/Linkliste.astro';
-import Pladsholder from '../../components/Pladsholder.astro';
 import { EKSAMENSSIDER } from '../../data/navigation';
+
+const guide = await getEntry('eksamen', 'oversigt');
+if (!guide) throw new Error('src/content/eksamen/oversigt.md findes ikke');
 ---
 
-<Pladsholder>
-  <h2>Prøver og opgaver</h2>
-  <Linkliste sider={EKSAMENSSIDER} />
-</Pladsholder>
+<Guide guide={guide}>
+  <section slot="foer" aria-labelledby="guiderne">
+    <h2 id="guiderne">Guiderne</h2>
+    <Linkliste sider={EKSAMENSSIDER} />
+  </section>
+</Guide>
