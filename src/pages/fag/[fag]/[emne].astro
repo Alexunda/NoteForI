@@ -1,11 +1,24 @@
 ---
-import { render } from 'astro:content';
+// Emnesiden (projektplan afsnit 6.3). Indholdet står i
+// src/content/emner/<fag>/<emne>.mdx. Komponenterne herunder kan bruges i
+// filen uden import. Buildet stopper, hvis afsnittene ikke følger skabelonen
+// (src/lib/emneside.ts), eller hvis siden ikke har nogen begreber.
 import 'katex/dist/katex.min.css';
+import '../../../styles/emne.css';
+import { render } from 'astro:content';
 import Side from '../../../layouts/Side.astro';
 import Maerkat from '../../../components/Maerkat.astro';
+import Formel from '../../../components/emne/Formel.astro';
+import Symboler from '../../../components/emne/Symboler.astro';
+import Bruges from '../../../components/emne/Bruges.astro';
+import Eksempel from '../../../components/emne/Eksempel.astro';
+import Fejl from '../../../components/emne/Fejl.astro';
+import Begreb from '../../../components/emne/Begreb.astro';
 import { FAG_NAVNE } from '../../../data/fag';
 import { klassetrinNavn } from '../../../data/klassetrin';
+import { udtraekBegreber } from '../../../lib/begreber';
 import { emneSlug, hentEmner, type Emne } from '../../../lib/emner';
+import { tjekEmneAfsnit } from '../../../lib/emneside';
 import { url } from '../../../lib/sti';
 
 export async function getStaticPaths() {
@@ -18,36 +31,63 @@ interface Props {
 }
 
 const { emne } = Astro.props;
-const { titel, fag, niveau, klassetrin, laereplan, kilder, verificeret } = emne.data;
-const { Content } = await render(emne);
+const { titel, beskrivelse, fag, ogsaaFag, niveau, klassetrin, laereplan, kilder, verificeret, pladsholder } =
+  emne.data;
+const { Content, headings } = await render(emne);
+
+const fejl = tjekEmneAfsnit(headings);
+if (udtraekBegreber(emne.body ?? '').length === 0) {
+  fejl.push('Afsnittet "Centrale begreber" skal have mindst ét <Begreb>.');
+}
+if (fejl.length > 0) throw new Error(`Fejl i ${emne.filePath}:\n- ${fejl.join('\n- ')}`);
+
+const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb };
 ---
 
-<Side titel={titel}>
-  <article>
-    <header>
-      <p class="emne-fag"><a href={url(`/fag/${fag}/`)}>{FAG_NAVNE[fag]}</a></p>
+<Side titel={titel} beskrivelse={beskrivelse}>
+  <article class="emne">
+    <header class="emne-hoved">
+      <p class="emne-fag">
+        {
+          [fag, ...ogsaaFag].map((f) => (
+            <a href={url(`/fag/${f}/`)}>{FAG_NAVNE[f]}</a>
+          ))
+        }
+      </p>
       <h1>{titel}</h1>
       <ul class="emne-fakta">
         <li>Niveau {niveau.join(', ')}</li>
-        <li>Læreplan {laereplan}</li>
-        <li class="emne-trin">
-          {
-            klassetrin.map((trin) => (
-              <span class="trin" data-trin={trin}>
-                {klassetrinNavn(trin)}
-              </span>
-            ))
-          }
-        </li>
+        <li>{laereplan.length === 1 ? `Læreplan ${laereplan[0]}` : `Læreplan ${laereplan.join(' og ')}`}</li>
+        {
+          klassetrin === 'ukendt' ? (
+            <li>Klassetrin ikke fastlagt</li>
+          ) : (
+            <li class="emne-trin">
+              {klassetrin.map((trin) => (
+                <span class="trin" data-trin={trin}>
+                  {klassetrinNavn(trin)}
+                </span>
+              ))}
+            </li>
+          )
+        }
       </ul>
       {!verificeret && <Maerkat />}
+      {
+        pladsholder && (
+          <p class="emne-pladsholder">
+            <strong>Pladsholder.</strong> Siden viser kun, hvordan en emneside ser ud. Teksten og formlerne er ikke
+            rigtigt fagligt indhold.
+          </p>
+        )
+      }
     </header>
 
     <div class="emne-indhold">
-      <Content />
+      <Content components={komponenter} />
     </div>
 
-    <section aria-labelledby="kilder">
+    <section class="emne-afsnit" data-afsnit="kilder" aria-labelledby="kilder">
       <h2 id="kilder">Kilder</h2>
       <ul class="emne-kilder">
         {
@@ -61,41 +101,3 @@ const { Content } = await render(emne);
     </section>
   </article>
 </Side>
-
-<style>
-  article {
-    max-width: var(--tekstbredde);
-  }
-
-  .emne-fag {
-    margin-bottom: var(--afstand-1);
-  }
-
-  .emne-fag a {
-    display: inline-flex;
-    align-items: center;
-    min-height: var(--trykflade);
-    font-weight: 600;
-  }
-
-  .emne-fakta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--afstand-2) var(--afstand-4);
-    padding: 0;
-    color: var(--farve-tekst-svag);
-    list-style: none;
-  }
-
-  .emne-trin {
-    display: flex;
-    gap: var(--afstand-1);
-  }
-
-  .emne-kilder a {
-    display: inline-flex;
-    align-items: center;
-    min-height: var(--trykflade);
-  }
-</style>

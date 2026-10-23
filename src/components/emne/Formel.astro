@@ -1,0 +1,46 @@
+---
+// En formel på en emneside (projektplan afsnit 6.3). Bruges i MDX:
+//
+//   <Formel navn="Fremskrivningsfaktor" tex="a = 1 + r"
+//     kilde="formelsamling" henvisning="formelsamlingen, s. 12, formel (34)">
+//   <Symboler>Hvad hvert symbol betyder</Symboler>
+//   <Bruges>Hvornår formlen bruges</Bruges>
+//   <Eksempel>Et gennemregnet eksempel</Eksempel>
+//   <Fejl>Typiske fejl</Fejl>
+//   </Formel>
+//
+// Formlen og henvisningen til formelsamlingen vises altid. Resten kan foldes
+// ud, så siden er til at overskue på mobilen. kildenavn og kildeurl sættes
+// ved build ud fra kilden i frontmatter (src/lib/markdown/kilder.ts), og
+// buildet stopper, hvis en af delene mangler (src/lib/markdown/emneside.ts).
+import { slug } from '../../lib/emneside';
+import { holdSammen } from '../../lib/markdown/kilder';
+import { texTilHtml } from '../../lib/markdown/tex';
+
+interface Props {
+  navn: string;
+  /** Formlen i TeX. Decimalkomma skrives {,} */
+  tex: string;
+  /** Id'et på kilden i frontmatter, fx "formelsamling" */
+  kilde: string;
+  /** Stedet i kilden, som det skal stå på siden, fx "formelsamlingen, s. 12, formel (34)" */
+  henvisning: string;
+  kildenavn?: string;
+  kildeurl?: string;
+}
+
+const { navn, tex, henvisning, kildenavn, kildeurl } = Astro.props;
+if (!kildeurl) throw new Error(`Formlen "${navn}" har ingen kilde. Er <Formel> brugt uden for en emneside?`);
+const id = `formel-${slug(navn)}`;
+---
+
+<section class="formel" id={id} aria-labelledby={`${id}-navn`}>
+  <h3 class="formel-navn" id={`${id}-navn`}>{navn}</h3>
+  <div class="formel-tex" set:html={texTilHtml(tex, true)} />
+  <p class="formel-kilde">
+    <a href={kildeurl} title={kildenavn}><span class="skjult-visuelt">Kilde: </span>{holdSammen(henvisning)}</a>
+  </p>
+  <div class="formel-dele">
+    <slot />
+  </div>
+</section>

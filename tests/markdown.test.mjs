@@ -46,10 +46,11 @@ describe('formler', () => {
     assert.doesNotMatch(kode, /language-math/);
   });
 
-  test('MathML kommer med til skærmlæsere, uden det forkerte :xmlns', () => {
-    const html = md('$x$');
+  test('MathML kommer med til skærmlæsere, og MathML og SVG får ikke det forkerte :xmlns', () => {
+    const html = md('$\\sqrt{x}$');
     assert.match(html, /<math>/);
-    assert.doesNotMatch(html, /:xmlns/);
+    assert.match(html, /<svg /);
+    assert.doesNotMatch(html, /xmlns/);
   });
 
   test('decimalkomma skal skrives som {,}', () => {

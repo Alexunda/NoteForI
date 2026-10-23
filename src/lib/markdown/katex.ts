@@ -14,30 +14,16 @@
 //
 // Importerne slutter på .ts, så testene kan køre filen direkte i Node.
 
-import katex from 'katex';
 import { defineHastPlugin, htmlToHast, type HastNode } from 'satteri';
+import { texTilHtml } from './tex.ts';
 
-/**
- * Laver en formel om til KaTeX-HTML. En fejl i formlen stopper buildet, så
- * en formel aldrig vises forkert. Det gør et decimalkomma uden krøllede
- * parenteser også: skriv 2{,}5, ellers sætter KaTeX et mellemrum efter kommaet.
- */
-export function texTilHtml(tex: string, display: boolean): string {
-  const komma = /\d,\d/.exec(tex);
-  if (komma) {
-    throw new Error(
-      `Formlen "${tex}" har "${komma[0]}". Skriv decimalkomma som {,}, fx 2{,}5, og adskil tal i en liste med semikolon.`,
-    );
-  }
-  // strict: 'error' gør advarsler (fx æ, ø og å uden \text{}) til fejl, så buildet ikke giver advarsler
-  return katex.renderToString(tex, { displayMode: display, throwOnError: true, strict: 'error' });
-}
+export { texTilHtml };
 
 /** HTML til hast-noder. */
 function tilNoder(html: string): HastNode[] {
-  // HTML-parseren giver selv <math> det rigtige navnerum. xmlns fjernes, fordi
-  // htmlToHast ellers skriver det ud som ":xmlns".
-  const rod = htmlToHast(html.replaceAll(' xmlns="http://www.w3.org/1998/Math/MathML"', ''), { fragment: true });
+  // HTML-parseren giver selv <math> og <svg> det rigtige navnerum. xmlns
+  // fjernes, fordi htmlToHast ellers skriver det ud som ":xmlns".
+  const rod = htmlToHast(html.replace(/ xmlns(?::\w+)?="[^"]*"/g, ''), { fragment: true });
   return 'children' in rod ? (rod.children as HastNode[]) : [];
 }
 

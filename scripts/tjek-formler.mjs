@@ -6,7 +6,8 @@
 // - ingen formel står tilbage som kode (language-math, math-inline eller
 //   math-display). Det sker, hvis kodefremhævningen eller et plugin har taget
 //   formlen, før KaTeX nåede den
-// - ingen formel har en KaTeX-fejl, og der ikke står $$ tilbage i teksten
+// - ingen formel har en KaTeX-fejl eller et forkert :xmlns, og der ikke står
+//   $$ tilbage i teksten
 // - buildet har mindst én inline-formel ($…$) og én display-formel ($$…$$),
 //   så det er tjekket i et rigtigt build, at begge slags virker
 // - hver side med formler har KaTeX' stylesheet, og at stylesheetet og
@@ -72,6 +73,7 @@ for (const fil of await findFiler(DIST, '.html')) {
     if (html.includes(klasse)) fejl.push(`${navn}: en formel står som kode (${klasse}), ikke som KaTeX`);
   }
   if (html.includes('katex-error')) fejl.push(`${navn}: en formel har en KaTeX-fejl`);
+  if (html.includes(' :xmlns=')) fejl.push(`${navn}: en formel har et forkert :xmlns-attribut`);
 
   // Tekst uden scripts, styles og tags
   const tekst = html

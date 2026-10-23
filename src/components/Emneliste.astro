@@ -16,13 +16,15 @@ const { emner } = Astro.props;
       {emner.map((emne) => (
         <li>
           <a href={url(emneSti(emne))}>{emne.data.titel}</a>
-          <span class="emneliste-trin">
-            {emne.data.klassetrin.map((trin) => (
-              <span class="trin" data-trin={trin}>
-                {klassetrinNavn(trin)}
-              </span>
-            ))}
-          </span>
+          {emne.data.klassetrin !== 'ukendt' && (
+            <span class="emneliste-trin">
+              {emne.data.klassetrin.map((trin) => (
+                <span class="trin" data-trin={trin}>
+                  {klassetrinNavn(trin)}
+                </span>
+              ))}
+            </span>
+          )}
         </li>
       ))}
     </ul>
