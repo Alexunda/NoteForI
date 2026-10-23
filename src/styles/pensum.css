@@ -252,12 +252,13 @@ html:not(.js) .pensum-henter {
   cursor: pointer;
 }
 
-/* Den rigtige radioknap ligger usynligt over hele mærket, så tastatur og skærmlæser virker */
+/* Den rigtige radioknap ligger usynligt over hele mærket inklusive kanten, så
+   tastatur og skærmlæser virker, og trykfladen er mindst 44×44 px */
 .pensum-chip input {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
   margin: 0;
   opacity: 0;
   cursor: pointer;
