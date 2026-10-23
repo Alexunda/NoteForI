@@ -4,7 +4,7 @@
 // tilbage-knap virker.
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
-import type { PunktId } from '../../data/pensum';
+import type { GeneriskVisning, PunktId } from '../../data/pensum';
 import { NOEGLER, gem, hentJson, kanGemme } from '../../lib/lager';
 import {
   fagFejl,
@@ -19,6 +19,7 @@ import {
   omdoebForloeb,
   rensNavn,
   retFag,
+  saetGeneriskPunkt,
   saetPunkt,
   sletFag,
   sletForloeb,
@@ -30,7 +31,13 @@ import {
 } from '../../lib/pensum';
 import FagVisning from './FagVisning';
 import Fortryd, { type FortrydInfo } from './Fortryd';
+import { Ikon } from './Ikon';
 import Oversigt from './Oversigt';
+
+interface Props {
+  /** Det generiske lag. Det er tjekket ved build. */
+  generisk: GeneriskVisning[];
+}
 
 /** Det fag, adressen peger på, eller null for oversigten */
 function fagIAdressen(): string | null {
@@ -44,7 +51,7 @@ interface Fokus {
   rul?: boolean;
 }
 
-export default function Pensumtjekliste() {
+export default function Pensumtjekliste({ generisk }: Props) {
   const [pensum, saetPensum] = useState(() => laesPensum(hentJson(NOEGLER.pensum)));
   const [gemmer, saetGemmer] = useState(kanGemme);
   const [visning, saetVisning] = useState(fagIAdressen);
@@ -60,6 +67,10 @@ export default function Pensumtjekliste() {
   const grundtitel = useRef(document.title);
 
   const aktivtFag = visning === null ? undefined : findFag(pensum, visning);
+  // Den nyeste læreplan først, hvis faget har lister til flere
+  const aktiveLister = generisk
+    .filter((liste) => liste.fag === aktivtFag?.fagside && liste.niveau === aktivtFag.niveau)
+    .sort((a, b) => b.laereplan.localeCompare(a.laereplan));
 
   // Flytter fokus efter en ændring, fx til overskriften, når et fag åbnes
   useLayoutEffect(() => {
@@ -74,6 +85,18 @@ export default function Pensumtjekliste() {
       return;
     }
   });
+
+  // Ændrer eleven tjeklisten i en anden fane, opdateres denne fane også
+  useEffect(() => {
+    function opdater(haendelse: StorageEvent) {
+      if (haendelse.key !== NOEGLER.pensum && haendelse.key !== null) return;
+      const ny = laesPensum(hentJson(NOEGLER.pensum));
+      nu.current = ny;
+      saetPensum(ny);
+    }
+    addEventListener('storage', opdater);
+    return () => removeEventListener('storage', opdater);
+  }, []);
 
   // Tilbage- og frem-knappen i browseren
   useEffect(() => {
@@ -260,18 +283,28 @@ export default function Pensumtjekliste() {
 
   return (
     <div class="pensum" ref={rod}>
-      {!gemmer && <p class="pensum-advarsel">Din browser gemmer ikke data fra siden.</p>}
+      {!gemmer && (
+        <p class="pensum-advarsel" role="alert">
+          <Ikon navn="advarsel" />
+          <span>
+            Din browser vil ikke gemme lige nu. Du kan godt bruge tjeklisten, men dine ændringer er væk, næste gang du
+            åbner siden.
+          </span>
+        </p>
+      )}
 
       {aktivtFag ? (
         <FagVisning
           key={aktivtFag.id}
           fag={aktivtFag}
+          generisk={aktiveLister}
           onVisOversigt={visOversigt}
           onTilfoejForloeb={(navne) => tilfoejNyeForloeb(aktivtFag.id, navne)}
           onPunkt={(forloebId, punkt, svar) => saetForloebPunkt(aktivtFag.id, forloebId, punkt, svar)}
           onOmdoeb={(forloebId, navn) => omdoeb(aktivtFag.id, forloebId, navn)}
           onFlyt={(forloebId, retning) => flyt(aktivtFag.id, forloebId, retning)}
           onSletForloeb={(forloebId) => sletEtForloeb(aktivtFag.id, forloebId)}
+          onGeneriskPunkt={(punktId, krydset) => aendr(saetGeneriskPunkt(nu.current, aktivtFag.id, punktId, krydset))}
           onRetFag={(nyt) => retAktivtFag(aktivtFag.id, nyt)}
           onSletFag={() => sletAktivtFag(aktivtFag.id)}
         />

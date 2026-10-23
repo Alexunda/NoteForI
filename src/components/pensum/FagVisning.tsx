@@ -3,29 +3,43 @@
 
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { TargetedMouseEvent } from 'preact';
-import type { PunktId } from '../../data/pensum';
+import type { GeneriskVisning, PunktId } from '../../data/pensum';
 import { optael, type Fag, type NytFag, type Svar, type Tilfoejet } from '../../lib/pensum';
 import FagFormular from './FagFormular';
 import ForloebRaekke from './ForloebRaekke';
 import { Fremdrift } from './Fremdrift';
+import GeneriskListe from './GeneriskListe';
 import HurtigIndtastning from './HurtigIndtastning';
 import { Ikon } from './Ikon';
 
 interface Props {
   fag: Fag;
+  /** Det generiske lag til fagets fag og niveau. Tomt, indtil listerne er skrevet. */
+  generisk: GeneriskVisning[];
   onVisOversigt: () => void;
   onTilfoejForloeb: (navne: string[]) => Tilfoejet;
   onPunkt: (forloebId: string, punkt: PunktId, svar: Svar | null) => void;
   onOmdoeb: (forloebId: string, navn: string) => string | null;
   onFlyt: (forloebId: string, retning: -1 | 1) => void;
   onSletForloeb: (forloebId: string) => void;
+  onGeneriskPunkt: (punktId: string, krydset: boolean) => void;
   onRetFag: (nyt: NytFag) => string | null;
   onSletFag: () => void;
 }
 
-export default function FagVisning(props: Props) {
-  const { fag, onVisOversigt, onTilfoejForloeb, onPunkt, onOmdoeb, onFlyt, onSletForloeb, onRetFag, onSletFag } =
-    props;
+export default function FagVisning({
+  fag,
+  generisk,
+  onVisOversigt,
+  onTilfoejForloeb,
+  onPunkt,
+  onOmdoeb,
+  onFlyt,
+  onSletForloeb,
+  onGeneriskPunkt,
+  onRetFag,
+  onSletFag,
+}: Props) {
   const [retter, saetRetter] = useState(false);
   const retKnap = useRef<HTMLButtonElement>(null);
   const lukketNu = useRef(false);
@@ -83,6 +97,16 @@ export default function FagVisning(props: Props) {
       )}
 
       <HurtigIndtastning onTilfoej={onTilfoejForloeb} />
+
+      {generisk.map((liste) => (
+        <GeneriskListe
+          key={liste.laereplan}
+          liste={liste}
+          medAarstal={generisk.length > 1}
+          afkrydsede={fag.generisk}
+          onKryds={onGeneriskPunkt}
+        />
+      ))}
 
       <div class="pensum-fag-handlinger">
         {retter ? (

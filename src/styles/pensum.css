@@ -638,6 +638,39 @@ html:not(.js) .pensum-henter {
   content: '✓' / '';
 }
 
+/* ---------- Det generiske lag ---------- */
+
+.pensum-generisk .pensum-punkter {
+  padding: var(--afstand-2);
+}
+
+.pensum-generisk .pensum-svag {
+  margin-bottom: var(--afstand-3);
+}
+
+/* Samme udseende som Maerkat.astro, der ikke kan bruges i en Preact-ø */
+.pensum-maerkat {
+  display: inline-block;
+  margin: 0 0 var(--afstand-3);
+  padding: var(--afstand-1) var(--afstand-3);
+  border: 1px dashed var(--farve-kant-staerk);
+  border-radius: var(--radius-rund);
+  color: var(--farve-tekst-svag);
+  font-size: var(--skrift-lille);
+}
+
+.pensum-laes-mere {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--trykflade);
+  margin-left: calc(1.5rem + var(--afstand-3) + var(--afstand-2));
+}
+
+.pensum-kilder {
+  margin-top: var(--afstand-3);
+  color: var(--farve-tekst-svag);
+}
+
 /* Flyt op, Flyt ned, Omdøb og Slet: to og to på telefonen */
 .pensum-handlinger {
   display: grid;
