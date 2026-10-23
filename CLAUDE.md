@@ -5,7 +5,8 @@ Den fulde plan står i `docs/projektplan.md`. Læs den, før du starter en ny fa
 
 ## Stack
 - Astro med statisk output. Indholdet ligger i content collections (Markdown/MDX) med et frontmatter-skema.
-- KaTeX (`remark-math` + `rehype-katex`) til formler, Pagefind til søgning.
+- Formler: `@astrojs/markdown-satteri` (Astros Markdown-motor) læser `$…$` og `$$…$$`, og `katex` laver dem til HTML ved build (`src/lib/markdown/katex.ts`). Ingen `remark-math` eller `rehype-katex`. KaTeX' CSS og skrifttyper kommer fra katex-pakken og ligger på siden selv. `scripts/tjek-formler.mjs` stopper buildet, hvis en formel ender som kode.
+- Pagefind til søgning.
 - math.js til lommeregner og grafværktøj. Graferne tegnes med en egen let komponent (canvas eller SVG).
 - Pyodide kun til det valgfrie Python-værksted i fase 5. Det indlæses kun på den side.
 - Interaktive værktøjer laves i vanilla TypeScript eller små Preact-øer. Ellers ingen JavaScript.

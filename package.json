@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm test && astro check && astro build && node scripts/tjek-links.mjs",
+    "build": "npm test && astro check && astro build && node scripts/tjek-links.mjs && node scripts/tjek-formler.mjs",
     "preview": "astro preview",
     "test": "node --test \"tests/**/*.test.mjs\"",
     "astro": "astro",
@@ -16,9 +16,14 @@
     "skaermbilleder": "node scripts/skaermbilleder.mjs"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.5",
+    "@astrojs/mdx": "^8.1.1",
     "@astrojs/preact": "^6.1.1",
     "astro": "^7.4.2",
-    "preact": "^10.29.8"
+    "katex": "^0.19.0",
+    "mathjs": "^15.2.0",
+    "preact": "^10.29.8",
+    "satteri": "^0.10.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",

@@ -8,7 +8,7 @@ import { KLASSETRIN } from './data/klassetrin';
 // /fag/<fag>/<emne>/. Skemaet følger projektplan afsnit 4, og fejl i
 // frontmatter stopper buildet.
 const emner = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/emner' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/emner' }),
   schema: z.object({
     titel: z.string().min(1),
     fag: z.enum(FAG_IDER),

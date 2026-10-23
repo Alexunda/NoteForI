@@ -63,7 +63,7 @@ De øvrige obligatoriske fag (fx engelsk og historie) kommer bagefter.
 |---|---|---|
 | Framework | **Astro** (statisk output) | Indhold i Markdown, intet JavaScript som standard, interaktive "øer" kun hvor der er brug for dem |
 | Indhold | Astro content collections (Markdown/MDX) med frontmatter-skema | Ensartet struktur, og fejl i frontmatter fanges ved build |
-| Formler | KaTeX via `remark-math` + `rehype-katex` | Pæne formler, der renderes ved build |
+| Formler | KaTeX via `@astrojs/markdown-satteri` (Astros Markdown-motor) + `katex` | Pæne formler, der renderes ved build. KaTeX' CSS og skrifttyper ligger på siden selv |
 | Søgning | Pagefind | Statisk fuldtekstsøgning uden server |
 | Værktøjer | Vanilla TypeScript eller små Preact-øer | Små og hurtige |
 | Styling | Almindelig CSS med custom properties (design tokens) | Ingen tung UI-ramme |
