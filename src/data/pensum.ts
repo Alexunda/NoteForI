@@ -86,4 +86,51 @@ export interface GeneriskVisning extends Omit<GeneriskListe, 'punkter'> {
  * Har et fag lister til to læreplaner (fx dansk A 2017 og 2026), vises
  * begge med årstal. Et valg af læreplan kan tilføjes, når det sker.
  */
-export const GENERISK_PENSUM: GeneriskListe[] = [];
+export const GENERISK_PENSUM: GeneriskListe[] = [
+  {
+    // De faglige mål står i læreplanen pkt. 2.1. Punkterne om kernestoffet
+    // (pkt. 2.2) linker til emnesiderne.
+    fag: 'matematik',
+    niveau: 'A',
+    laereplan: '2024',
+    kilder: [
+      {
+        navn: 'Læreplan for matematik A, stx, august 2024, pkt. 2.1 og 2.2 (uvm.dk, PDF)',
+        url: 'https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf',
+      },
+    ],
+    verificeret: false,
+    punkter: [
+      {
+        id: 'begreber-teorier-og-metoder',
+        tekst: 'Redegøre for et bredt udvalg af matematiske begreber, teorier og metoder og bruge dem til problemløsning og modellering',
+      },
+      { id: 'raesonnementer-og-beviser', tekst: 'Følge og gennemføre matematiske ræsonnementer og beviser' },
+      { id: 'symbol-og-formelsprog', tekst: 'Forstå og bruge matematisk symbol- og formelsprog' },
+      {
+        id: 'repraesentationer',
+        tekst: 'Vælge, bruge og oversætte mellem forskellige repræsentationer af matematiske objekter, fx forskrift, tabel og graf',
+      },
+      { id: 'digitale-vaerktoejer', tekst: 'Bruge digitale værktøjer til modellering og matematisk problemløsning' },
+      {
+        id: 'problemloesning',
+        tekst: 'Bruge matematik til at formulere, analysere og løse problemer i matematik, i andre fag og i omverdenen',
+      },
+      {
+        id: 'modeller',
+        tekst: 'Opstille, bearbejde og fortolke matematiske modeller og diskutere, hvad de kan bruges til, og hvor langt de rækker',
+      },
+      { id: 'matematiske-tekster', tekst: 'Læse og bearbejde tekster med matematisk indhold' },
+      { id: 'formidling', tekst: 'Formidle matematik mundtligt og skriftligt' },
+      {
+        id: 'perspektivering',
+        tekst: 'Perspektivere matematik med eksempler fra matematikkens historie eller fra videnskab, teknologi, samfund eller kultur',
+      },
+      {
+        id: 'undersoege-og-vurdere',
+        tekst: 'Undersøge problemstillinger og udvikle og vurdere løsninger, hvor du bruger matematikkens viden og metoder',
+      },
+      { id: 'fagets-identitet', tekst: 'Vise, at du kender matematikkens identitet og metoder' },
+    ],
+  },
+];

@@ -9,8 +9,8 @@ Emnesiderne til matematik A bygger på kernestoffet i læreplanen (pkt. 2.2) og 
 | Nr. | Emneside (fil) | Kernestof (læreplanen pkt. 2.2) | Formelsamlingen | Klassetrin | Til den skriftlige prøve (vejledningen) |
 |---|---|---|---|---|---|
 | **Tal og algebra** | | | | | |
-| 1 | Tal, algebra og proportionalitet (`tal-og-algebra`) | Tallene: mængder, talmængder, regningsarternes hierarki, algebraisk manipulation, potens og rod, ligefrem og omvendt proportionalitet | s. 24 (proportionalitet) og standardsymbolerne | ukendt | Konsolidering fra grundskolen (s. 11) |
-| 2 | Ligninger (`ligninger`) | Løsning af ligninger med analytiske, grafiske og digitale metoder | s. 22 (andengradsligning) og grundligningerne ved hver funktionstype | ukendt | Både "rene" ligningsopgaver og kontekstopgaver (s. 12) |
+| 1 | Tal, algebra og proportionalitet (`tal-og-algebra`) | Tallene: mængder, talmængder, regningsarternes hierarki, algebraisk manipulation, potens og rod, ligefrem og omvendt proportionalitet | s. 24 (proportionalitet), s. 76–77 (parentes-, brøk- og potensregler, kvadratsætninger) og s. 78–84 (standardsymboler) | ukendt | Konsolidering fra grundskolen (s. 11) |
+| 2 | Ligninger (`ligninger`) | Løsning af ligninger med analytiske, grafiske og digitale metoder | s. 74–75 (ligningsregler og andengradsligninger) og grundligningerne ved hver funktionstype | ukendt | Både "rene" ligningsopgaver og kontekstopgaver (s. 12) |
 | 3 | Procent- og rentesregning (`procent-og-rentesregning`) | Procentregning, relativ vækst, vækstrate, fremskrivningsfaktor, renteformlen | s. 8 | ukendt | Rutine med fremskrivningsfaktor og vækstrate (s. 12) |
 | **Geometri, trigonometri og vektorer** | | | | | |
 | 4 | Retvinklede trekanter og enhedscirklen (`retvinklede-trekanter`) | Ensvinklede og retvinklede trekanter, Pythagoras, sinus, cosinus og tangens | s. 9–11 | ukendt | |
