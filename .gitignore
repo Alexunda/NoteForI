@@ -1,0 +1,12 @@
+# Officielle kilde-PDF'er hentes hertil og må ikke komme med i repoet
+_kilder/
+
+# Byggeoutput og genererede filer
+node_modules/
+dist/
+.astro/
+
+# Skærmbilleder fra scripts/skaermbilleder.mjs
+skaermbilleder/
+
+.DS_Store

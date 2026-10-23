@@ -1,0 +1,30 @@
+---
+import Side from '../../../layouts/Side.astro';
+import Emneliste from '../../../components/Emneliste.astro';
+import { FAG_IDER, FAG_NAVNE, type FagId } from '../../../data/fag';
+import { hentEmner } from '../../../lib/emner';
+
+export function getStaticPaths() {
+  return FAG_IDER.map((fag) => ({ params: { fag }, props: { fag } }));
+}
+
+interface Props {
+  fag: FagId;
+}
+
+const { fag } = Astro.props;
+const navn = FAG_NAVNE[fag];
+const emner = await hentEmner(fag);
+---
+
+<Side titel={navn} beskrivelse={`Emner og eksamen i ${navn.toLowerCase()}.`}>
+  <h1>{navn}</h1>
+  <p class="ingress">
+    Her kommer et overblik over faget: hvad det handler om, hvordan det eksamineres, og links til læreplan og
+    vejledning.
+  </p>
+  <p class="ikke-faerdig">Siden er ikke færdig endnu. Kig forbi igen senere.</p>
+
+  <h2>Emner</h2>
+  <Emneliste emner={emner} />
+</Side>

@@ -1,0 +1,231 @@
+---
+import Side from '../layouts/Side.astro';
+import Ikon from '../components/Ikon.astro';
+import Kort from '../components/Kort.astro';
+import { KLASSETRIN, klassetrinNavn } from '../data/klassetrin';
+import { SIDENAVN } from '../data/navigation';
+import { url } from '../lib/sti';
+---
+
+<Side titel={SIDENAVN}>
+  <h1>Hvad skal du i dag?</h1>
+
+  <ul class="kortliste">
+    <li>
+      <Kort sti="/vaerktoejer/pensum/" ikon="pensum" titel="Læs op til eksamen" tekst="Se, hvad du mangler i dit pensum." />
+    </li>
+    <li>
+      <Kort sti="/fag/" ikon="fag" titel="Slå noget op" tekst="Formler, begreber og metoder i dine fag." />
+    </li>
+    <li>
+      <Kort sti="/vaerktoejer/flashcards/" ikon="flashcards" titel="Øv med flashcards" tekst="Træn begreberne, til de sidder fast." />
+    </li>
+    <li>
+      <Kort sti="/vaerktoejer/timer/" ikon="timer" titel="Start en læsesession" tekst="Læs koncentreret med faste pauser." />
+    </li>
+  </ul>
+
+  <!-- Vises kun, når der er gemt eksamensdatoer (nedtællingen i fase 4) -->
+  <a class="naeste-eksamen" href={url('/vaerktoejer/nedtaelling/')} data-naeste-eksamen hidden>
+    <Ikon navn="kalender" />
+    <span>
+      <strong data-naeste-eksamen-tekst></strong>
+      <span class="naeste-eksamen-detalje" data-naeste-eksamen-detalje></span>
+    </span>
+  </a>
+
+  <fieldset class="klassetrin">
+    <legend>Jeg går i</legend>
+    <div class="klassetrin-valg">
+      {
+        KLASSETRIN.map((trin) => (
+          <label>
+            <input type="radio" name="klassetrin" value={trin} />
+            <span>{klassetrinNavn(trin)}</span>
+          </label>
+        ))
+      }
+    </div>
+    <p class="klassetrin-besked" data-klassetrin-besked aria-live="polite"></p>
+  </fieldset>
+</Side>
+
+<script>
+  import { erKlassetrin, klassetrinNavn } from '../data/klassetrin';
+  import { NOEGLER, gem, hent, hentJson, type Nedtaelling } from '../lib/lager';
+
+  /** Dage siden 1970 for en kalenderdato. Bruger UTC, så sommertid ikke giver fejl. */
+  function dagsnummer(aar: number, maaned: number, dag: number): number {
+    return Math.round(Date.UTC(aar, maaned - 1, dag) / 86_400_000);
+  }
+
+  function visNaesteEksamen() {
+    const boks = document.querySelector<HTMLElement>('[data-naeste-eksamen]');
+    const tekst = document.querySelector('[data-naeste-eksamen-tekst]');
+    const detalje = document.querySelector('[data-naeste-eksamen-detalje]');
+    const data = hentJson(NOEGLER.nedtaelling) as Partial<Nedtaelling> | null;
+    if (!boks || !tekst || !detalje || !Array.isArray(data?.eksamener)) return;
+
+    const nu = new Date();
+    const idag = dagsnummer(nu.getFullYear(), nu.getMonth() + 1, nu.getDate());
+    let naeste: { navn: string; dage: number; dato: Date } | null = null;
+
+    for (const eksamen of data.eksamener) {
+      const dele = typeof eksamen?.dato === 'string' ? /^(\d{4})-(\d{2})-(\d{2})$/.exec(eksamen.dato) : null;
+      if (!dele) continue;
+      const [aar, maaned, dag] = dele.slice(1).map(Number);
+      const dage = dagsnummer(aar, maaned, dag) - idag;
+      if (dage >= 0 && (naeste === null || dage < naeste.dage)) {
+        const navn = typeof eksamen.navn === 'string' ? eksamen.navn.trim() : '';
+        naeste = { navn, dage, dato: new Date(Date.UTC(aar, maaned - 1, dag)) };
+      }
+    }
+    if (!naeste) return;
+
+    if (naeste.dage === 0) tekst.textContent = 'Du har eksamen i dag';
+    else if (naeste.dage === 1) tekst.textContent = 'Næste eksamen er i morgen';
+    else tekst.textContent = `Næste eksamen om ${naeste.dage} dage`;
+
+    const dato = new Intl.DateTimeFormat('da-DK', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      timeZone: 'UTC',
+    }).format(naeste.dato);
+    detalje.textContent = naeste.navn ? `${naeste.navn}, ${dato}` : dato;
+    boks.hidden = false;
+  }
+
+  function opsaetKlassetrin() {
+    const besked = document.querySelector('[data-klassetrin-besked]');
+    const gemt = hent(NOEGLER.klassetrin);
+
+    for (const valg of document.querySelectorAll<HTMLInputElement>('input[name="klassetrin"]')) {
+      valg.checked = valg.value === gemt;
+      valg.addEventListener('change', () => {
+        if (!valg.checked || !erKlassetrin(valg.value)) return;
+        document.documentElement.dataset.klassetrin = valg.value;
+        const gemtNu = gem(NOEGLER.klassetrin, valg.value);
+        if (besked) {
+          besked.textContent = gemtNu
+            ? `Gemt. Det, der passer til ${klassetrinNavn(valg.value)}, bliver fremhævet, men du kan stadig se alt.`
+            : 'Din browser vil ikke gemme valget, så du skal vælge igen næste gang.';
+        }
+      });
+    }
+  }
+
+  visNaesteEksamen();
+  opsaetKlassetrin();
+</script>
+
+<style>
+  .kortliste {
+    display: grid;
+    gap: var(--afstand-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 40rem) {
+    .kortliste {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--afstand-4);
+    }
+  }
+
+  @media (min-width: 60rem) {
+    .kortliste {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .naeste-eksamen {
+    display: flex;
+    align-items: center;
+    gap: var(--afstand-4);
+    margin-top: var(--afstand-5);
+    padding: var(--afstand-4) var(--afstand-5);
+    border-radius: var(--radius-l);
+    background: var(--farve-accent);
+    color: var(--farve-paa-accent);
+    text-decoration: none;
+  }
+
+  .naeste-eksamen strong {
+    display: block;
+    font-size: 1.25rem;
+  }
+
+  .klassetrin {
+    max-width: var(--tekstbredde);
+    margin: var(--afstand-6) 0 0;
+    padding: var(--afstand-4) var(--afstand-5);
+    border: 1px solid var(--farve-kant);
+    border-radius: var(--radius-l);
+    background: var(--farve-flade);
+  }
+
+  /* float lægger overskriften inde i boksen i stedet for på kanten */
+  legend {
+    float: left;
+    width: 100%;
+    margin-bottom: var(--afstand-3);
+    padding: 0;
+    font-weight: 700;
+  }
+
+  .klassetrin-valg {
+    display: flex;
+    clear: both;
+    gap: var(--afstand-2);
+  }
+
+  .klassetrin-valg label {
+    position: relative;
+    display: grid;
+    flex: 1;
+    place-items: center;
+    min-height: var(--trykflade);
+    border: 1px solid var(--farve-kant-staerk);
+    border-radius: var(--radius-rund);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Den rigtige radioknap ligger usynligt over hele mærket, så tastatur og skærmlæser virker */
+  .klassetrin-valg input {
+    position: absolute;
+    inset: -1px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .klassetrin-valg label:has(input:checked) {
+    border-color: var(--farve-accent);
+    background: var(--farve-accent);
+    color: var(--farve-paa-accent);
+  }
+
+  .klassetrin-valg label:has(input:checked) span::before {
+    content: '✓ ';
+    content: '✓ ' / '';
+  }
+
+  .klassetrin-valg label:has(input:focus-visible) {
+    outline: 3px solid var(--farve-accent);
+    outline-offset: 2px;
+  }
+
+  /* Beskeden skal altid være på siden, så skærmlæsere læser den op, når den ændres */
+  .klassetrin-besked {
+    margin: 0;
+    color: var(--farve-tekst-svag);
+  }
+
+  .klassetrin-besked:not(:empty) {
+    padding-top: var(--afstand-3);
+  }
+</style>

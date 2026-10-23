@@ -1,0 +1,76 @@
+---
+import Ikon from './Ikon.astro';
+---
+
+<button type="button" class="temaknap" data-temaknap aria-label="Skift til mørk tilstand">
+  <Ikon navn="maane" class="ikon-maane" />
+  <Ikon navn="sol" class="ikon-sol" />
+</button>
+
+<script>
+  import { NOEGLER, gem, hent } from '../lib/lager';
+
+  const rod = document.documentElement;
+  const knap = document.querySelector<HTMLButtonElement>('[data-temaknap]');
+
+  function opdaterKnap() {
+    const moerk = rod.dataset.tema === 'moerk';
+    knap?.setAttribute('aria-label', moerk ? 'Skift til lys tilstand' : 'Skift til mørk tilstand');
+  }
+
+  knap?.addEventListener('click', () => {
+    const nytTema = rod.dataset.tema === 'moerk' ? 'lys' : 'moerk';
+    rod.dataset.tema = nytTema;
+    gem(NOEGLER.tema, nytTema);
+    opdaterKnap();
+  });
+
+  // Har man ikke selv valgt, følger siden systemet, også hvis det skifter undervejs.
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (haendelse) => {
+    if (hent(NOEGLER.tema) === null) {
+      rod.dataset.tema = haendelse.matches ? 'moerk' : 'lys';
+      opdaterKnap();
+    }
+  });
+
+  opdaterKnap();
+</script>
+
+<style>
+  .temaknap {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: var(--trykflade);
+    height: var(--trykflade);
+    padding: 0;
+    border: 1px solid var(--farve-kant);
+    border-radius: var(--radius-rund);
+    background: var(--farve-flade);
+    color: var(--farve-tekst);
+    cursor: pointer;
+  }
+
+  .temaknap:hover {
+    border-color: var(--farve-accent);
+    color: var(--farve-accent);
+  }
+
+  /* Ikonerne er en anden komponent, så de skal rammes med :global */
+  .temaknap :global(.ikon-sol) {
+    display: none;
+  }
+
+  :global([data-tema='moerk']) .temaknap :global(.ikon-sol) {
+    display: block;
+  }
+
+  :global([data-tema='moerk']) .temaknap :global(.ikon-maane) {
+    display: none;
+  }
+
+  /* Uden JavaScript kan knappen ikke virke, så den skjules */
+  :global(html:not(.js)) .temaknap {
+    display: none;
+  }
+</style>

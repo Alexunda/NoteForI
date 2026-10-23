@@ -1,0 +1,36 @@
+---
+import Side from '../../layouts/Side.astro';
+import Emneliste from '../../components/Emneliste.astro';
+import { FAG_IDER, FAG_NAVNE } from '../../data/fag';
+import { findSide } from '../../data/navigation';
+import { hentEmner } from '../../lib/emner';
+import { url } from '../../lib/sti';
+
+const side = findSide('/fag/');
+const emner = await hentEmner();
+---
+
+<Side titel={side.navn} beskrivelse={side.beskrivelse}>
+  <h1>{side.navn}</h1>
+  <p class="ingress">{side.beskrivelse}</p>
+
+  {/* Emnerne står direkte under hvert fag, så de kan nås med to tryk fra forsiden */}
+  {
+    FAG_IDER.map((fag) => (
+      <section aria-labelledby={`fag-${fag}`}>
+        <h2 id={`fag-${fag}`}>
+          <a href={url(`/fag/${fag}/`)}>{FAG_NAVNE[fag]}</a>
+        </h2>
+        <Emneliste emner={emner.filter((emne) => emne.data.fag === fag)} />
+      </section>
+    ))
+  }
+</Side>
+
+<style>
+  h2 a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+  }
+</style>

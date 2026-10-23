@@ -1,0 +1,105 @@
+---
+import Ikon from './Ikon.astro';
+import { OMRAADER } from '../data/navigation';
+import { udenBase, url } from '../lib/sti';
+
+const sti = udenBase(Astro.url.pathname);
+---
+
+<nav class="menu" aria-label="Hovedmenu">
+  <ul>
+    {
+      OMRAADER.map((omraade) => {
+        const aktuel = sti === omraade.sti ? 'page' : sti.startsWith(omraade.sti) ? 'true' : undefined;
+        return (
+          <li>
+            <a href={url(omraade.sti)} aria-current={aktuel}>
+              <Ikon navn={omraade.ikon} />
+              <span>{omraade.navn}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  /* Mobil: bundmenu */
+  .menu {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 1px solid var(--farve-kant);
+    background: var(--farve-flade);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.125rem;
+    min-height: var(--menu-hoejde);
+    padding: var(--afstand-1);
+    border-top: 3px solid transparent;
+    color: var(--farve-tekst-svag);
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  a[aria-current] {
+    border-top-color: var(--farve-accent);
+    color: var(--farve-accent);
+    font-weight: 700;
+  }
+
+  /* Computer: topmenu i sidehovedet */
+  @media (min-width: 60rem) {
+    .menu {
+      position: static;
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+
+    ul {
+      display: flex;
+      gap: var(--afstand-1);
+    }
+
+    a {
+      flex-direction: row;
+      min-height: var(--trykflade);
+      padding: 0 var(--afstand-4);
+      border: 0;
+      border-radius: var(--radius-rund);
+      color: var(--farve-tekst);
+      font-size: 1rem;
+    }
+
+    a:hover {
+      background: var(--farve-accent-svag);
+    }
+
+    a[aria-current] {
+      background: var(--farve-accent-svag);
+    }
+
+    a :global(.ikon) {
+      display: none;
+    }
+  }
+</style>

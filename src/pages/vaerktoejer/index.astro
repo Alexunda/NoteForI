@@ -1,0 +1,13 @@
+---
+import Side from '../../layouts/Side.astro';
+import Linkliste from '../../components/Linkliste.astro';
+import { VAERKTOEJER, findSide } from '../../data/navigation';
+
+const side = findSide('/vaerktoejer/');
+---
+
+<Side titel={side.navn} beskrivelse={side.beskrivelse}>
+  <h1>{side.navn}</h1>
+  <p class="ingress">{side.beskrivelse}</p>
+  <Linkliste sider={VAERKTOEJER} />
+</Side>

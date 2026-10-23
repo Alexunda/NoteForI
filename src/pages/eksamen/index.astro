@@ -1,0 +1,10 @@
+---
+import Linkliste from '../../components/Linkliste.astro';
+import Pladsholder from '../../components/Pladsholder.astro';
+import { EKSAMENSSIDER } from '../../data/navigation';
+---
+
+<Pladsholder>
+  <h2>Prøver og opgaver</h2>
+  <Linkliste sider={EKSAMENSSIDER} />
+</Pladsholder>

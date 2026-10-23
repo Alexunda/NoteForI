@@ -1,0 +1,10 @@
+---
+import Side from '../layouts/Side.astro';
+import { url } from '../lib/sti';
+---
+
+<Side titel="Siden findes ikke">
+  <h1>Siden findes ikke</h1>
+  <p class="ingress">Linket er måske forkert, eller siden er flyttet.</p>
+  <p><a href={url('/')}>Gå til forsiden</a></p>
+</Side>

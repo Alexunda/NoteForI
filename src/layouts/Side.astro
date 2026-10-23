@@ -1,0 +1,141 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Menu from '../components/Menu.astro';
+import Soegefelt from '../components/Soegefelt.astro';
+import Temaknap from '../components/Temaknap.astro';
+import { SIDEFOD, SIDENAVN } from '../data/navigation';
+import { NOEGLER } from '../lib/lager';
+import { url } from '../lib/sti';
+
+interface Props {
+  titel: string;
+  beskrivelse?: string;
+}
+
+const { titel, beskrivelse = 'Hjælp til eksamen og skolearbejde på STX.' } = Astro.props;
+const fuldTitel = titel === SIDENAVN ? SIDENAVN : `${titel} · ${SIDENAVN}`;
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fuldTitel}</title>
+    <meta name="description" content={beskrivelse} />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <script is:inline define:vars={{ temaNoegle: NOEGLER.tema, trinNoegle: NOEGLER.klassetrin }}>
+      // Sætter tema og klassetrin, før siden tegnes, så den ikke blinker.
+      var rod = document.documentElement;
+      rod.classList.add('js');
+      var tema = null;
+      var trin = null;
+      try {
+        tema = localStorage.getItem(temaNoegle);
+        trin = localStorage.getItem(trinNoegle);
+      } catch (e) {}
+      if (tema !== 'lys' && tema !== 'moerk') {
+        tema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'moerk' : 'lys';
+      }
+      rod.dataset.tema = tema;
+      if (trin === '1g' || trin === '2g' || trin === '3g') rod.dataset.klassetrin = trin;
+    </script>
+  </head>
+  <body>
+    <a class="spring-til-indhold" href="#indhold">Spring til indhold</a>
+    <header class="sidehoved">
+      <div class="ramme sidehoved-indhold">
+        <a class="logo" href={url('/')}>{SIDENAVN}</a>
+        <Menu />
+        <Soegefelt />
+        <Temaknap />
+      </div>
+    </header>
+    <main id="indhold" class="ramme">
+      <slot />
+    </main>
+    <footer class="sidefod">
+      <div class="ramme sidefod-indhold">
+        {SIDEFOD.map((side) => <a href={url(side.sti)}>{side.navn}</a>)}
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .spring-til-indhold {
+    position: absolute;
+    top: var(--afstand-2);
+    left: var(--afstand-4);
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+    padding: 0 var(--afstand-4);
+    border-radius: var(--radius-s);
+    background: var(--farve-flade);
+    transform: translateY(-200%);
+  }
+
+  .spring-til-indhold:focus {
+    transform: none;
+  }
+
+  .sidehoved {
+    border-bottom: 1px solid var(--farve-kant);
+    background: var(--farve-flade);
+  }
+
+  .sidehoved-indhold {
+    display: flex;
+    align-items: center;
+    gap: var(--afstand-2);
+    min-height: 3.5rem;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+    margin-inline-end: auto;
+    color: var(--farve-tekst);
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  main {
+    flex: 1;
+    padding-block: var(--afstand-6) var(--afstand-7);
+  }
+
+  .sidefod {
+    border-top: 1px solid var(--farve-kant);
+  }
+
+  .sidefod-indhold {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--afstand-4);
+    padding-block: var(--afstand-2);
+  }
+
+  .sidefod a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+    color: var(--farve-tekst-svag);
+  }
+
+  @media (min-width: 60rem) {
+    .sidehoved-indhold {
+      gap: var(--afstand-4);
+      min-height: 4rem;
+    }
+
+    .logo {
+      margin-inline-end: var(--afstand-4);
+    }
+  }
+</style>

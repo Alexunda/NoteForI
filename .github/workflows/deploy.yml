@@ -1,0 +1,45 @@
+# Bygger og udgiver siden på GitHub Pages ved hvert push til main.
+# Placering i repoet: .github/workflows/deploy.yml
+# Bygger på det officielle eksempel fra withastro/action (README, oktober 2026).
+
+name: Udgiv på GitHub Pages
+
+on:
+  # Kører, hver gang der pushes til main
+  push:
+    branches: [main]
+  # Gør det muligt at starte en udgivelse manuelt fra fanen Actions på GitHub
+  workflow_dispatch:
+
+# Rettigheder til at hente koden og udgive på Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Kun én udgivelse ad gangen. Den nyeste venter, til den forrige er færdig.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hent koden
+        uses: actions/checkout@v7
+      - name: Installér, byg og upload siden
+        uses: withastro/action@v6
+        # Standard: Node 24 og `npm run build`.
+        # Pagefind skal derfor køre som en del af build-scriptet i package.json.
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Udgiv på GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

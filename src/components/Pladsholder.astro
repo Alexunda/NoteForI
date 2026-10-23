@@ -1,0 +1,36 @@
+---
+// Side, der ikke er lavet endnu. Titel og beskrivelse hentes fra
+// src/data/navigation.ts ud fra sidens URL. Ekstra indhold kan sættes ind
+// som børn.
+import Side from '../layouts/Side.astro';
+import { klassetrinNavn } from '../data/klassetrin';
+import { findSide } from '../data/navigation';
+import { udenBase } from '../lib/sti';
+
+const side = findSide(udenBase(Astro.url.pathname));
+---
+
+<Side titel={side.navn} beskrivelse={side.beskrivelse}>
+  <h1>{side.navn}</h1>
+  <p class="ingress">{side.beskrivelse}</p>
+  {
+    side.klassetrin && (
+      <p class="pladsholder-trin">
+        {side.klassetrin.map((trin) => (
+          <span class="trin" data-trin={trin}>
+            {klassetrinNavn(trin)}
+          </span>
+        ))}
+      </p>
+    )
+  }
+  <p class="ikke-faerdig">Siden er ikke færdig endnu. Kig forbi igen senere.</p>
+  <slot />
+</Side>
+
+<style>
+  .pladsholder-trin {
+    display: flex;
+    gap: var(--afstand-1);
+  }
+</style>

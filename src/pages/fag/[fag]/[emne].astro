@@ -1,0 +1,100 @@
+---
+import { render } from 'astro:content';
+import Side from '../../../layouts/Side.astro';
+import Maerkat from '../../../components/Maerkat.astro';
+import { FAG_NAVNE } from '../../../data/fag';
+import { klassetrinNavn } from '../../../data/klassetrin';
+import { emneSlug, hentEmner, type Emne } from '../../../lib/emner';
+import { url } from '../../../lib/sti';
+
+export async function getStaticPaths() {
+  const emner = await hentEmner();
+  return emner.map((emne) => ({ params: { fag: emne.data.fag, emne: emneSlug(emne) }, props: { emne } }));
+}
+
+interface Props {
+  emne: Emne;
+}
+
+const { emne } = Astro.props;
+const { titel, fag, niveau, klassetrin, laereplan, kilder, verificeret } = emne.data;
+const { Content } = await render(emne);
+---
+
+<Side titel={titel}>
+  <article>
+    <header>
+      <p class="emne-fag"><a href={url(`/fag/${fag}/`)}>{FAG_NAVNE[fag]}</a></p>
+      <h1>{titel}</h1>
+      <ul class="emne-fakta">
+        <li>Niveau {niveau.join(', ')}</li>
+        <li>Læreplan {laereplan}</li>
+        <li class="emne-trin">
+          {
+            klassetrin.map((trin) => (
+              <span class="trin" data-trin={trin}>
+                {klassetrinNavn(trin)}
+              </span>
+            ))
+          }
+        </li>
+      </ul>
+      {!verificeret && <Maerkat />}
+    </header>
+
+    <div class="emne-indhold">
+      <Content />
+    </div>
+
+    <section aria-labelledby="kilder">
+      <h2 id="kilder">Kilder</h2>
+      <ul class="emne-kilder">
+        {
+          kilder.map((kilde) => (
+            <li>
+              <a href={kilde.url}>{kilde.navn}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Side>
+
+<style>
+  article {
+    max-width: var(--tekstbredde);
+  }
+
+  .emne-fag {
+    margin-bottom: var(--afstand-1);
+  }
+
+  .emne-fag a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+    font-weight: 600;
+  }
+
+  .emne-fakta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--afstand-2) var(--afstand-4);
+    padding: 0;
+    color: var(--farve-tekst-svag);
+    list-style: none;
+  }
+
+  .emne-trin {
+    display: flex;
+    gap: var(--afstand-1);
+  }
+
+  .emne-kilder a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+// Plads til søgefeltet i sidehovedet. Søgningen (Pagefind) kommer i fase 5.
+// Indtil da er feltet skjult, men pladsen er holdt i layoutet. Når søgningen
+// virker, fjernes `hidden` fra formularen.
+---
+
+<div class="soegeplads">
+  <form class="soegefelt" role="search" hidden>
+    <label class="skjult-visuelt" for="soegefelt">Søg</label>
+    <input id="soegefelt" type="search" name="q" placeholder="Søg" />
+  </form>
+</div>
+
+<style>
+  .soegeplads {
+    flex-shrink: 0;
+    width: var(--trykflade);
+    height: var(--trykflade);
+  }
+
+  @media (min-width: 60rem) {
+    .soegeplads {
+      width: 14rem;
+      margin-inline-start: auto;
+    }
+  }
+</style>

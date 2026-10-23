@@ -1,0 +1,81 @@
+---
+import { klassetrinNavn } from '../data/klassetrin';
+import type { Underside } from '../data/navigation';
+import { url } from '../lib/sti';
+
+interface Props {
+  sider: Underside[];
+}
+
+const { sider } = Astro.props;
+---
+
+<ul class="linkliste">
+  {
+    sider.map((side) => (
+      <li>
+        <a href={url(side.sti)}>
+          <span class="linkliste-navn">{side.navn}</span>
+          <span class="linkliste-beskrivelse">{side.beskrivelse}</span>
+          {side.klassetrin && (
+            <span class="linkliste-trin">
+              {side.klassetrin.map((trin) => (
+                <span class="trin" data-trin={trin}>
+                  {klassetrinNavn(trin)}
+                </span>
+              ))}
+            </span>
+          )}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .linkliste {
+    display: grid;
+    gap: var(--afstand-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 40rem) {
+    .linkliste {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: var(--afstand-1);
+    height: 100%;
+    padding: var(--afstand-4);
+    border: 1px solid var(--farve-kant);
+    border-radius: var(--radius-m);
+    background: var(--farve-flade);
+    color: var(--farve-tekst);
+    text-decoration: none;
+  }
+
+  a:hover {
+    border-color: var(--farve-accent);
+  }
+
+  .linkliste-navn {
+    color: var(--farve-accent);
+    font-weight: 700;
+  }
+
+  .linkliste-beskrivelse {
+    color: var(--farve-tekst-svag);
+  }
+
+  .linkliste-trin {
+    display: flex;
+    gap: var(--afstand-1);
+    margin-top: var(--afstand-1);
+  }
+</style>

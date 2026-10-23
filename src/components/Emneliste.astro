@@ -1,0 +1,75 @@
+---
+import { klassetrinNavn } from '../data/klassetrin';
+import { emneSti, type Emne } from '../lib/emner';
+import { url } from '../lib/sti';
+
+interface Props {
+  emner: Emne[];
+}
+
+const { emner } = Astro.props;
+---
+
+{
+  emner.length > 0 ? (
+    <ul class="emneliste">
+      {emner.map((emne) => (
+        <li>
+          <a href={url(emneSti(emne))}>{emne.data.titel}</a>
+          <span class="emneliste-trin">
+            {emne.data.klassetrin.map((trin) => (
+              <span class="trin" data-trin={trin}>
+                {klassetrinNavn(trin)}
+              </span>
+            ))}
+          </span>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="emneliste-tom">Der er ingen emner endnu.</p>
+  )
+}
+
+<style>
+  .emneliste {
+    max-width: var(--tekstbredde);
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--farve-kant);
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 var(--afstand-3);
+    border-bottom: 1px solid var(--farve-kant);
+  }
+
+  a {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    min-height: var(--trykflade);
+    padding-block: var(--afstand-2);
+    font-weight: 600;
+  }
+
+  .emneliste-trin {
+    display: flex;
+    gap: var(--afstand-1);
+    padding-bottom: var(--afstand-2);
+  }
+
+  @media (min-width: 40rem) {
+    .emneliste-trin {
+      padding-bottom: 0;
+    }
+  }
+
+  .emneliste-tom {
+    color: var(--farve-tekst-svag);
+  }
+</style>
