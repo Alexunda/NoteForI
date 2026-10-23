@@ -1,0 +1,369 @@
+---
+titel: "Eksponentielle funktioner"
+beskrivelse: "Vækst med den samme procent hver gang: forskriften b · aˣ, fremskrivningsfaktor, fordoblings- og halveringskonstant."
+fag: matematik
+nummer: 12
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En eksponentiel funktion beskriver noget, der vokser eller aftager med den samme procent, hver gang $x$ vokser med 1. Forskriften er $f(x) = b \cdot a^x$, hvor $b$ er begyndelsesværdien og $a$ er fremskrivningsfaktoren. [formelsamlingen, s. 18–19, formel (44), (47) og (50)](kilde:formelsamling) Er $a$ større end 1, vokser funktionen. Er $a$ mellem 0 og 1, aftager den. [formelsamlingen, s. 18, formel (46)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Der ganges, ikke lægges til.** Når $x$ vokser med 1, bliver $f(x)$ ganget med $a$. [formelsamlingen, s. 19, formel (50)](kilde:formelsamling) Ved en lineær funktion lægger man i stedet det samme tal til hver gang. [formelsamlingen, s. 17, formel (42)](kilde:formelsamling)
+- **Fra procent til fremskrivningsfaktor.** Fremskrivningsfaktoren er $a = 1 + r$, hvor vækstraten $r$ er skrevet som decimaltal. 5 % vækst giver altså $a = 1{,}05$. [formelsamlingen, s. 18, formel (45)](kilde:formelsamling)
+- **Begyndelsesværdien** $b$ er funktionsværdien, hvor grafen skærer $y$-aksen. [formelsamlingen, s. 18, formel (47)](kilde:formelsamling)
+- **To punkter er nok.** Kender du to punkter på grafen, kan du beregne $a$ og derefter $b$. [formelsamlingen, s. 19, formel (48) og (49)](kilde:formelsamling)
+- **Fordobling og halvering.** Fordoblingskonstanten $T_2$ er det stykke, $x$ skal vokse, før funktionsværdien er fordoblet. Formlen for $T_2$ afhænger kun af $a$. For en aftagende funktion bruger man i stedet halveringskonstanten $T_{\frac{1}{2}}$. [formelsamlingen, s. 20, formel (52), (54), (55) og (57)](kilde:formelsamling)
+- **En anden skrivemåde.** Funktionen kan også skrives $f(x) = b \cdot e^{k \cdot x}$, hvor $k = \ln(a)$. [formelsamlingen, s. 18, formel (44)](kilde:formelsamling)
+
+Prøv selv: Træk i skyderne, og se, hvad $a$ og $b$ gør ved grafen. Hvad sker der, når $a$ er under 1? Hvor skærer grafen $y$-aksen?
+
+<Graf
+  titel="Eksponentiel funktion med skydere"
+  funktioner={[{ forskrift: 'f(x) = b · a^x', tex: 'f(x) = b \\cdot a^x' }]}
+  parametre={{ a: { min: 0.5, max: 1.5, start: 1.1, trin: 0.01 }, b: { min: 0.5, max: 10, start: 2, trin: 0.5 } }}
+  x={[-5, 20]}
+  y={[-2, 30]}
+/>
+
+## Formler
+
+<Formel navn="Forskriften for en eksponentiel funktion" tex="f(x) = b \cdot a^x" kilde="formelsamling" henvisning="formelsamlingen, s. 18, formel (44)">
+
+<Symboler>
+
+- $f(x)$: funktionsværdien, fx en størrelse efter $x$ år.
+- $b$: begyndelsesværdien, altså funktionsværdien, når $x = 0$.
+- $a$: fremskrivningsfaktoren, som $f(x)$ ganges med, hver gang $x$ vokser med 1.
+
+</Symboler>
+
+<Bruges>
+
+Når en størrelse vokser eller aftager med den samme procent pr. tidsenhed, fx en bestand, der vokser med 4 % om året.
+
+</Bruges>
+
+<Eksempel>
+
+En bestand på 500 fisk vokser med 4 % om året. Så er $b = 500$ og $a = 1 + 0{,}04 = 1{,}04$, og forskriften er
+
+$$
+f(x) = 500 \cdot 1{,}04^x
+$$
+
+hvor $x$ er antal år. Efter 10 år er bestanden
+
+$$
+f(10) = 500 \cdot 1{,}04^{10} \approx 740{,}1
+$$
+
+Der er altså ca. 740 fisk.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge vækstraten som fremskrivningsfaktor, fx $500 \cdot 0{,}04^x$ i stedet for $500 \cdot 1{,}04^x$.
+- At skrive 4 % som $1{,}4$ i stedet for $1{,}04$.
+- At bytte om på $a$ og $b$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fremskrivningsfaktor og vækstrate" tex="a = 1 + r" kilde="formelsamling" henvisning="formelsamlingen, s. 18, formel (45)">
+
+<Symboler>
+
+- $a$: fremskrivningsfaktoren.
+- $r$: vækstraten skrevet som decimaltal. Den er negativ, når størrelsen aftager.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal oversætte en procentvis ændring til den faktor, der ganges med, eller omvendt.
+
+</Bruges>
+
+<Eksempel>
+
+Prisen på en brugt bil falder med 8 % om året. Så er $r = -0{,}08$, og
+
+$$
+a = 1 + (-0{,}08) = 0{,}92
+$$
+
+Prisen bliver altså ganget med $0{,}92$ hvert år.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme minus, når størrelsen aftager.
+- At sætte procenttallet direkte ind, fx $r = 8$ i stedet for $r = 0{,}08$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fremskrivningsfaktoren ud fra to punkter" tex="a = \sqrt[x_2 - x_1]{\frac{y_2}{y_1}}" kilde="formelsamling" henvisning="formelsamlingen, s. 19, formel (48)">
+
+<Symboler>
+
+- $(x_1, y_1)$ og $(x_2, y_2)$: to punkter på grafen.
+- $a$: fremskrivningsfaktoren.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to punkter på grafen eller to værdier i en tabel og skal finde forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+Grafen for en eksponentiel funktion går gennem punkterne $(1, 6)$ og $(4, 48)$. Så er
+
+$$
+a = \sqrt[4 - 1]{\frac{48}{6}} = \sqrt[3]{8} = 2
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge $y_2 - y_1$ i stedet for $\frac{y_2}{y_1}$. Den formel hører til lineære funktioner.
+- At bytte om på punkterne i brøken, men ikke i rodeksponenten.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Begyndelsesværdien ud fra ét punkt" tex="b = \frac{y_1}{a^{x_1}}" kilde="formelsamling" henvisning="formelsamlingen, s. 19, formel (49)">
+
+<Symboler>
+
+- $(x_1, y_1)$: et punkt på grafen.
+- $a$: fremskrivningsfaktoren, som du skal kende i forvejen.
+- $b$: begyndelsesværdien.
+
+</Symboler>
+
+<Bruges>
+
+Når du har fundet $a$ og mangler $b$ for at kunne skrive forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: $a = 2$, og punktet $(1, 6)$ ligger på grafen. Så er
+
+$$
+b = \frac{6}{2^1} = 3
+$$
+
+og forskriften er $f(x) = 3 \cdot 2^x$. Tjek med det andet punkt: $f(4) = 3 \cdot 2^4 = 48$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at opløfte $a$ i $x_1$.
+- At regne $b$ ud med det ene punkt uden at tjekke med det andet.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Relativ ændring over flere perioder" tex="1 + r_y = a^{\Delta x}" kilde="formelsamling" henvisning="formelsamlingen, s. 19, formel (51)">
+
+<Symboler>
+
+- $\Delta x$: hvor meget $x$ vokser.
+- $r_y$: den relative ændring i $y$-værdien, skrevet som decimaltal.
+- $a$: fremskrivningsfaktoren.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde den samlede procentvise ændring over flere perioder, fx over 10 år.
+
+</Bruges>
+
+<Eksempel>
+
+En størrelse vokser med 5 % om året, så $a = 1{,}05$. Over 10 år er
+
+$$
+1 + r_y = 1{,}05^{10} \approx 1{,}6289
+$$
+
+så $r_y \approx 0{,}6289$. Størrelsen vokser altså med ca. 62,9 % på 10 år.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange procenten med antal år: 10 gange 5 % er ikke det samme som 62,9 %.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fordoblingskonstanten" tex="T_2 = \frac{\log(2)}{\log(a)}" kilde="formelsamling" henvisning="formelsamlingen, s. 20, formel (52)">
+
+<Symboler>
+
+- $T_2$: fordoblingskonstanten, altså hvor meget $x$ skal vokse, før funktionsværdien er fordoblet.
+- $a$: fremskrivningsfaktoren i $f(x) = b \cdot a^x$. Funktionen skal være voksende.
+- $\log$: titalslogaritmen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde, hvor lang tid det tager for en voksende størrelse at blive dobbelt så stor.
+
+</Bruges>
+
+<Eksempel>
+
+En størrelse vokser med 5 % om året, så $a = 1{,}05$. Så er
+
+$$
+T_2 = \frac{\log(2)}{\log(1{,}05)} \approx 14{,}2
+$$
+
+Størrelsen fordobles altså på ca. 14,2 år, uanset hvor stor den er til at begynde med.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge formlen på en aftagende funktion. Så skal du bruge halveringskonstanten.
+- At sætte $b$ ind i stedet for $a$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Halveringskonstanten" tex="T_{\frac{1}{2}} = \frac{\log\left(\frac{1}{2}\right)}{\log(a)}" kilde="formelsamling" henvisning="formelsamlingen, s. 20, formel (55)">
+
+<Symboler>
+
+- $T_{\frac{1}{2}}$: halveringskonstanten, altså hvor meget $x$ skal vokse, før funktionsværdien er halveret.
+- $a$: fremskrivningsfaktoren i $f(x) = b \cdot a^x$. Funktionen skal være aftagende.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde, hvor lang tid det tager for en aftagende størrelse at blive halvt så stor.
+
+</Bruges>
+
+<Eksempel>
+
+En størrelse aftager med 20 % pr. time, så $a = 1 - 0{,}20 = 0{,}8$. Så er
+
+$$
+T_{\frac{1}{2}} = \frac{\log(0{,}5)}{\log(0{,}8)} \approx 3{,}1
+$$
+
+Størrelsen halveres altså på ca. 3,1 timer.
+
+</Eksempel>
+
+<Fejl>
+
+- Får du et negativt tal, har du sikkert brugt formlen på en voksende funktion eller byttet om på tal.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Eksponentiel funktion">
+
+En funktion med en forskrift af typen $f(x) = b \cdot a^x$. Hver gang $x$ vokser med 1, bliver funktionsværdien ganget med $a$. [formelsamlingen, s. 18–19, formel (44) og (50)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fremskrivningsfaktor">
+
+Tallet $a$, som funktionsværdien ganges med, hver gang $x$ vokser med 1. Den er $a = 1 + r$, hvor $r$ er vækstraten. [formelsamlingen, s. 18–19, formel (45) og (50)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Vækstrate">
+
+Den procentvise ændring pr. gang $x$ vokser med 1, skrevet som decimaltal. 3 % svarer til $r = 0{,}03$. [formelsamlingen, s. 18, formel (45)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Begyndelsesværdi">
+
+Funktionsværdien, når $x = 0$. På grafen er det der, hvor grafen skærer $y$-aksen. I $f(x) = b \cdot a^x$ er det $b$. [formelsamlingen, s. 18, formel (47)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fordoblingskonstant">
+
+Det stykke, $x$ skal vokse, før funktionsværdien for en voksende eksponentiel funktion er fordoblet. Den hedder $T_2$. [formelsamlingen, s. 20, formel (52) og (54)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Halveringskonstant">
+
+Det stykke, $x$ skal vokse, før funktionsværdien for en aftagende eksponentiel funktion er halveret. Den hedder $T_{\frac{1}{2}}$. [formelsamlingen, s. 20, formel (55) og (57)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Til matematik A hører eksponentielle funktioner på formen $b \cdot a^x$ og $b \cdot e^{k \cdot x}$, procentvis vækst og fordoblings- og halveringskonstanten. [vejledningen, s. 14](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i at bruge formlerne for $a$, $b$ og $T_2$ i hånden med pæne tal, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
+
+- Du skal kunne løse grundligninger, hvor $x$ står i eksponenten, og bruge regnereglerne for logaritmer til det. [vejledningen, s. 12 og 14](kilde:vejledning) Et eksempel: $3 \cdot 2^x = 96$ giver $2^x = 32$ og dermed $x = 5$.
+
+**Med hjælpemidler (delprøve 2).** Her skal du kunne lave regression, også eksponentiel regression, og tegne data og model i et passende grafvindue. [vejledningen, s. 15](kilde:vejledning)
+
+- Modeltypen står altid i opgaven, så du skal ikke selv vælge den. [vejledningen, s. 37](kilde:vejledning)
+- Vurdér, om modellen passer: Ligger punkterne systematisk over eller under grafen? [vejledningen, s. 15](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Øv dig i at forklare, hvorfor formlerne for $a$ og $T_2$ gælder, og ikke kun hvordan du bruger dem.
+
+**Eksempler på problemstillinger**
+
+- En bakteriekultur fordobles hver 3. time. Hvor mange procent vokser den med i timen?
+- Et stof aftager med 6 % om dagen. Hvor lang tid går der, før halvdelen er væk?
+- To målinger i en tabel ligger på en eksponentiel kurve. Bestem $a$ og $b$, og forklar, hvad de betyder i sammenhængen.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
