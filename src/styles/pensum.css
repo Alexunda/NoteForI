@@ -638,6 +638,101 @@ html:not(.js) .pensum-henter {
   content: '✓' / '';
 }
 
+/* Flyt op, Flyt ned, Omdøb og Slet: to og to på telefonen */
+.pensum-handlinger {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--afstand-2);
+  margin-top: var(--afstand-3);
+  padding: 0 var(--afstand-2);
+}
+
+@media (min-width: 40rem) {
+  .pensum-handlinger {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pensum-omdoeb {
+  margin-top: var(--afstand-3);
+  padding: 0 var(--afstand-2);
+}
+
+.pensum-omdoeb label {
+  display: block;
+  margin-bottom: var(--afstand-1);
+  font-weight: 600;
+}
+
+.pensum-omdoeb .pensum-fejl:not(:empty) {
+  margin-top: var(--afstand-2);
+}
+
+.pensum-omdoeb .pensum-knapper {
+  margin-top: var(--afstand-2);
+}
+
+.pensum-fag-handlinger {
+  margin-top: var(--afstand-6);
+  padding-top: var(--afstand-4);
+  border-top: 1px solid var(--farve-kant);
+}
+
+/* ---------- Fortryd ---------- */
+
+/* Bjælken ligger over bundmenuen på telefonen og nederst på computeren */
+.pensum-fortryd {
+  position: fixed;
+  right: var(--afstand-4);
+  bottom: calc(var(--menu-hoejde) + env(safe-area-inset-bottom) + var(--afstand-3));
+  left: var(--afstand-4);
+  z-index: 20;
+  pointer-events: none;
+}
+
+@media (min-width: 60rem) {
+  .pensum-fortryd {
+    bottom: var(--afstand-5);
+  }
+}
+
+.pensum-fortryd-boks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--afstand-3);
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: var(--afstand-2) var(--afstand-2) var(--afstand-2) var(--afstand-4);
+  border-radius: var(--radius-m);
+  background: var(--farve-tekst);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
+  color: var(--farve-baggrund);
+  pointer-events: auto;
+}
+
+.pensum-fortryd-boks p {
+  margin: 0;
+}
+
+.pensum-fortryd-boks .pensum-knap,
+.pensum-fortryd-boks .pensum-knap:hover {
+  flex-shrink: 0;
+  border-color: currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.pensum-fortryd-boks .pensum-knap:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Bjælken har omvendte farver, så fokusringen skal have bjælkens tekstfarve */
+.pensum-fortryd-boks .pensum-knap:focus-visible {
+  outline-color: var(--farve-baggrund);
+}
+
 /* ---------- Hurtig indtastning ---------- */
 
 .pensum-hurtig h3 label {

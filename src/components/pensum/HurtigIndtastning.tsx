@@ -48,9 +48,9 @@ export default function HurtigIndtastning({ onTilfoej }: Props) {
     }
 
     saetTekst('');
-    const foerst =
-      resultat.nye.length === 1 ? `${resultat.nye[0].navn} er tilføjet.` : `${resultat.nye.length} forløb er tilføjet.`;
-    saetBesked({ tekst: [foerst, ...sprungetOver(resultat)].join(' '), fejl: false });
+    // En hel liste kan fortrydes fra bjælken nederst, som også siger, hvor mange der kom med
+    const foerst = resultat.nye.length === 1 ? [`${resultat.nye[0].navn} er tilføjet.`] : [];
+    saetBesked({ tekst: [...foerst, ...sprungetOver(resultat)].join(' '), fejl: false });
     // Efter en hel liste lukkes tastaturet på telefonen, så man kan se forløbene.
     // Efter ét forløb står markøren klar til det næste.
     if (resultat.nye.length > 1) knap.current?.focus();

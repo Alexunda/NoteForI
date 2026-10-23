@@ -9,9 +9,19 @@ import { NOEGLER, gem, hentJson, kanGemme } from '../../lib/lager';
 import {
   fagFejl,
   findFag,
+  fjernForloeb,
+  flytForloeb,
+  forloebFejl,
   forloebStatus,
+  genindsaetFag,
+  genindsaetForloeb,
   laesPensum,
+  omdoebForloeb,
+  rensNavn,
+  retFag,
   saetPunkt,
+  sletFag,
+  sletForloeb,
   tilfoejFag,
   tilfoejForloeb,
   type NytFag,
@@ -19,6 +29,7 @@ import {
   type Svar,
 } from '../../lib/pensum';
 import FagVisning from './FagVisning';
+import Fortryd, { type FortrydInfo } from './Fortryd';
 import Oversigt from './Oversigt';
 
 /** Det fag, adressen peger på, eller null for oversigten */
@@ -37,12 +48,14 @@ export default function Pensumtjekliste() {
   const [pensum, saetPensum] = useState(() => laesPensum(hentJson(NOEGLER.pensum)));
   const [gemmer, saetGemmer] = useState(kanGemme);
   const [visning, saetVisning] = useState(fagIAdressen);
+  const [fortryd, saetFortryd] = useState<FortrydInfo | null>(null);
   const [besked, saetBesked] = useState({ tekst: '', nr: 0 });
 
   // De nyeste værdier, så en handling aldrig bygger på en gammel udgave
   const nu = useRef(pensum);
   const visningNu = useRef(visning);
   const fokus = useRef<Fokus | null>(null);
+  const fortrydNr = useRef(0);
   const rod = useRef<HTMLDivElement>(null);
   const grundtitel = useRef(document.title);
 
@@ -90,6 +103,8 @@ export default function Pensumtjekliste() {
     document.title = aktivtFag ? `${aktivtFag.navn} ${aktivtFag.niveau} · ${grundtitel.current}` : grundtitel.current;
   }, [aktivtFag?.navn, aktivtFag?.niveau]);
 
+  /* ---------- Visning ---------- */
+
   function skiftVisning(ny: string | null) {
     const forrige = visningNu.current;
     if (ny === forrige) return;
@@ -107,14 +122,14 @@ export default function Pensumtjekliste() {
   }
 
   function visOversigt() {
+    const fraOversigt = (history.state as { pensumFraOversigt?: boolean } | null)?.pensumFraOversigt;
+    skiftVisning(null);
     // Kom man fra oversigten, går man tilbage dertil, så historikken ikke vokser
-    if ((history.state as { pensumFraOversigt?: boolean } | null)?.pensumFraOversigt) {
-      history.back();
-    } else {
-      history.pushState(null, '', location.pathname + location.search);
-      skiftVisning(null);
-    }
+    if (fraOversigt) history.back();
+    else history.pushState(null, '', location.pathname + location.search);
   }
+
+  /* ---------- Data ---------- */
 
   /** Gemmer nye data. Vil browseren ikke gemme, virker siden videre uden. */
   function aendr(ny: Pensum) {
@@ -129,7 +144,19 @@ export default function Pensumtjekliste() {
     saetBesked((forrige) => ({ tekst, nr: forrige.nr + 1 }));
   }
 
-  function haandterTilfoejFag(nyt: NytFag): string | null {
+  /** Viser bjælken, så handlingen kan fortrydes. En ny handling erstatter den forrige. */
+  function kanFortrydes(tekst: string, handling: () => void) {
+    fortrydNr.current++;
+    saetFortryd({ nr: fortrydNr.current, besked: tekst, fortryd: handling });
+  }
+
+  function forloebINu(fagId: string, forloebId: string) {
+    return findFag(nu.current, fagId)?.forloeb.find((forloeb) => forloeb.id === forloebId);
+  }
+
+  /* ---------- Fag ---------- */
+
+  function tilfoejNytFag(nyt: NytFag): string | null {
     const fejl = fagFejl(nu.current, nyt);
     if (fejl) return fejl;
     const { pensum: ny, fag } = tilfoejFag(nu.current, nyt);
@@ -140,19 +167,95 @@ export default function Pensumtjekliste() {
     return null;
   }
 
-  function haandterTilfoejForloeb(fagId: string, navne: string[]) {
+  function retAktivtFag(fagId: string, nyt: NytFag): string | null {
+    const fejl = fagFejl(nu.current, nyt, fagId);
+    if (fejl) return fejl;
+    aendr(retFag(nu.current, fagId, nyt));
+    meddel('Ændringerne er gemt.');
+    return null;
+  }
+
+  function sletAktivtFag(fagId: string) {
+    const { pensum: ny, slettet } = sletFag(nu.current, fagId);
+    if (!slettet) return;
+    aendr(ny);
+    visOversigt();
+
+    const { fag } = slettet;
+    const antal = fag.forloeb.length;
+    const navn = `${fag.navn} ${fag.niveau}`;
+    kanFortrydes(antal > 0 ? `${navn} og ${antal} forløb er slettet.` : `${navn} er slettet.`, () => {
+      aendr(genindsaetFag(nu.current, slettet));
+      fokus.current = { maal: [`fag-${fag.id}`] };
+      meddel(`${navn} er tilbage.`);
+    });
+  }
+
+  /* ---------- Forløb ---------- */
+
+  function tilfoejNyeForloeb(fagId: string, navne: string[]) {
     const resultat = tilfoejForloeb(nu.current, fagId, navne);
     aendr(resultat.pensum);
+    if (resultat.nye.length > 1) {
+      const ider = resultat.nye.map((forloeb) => forloeb.id);
+      kanFortrydes(`${resultat.nye.length} forløb er tilføjet.`, () => {
+        aendr(fjernForloeb(nu.current, fagId, ider));
+        fokus.current = { maal: ['hurtig-tekst'] };
+        meddel('De nye forløb er fjernet igen.');
+      });
+    }
     return resultat;
   }
 
-  function haandterPunkt(fagId: string, forloebId: string, punkt: PunktId, svar: Svar | null) {
-    const foer = findFag(nu.current, fagId)?.forloeb.find((f) => f.id === forloebId);
+  function saetForloebPunkt(fagId: string, forloebId: string, punkt: PunktId, svar: Svar | null) {
+    const foer = forloebINu(fagId, forloebId);
     aendr(saetPunkt(nu.current, fagId, forloebId, punkt, svar));
-    const efter = findFag(nu.current, fagId)?.forloeb.find((f) => f.id === forloebId);
+    const efter = forloebINu(fagId, forloebId);
     if (foer && efter && forloebStatus(foer).status !== 'groen' && forloebStatus(efter).status === 'groen') {
       meddel(`${efter.navn} er klar.`);
     }
+  }
+
+  function omdoeb(fagId: string, forloebId: string, navn: string): string | null {
+    const fag = findFag(nu.current, fagId);
+    if (!fag) return null;
+    const fejl = forloebFejl(fag, navn, forloebId);
+    if (fejl) return fejl;
+    aendr(omdoebForloeb(nu.current, fagId, forloebId, navn));
+    meddel(`Omdøbt til ${rensNavn(navn)}.`);
+    return null;
+  }
+
+  function flyt(fagId: string, forloebId: string, retning: -1 | 1) {
+    const ny = flytForloeb(nu.current, fagId, forloebId, retning);
+    if (ny === nu.current) {
+      meddel(retning < 0 ? 'Forløbet står allerede øverst.' : 'Forløbet står allerede nederst.');
+      return;
+    }
+    aendr(ny);
+    const liste = findFag(ny, fagId)?.forloeb ?? [];
+    const plads = liste.findIndex((forloeb) => forloeb.id === forloebId) + 1;
+    // Fokus bliver på knappen, så man kan trykke flere gange i træk
+    fokus.current = { maal: [`forloeb-${forloebId}-${retning < 0 ? 'op' : 'ned'}`] };
+    meddel(`Flyttet ${retning < 0 ? 'op' : 'ned'}. Nu nummer ${plads} af ${liste.length}.`);
+  }
+
+  function sletEtForloeb(fagId: string, forloebId: string) {
+    const liste = findFag(nu.current, fagId)?.forloeb ?? [];
+    const plads = liste.findIndex((forloeb) => forloeb.id === forloebId);
+    const { pensum: ny, slettet } = sletForloeb(nu.current, fagId, forloebId);
+    if (!slettet) return;
+    aendr(ny);
+    // Fokus går til det næste forløb, ellers det forrige, ellers feltet til nye forløb
+    const naboer = [liste[plads + 1], liste[plads - 1]].filter((forloeb) => forloeb !== undefined);
+    fokus.current = { maal: [...naboer.map((forloeb) => `forloeb-${forloeb.id}`), 'hurtig-tekst'] };
+
+    const { forloeb } = slettet;
+    kanFortrydes(`${forloeb.navn} er slettet.`, () => {
+      aendr(genindsaetForloeb(nu.current, slettet));
+      fokus.current = { maal: [`forloeb-${forloeb.id}`] };
+      meddel(`${forloeb.navn} er tilbage.`);
+    });
   }
 
   return (
@@ -164,16 +267,30 @@ export default function Pensumtjekliste() {
           key={aktivtFag.id}
           fag={aktivtFag}
           onVisOversigt={visOversigt}
-          onTilfoejForloeb={(navne) => haandterTilfoejForloeb(aktivtFag.id, navne)}
-          onPunkt={(forloebId, punkt, svar) => haandterPunkt(aktivtFag.id, forloebId, punkt, svar)}
+          onTilfoejForloeb={(navne) => tilfoejNyeForloeb(aktivtFag.id, navne)}
+          onPunkt={(forloebId, punkt, svar) => saetForloebPunkt(aktivtFag.id, forloebId, punkt, svar)}
+          onOmdoeb={(forloebId, navn) => omdoeb(aktivtFag.id, forloebId, navn)}
+          onFlyt={(forloebId, retning) => flyt(aktivtFag.id, forloebId, retning)}
+          onSletForloeb={(forloebId) => sletEtForloeb(aktivtFag.id, forloebId)}
+          onRetFag={(nyt) => retAktivtFag(aktivtFag.id, nyt)}
+          onSletFag={() => sletAktivtFag(aktivtFag.id)}
         />
       ) : (
-        <Oversigt pensum={pensum} onTilfoejFag={haandterTilfoejFag} onVisFag={visFag} />
+        <Oversigt pensum={pensum} onTilfoejFag={tilfoejNytFag} onVisFag={visFag} />
       )}
 
       <p class="skjult-visuelt" role="status">
         <span key={besked.nr}>{besked.tekst}</span>
       </p>
+
+      <Fortryd
+        info={fortryd}
+        onFortryd={() => {
+          fortryd?.fortryd();
+          saetFortryd(null);
+        }}
+        onLuk={() => saetFortryd(null)}
+      />
     </div>
   );
 }
