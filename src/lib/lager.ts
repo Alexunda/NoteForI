@@ -7,9 +7,22 @@ export const NOEGLER = {
   tema: 'gh:v1:tema',
   klassetrin: 'gh:v1:klassetrin',
   nedtaelling: 'gh:v1:nedtaelling',
+  pensum: 'gh:v1:pensum',
 } as const;
 
 type Noegle = (typeof NOEGLER)[keyof typeof NOEGLER];
+
+/** Tjekker, om browseren vil gemme. Giver false, hvis storage er blokeret eller fuldt. */
+export function kanGemme(): boolean {
+  const proeve = 'gh:v1:proeve';
+  try {
+    localStorage.setItem(proeve, '1');
+    localStorage.removeItem(proeve);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export function hent(noegle: Noegle): string | null {
   try {

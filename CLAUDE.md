@@ -16,6 +16,7 @@ Den fulde plan står i `docs/projektplan.md`. Læs den, før du starter en ny fa
 ## Kommandoer
 - `npm run dev`: lokal udvikling
 - `npm run build`: produktionsbuild (skal køre uden fejl og advarsler)
+- `npm test`: tests af logikken i `tests/` med Nodes indbyggede testkører. De kører også i `npm run build`
 - `npm run preview`: se buildet lokalt
 
 ## Regler, der ikke må brydes

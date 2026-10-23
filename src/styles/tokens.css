@@ -25,6 +25,16 @@
   --farve-paa-accent: #ffffff;
   --skygge: 0 1px 2px rgb(20 24 32 / 6%), 0 4px 12px rgb(20 24 32 / 5%);
 
+  /* Status i pensumtjeklisten. Farven sidder på et ikon med sin egen form og
+     står altid sammen med en tekst. Ikonfarven har mindst 4,5:1 mod både
+     fladen og den svage tone bag ikonet. */
+  --farve-roed: #b3261e;
+  --farve-roed-svag: #fde7e4;
+  --farve-gul: #8a5d00;
+  --farve-gul-svag: #fff0bf;
+  --farve-groen: #18794e;
+  --farve-groen-svag: #dcf3e5;
+
   /* Skrift */
   --skrift: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --skrift-broed: 1.0625rem; /* 17 px */
@@ -68,4 +78,11 @@
   --farve-accent-svag: #1e2847;
   --farve-paa-accent: #0b1330;
   --skygge: none;
+
+  --farve-roed: #ff8a80;
+  --farve-roed-svag: #4a1f1c;
+  --farve-gul: #f2c14e;
+  --farve-gul-svag: #43350f;
+  --farve-groen: #6dd58c;
+  --farve-groen-svag: #173a26;
 }
