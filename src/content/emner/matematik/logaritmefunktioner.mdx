@@ -20,6 +20,12 @@ kilder:
   - id: bek-711
     navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2024/711
+  - id: lex-logaritmisk-skala
+    navn: "lex.dk: Logaritmisk skala (hentet 24. oktober 2026)"
+    url: https://lex.dk/logaritmisk_skala
+  - id: lex-logaritmepapir
+    navn: "lex.dk: Logaritmepapir (hentet 24. oktober 2026)"
+    url: https://lex.dk/logaritmepapir
 verificeret: false
 ---
 
@@ -50,6 +56,16 @@ Prøv selv: Her er graferne for $\log(x)$ og $\ln(x)$. Hvor skærer de $x$-aksen
   x={[-1, 12]}
   y={[-3, 3]}
 />
+
+### Logaritmiske koordinatsystemer
+
+Du skal kunne aflæse grafer i enkelt- og dobbeltlogaritmisk koordinatsystem. [vejledningen, s. 14](kilde:vejledning)
+
+- **Logaritmisk skala.** På en logaritmisk skala står et positivt tal $x$ i afstanden $\log(x)$ fra startpunktet. Et skridt af en bestemt længde svarer altid til den samme procentvise stigning, uanset hvor på skalaen du er. [lex.dk: Logaritmisk skala](kilde:lex-logaritmisk-skala) Fx er der lige langt fra 1 til 10 og fra 10 til 100, fordi $\log(10) - \log(1) = 1 - 0 = 1$ og $\log(100) - \log(10) = 2 - 1 = 1$. Begge steder bliver tallet ganget med 10. [formelsamlingen, s. 25, formel (80), (81) og (85)](kilde:formelsamling)
+- **Enkeltlogaritmisk.** I et enkeltlogaritmisk koordinatsystem har én af akserne logaritmisk skala. Er det $y$-aksen, bliver grafen for en eksponentiel funktion $f(x) = b \cdot a^x$ en ret linje. Omvendt viser en ret linje her, at sammenhængen er eksponentiel. [lex.dk: Logaritmepapir](kilde:lex-logaritmepapir) [formelsamlingen, s. 18, formel (44)](kilde:formelsamling)
+- **Dobbeltlogaritmisk.** I et dobbeltlogaritmisk koordinatsystem har begge akser logaritmisk skala. Her bliver grafen for en potensfunktion $f(x) = b \cdot x^a$ en ret linje, og omvendt viser en ret linje, at sammenhængen er en potensfunktion. [lex.dk: Logaritmepapir](kilde:lex-logaritmepapir) [formelsamlingen, s. 21, formel (58)](kilde:formelsamling)
+- **Hvorfor en ret linje?** På en logaritmisk $y$-akse står en $y$-værdi i højden $\log(y)$. [lex.dk: Logaritmisk skala](kilde:lex-logaritmisk-skala) For en eksponentiel funktion giver regnereglerne $\log(b \cdot a^x) = \log(b) + x \cdot \log(a)$. [formelsamlingen, s. 25, formel (82) og (84)](kilde:formelsamling) Højden er altså en lineær funktion af $x$ med hældningskoefficienten $\log(a)$. [formelsamlingen, s. 16, formel (37)](kilde:formelsamling) Tag fx $f(x) = 2 \cdot 3^x$. For $x = 0$, 1 og 2 er $y = 2$, 6 og 18, og højderne er $\log(2) \approx 0{,}301$, $\log(6) \approx 0{,}778$ og $\log(18) \approx 1{,}255$. Hvert skridt er ca. $0{,}477 \approx \log(3)$.
+- **Og for potensfunktioner.** I et dobbeltlogaritmisk koordinatsystem står punktet $(x, y)$ i $(\log(x), \log(y))$. [lex.dk: Logaritmisk skala](kilde:lex-logaritmisk-skala) Regnereglerne giver $\log(b \cdot x^a) = \log(b) + a \cdot \log(x)$, så punkterne ligger på en ret linje med hældningskoefficienten $a$. [formelsamlingen, s. 25, formel (82) og (84)](kilde:formelsamling) Sammenlign med formel (61) for $a$: Den er topunktsformlen (40) brugt på punkterne $(\log(x_1), \log(y_1))$ og $(\log(x_2), \log(y_2))$. [formelsamlingen, s. 16 og 21, formel (40) og (61)](kilde:formelsamling)
 
 ## Formler
 
@@ -293,6 +309,24 @@ Den naturlige logaritme $\ln(x)$ er det tal, $e$ skal opløftes i for at give $x
 <Begreb navn="Grundtal">
 
 Det tal, der bliver opløftet i en potens. I $10^y$ er 10 grundtallet. $\log$ har grundtallet 10, og $\ln$ har grundtallet $e$. [formelsamlingen, s. 82](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Logaritmisk skala">
+
+En skala, hvor et positivt tal $x$ står i afstanden $\log(x)$ fra startpunktet. Et skridt af samme længde betyder altid den samme procentvise stigning. [lex.dk: Logaritmisk skala](kilde:lex-logaritmisk-skala)
+
+</Begreb>
+
+<Begreb navn="Enkeltlogaritmisk koordinatsystem">
+
+Et koordinatsystem, hvor én af akserne har logaritmisk skala. Har $y$-aksen logaritmisk skala, er grafen for en eksponentiel funktion en ret linje. [lex.dk: Logaritmepapir](kilde:lex-logaritmepapir)
+
+</Begreb>
+
+<Begreb navn="Dobbeltlogaritmisk koordinatsystem">
+
+Et koordinatsystem, hvor begge akser har logaritmisk skala. Her er grafen for en potensfunktion en ret linje. [lex.dk: Logaritmepapir](kilde:lex-logaritmepapir)
 
 </Begreb>
 

@@ -20,6 +20,18 @@ kilder:
   - id: bek-711
     navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2024/711
+  - id: enkeltopgaver
+    navn: "Vejledende enkeltopgaver til matematik A, stx, 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf
+  - id: lex-topvinkler
+    navn: "lex.dk: Topvinkler (hentet 24. oktober 2026)"
+    url: https://lex.dk/topvinkler
+  - id: lex-supplementvinkler
+    navn: "lex.dk: Supplementvinkler (hentet 24. oktober 2026)"
+    url: https://lex.dk/supplementvinkler
+  - id: lex-vinkel
+    navn: "lex.dk: Vinkel (hentet 24. oktober 2026)"
+    url: https://lex.dk/vinkel
 verificeret: false
 ---
 
@@ -34,7 +46,7 @@ En vektor i planen har to koordinater, fx $\vec{a} = \begin{pmatrix} 3 \\ 1 \end
 - **Vinkelret eller parallel?** Ortogonal betyder vinkelret. To vektorer er ortogonale, netop når skalarproduktet er 0. De er parallelle, netop når determinanten er 0. [formelsamlingen, s. 47–48, formel (193) og (200)](kilde:formelsamling)
 - **Tværvektor.** Tværvektoren $\hat{\vec{a}}$ får du ved at bytte om på koordinaterne og sætte minus foran den nye førstekoordinat. Den står vinkelret på $\vec{a}$. [formelsamlingen, s. 48, formel (196)](kilde:formelsamling) Du kan selv tjekke det med skalarproduktet: $\vec{a} \cdot \hat{\vec{a}} = a_1 \cdot (-a_2) + a_2 \cdot a_1 = 0$.
 - **To måder at beskrive en linje.** I en parameterfremstilling giver hvert tal $t$ et punkt på linjen. Den bygger på et punkt og en retningsvektor, som peger langs linjen. Linjens ligning bygger i stedet på et punkt og en normalvektor, som står vinkelret på linjen. [formelsamlingen, s. 51, formel (210) og (211)](kilde:formelsamling) Omskrivning mellem forskellige beskrivelser af linjer og cirkler hører med til emnet. [vejledningen, s. 13](kilde:vejledning)
-- **Vinkel mellem linjer** står også i læreplanen. [læreplanen, pkt. 2.2](kilde:laereplan) Formelsamlingen har ingen formel med det navn, men den har formlen for vinklen mellem to vektorer. [formelsamlingen, s. 47, formel (192)](kilde:formelsamling) Se i dine noter, hvordan I har brugt den på linjer.
+- **Vinkel mellem linjer** står også i læreplanen. [læreplanen, pkt. 2.2](kilde:laereplan) Når to linjer skærer hinanden, opstår der fire vinkler. De to vinkler, der ligger lige over for hinanden, er lige store, og to vinkler, der ligger ved siden af hinanden, giver tilsammen $180^\circ$. [lex.dk: Topvinkler](kilde:lex-topvinkler) [lex.dk: Supplementvinkler](kilde:lex-supplementvinkler) Er den ene vinkel $v$, er nabovinklen altså $180^\circ - v$. I de vejledende opgaver skal du finde den spidse vinkel mellem linjerne, altså den, der er mindre end $90^\circ$. [vejledende enkeltopgaver, s. 56–57, opgave 4.D2.4–4.D2.6](kilde:enkeltopgaver) [lex.dk: Vinkel](kilde:lex-vinkel) Formelsamlingen har ingen formel med navnet vinkel mellem linjer, men den har formlen for vinklen mellem to vektorer, og den giver en vinkel mellem $0^\circ$ og $180^\circ$. [formelsamlingen, s. 47 og 83, formel (192)](kilde:formelsamling) Se i dine noter, hvordan I bruger den på to linjer, og hvordan I får den spidse vinkel.
 - **Analytisk plangeometri.** Afstande, linjens ligning og cirklens ligning står også på siden om [analytisk plangeometri](/fag/matematik/analytisk-plangeometri/). På et treårigt hold kan dele af den analytiske geometri gennemgås med vektorer. [vejledningen, s. 13](kilde:vejledning)
 - **I rummet** får en vektor en koordinat mere. [formelsamlingen, s. 54, formel (221)](kilde:formelsamling) Læs mere under [vektorer i rummet](/fag/matematik/vektorer-i-rummet/).
 
@@ -477,6 +489,12 @@ En måde at beskrive en linje eller en cirkel på ved hjælp af et tal $t$. Hver
 
 </Begreb>
 
+<Begreb navn="Vinkel mellem linjer">
+
+To linjer, der skærer hinanden, danner fire vinkler. Modstående vinkler er lige store, og to nabovinkler giver tilsammen $180^\circ$, så vinklerne er $v$ og $180^\circ - v$. [lex.dk: Topvinkler](kilde:lex-topvinkler) [lex.dk: Supplementvinkler](kilde:lex-supplementvinkler) I de vejledende opgaver skal du finde den spidse vinkel, altså den, der er under $90^\circ$. [vejledende enkeltopgaver, s. 56–57](kilde:enkeltopgaver) [lex.dk: Vinkel](kilde:lex-vinkel)
+
+</Begreb>
+
 ## Eksamenshjørnet
 
 **Det skal du kunne.** Til vektorer i planen hører koordinatsæt, regning med vektorer, længde, vinkel mellem vektorer, skalarprodukt og projektion. Dertil kommer determinant, areal af parallelogram, linjens ligning bestemt ved et punkt og en normalvektor, vinkel mellem linjer og parameterfremstilling for linje og cirkel. [læreplanen, pkt. 2.2](kilde:laereplan) Til grundbegreberne hører nulvektor, stedvektor, vektor fra et punkt til et andet, vektors længde, enhedsvektor, retningsvektor, tværvektor og normalvektor. [vejledningen, s. 13](kilde:vejledning) Tjek, at du kan forklare dem alle. Nulvektoren skrives $\vec{o}$. [formelsamlingen, s. 83](kilde:formelsamling) Stedvektoren står ikke i formelsamlingen, så se i dine noter, hvordan I har defineret den.
@@ -499,6 +517,6 @@ En måde at beskrive en linje eller en cirkel på ved hjælp af et tal $t$. Hver
 
 - For hvilke værdier af $t$ er vektorerne $\begin{pmatrix} t \\ 2 \end{pmatrix}$ og $\begin{pmatrix} 3 \\ t - 1 \end{pmatrix}$ parallelle? Og for hvilke er de ortogonale?
 - Hvordan kan du bruge determinanten til at finde arealet af en trekant, når du kender koordinaterne til hjørnerne? Forklar din metode.
-- To linjer er givet ved hver sin parameterfremstilling. Bestem vinklen mellem linjerne, og omskriv den ene parameterfremstilling til en ligning.
+- To linjer er givet ved hver sin parameterfremstilling. Bestem den spidse vinkel mellem linjerne, og omskriv den ene parameterfremstilling til en ligning.
 
 Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
