@@ -267,7 +267,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
     laereplan: '2017',
     kilder: [
       {
-        navn: 'Læreplan for samfundsfag A, stx, august 2017, pkt. 2.1 (uvm.dk, PDF)',
+        navn: 'Læreplan for samfundsfag A, stx, august 2017, pkt. 2.1 og 2.2 (uvm.dk, PDF)',
         url: 'https://uvm.dk/media/hebopjjn/samfundsfag-a-stx-august-2017-ua.pdf',
       },
     ],
@@ -286,16 +286,35 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'beregninger-og-diagrammer', tekst: 'Vise faglige sammenhænge og udviklingstendenser med færdige og egne beregninger, tabeller, diagrammer og modeller og bruge digitale hjælpemidler til det' },
       { id: 'formidling', tekst: 'Analysere og formidle empiriske og teoretiske sammenhænge skriftligt og mundtligt, struktureret og nuanceret, på fagets taksonomiske niveauer og med fagets begreber' },
       { id: 'argumentation', tekst: 'Argumentere sammenhængende og nuanceret for dine egne synspunkter på et fagligt grundlag, placere dem i en teoretisk sammenhæng og indgå i en faglig dialog' },
+      // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
+      { id: 'kernestof-identitet-og-socialisering', tekst: 'Identitetsdannelse og socialisering', emne: 'samfundsfag/identitet-og-socialisering' },
+      { id: 'kernestof-social-ulighed-og-kultur', tekst: 'Social differentiering og kulturelle mønstre i forskellige lande, også Danmark', emne: 'samfundsfag/social-ulighed-og-kultur' },
+      { id: 'kernestof-politisk-meningsdannelse-og-medier', tekst: 'Politisk meningsdannelse og medier, også adfærd på de sociale medier', emne: 'samfundsfag/politisk-meningsdannelse-og-medier' },
+      { id: 'kernestof-aktoer-og-struktur', tekst: 'Samfundsforandringer og forholdet mellem aktør og struktur', emne: 'samfundsfag/aktoer-og-struktur' },
+      { id: 'kernestof-ideologier-og-partier', tekst: 'Politiske ideologier, skillelinjer og partiadfærd', emne: 'samfundsfag/ideologier-og-partier' },
+      { id: 'kernestof-vaelgeradfaerd', tekst: 'Vælgeradfærd', emne: 'samfundsfag/vaelgeradfaerd' },
+      { id: 'kernestof-magt-og-demokrati', tekst: 'Magt- og demokratiopfattelser', emne: 'samfundsfag/magt-og-demokrati' },
+      { id: 'kernestof-rettigheder-pligter-og-ligestilling', tekst: 'Rettigheder og pligter i et demokratisk samfund, også ligestilling mellem kønnene', emne: 'samfundsfag/rettigheder-pligter-og-ligestilling' },
+      { id: 'kernestof-politiske-systemer-danmark-og-eu', tekst: 'Politiske beslutningsprocesser i Danmark i en global sammenhæng, også de politiske systemer i Danmark og EU', emne: 'samfundsfag/politiske-systemer-danmark-og-eu' },
+      { id: 'kernestof-velfaerdsstat-og-marked', tekst: 'Velfærdsprincipper og forholdet mellem stat, civilsamfund og marked, også markedsmekanismen og politisk påvirkning af den', emne: 'samfundsfag/velfaerdsstat-og-marked' },
+      { id: 'kernestof-globalisering-og-arbejdsmarked', tekst: 'Globaliseringens og EU\'s betydning for den økonomiske udvikling i Danmark, også konkurrenceevne og arbejdsmarkedsforhold', emne: 'samfundsfag/globalisering-og-arbejdsmarked' },
+      { id: 'kernestof-makrooekonomi', tekst: 'Makroøkonomiske sammenhænge, bæredygtig udvikling, målkonflikter og styring nationalt, regionalt og globalt', emne: 'samfundsfag/makrooekonomi' },
+      { id: 'kernestof-international-politik', tekst: 'Aktører, magt, sikkerhed, konflikter og integration i Europa og internationalt', emne: 'samfundsfag/international-politik' },
+      { id: 'kernestof-danmarks-udenrigspolitik', tekst: 'Mål og muligheder i Danmarks udenrigspolitik', emne: 'samfundsfag/danmarks-udenrigspolitik' },
+      { id: 'kernestof-globalisering-og-udvikling', tekst: 'Globalisering og samfundsudvikling i lande på forskellige udviklingstrin', emne: 'samfundsfag/globalisering-og-udvikling' },
+      { id: 'kernestof-samfundsfaglig-metode', tekst: 'Kvalitativ og kvantitativ metode, komparativ metode og casestudier', emne: 'samfundsfag/samfundsfaglig-metode' },
+      { id: 'kernestof-statistik-og-regression', tekst: 'Statistiske mål, også lineær regression og statistisk usikkerhed', emne: 'samfundsfag/statistik-og-regression' },
     ],
   },
   {
     // De faglige mål står i læreplanen pkt. 2.1. De er de samme i læreplanen fra 2026.
+    // Kernestoffet (pkt. 2.2) er også det samme, bortset fra kanonen.
     fag: 'dansk',
     niveau: 'A',
     laereplan: '2017',
     kilder: [
       {
-        navn: 'Læreplan for dansk A, stx, august 2017, pkt. 2.1 (uvm.dk, PDF)',
+        navn: 'Læreplan for dansk A, stx, august 2017, pkt. 2.1 og 2.2 (uvm.dk, PDF)',
         url: 'https://uvm.dk/media/dg5hj512/dansk-a-stx-august-2017.pdf',
       },
     ],
@@ -313,16 +332,28 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'information-og-faellesskaber', tekst: 'Navigere, udvælge og forholde dig kritisk og analytisk til information i alle medier og deltage reflekteret i og bidrage til digitale fællesskaber' },
       { id: 'fagets-identitet', tekst: 'Vise viden om og reflektere over fagets identitet og metoder' },
       { id: 'undersoege-og-vurdere', tekst: 'Undersøge problemstillinger og udvikle og vurdere løsninger med fagets viden og metoder, også i samspil med andre fag' },
+      // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
+      { id: 'kernestof-litteraer-analyse', tekst: 'Litteraturanalyse og -fortolkning, relevante litterære metoder, perspektivering og kreative arbejdsprocesser', emne: 'dansk/litteraer-analyse' },
+      { id: 'kernestof-litteraturhistorie', tekst: 'Tekster fra før 1700 til de seneste fem år og læsning af en afgrænset periode før 2000', emne: 'dansk/litteraturhistorie' },
+      { id: 'kernestof-kanon-2017', tekst: 'Kanon: mindst én folkevise og mindst én tekst af hver af de 14 kanonforfattere i læreplanen fra 2017', emne: 'dansk/kanon' },
+      { id: 'kernestof-vaerklaesning', tekst: 'Mindst seks værker med historisk og genremæssig spredning, herunder roman, digtsamling og dokumentarfilm', emne: 'dansk/vaerklaesning' },
+      { id: 'kernestof-sproglig-analyse', tekst: 'Sproglig analyse, fortolkning og vurdering', emne: 'dansk/sproglig-analyse' },
+      { id: 'kernestof-retorik-og-argumentation', tekst: 'Retorisk analyse af kommunikationssituationen, appelformer og argumentation', emne: 'dansk/retorik-og-argumentation' },
+      { id: 'kernestof-medieanalyse', tekst: 'Kommunikationsanalyse, medieanalyse og -fortolkning med basale filmiske virkemidler og mediers funktion', emne: 'dansk/medieanalyse' },
+      { id: 'kernestof-dokumentar', tekst: 'Dokumentartekster og dokumentarfilm', emne: 'dansk/dokumentar' },
+      { id: 'kernestof-medieproduktion-og-remediering', tekst: 'Produktivt arbejde med medieudtryk, også kendskab til remediering', emne: 'dansk/medieproduktion-og-remediering' },
+      { id: 'kernestof-skrivning', tekst: 'Udtryksfærdighed i dansk og andre fag, også forløb med særligt fokus på skriftlighed i 1.g og 3.g', emne: 'dansk/skrivning' },
     ],
   },
   {
     // De faglige mål står i læreplanen pkt. 2.1. De er de samme som i læreplanen fra 2017.
+    // Kernestoffet (pkt. 2.2) er også det samme, bortset fra kanonen.
     fag: 'dansk',
     niveau: 'A',
     laereplan: '2026',
     kilder: [
       {
-        navn: 'Læreplan for dansk A, stx, august 2026, pkt. 2.1 (uvm.dk, PDF)',
+        navn: 'Læreplan for dansk A, stx, august 2026, pkt. 2.1 og 2.2 (uvm.dk, PDF)',
         url: 'https://uvm.dk/media/ivspuuat/260611-laereplan-til-dansk-a-stx-2026.pdf',
       },
     ],
@@ -340,6 +371,17 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'information-og-faellesskaber', tekst: 'Navigere, udvælge og forholde dig kritisk og analytisk til information i alle medier og deltage reflekteret i og bidrage til digitale fællesskaber' },
       { id: 'fagets-identitet', tekst: 'Vise viden om og reflektere over fagets identitet og metoder' },
       { id: 'undersoege-og-vurdere', tekst: 'Undersøge problemstillinger og udvikle og vurdere løsninger med fagets viden og metoder, også i samspil med andre fag' },
+      // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
+      { id: 'kernestof-litteraer-analyse', tekst: 'Litteraturanalyse og -fortolkning, relevante litterære metoder, perspektivering og kreative arbejdsprocesser', emne: 'dansk/litteraer-analyse' },
+      { id: 'kernestof-litteraturhistorie', tekst: 'Tekster fra før 1700 til de seneste fem år og læsning af en afgrænset periode før 2000', emne: 'dansk/litteraturhistorie' },
+      { id: 'kernestof-kanon-2026', tekst: 'Kanon: mindst én tekst af hver af de 7 forfattere på den obligatoriske liste og fra 12 af forfatterne og genrerne på bruttolisten', emne: 'dansk/kanon' },
+      { id: 'kernestof-vaerklaesning', tekst: 'Mindst seks værker med historisk og genremæssig spredning, herunder roman, digtsamling og dokumentarfilm', emne: 'dansk/vaerklaesning' },
+      { id: 'kernestof-sproglig-analyse', tekst: 'Sproglig analyse, fortolkning og vurdering', emne: 'dansk/sproglig-analyse' },
+      { id: 'kernestof-retorik-og-argumentation', tekst: 'Retorisk analyse af kommunikationssituationen, appelformer og argumentation', emne: 'dansk/retorik-og-argumentation' },
+      { id: 'kernestof-medieanalyse', tekst: 'Kommunikationsanalyse, medieanalyse og -fortolkning med basale filmiske virkemidler og mediers funktion', emne: 'dansk/medieanalyse' },
+      { id: 'kernestof-dokumentar', tekst: 'Dokumentartekster og dokumentarfilm', emne: 'dansk/dokumentar' },
+      { id: 'kernestof-medieproduktion-og-remediering', tekst: 'Produktivt arbejde med medieudtryk, også kendskab til remediering', emne: 'dansk/medieproduktion-og-remediering' },
+      { id: 'kernestof-skrivning', tekst: 'Udtryksfærdighed i dansk og andre fag, også forløb med særligt fokus på skriftlighed i 1.g og 3.g', emne: 'dansk/skrivning' },
     ],
   },
   {
