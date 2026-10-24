@@ -29,7 +29,7 @@ Du skal kunne løse ligninger på tre måder: analytisk, dvs. med regneregler og
 
 ## Vigtige pointer
 
-- **Gør det samme på begge sider.** Du må lægge det samme til, trække det samme fra, gange med det samme og dividere med det samme på begge sider af lighedstegnet. [formelsamlingen, s. 74, formel (316)–(319)](kilde:formelsamling) Du må dog ikke dividere med 0. [formelsamlingen, s. 3](kilde:formelsamling)
+- **Gør det samme på begge sider.** Du må lægge det samme til og trække det samme fra på begge sider af lighedstegnet. Du må også gange eller dividere med det samme tal på begge sider, bare tallet ikke er 0. [formelsamlingen, s. 74, formel (316)–(319)](kilde:formelsamling) [formelsamlingen, s. 3](kilde:formelsamling)
 - **Nulreglen.** Er et produkt lig med 0, så er mindst én af faktorerne 0. Kan du skrive den ene side som et produkt, og står der 0 på den anden side, kan du altså løse en lille ligning for hver faktor. [formelsamlingen, s. 74, formel (320)](kilde:formelsamling)
 - **Andengradsligninger.** En andengradsligning $a \cdot x^2 + b \cdot x + c = 0$ løser du med diskriminanten $d = b^2 - 4a \cdot c$ og løsningsformlen. [formelsamlingen, s. 75, formel (321)–(323)](kilde:formelsamling)
 - **Antal løsninger.** Er $d > 0$, er der to løsninger. Er $d = 0$, er der én løsning, og er $d < 0$, er der ingen løsning. Det passer med, at [parablen](/fag/matematik/andengradspolynomier/) skærer $x$-aksen to gange, rører den én gang eller slet ikke skærer den. [formelsamlingen, s. 22, formel (71), og s. 75](kilde:formelsamling)
@@ -53,10 +53,10 @@ Prøv selv: Træk i skyderen $k$. Parablen $y = x^2$ og den vandrette linje $y =
 
 ### Eksempler på grundligninger
 
-- **Potens:** $x^5 = 32$. Opløft begge sider i $\frac{1}{5}$: $x = 32^{\frac{1}{5}} = \sqrt[5]{32} = 2$. [formelsamlingen, s. 77, formel (341) og (350)](kilde:formelsamling)
+- **Potens:** $x^5 = 32$. Opløft begge sider i $\frac{1}{5}$: $x = 32^{\frac{1}{5}} = \sqrt[5]{32} = 2$. [formelsamlingen, s. 77, formel (341) og (350)](kilde:formelsamling) Det virker her, fordi eksponenten er ulige. Er eksponenten lige, er der også en negativ løsning. Fx giver $x^4 = 16$, at $x = -2$ eller $x = 2$, ligesom ved $x^2 = k$. [formelsamlingen, s. 75, formel (324)](kilde:formelsamling)
 - **Eksponentialfunktion:** $4 \cdot 3^x = 324$. Divider med 4: $3^x = 81$. Tag $\log$ på begge sider: $x \cdot \log(3) = \log(81)$, så $x = \frac{\log(81)}{\log(3)} = 4$. [formelsamlingen, s. 25, formel (84)](kilde:formelsamling)
 - **Den naturlige eksponentialfunktion:** $e^{2x} = 7$. Tag $\ln$ på begge sider: $2x = \ln(7)$, så $x = \frac{\ln(7)}{2} \approx 0{,}97$. [formelsamlingen, s. 25, formel (92)](kilde:formelsamling)
-- **Kvadratrod:** $\sqrt{x - 3} = 5$. Sæt begge sider i anden: $x - 3 = 25$, så $x = 28$. Tjek: $\sqrt{28 - 3} = \sqrt{25} = 5$.
+- **Kvadratrod:** $\sqrt{x - 3} = 5$. Sæt begge sider i anden: $x - 3 = 25$, så $x = 28$. Tjek: $\sqrt{28 - 3} = \sqrt{25} = 5$. [formelsamlingen, s. 77, formel (341) og (351)](kilde:formelsamling) Tjek altid, når du har sat i anden. Ligningen $\sqrt{x - 3} = -5$ giver også $x = 28$, men $\sqrt{25} = 5$ og ikke $-5$, så den ligning har ingen løsning.
 - **Cosinus og sinus:** Her kan der være flere løsninger. Vejledningen foreslår, at det bliver gennemgået sammen med netop den type ligninger. [vejledningen, s. 14](kilde:vejledning)
 
 ## Formler
@@ -73,7 +73,7 @@ Prøv selv: Træk i skyderen $k$. Parablen $y = x^2$ og den vandrette linje $y =
 
 <Bruges>
 
-Til sidst i en førstegradsligning, når der kun står et tal gange $x$ på den ene side. De andre ligningsregler er at lægge det samme til, trække det samme fra og gange med det samme på begge sider. [formelsamlingen, s. 74, formel (316), (317) og (319)](kilde:formelsamling)
+Til sidst i en førstegradsligning, når der kun står et tal gange $x$ på den ene side. De andre ligningsregler er at lægge det samme til, trække det samme fra og gange med det samme tal, der ikke er 0, på begge sider. [formelsamlingen, s. 74, formel (316), (317) og (319)](kilde:formelsamling)
 
 </Bruges>
 
@@ -168,7 +168,7 @@ Da $d < 0$, har ligningen ingen løsning. For $x^2 - 6x + 9 = 0$ er $d = (-6)^2 
 <Fejl>
 
 - At glemme parentesen, når $b$ er negativ: $(-6)^2 = 36$, men $-6^2 = -36$.
-- At glemme minus foran $c$, når $c$ er negativ.
+- At glemme fortegnet på $c$. Er $c = -3$, er $-4 \cdot a \cdot c = -4 \cdot a \cdot (-3) = 12a$.
 
 </Fejl>
 
@@ -274,7 +274,7 @@ $$
 \log(2^x) = \log(10)
 $$
 
-Venstre side er $x \cdot \log(2)$, og $\log(10) = 1$, så
+Venstre side er $x \cdot \log(2)$, og $\log(10) = 1$ [formelsamlingen, s. 25, formel (81)](kilde:formelsamling), så
 
 $$
 x = \frac{1}{\log(2)} \approx 3{,}32
@@ -295,7 +295,7 @@ $$
 
 <Begreb navn="Ligningsregler">
 
-De regler, der fortæller, hvad du må gøre ved en ligning: lægge det samme til, trække det samme fra, gange med det samme og dividere med det samme på begge sider. [formelsamlingen, s. 74, formel (316)–(319)](kilde:formelsamling)
+De regler, der fortæller, hvad du må gøre ved en ligning: lægge det samme til og trække det samme fra på begge sider og gange eller dividere med det samme tal, der ikke er 0, på begge sider. [formelsamlingen, s. 74, formel (316)–(319)](kilde:formelsamling)
 
 </Begreb>
 
@@ -307,7 +307,7 @@ Er et produkt lig med 0, er mindst én af faktorerne 0: Af $a \cdot b = 0$ følg
 
 <Begreb navn="Andengradsligning">
 
-En ligning, der kan skrives som $a \cdot x^2 + b \cdot x + c = 0$. Den kan have to, én eller ingen løsninger. [formelsamlingen, s. 22, formel (71), og s. 75, formel (321)–(323)](kilde:formelsamling)
+En ligning, der kan skrives som $a \cdot x^2 + b \cdot x + c = 0$, hvor $a \neq 0$. Den kan have to, én eller ingen løsninger. [formelsamlingen, s. 22, formel (71), og s. 75, formel (321)–(323)](kilde:formelsamling)
 
 </Begreb>
 
@@ -345,7 +345,7 @@ At løse en ligning ved at aflæse på en graf. Løsningerne til $f(x) = 3$ er d
 - ”Bestem ved beregning” betyder, at svaret skal bygge på en beregning med en formel kombineret med en CAS-kommando, fx solve. ”Bestem ved aflæsning” betyder, at svaret skal bygge på en præcis aflæsning med en indbygget kommando på en graf eller figur, som du har lavet i dit værktøj. [vejledningen, s. 36](kilde:vejledning)
 - Skriv, hvilken ligning du løser, og hvilken kommando du bruger, så man kan følge din løsning. [vejledningen, s. 41–42](kilde:vejledning)
 
-**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner opstillingen af løsningsformlen for andengradsligningen som et eksempel på et sammenhængende matematisk ræsonnement. [vejledningen, s. 23](kilde:vejledning) Øv dig også i at forklare, hvorfor man tager $\ln$ eller $\log$ på begge sider af en ligning. [vejledningen, s. 14](kilde:vejledning) Et tip til udledningen af løsningsformlen: Brug kvadratkomplettering, som du kan læse om under [tal, algebra og proportionalitet](/fag/matematik/tal-og-algebra/).
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner opstillingen af løsningsformlen for andengradsligningen som et eksempel på et sammenhængende matematisk ræsonnement. [vejledningen, s. 23](kilde:vejledning) Øv dig også i at forklare, hvorfor man tager $\ln$ eller $\log$ på begge sider af en ligning. [vejledningen, s. 14](kilde:vejledning) Et tip til udledningen af løsningsformlen: Divider først med $a$, og brug så kvadratkomplettering, som du kan læse om under [tal, algebra og proportionalitet](/fag/matematik/tal-og-algebra/). Kvadratkomplettering hører til kernestoffet. [vejledningen, s. 11](kilde:vejledning)
 
 **Eksempler på problemstillinger**
 

@@ -63,7 +63,8 @@ Prøv selv: Linjerne starter med $a = 2$ og $c = -0{,}5$. Så er $a \cdot c = -1
 
 - **Cirklens ligning** $(x - a)^2 + (y - b)^2 = r^2$ beskriver en cirkel med centrum i $C(a, b)$ og radius $r$. Bemærk, at $a$ og $b$ her betyder noget andet end i linjens ligning. [formelsamlingen, s. 49, formel (202), og s. 53, formel (216)](kilde:formelsamling)
 - **Cirklens ligning og afstandsformlen hænger sammen.** Et punkt $(x, y)$ ligger på cirklen, når afstanden til centrum er $r$. Skriver du det med formel (213) og sætter begge sider i anden, får du netop formel (216). [formelsamlingen, s. 52–53, formel (213) og (216)](kilde:formelsamling)
-- **Skæring mellem linje og cirkel.** Sæt linjens udtryk for $y$ ind i cirklens ligning. Så får du en andengradsligning i $x$, og løsningerne er førstekoordinaterne til skæringspunkterne. Har andengradsligningen ingen løsning, skærer linjen ikke cirklen. [formelsamlingen, s. 75, formel (323)](kilde:formelsamling) Om andengradsligninger kan du læse under [ligninger](/fag/matematik/ligninger/).
+- **Skæring mellem linje og cirkel.** Sæt linjens udtryk for $y$ ind i cirklens ligning. Så får du en andengradsligning i $x$, og løsningerne er førstekoordinaterne til skæringspunkterne. Har andengradsligningen ingen løsning, skærer linjen ikke cirklen. [formelsamlingen, s. 75, formel (323)](kilde:formelsamling) Om andengradsligninger kan du læse under [ligninger](/fag/matematik/ligninger/). Er linjen lodret med ligningen $x = k$, sætter du i stedet $x = k$ ind og får en andengradsligning i $y$. [formelsamlingen, s. 50, formel (207)](kilde:formelsamling) Står linjen som $a \cdot x + b \cdot y + c = 0$, så isolér $y$ først.
+- **En ganget ud cirkelligning.** Står cirklens ligning ganget ud, fx $x^2 - 8x + y^2 - 2y - 8 = 0$, så skriv den om med kvadratkomplettering. Her er $x^2 - 8x = (x - 4)^2 - 16$ og $y^2 - 2y = (y - 1)^2 - 1$, så ligningen bliver $(x - 4)^2 + (y - 1)^2 = 25$. Cirklen har altså centrum $C(4, 1)$ og radius 5. [formelsamlingen, s. 53 og 76, formel (216), (328) og (329)](kilde:formelsamling) Kvadratkomplettering hører til kernestoffet. [vejledningen, s. 11](kilde:vejledning) Læs mere under [tal, algebra og proportionalitet](/fag/matematik/tal-og-algebra/).
 - **Tangenten** til cirklen i et punkt $P$ står vinkelret på linjen gennem centrum $C$ og $P$. Punktet $P$ kaldes røringspunktet. [formelsamlingen, s. 53, formel (218)](kilde:formelsamling)
 
 ## Formler
@@ -110,6 +111,7 @@ Det passer med punktets andenkoordinat, så punktet ligger på linjen.
 
 - $(x_1, y_1)$ og $(x_2, y_2)$: to punkter på linjen.
 - $a$: linjens hældningskoefficient.
+- Punkterne må ikke have samme førstekoordinat, altså $x_1 \neq x_2$. Ellers er linjen lodret, og du dividerer med 0. [formelsamlingen, s. 3](kilde:formelsamling)
 
 </Symboler>
 
@@ -330,34 +332,34 @@ $$
 
 <Bruges>
 
-Når du skal finde centrum og radius ud fra ligningen, undersøge, om et punkt ligger på cirklen, eller finde skæringspunkter med en linje.
+Når du skal finde centrum og radius ud fra ligningen, undersøge, om et punkt ligger på cirklen, eller finde skæringspunkter med en linje. Står ligningen ganget ud, så omskriv den først med kvadratkomplettering, som vist under Vigtige pointer.
 
 </Bruges>
 
 <Eksempel>
 
-Cirklen $(x - 1)^2 + (y - 2)^2 = 25$ har centrum $C(1, 2)$ og radius $r = \sqrt{25} = 5$.
+Cirklen $(x - 4)^2 + (y - 1)^2 = 25$ har centrum $C(4, 1)$ og radius $r = \sqrt{25} = 5$.
 
-Hvor skærer linjen $y = x + 2$ cirklen? Sæt $y = x + 2$ ind i cirklens ligning:
-
-$$
-(x - 1)^2 + (x + 2 - 2)^2 = 25
-$$
-
-Gang parentesen ud, og saml leddene. Så får du $2 \cdot x^2 - 2 \cdot x - 24 = 0$. Divider med 2:
+Hvor skærer linjen $y = x - 2$ cirklen? Sæt $y = x - 2$ ind i cirklens ligning:
 
 $$
-x^2 - x - 12 = 0
+(x - 4)^2 + (x - 2 - 1)^2 = 25
 $$
 
-Diskriminanten er $d = (-1)^2 - 4 \cdot 1 \cdot (-12) = 49$, så $x = \frac{1 - 7}{2} = -3$ eller $x = \frac{1 + 7}{2} = 4$. [formelsamlingen, s. 75, formel (322) og (323)](kilde:formelsamling) Linjen skærer altså cirklen i punkterne $(-3, -1)$ og $(4, 6)$.
+Gang parenteserne ud, og saml leddene. Så får du $2 \cdot x^2 - 14 \cdot x = 0$, altså
+
+$$
+2x \cdot (x - 7) = 0
+$$
+
+Nulreglen giver $x = 0$ eller $x = 7$. [formelsamlingen, s. 74, formel (320)](kilde:formelsamling) Linjen skærer altså cirklen i punkterne $(0, -2)$ og $(7, 5)$.
 
 </Eksempel>
 
 <Fejl>
 
 - At få fortegnet forkert. $(x + 3)^2$ betyder, at centrums førstekoordinat er $-3$.
-- At glemme kvadratroden, når du finder radius. Cirklen $(x - 1)^2 + (y - 2)^2 = 25$ har radius 5, ikke 25.
+- At glemme kvadratroden, når du finder radius. Cirklen $(x - 4)^2 + (y - 1)^2 = 25$ har radius 5, ikke 25.
 - At blande $a$ og $b$ i cirklens ligning sammen med $a$ og $b$ i linjens ligning.
 
 </Fejl>
@@ -371,7 +373,7 @@ Diskriminanten er $d = (-1)^2 - 4 \cdot 1 \cdot (-12) = 49$, så $x = \frac{1 - 
 - $t$: tangenten.
 - $C$: cirklens centrum.
 - $P$: røringspunktet, hvor tangenten rører cirklen.
-- $\perp$: står vinkelret på.
+- $\perp$: står vinkelret på. [formelsamlingen, s. 79](kilde:formelsamling)
 
 </Symboler>
 
@@ -383,16 +385,16 @@ Når du skal finde en ligning for tangenten i et punkt på cirklen.
 
 <Eksempel>
 
-Fortsat fra før: Punktet $P(4, 6)$ ligger på cirklen med centrum $C(1, 2)$. Efter formel (204) har linjen gennem $C$ og $P$ hældningskoefficienten
+Fortsat fra før: Punktet $P(0, -2)$ ligger på cirklen med centrum $C(4, 1)$. Efter formel (204) har linjen gennem $C$ og $P$ hældningskoefficienten
 
 $$
-\frac{6 - 2}{4 - 1} = \frac{4}{3}
+\frac{-2 - 1}{0 - 4} = \frac{3}{4}
 $$
 
-Tangenten står vinkelret på den. Efter formel (208) opfylder tangentens hældningskoefficient $c$ derfor $\frac{4}{3} \cdot c = -1$, så $c = -\frac{3}{4}$. Med formel (206) bliver tangentens ligning
+Tangenten står vinkelret på den. Efter formel (208) opfylder tangentens hældningskoefficient $c$ derfor $\frac{3}{4} \cdot c = -1$, så $c = -\frac{4}{3}$. Med formel (206) bliver tangentens ligning
 
 $$
-y = -\frac{3}{4} \cdot (x - 4) + 6 = -0{,}75 \cdot x + 9
+y = -\frac{4}{3} \cdot (x - 0) + (-2) = -\frac{4}{3} \cdot x - 2
 $$
 
 </Eksempel>
