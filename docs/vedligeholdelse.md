@@ -38,4 +38,5 @@ Senest gennemgået: 24. oktober 2026.
 | Før hver ny fase | Gennemgå `docs/huller.md`: Er der kommet officielle kilder eller lex.dk-artikler, der kan lukke et hul? | Siderne med huller |
 | Efter næste folketingsvalg | Valgdeltagelse og valgte kandidater (FVPCT, FV26TOT, LIGEDI0) | Vælgeradfærd, Rettigheder, pligter og ligestilling |
 | Når FN, NATO eller EU får nye medlemmer | Antallet af medlemmer (FN 193, NATO 32, EU 27) | International politik, Det politiske system i Danmark og EU |
+| Fase 5 | Trap Danmark, Gyldendal og Politikens Danmarkshistorie og Gyldendals Teaterleksikon på lex.dk bliver ikke opdateret. Tjek, om lex.dk har nyere artikler om den selektive velfærdsmodel, tilpasningspolitik og berettermodellen. | Velfærdsstat og marked, Danmarks udenrigspolitik, Medieanalyse og film |
 | Fase 5 | Tjek, om der er en ny version af `katex`. Den er låst med vilje. Tjek formlerne i buildet efter en opdatering. | Alle sider med formler |
