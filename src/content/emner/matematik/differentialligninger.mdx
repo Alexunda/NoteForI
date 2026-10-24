@@ -33,7 +33,7 @@ I en differentialligning er den ukendte en funktion $y = f(x)$, og ligningen for
 - **En løsning passer i ligningen.** Sætter du løsningen og dens afledede ind, skal venstre og højre side give det samme. Fx er $y = c \cdot e^{k \cdot x}$ en løsning til $y' = k \cdot y$. [formelsamlingen, s. 72, formel (308)](kilde:formelsamling) Med formel (265) og (273) er nemlig $y' = c \cdot k \cdot e^{k \cdot x} = k \cdot y$. [formelsamlingen, s. 66–67](kilde:formelsamling)
 - **Konstanten $c$.** Løsningerne har en konstant $c$, som du bestemmer ud fra et punkt på grafen. Fx giver $y(0) = 5$ i $y = c \cdot e^{k \cdot x}$, at $c = 5$, fordi $e^0 = 1$. [formelsamlingen, s. 77, formel (346)](kilde:formelsamling)
 - **Læs ligningen med ord.** En kvalitativ analyse er en beskrivelse med ord af, hvad differentialligningen siger, fx hvordan væksthastigheden eller funktionsværdien udvikler sig med tiden. [vejledningen, s. 16–17](kilde:vejledning) Fx siger $y' = 0{,}3 \cdot y$, at væksthastigheden er proportional med $y$. [formelsamlingen, s. 24, formel (76)](kilde:formelsamling) Når $y$ er positiv, er $y'$ også positiv, så løsningen er voksende, og den vokser hurtigere, jo større $y$ er. [formelsamlingen, s. 65, formel (258) og (259)](kilde:formelsamling) Se også [monotoniforhold og optimering](/fag/matematik/monotoniforhold-og-optimering/).
-- **Tangent til en løsningskurve.** Kender du et punkt $(x_0, y_0)$ på en løsningskurve, sætter du det ind i differentialligningen og får hældningen $y_0'$. Tallene $(x_0, y_0, y_0')$ kaldes et linjeelement. [formelsamlingen, s. 73, formel (313)](kilde:formelsamling) Tangentens ligning er så $y = y_0' \cdot (x - x_0) + y_0$. [formelsamlingen, s. 64, formel (254)](kilde:formelsamling) Se også [tangenter og Newtons metode](/fag/matematik/tangenter-og-newtons-metode/).
+- **Tangent til en løsningskurve.** Kender du et punkt $(x_0, y_0)$ på en løsningskurve, sætter du det ind i differentialligningen og får hældningen $y_0'$. [vejledningen, s. 17](kilde:vejledning) Tallene $(x_0, y_0, y_0')$ kaldes et linjeelement. [formelsamlingen, s. 73, formel (313)](kilde:formelsamling) Tangentens ligning er så $y = y_0' \cdot (x - x_0) + y_0$. [formelsamlingen, s. 64, formel (254)](kilde:formelsamling) Se også [tangenter og Newtons metode](/fag/matematik/tangenter-og-newtons-metode/).
 - **Hældningsfelt.** Tegner du linjeelementer i mange punkter, får du et hældningsfelt. Formelsamlingen viser, hvordan en løsningskurve gennem et punkt $P_0$ går langs linjeelementerne. [formelsamlingen, s. 73, formel (314) og (315)](kilde:formelsamling) Du skal kunne afkode hældningsfelter for differentialligninger af formen $y' = h(x, y)$. [vejledningen, s. 17](kilde:vejledning)
 - **Separable differentialligninger.** En differentialligning af formen $y' = h(x) \cdot g(y)$ kan løses med separationsmetoden: $\int \frac{1}{g(y)}\,dy = \int h(x)\,dx$. [formelsamlingen, s. 72, formel (312)](kilde:formelsamling) Du skal ikke kunne gøre det i hånden, men du skal kunne løse dem med dit digitale værktøj. [vejledningen, s. 17](kilde:vejledning)
 - **Eulers metode** er en numerisk metode. Den giver tilnærmede værdier for en løsning i stedet for en eksakt forskrift, og den er et eksempel på en algoritme. [vejledningen, s. 17](kilde:vejledning) Formelsamlingen har ingen formel for Eulers metode, så brug dit undervisningsmateriale.
@@ -188,19 +188,19 @@ Når væksten bremses op af en øvre grænse $M$. Når $y$ er lille, er $M - y$ 
 
 <Eksempel>
 
-På en skole med 1000 elever kender 10 elever en nyhed. I en model er $y' = 0{,}0005 \cdot y \cdot (1000 - y)$, hvor $y$ er antal elever, der kender nyheden efter $x$ dage. Så er $M = 1000$ og $a = 0{,}0005$, og $a \cdot M = 0{,}5$:
+I en sø er der plads til 1000 fisk af en bestemt art, og der sættes 10 fisk ud. I en model er $y' = 0{,}0005 \cdot y \cdot (1000 - y)$, hvor $y$ er antal fisk efter $x$ år. Så er $M = 1000$ og $a = 0{,}0005$, og $a \cdot M = 0{,}5$:
 
 $$
 y = \frac{1000}{1 + c \cdot e^{-0{,}5 \cdot x}}
 $$
 
-Fra start kender 10 elever nyheden, så $y(0) = \frac{1000}{1 + c} = 10$. Det giver $1 + c = 100$ og $c = 99$. Efter 10 dage er
+Fra start er der 10 fisk, så $y(0) = \frac{1000}{1 + c} = 10$. Det giver $1 + c = 100$ og $c = 99$. Efter 10 år er
 
 $$
 y = \frac{1000}{1 + 99 \cdot e^{-5}} \approx 600
 $$
 
-Ca. 600 elever kender altså nyheden efter 10 dage.
+Der er altså ca. 600 fisk efter 10 år.
 
 </Eksempel>
 
@@ -325,7 +325,7 @@ En numerisk metode til at løse en differentialligning. Den giver tilnærmede v�
 **Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også dit digitale værktøj. [vejledningen, s. 36](kilde:vejledning)
 
 - Separable differentialligninger kan komme i delprøve 2, hvor du løser dem med dit digitale værktøj. [vejledningen, s. 17](kilde:vejledning)
-- Der kommer ikke opgaver, hvor du skal bestemme løsninger med numeriske metoder. Det forventes heller ikke, at du kan tegne hældningsfelter med dit værktøj. [vejledningen, s. 17](kilde:vejledning)
+- I delprøve 2 kommer der ikke opgaver, hvor du skal bestemme løsninger til differentialligninger med numeriske metoder. Det forventes heller ikke, at du kan tegne hældningsfelter med dit værktøj. [vejledningen, s. 17](kilde:vejledning)
 - Du kan præsentere en opgave med en differentialligning ved at forklare, hvad de variable betyder, og skrive ligningen af. [vejledningen, s. 42](kilde:vejledning)
 
 **Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) Overskriften kan fx være »differentialligninger«. [vejledningen, s. 38](kilde:vejledning) Et udvalg af sætninger om løsninger bevises, og sætningen om løsningen til $y' = k \cdot y$ er en af dem. Det skal styrke din forståelse af eksistens og entydighed, altså om der findes en løsning, og om der kun er én løsning gennem et givet punkt. [vejledningen, s. 17](kilde:vejledning)

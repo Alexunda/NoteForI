@@ -31,7 +31,7 @@ Monotoniforholdene fortæller, i hvilke intervaller en funktion er voksende, og 
 
 - **Voksende og aftagende.** En funktion er voksende i et interval, hvis grafen går opad, når du går mod højre. Den er aftagende, hvis grafen går nedad. Monotoniforholdene er en opdeling af definitionsmængden i intervaller, hvor funktionen enten er voksende eller aftagende. [formelsamlingen, s. 65, formel (256)](kilde:formelsamling) Du kan også aflæse dem på en graf, se [funktioner](/fag/matematik/funktioner/).
 - **$f'$ viser, hvordan grafen hælder.** Differentialkvotienten $f'(x_0)$ er hældningen for tangenten til grafen i punktet $(x_0, f(x_0))$. [formelsamlingen, s. 62, formel (248)](kilde:formelsamling) Se [grænseværdi og differentialkvotient](/fag/matematik/differentialkvotient/). Fortegnslinjen i formelsamlingen viser sammenhængen: Hvor $f'(x)$ er positiv, er $f$ voksende, og hvor $f'(x)$ er negativ, er $f$ aftagende. [formelsamlingen, s. 65, formel (258) og (259)](kilde:formelsamling)
-- **Vandret tangent.** Du finder de $x$-værdier, hvor grafen har vandret tangent, ved at løse ligningen $f'(x) = 0$. Det er her, $f$ kan have et lokalt maksimum eller minimum. [formelsamlingen, s. 65, formel (257) og (260)](kilde:formelsamling) Ofte er $f'(x) = 0$ en andengradsligning, se [ligninger](/fag/matematik/ligninger/).
+- **Vandret tangent.** Du finder de $x$-værdier, hvor grafen har vandret tangent, ved at løse ligningen $f'(x) = 0$. Her kan $f$ have et lokalt maksimum eller minimum, men det er ikke sikkert. Det afgør fortegnslinjen. [formelsamlingen, s. 65, formel (257) og (260)](kilde:formelsamling) Ofte er $f'(x) = 0$ en andengradsligning, se [ligninger](/fag/matematik/ligninger/).
 - **Fortegnslinjen.** Den viser, hvor $f'(x)$ er positiv ($+$), nul ($0$) og negativ ($-$). Ud fra den skriver du monotoniforholdene. [formelsamlingen, s. 65, formel (258) og (259)](kilde:formelsamling)
 - **Lokalt maksimum og minimum.** Skifter $f'(x)$ fra $+$ til $-$, går $f$ fra at vokse til at aftage. Så har $f$ et lokalt maksimum. Skifter $f'(x)$ fra $-$ til $+$, har $f$ et lokalt minimum. [formelsamlingen, s. 65, formel (258), (259) og (260)](kilde:formelsamling)
 - **Svar med begge koordinater.** Et ekstremumspunkt skrives med begge koordinater. Førstekoordinaten er ekstremumsstedet, og andenkoordinaten er ekstremum, altså maksimum eller minimum. [vejledningen, s. 37](kilde:vejledning)
@@ -54,25 +54,25 @@ Prøv selv: Den fuldt optrukne graf er $f(x) = x^3 - a \cdot x$, og den stiplede
 
 ### Et eksempel på optimering
 
-En festival sælger billetter. I en model sælger festivalen $2000 - 2x$ billetter, når en billet koster $x$ kr. Indtægten i kr. er så
+En festival sælger billetter. I en model sælger festivalen $3000 - 5x$ billetter, når en billet koster $x$ kr. Indtægten i kr. er så
 
 $$
-I(x) = x \cdot (2000 - 2x) = 2000x - 2x^2
+I(x) = x \cdot (3000 - 5x) = 3000x - 5x^2
 $$
 
-Prisen og antallet af billetter kan ikke være negative, så $0 \le x \le 1000$. Med formel (263), (267), (273) og (275) får du
+Prisen og antallet af billetter kan ikke være negative, så $0 \le x \le 600$. Med formel (263), (267), (273) og (275) får du
 
 $$
-I'(x) = 2000 - 4x
+I'(x) = 3000 - 10x
 $$
 
-Ligningen $I'(x) = 0$ giver $x = 500$. Tjek fortegnet: $I'(100) = 1600$ er positiv, og $I'(600) = -400$ er negativ. Så er $I$ voksende i $[0; 500]$ og aftagende i $[500; 1000]$, og indtægten er størst, når $x = 500$:
+Ligningen $I'(x) = 0$ giver $x = 300$. Tjek fortegnet: $I'(100) = 2000$ er positiv, og $I'(400) = -1000$ er negativ. Så er $I$ voksende i $[0; 300]$ og aftagende i $[300; 600]$, og indtægten er størst, når $x = 300$:
 
 $$
-I(500) = 2000 \cdot 500 - 2 \cdot 500^2 = 500\,000
+I(300) = 3000 \cdot 300 - 5 \cdot 300^2 = 450\,000
 $$
 
-Konklusion: Ifølge modellen giver en billetpris på 500 kr. den største indtægt, nemlig 500 000 kr.
+Konklusion: Ifølge modellen giver en billetpris på 300 kr. den største indtægt, nemlig 450 000 kr.
 
 Her er indtægten et andengradspolynomium, så du kunne også have brugt formlen for toppunktet. [formelsamlingen, s. 23, formel (73)](kilde:formelsamling) Se [andengradspolynomier](/fag/matematik/andengradspolynomier/).
 
@@ -95,19 +95,19 @@ Når du skal finde de $x$-værdier, hvor grafen har vandret tangent. Det er før
 
 <Eksempel>
 
-Funktionen er $f(x) = x^3 - 6x^2 + 9x + 1$. Med regnereglerne på s. 66–67 i formelsamlingen får du
+Funktionen er $f(x) = x^3 - 9x^2 + 24x - 10$. Med regnereglerne på s. 66–67 i formelsamlingen får du
 
 $$
-f'(x) = 3x^2 - 12x + 9
+f'(x) = 3x^2 - 18x + 24
 $$
 
 Løs $f'(x) = 0$. Divider først med 3 på begge sider:
 
 $$
-x^2 - 4x + 3 = 0
+x^2 - 6x + 8 = 0
 $$
 
-Med formel (322) er diskriminanten $d = (-4)^2 - 4 \cdot 1 \cdot 3 = 4$. Med formel (323) får du $x = \frac{4 - 2}{2} = 1$ eller $x = \frac{4 + 2}{2} = 3$. Grafen har altså vandret tangent, når $x = 1$ og $x = 3$.
+Med formel (322) er diskriminanten $d = (-6)^2 - 4 \cdot 1 \cdot 8 = 4$. Med formel (323) får du $x = \frac{6 - 2}{2} = 2$ eller $x = \frac{6 + 2}{2} = 4$. Grafen har altså vandret tangent, når $x = 2$ og $x = 4$.
 
 </Eksempel>
 
@@ -138,13 +138,13 @@ Når du skal bestemme monotoniforholdene for $f$, altså i hvilke intervaller $f
 
 <Eksempel>
 
-Fortsat fra før: $f'(x) = 3x^2 - 12x + 9$ er 0, når $x = 1$ og $x = 3$. Sæt et tal fra hvert interval ind i $f'(x)$: $f'(0) = 9$, $f'(2) = -3$ og $f'(4) = 9$. Fortegnslinjen er
+Fortsat fra før: $f'(x) = 3x^2 - 18x + 24$ er 0, når $x = 2$ og $x = 4$. Sæt et tal fra hvert interval ind i $f'(x)$: $f'(0) = 24$, $f'(3) = -3$ og $f'(5) = 9$. Fortegnslinjen er
 
 $$
-\begin{array}{c|ccccc} x & & 1 & & 3 & \\ \hline f'(x) & + & 0 & - & 0 & + \end{array}
+\begin{array}{c|ccccc} x & & 2 & & 4 & \\ \hline f'(x) & + & 0 & - & 0 & + \end{array}
 $$
 
-Så er $f$ voksende i $]-\infty; 1]$ og i $[3; \infty[$ og aftagende i $[1; 3]$.
+Så er $f$ voksende i $]-\infty; 2]$ og i $[4; \infty[$ og aftagende i $[2; 4]$.
 
 </Eksempel>
 
@@ -177,20 +177,20 @@ Når du skal bestemme de lokale maksima og minima og skrive ekstremumspunkterne 
 
 <Eksempel>
 
-Fortsat fra før: $f(x) = x^3 - 6x^2 + 9x + 1$ har lokalt maksimum i $x = 1$ og lokalt minimum i $x = 3$. Funktionsværdierne er
+Fortsat fra før: $f(x) = x^3 - 9x^2 + 24x - 10$ har lokalt maksimum i $x = 2$ og lokalt minimum i $x = 4$. Funktionsværdierne er
 
 $$
-f(1) = 1 - 6 + 9 + 1 = 5 \quad \text{og} \quad f(3) = 27 - 54 + 27 + 1 = 1
+f(2) = 8 - 36 + 48 - 10 = 10 \quad \text{og} \quad f(4) = 64 - 144 + 96 - 10 = 6
 $$
 
-Det lokale maksimum er altså 5, og det lokale minimum er 1. Ekstremumspunkterne er $(1, 5)$ og $(3, 1)$.
+Det lokale maksimum er altså 10, og det lokale minimum er 6. Ekstremumspunkterne er $(2, 10)$ og $(4, 6)$.
 
 </Eksempel>
 
 <Fejl>
 
-- At svare $x = 1$, når der spørges om maksimum. Maksimum er funktionsværdien $f(1) = 5$, og $x = 1$ er maksimumsstedet.
-- At sætte ind i $f'(x)$ i stedet for $f(x)$. $f'(1)$ er jo 0.
+- At svare $x = 2$, når der spørges om maksimum. Maksimum er funktionsværdien $f(2) = 10$, og $x = 2$ er maksimumsstedet.
+- At sætte ind i $f'(x)$ i stedet for $f(x)$. $f'(2)$ er jo 0.
 
 </Fejl>
 
@@ -218,7 +218,7 @@ En tallinje, der viser, hvor $f'(x)$ er positiv, nul og negativ. Du bruger den t
 
 <Begreb navn="Lokalt maksimum og minimum">
 
-Et lokalt maksimum er funktionsværdien $f(x_1)$ i et sted $x_1$, hvor $f$ skifter fra at være voksende til at være aftagende. Ved et lokalt minimum skifter $f$ fra aftagende til voksende. [formelsamlingen, s. 65, formel (259) og (260)](kilde:formelsamling)
+Skifter $f$ fra at være voksende til at være aftagende i $x_1$, har $f$ et lokalt maksimum $f(x_1)$ i $x_1$. Skifter $f$ fra aftagende til voksende i $x_2$, har $f$ et lokalt minimum $f(x_2)$ i $x_2$. [formelsamlingen, s. 65, formel (259) og (260)](kilde:formelsamling)
 
 </Begreb>
 
@@ -243,7 +243,7 @@ At finde den største eller mindste værdi af en størrelse under visse betingel
 - Undersøgelse af monotoniforhold er et af de steder, hvor du skal kunne løse ligninger, der indgår i en anden sammenhæng. [vejledningen, s. 12](kilde:vejledning) Er $f'(x) = 0$ en andengradsligning, så brug diskriminanten og løsningsformlen. [formelsamlingen, s. 75, formel (322) og (323)](kilde:formelsamling)
 - Skriv formlens navn eller nummer, før du sætter tal ind. [vejledningen, s. 42](kilde:vejledning)
 
-**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også dit digitale værktøj. [vejledningen, s. 36](kilde:vejledning) Ud fra en beskrevet situation skal du kunne opstille en model i form af en forskrift, undersøge den fx med differentialregning og drage konklusioner. [vejledningen, s. 16](kilde:vejledning)
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også dit digitale værktøj. [vejledningen, s. 36](kilde:vejledning) Opgaver med modellering kan komme i begge delprøver, men især i delprøve 2. [vejledningen, s. 9](kilde:vejledning) Ud fra en beskrevet situation skal du kunne opstille en model i form af en forskrift, undersøge den fx med differentialregning og drage konklusioner. [vejledningen, s. 16](kilde:vejledning)
 
 - »Benyt $f'(x)$« er et eksempel på et metodekrav. Bruger du ikke den metode, får du ikke fuldt point, selv om svaret er rigtigt. [vejledningen, s. 36](kilde:vejledning)
 - Du skal kunne argumentere for monotoniforhold ved hjælp af den afledede funktion i de opgaver, hvor det er relevant. [vejledningen, s. 37](kilde:vejledning)

@@ -61,9 +61,9 @@ Prøv selv: Den fuldt optrukne graf er $F(x) = \frac{1}{3}x^3 - x + k$, som er e
 
 - **Bestemt integral.** $\int_a^b f(x)\,dx = F(b) - F(a)$, hvor $F$ er en stamfunktion til $f$. [formelsamlingen, s. 69, formel (296)](kilde:formelsamling) Konstanten $k$ går ud, når du trækker fra, så du kan bruge en hvilken som helst stamfunktion.
 - **Areal over og under $x$-aksen.** Ligger grafen over $x$-aksen fra $a$ til $b$, er arealet mellem grafen og $x$-aksen $A = \int_a^b f(x)\,dx$. Ligger grafen under $x$-aksen, er $A = -\int_a^b f(x)\,dx$. [formelsamlingen, s. 70, formel (302) og (303)](kilde:formelsamling)
-- **Når grafen skifter side**, skal du dele området op ved nulpunktet $c$ med indskudsreglen $\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$ og finde arealet af hver del for sig. [formelsamlingen, s. 69, formel (297)](kilde:formelsamling)
+- **Når grafen skifter side** i et nulpunkt $c$, deler du området i to og finder arealet af hver del for sig med formel (302) og (303). Arealet er summen af de to dele. Integralet fra $a$ til $b$ er ikke arealet. Efter indskudsreglen er $\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$, og her går delene over og under $x$-aksen ud mod hinanden. [formelsamlingen, s. 69, formel (297), og s. 70, formel (302) og (303)](kilde:formelsamling)
 - **Areal mellem to grafer.** Ligger grafen for $f$ over grafen for $g$ fra $a$ til $b$, er arealet mellem dem $A = \int_a^b (f(x) - g(x))\,dx$. [formelsamlingen, s. 70, formel (304)](kilde:formelsamling)
-- **Sandsynligheder som integraler.** I normalfordelingen indgår tæthedsfunktionen og fordelingsfunktionen som integraler. Du skal kunne opstille integraler til intervalsandsynligheder og bestemme dem med dit digitale værktøj. [vejledningen, s. 18](kilde:vejledning) Se [normalfordelingen](/fag/matematik/normalfordelingen/).
+- **Sandsynligheder som integraler.** I normalfordelingen er en intervalsandsynlighed et integral af tæthedsfunktionen, og fordelingsfunktionen er også et integral. [formelsamlingen, s. 41, formel (170), og s. 43, formel (174)](kilde:formelsamling) Du skal kunne opstille integraler til intervalsandsynligheder og bestemme dem med dit digitale værktøj. [vejledningen, s. 18](kilde:vejledning) Se [normalfordelingen](/fag/matematik/normalfordelingen/).
 
 ### Substitution og rumfang
 
@@ -377,7 +377,7 @@ En regneregel til at integrere en sammensat funktion, der er ganget med den indr
 
 <Begreb navn="Omdrejningslegeme">
 
-Det legeme, du får, når et område drejes rundt om $x$-aksen. Rumfanget er $V = \pi \cdot \int_a^b f(x)^2\,dx$. [formelsamlingen, s. 71, formel (305)](kilde:formelsamling)
+Det legeme, du får, når et område drejes rundt om $x$-aksen. Drejes området mellem grafen for $f$ og $x$-aksen fra $a$ til $b$, er rumfanget $V = \pi \cdot \int_a^b f(x)^2\,dx$. [formelsamlingen, s. 71, formel (305)](kilde:formelsamling)
 
 </Begreb>
 
@@ -406,7 +406,7 @@ Det legeme, du får, når et område drejes rundt om $x$-aksen. Rumfanget er $V 
 **Eksempler på problemstillinger**
 
 - Grafen for $f(x) = x^2 - 2x$ og $x$-aksen afgrænser et område. Bestem arealet uden hjælpemidler. Ligger området over eller under $x$-aksen?
-- Indersiden af en skål kan beskrives ved at dreje grafen for $f(x) = 2\sqrt{x}$, hvor $0 \le x \le 9$, rundt om $x$-aksen. Målene er i cm. Hvor mange liter kan skålen rumme?
+- Indersiden af en skål kan beskrives ved at dreje grafen for $f(x) = 1{,}5 \cdot \sqrt{x}$, hvor $0 \le x \le 8$, rundt om $x$-aksen. Målene er i cm. Hvor mange liter kan skålen rumme?
 - Bestem $\int x \cdot e^{x^2}\,dx$ med substitution, og tjek dit svar ved at differentiere.
 
 Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
