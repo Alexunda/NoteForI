@@ -131,6 +131,133 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
         tekst: 'Undersøge problemstillinger og udvikle og vurdere løsninger, hvor du bruger matematikkens viden og metoder',
       },
       { id: 'fagets-identitet', tekst: 'Vise, at du kender matematikkens identitet og metoder' },
+      // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
+      {
+        id: 'kernestof-tal-og-algebra',
+        tekst: 'Kende mængder og talmængder og regne sikkert med regningsarternes hierarki, potenser, rødder og proportionalitet',
+        emne: 'matematik/tal-og-algebra',
+      },
+      { id: 'kernestof-ligninger', tekst: 'Løse ligninger analytisk, grafisk og med digitale værktøjer', emne: 'matematik/ligninger' },
+      {
+        id: 'kernestof-procent-og-rentesregning',
+        tekst: 'Regne med procent, relativ vækst, vækstrate, fremskrivningsfaktor og renteformlen',
+        emne: 'matematik/procent-og-rentesregning',
+      },
+      {
+        id: 'kernestof-retvinklede-trekanter',
+        tekst: "Bruge ensvinklede trekanter, Pythagoras' sætning og sinus, cosinus og tangens i retvinklede trekanter",
+        emne: 'matematik/retvinklede-trekanter',
+      },
+      {
+        id: 'kernestof-vilkaarlige-trekanter',
+        tekst: 'Bruge sinus- og cosinusrelationerne til at beregne sider, vinkler og areal i vilkårlige trekanter',
+        emne: 'matematik/vilkaarlige-trekanter',
+      },
+      {
+        id: 'kernestof-analytisk-plangeometri',
+        tekst: 'Arbejde med afstande, linjens ligning, skæring, ortogonale linjer, hældningsvinkel, cirklens ligning og tangenter i et koordinatsystem',
+        emne: 'matematik/analytisk-plangeometri',
+      },
+      {
+        id: 'kernestof-vektorer-i-planen',
+        tekst: 'Regne med vektorer i planen: længde, vinkel, skalarprodukt, projektion, determinant og parameterfremstillinger for linje og cirkel',
+        emne: 'matematik/vektorer-i-planen',
+      },
+      {
+        id: 'kernestof-vektorer-i-rummet',
+        tekst: 'Regne med vektorer i rummet: vektorprodukt, linjer, planer, kugler og skæring, afstande og vinkler',
+        emne: 'matematik/vektorer-i-rummet',
+      },
+      {
+        id: 'kernestof-funktioner',
+        tekst: 'Forstå funktionsbegrebet, sammensatte funktioner og parallelforskydning af grafer',
+        emne: 'matematik/funktioner',
+      },
+      {
+        id: 'kernestof-lineaere-funktioner',
+        tekst: 'Kende lineære funktioner og deres grafer og modellere med dem',
+        emne: 'matematik/lineaere-funktioner',
+      },
+      {
+        id: 'kernestof-andengradspolynomier',
+        tekst: 'Kende polynomier, særligt andengradspolynomier, og deres grafer',
+        emne: 'matematik/andengradspolynomier',
+      },
+      {
+        id: 'kernestof-eksponentielle-funktioner',
+        tekst: 'Kende eksponentialfunktioner og deres grafer og modellere med dem',
+        emne: 'matematik/eksponentielle-funktioner',
+      },
+      {
+        id: 'kernestof-potensfunktioner',
+        tekst: 'Kende potensfunktioner og deres grafer og modellere med dem',
+        emne: 'matematik/potensfunktioner',
+      },
+      {
+        id: 'kernestof-logaritmefunktioner',
+        tekst: 'Kende titalslogaritmen og den naturlige logaritme og deres grafer',
+        emne: 'matematik/logaritmefunktioner',
+      },
+      {
+        id: 'kernestof-trigonometriske-funktioner',
+        tekst: 'Kende cosinus og sinus som funktioner og deres grafer',
+        emne: 'matematik/trigonometriske-funktioner',
+      },
+      {
+        id: 'kernestof-regression-og-modeller',
+        tekst: 'Lave matematiske modeller med funktionstyperne, også med regression',
+        emne: 'matematik/regression-og-modeller',
+      },
+      {
+        id: 'kernestof-differentialkvotient',
+        tekst: 'Kende grænseværdi og kontinuitet og definere og fortolke differentialkvotienten, også som væksthastighed',
+        emne: 'matematik/differentialkvotient',
+      },
+      {
+        id: 'kernestof-regneregler-for-differentiation',
+        tekst: 'Differentiere f + g, f − g, k · f, f · g og sammensatte funktioner og kende de afledede funktioner for funktionstyperne',
+        emne: 'matematik/regneregler-for-differentiation',
+      },
+      {
+        id: 'kernestof-tangenter-og-newtons-metode',
+        tekst: "Bestemme en tangents ligning og finde nulpunkter numerisk med Newtons metode",
+        emne: 'matematik/tangenter-og-newtons-metode',
+      },
+      {
+        id: 'kernestof-monotoniforhold-og-optimering',
+        tekst: 'Bestemme monotoniforhold og ekstrema og løse optimeringsproblemer med differentialregning',
+        emne: 'matematik/monotoniforhold-og-optimering',
+      },
+      {
+        id: 'kernestof-integralregning',
+        tekst: 'Bestemme stamfunktioner og ubestemte og bestemte integraler, også arealer, integration ved substitution og volumen af omdrejningslegemer',
+        emne: 'matematik/integralregning',
+      },
+      {
+        id: 'kernestof-differentialligninger',
+        tekst: 'Løse og analysere første ordens differentialligninger, også med separationsmetoden og Eulers metode, og opstille simple modeller',
+        emne: 'matematik/differentialligninger',
+      },
+      {
+        id: 'kernestof-deskriptiv-statistik',
+        tekst: 'Beskrive og vise ugrupperet og grupperet observationsmateriale med statistiske deskriptorer',
+        emne: 'matematik/deskriptiv-statistik',
+      },
+      {
+        id: 'kernestof-kombinatorik-og-sandsynlighed',
+        tekst: 'Regne med sandsynlighed, sandsynlighedsfelter, hændelser og kombinatorik, herunder kombinationer',
+        emne: 'matematik/kombinatorik-og-sandsynlighed',
+      },
+      {
+        id: 'kernestof-binomialfordelingen',
+        tekst: 'Regne med stokastiske variable og binomialfordelingen og lave estimation og hypotesetest i binomialfordelingen',
+        emne: 'matematik/binomialfordelingen',
+      },
+      {
+        id: 'kernestof-normalfordelingen',
+        tekst: 'Regne sandsynligheder, middelværdi og spredning i normalfordelingen',
+        emne: 'matematik/normalfordelingen',
+      },
     ],
   },
 ];
