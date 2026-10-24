@@ -11,7 +11,7 @@ kilder:
     navn: "Lov om de gymnasiale uddannelser, lovbekendtgørelse nr. 624 af 18. juni 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/624
   - id: pb
-    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
+    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver, prøver i de almene voksenuddannelser m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/3
   - id: gymnasiebekendtgoerelsen
     navn: "Bekendtgørelse om de gymnasiale uddannelser, nr. 497 af 18. maj 2017, som ændret ved nr. 1086 af 31. oktober 2019, nr. 899 af 1. juli 2024 og nr. 283 af 11. februar 2026 (retsinformation.dk)"
@@ -52,7 +52,7 @@ kilder:
 ## Karakterer og eksamensresultat
 
 - **Vægte.** Fag på A-niveau og SRP har vægten 2, B-niveau 1,5 og C-niveau 1. Får du mere end én karakter i et fag, deles vægten ligeligt mellem karaktererne. Prøverne i grundforløbet tæller med vægten 0,25. [prøvebekendtgørelsen § 66](kilde:pb)
-- **Årskarakterer.** Du får en årskarakter i hvert fag, når faget slutter. [gymnasiebekendtgørelsen § 22, stk. 1, nr. 2](kilde:gymnasiebekendtgoerelsen) [borger.dk](kilde:borger) Årskaraktererne i de fag, der slutter, skal være givet, før planen for de mundtlige prøver bliver offentliggjort, og du får dem at vide senest tre dage efter, at planen er offentliggjort. [gymnasiebekendtgørelsen § 22, stk. 4](kilde:gymnasiebekendtgoerelsen) Ifølge ministeriet er det den første del af prøveplanen, der tæller. [Generelle regler om prøver og eksamen](kilde:generelle-regler)
+- **Årskarakterer.** Du får en årskarakter i hvert fag, når faget slutter. [gymnasiebekendtgørelsen § 22, stk. 1, nr. 2](kilde:gymnasiebekendtgoerelsen) [borger.dk](kilde:borger) Årskaraktererne i de fag, der slutter, skal være givet, før planen for de mundtlige prøver bliver offentliggjort, og du får dem at vide senest tre dage efter, at planen er offentliggjort. [gymnasiebekendtgørelsen § 22, stk. 4](kilde:gymnasiebekendtgoerelsen) Ifølge ministeriet er det den første del af prøveplanen, der tæller. [Generelle regler om prøver og eksamen](kilde:generelle-regler) Er du i tvivl om fristen, så spørg skolen med det samme.
 - **Foreløbigt eksamensresultat.** Det er det vægtede gennemsnit af alle karaktererne på dit eksamensbevis, også årskaraktererne. Det er det, der afgør, om du har bestået. [prøvebekendtgørelsen § 67](kilde:pb)
 - **Eksamensresultat.** Har du fem fag på A-niveau, bliver dit foreløbige eksamensresultat ganget med 1,03. Har du seks eller flere, bliver det ganget med 1,06. Ellers er de to resultater ens. [prøvebekendtgørelsen § 68, stk. 1](kilde:pb)
 - **Flere prøver i samme fag.** Har du været til prøve flere gange i samme fag og på samme niveau, kommer den højeste karakter som udgangspunkt på beviset. En prøvekarakter på et lavere niveau kommer ikke med, hvis du senere tager prøve i faget på et højere niveau. [prøvebekendtgørelsen § 65](kilde:pb)

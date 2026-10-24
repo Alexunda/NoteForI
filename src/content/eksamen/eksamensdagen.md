@@ -8,7 +8,7 @@ tjekket: 2026-10-23
 verificeret: false
 kilder:
   - id: pb
-    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
+    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver, prøver i de almene voksenuddannelser m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/3
   - id: hjaelpemidler
     navn: "Hjælpemiddeloversigt til de gymnasiale prøver, senest opdateret 23. februar 2026 (uvm.dk, PDF, de trykte sidetal)"

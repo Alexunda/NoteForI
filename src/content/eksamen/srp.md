@@ -14,7 +14,7 @@ kilder:
     navn: "Vejledning til studieretningsprojektet, stx, juli 2024 (uvm.dk, PDF)"
     url: https://uvm.dk/media/wcajzmlf/240807-studieretningsprojektet-stx.pdf
   - id: pb
-    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
+    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver, prøver i de almene voksenuddannelser m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/3
   - id: gymnasieloven
     navn: "Lov om de gymnasiale uddannelser, lovbekendtgørelse nr. 624 af 18. juni 2026 (retsinformation.dk)"

@@ -11,7 +11,7 @@ kilder:
     navn: "Lov om de gymnasiale uddannelser, lovbekendtgørelse nr. 624 af 18. juni 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/624
   - id: pb
-    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
+    navn: "Prøvebekendtgørelsen: Bekendtgørelse om gymnasiale prøver, prøver i de almene voksenuddannelser m.v., nr. 3 af 5. januar 2026 (retsinformation.dk)"
     url: https://www.retsinformation.dk/eli/lta/2026/3
   - id: ap-laereplan
     navn: "Læreplan for almen sprogforståelse, stx, august 2020 (uvm.dk, PDF)"
