@@ -202,7 +202,7 @@ Hvert fag får en **overbliksside** med:
   - **Regression:** man indsætter datapunkter (fx kopieret fra et regneark) og vælger en model, fx lineær, eksponentiel eller potens. Tjek i læreplanen og formelsamlingen, hvilke modeller der er kernestof. Siden viser forskriften og grafen sammen med punkterne. Værktøjet er også nyttigt i samfundsfag, kemi og bioteknologi.
   - Hvert resultat linker til den emneside, der forklarer det, fx "Hvad er et nulpunkt?".
 - **Om lommeregner og grafværktøj:**
-  - Begge er øveværktøjer, der skal give forståelse. De erstatter ikke skolens CAS-værktøj, og det står tydeligt på siderne.
+  - Begge er øveværktøjer, der skal give forståelse. De erstatter ikke GeoGebra, som er CAS-værktøjet i matematik, og det står tydeligt på siderne.
   - Til eksamen bruger eleven det værktøj, skolen har valgt, så siden linker til det og opfordrer til at øve i det.
   - Den samme grafkomponent med skydere bruges inde på matematikkens emnesider, fx ved eksponentielle funktioner.
 - **Python-værksted (valgfrit, fase 5):** en side med en lille Python-editor og matplotlib via Pyodide. Den indlæses kun, når man åbner siden.
@@ -300,7 +300,7 @@ Konteksten for tidsplanen er, at den store ungdomsuddannelsesreform (epx, skærp
 
 - [x] De første fag: matematik A, samfundsfag A, dansk A, bioteknologi A og kemi
 - [x] Niveauet i kemi: B
-- [ ] Hvilket CAS-værktøj bruger skolen (fx GeoGebra, WordMat, TI-Nspire eller Maple)? Siden linker til det, og lommeregnerens skrivemåde bør ligne det. Ejeren har nævnt GeoGebra (oktober 2026). Indtil ejeren svarer endeligt, skriver siderne "dit digitale værktøj"
+- [x] CAS-værktøjet er GeoGebra (besluttet i oktober 2026). Matematiksiderne skriver "GeoGebra" og linker til geogebra.org, og lommeregnerens skrivemåde bør ligne GeoGebras
 - [ ] Sidens navn
 - [x] Hvem læser indhold igennem og sætter `verificeret: true`? Ejeren af repoet, når hver formel og regel på gennemlæsningslisten er tjekket mod sin kilde. Før det tjekker en separat agent kildehenvisningerne (CLAUDE.md, regel 3)
 - [ ] Eksamensdatoer kendes først fra Lectio i foråret. Nedtællingen lader brugerne selv indtaste datoerne
