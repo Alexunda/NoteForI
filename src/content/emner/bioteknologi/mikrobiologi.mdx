@@ -56,7 +56,7 @@ Bakterier er små encellede organismer. [NHGRI-ordlisten: Bacteria](kilde:nhgri)
 
 - **Der ganges hver gang.** Når $x$ vokser med 1, bliver $f(x)$ ganget med fremskrivningsfaktoren $a$. [formelsamlingen, s. 19, formel (50)](kilde:formelsamling) Er $x$ tiden i timer, bliver antallet af bakterier altså ganget med $a$ hver time.
 - **Fra procent til faktor.** Fremskrivningsfaktoren er $a = 1 + r$, hvor vækstraten $r$ er skrevet som decimaltal. Vokser en kultur med 40 % i timen, er $a = 1{,}40$. [formelsamlingen, s. 18, formel (45)](kilde:formelsamling)
-- **Fødevarestyrelsens tal passer med eksponentiel vækst.** På tre timer bliver 1 bakterie til 1.000, og på de næste tre timer bliver de 1.000 til 1 million. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) Antallet bliver altså ganget med 1.000 på hver tre timer, for $1000 \cdot 1000 = 1\,000\,000$.
+- **Fødevarestyrelsens tal passer med eksponentiel vækst.** Ved stuetemperatur kan 1 bakterie blive til 1.000 på tre timer og til 1 million på seks timer. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) Fra time 3 til time 6 bliver antallet altså ganget med 1.000 igen, for $1000 \cdot 1000 = 1\,000\,000$.
 - **Fordoblingstiden afhænger kun af $a$.** Formlen for fordoblingskonstanten indeholder kun $a$ og ikke $b$. [formelsamlingen, s. 20, formel (52)](kilde:formelsamling) I en eksponentiel model tager det altså lige lang tid at gå fra 100 til 200 bakterier som fra 1.000 til 2.000.
 - **En anden skrivemåde.** Forskriften kan også skrives $f(x) = b \cdot e^{k \cdot x}$, hvor $k = \ln(a)$. [formelsamlingen, s. 18, formel (44)](kilde:formelsamling)
 
@@ -64,13 +64,13 @@ Bakterier er små encellede organismer. [NHGRI-ordlisten: Bacteria](kilde:nhgri)
 
 - **Ikke alle målinger skal med.** Data fra et vækstforsøg kan have dele, der ikke skal indgå i analysen. Så skal du først afgrænse det område, du analyserer, og begrunde, hvordan du afgrænser det. Først derefter argumenterer du for, at væksten i området er eksponentiel (den eksponentielle fase), og regner. [Lærerens hæfte, s. 21](kilde:laererens-haefte)
 - **Vurdér modellen på grafen.** Når du bruger digitale værktøjer fra matematik, skal du bruge viden fra både bioteknologi og matematik til at vurdere, om modellen er rimelig. Vurderingen sker ud fra, hvordan grafen ser ud. [vejledningen, s. 21](kilde:vejledning)
-- **Logistisk vækst** er en model, hvor væksten bremses, så $y$ nærmer sig en øvre grænse $M$. [formelsamlingen, s. 72, formel (310)](kilde:formelsamling) Når $y$ er lille i forhold til $M$, ligner væksten eksponentiel vækst. Det kan du se i differentialligningen $y' = a \cdot y \cdot (M - y)$: Er $y$ lille, er $M - y$ næsten lig med $M$.
+- **Logistisk vækst** følger differentialligningen $y' = a \cdot y \cdot (M - y)$. [formelsamlingen, s. 72, formel (310)](kilde:formelsamling) Formelsamlingen forklarer ikke modellen, men du kan se det af løsningen nedenfor: Er $a$ og $M$ positive, går $e^{-a \cdot M \cdot x}$ mod 0, når $x$ vokser, så $y$ nærmer sig $M$. Starter $y$ under $M$, er $M$ altså en øvre grænse. Er $y$ lille i forhold til $M$, er $M - y$ næsten lig med $M$, så $y' \approx a \cdot M \cdot y$. Det er differentialligningen for eksponentiel vækst, $y' = k \cdot y$, med $k = a \cdot M$. [formelsamlingen, s. 72, formel (308)](kilde:formelsamling)
 - Læs mere om modellerne på matematiksiderne om [eksponentielle funktioner](/fag/matematik/eksponentielle-funktioner/) og [differentialligninger](/fag/matematik/differentialligninger/).
 
 ### Vækstfaktorer
 
 - **Ordet forklares ikke.** Læreplanen nævner vækstfaktorer, men vejledningen siger ikke, hvad der menes. [læreplanen, pkt. 2.2](kilde:laereplan) [vejledningen, s. 12](kilde:vejledning) I fagkonsulenternes eksempel på en mundtlig prøveopgave om yoghurt skal man forklare, hvordan forskellige faktorer kan påvirke mikroorganismers vækst. [emu.dk: eksempler på mundtlige prøveopgaver](kilde:emu-mundtlig)
-- **Fødevarestyrelsens oversigt** viser for hver sygdomsbakterie i fødevarer, i hvilket temperatur- og pH-interval den kan formere sig, om den vokser med eller uden ilt, og hvor meget salt den tåler. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
+- **Fødevarestyrelsens oversigt** viser for en række sygdomsbakterier i fødevarer, i hvilket temperatur- og pH-interval den kan formere sig, om den vokser med eller uden ilt, og hvor meget salt den tåler. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3–4](kilde:fvst-bakterier)
 - **Temperatur.** Ifølge Fødevarestyrelsen stortrives bakterier mellem 20 og 40 °C. Når maden opbevares koldt, stopper de fleste bakterier med at vokse, og et køleskab bør højst være 5 °C. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) *Listeria monocytogenes* kan dog formere sig helt ned til 0–1 °C. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
 - **Ilt.** Nogle bakterier, fx *Salmonella* og *Listeria monocytogenes*, kan vokse både med og uden ilt. *Clostridium botulinum* vokser kun uden ilt. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
 - **pH.** Oversigten angiver et pH-interval for hver bakterie, og pH under 4 betragtes som sikkert. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
@@ -165,8 +165,8 @@ og $b = \frac{1}{10^0} = 1$. Forskriften er $f(x) = 10^x$. Tjek: $f(6) = 10^6 = 
 
 <Fejl>
 
-- At bruge $y_2 - y_1$ i stedet for $\frac{y_2}{y_1}$. Den formel hører til lineær vækst.
-- At glemme rodeksponenten $x_2 - x_1$, når den første måling ikke er ved $x = 1$.
+- At bruge $y_2 - y_1$ i stedet for $\frac{y_2}{y_1}$. Differensen hører til lineær vækst, hvor $a = \frac{\Delta y}{\Delta x}$. [formelsamlingen, s. 17, formel (43)](kilde:formelsamling)
+- At glemme rodeksponenten $x_2 - x_1$. Du kan kun udelade den, når der er præcis 1 mellem $x_1$ og $x_2$. I eksemplet er $x_2 - x_1 = 3$, og uden rodeksponenten får du $a = 1000$ i stedet for $a = 10$.
 
 </Fejl>
 
@@ -251,7 +251,7 @@ Antallet fordobles altså på ca. 1,5 timer. Fremskrivningsfaktoren er $a = e^{0
 <Symboler>
 
 - $y$: størrelsen efter tiden $x$, fx antal bakterier.
-- $M$: den øvre grænse, som $y$ nærmer sig.
+- $M$: den værdi, som $y$ nærmer sig. Er $a$ og $M$ positive, og starter $y$ under $M$, er $M$ en øvre grænse.
 - $a$ og $c$: konstanter. $y$ er løsningen til differentialligningen $y' = a \cdot y \cdot (M - y)$.
 
 </Symboler>
@@ -323,7 +323,7 @@ Den tid, det tager for en størrelse i eksponentiel vækst at blive fordoblet. I
 
 <Begreb navn="Logistisk vækst">
 
-Vækst, der følger differentialligningen $y' = a \cdot y \cdot (M - y)$. Løsningen er $y = \frac{M}{1 + c \cdot e^{-a \cdot M \cdot x}}$, og den nærmer sig den øvre grænse $M$. [formelsamlingen, s. 72, formel (310)](kilde:formelsamling)
+Vækst, der følger differentialligningen $y' = a \cdot y \cdot (M - y)$. Løsningen er $y = \frac{M}{1 + c \cdot e^{-a \cdot M \cdot x}}$. [formelsamlingen, s. 72, formel (310)](kilde:formelsamling) Er $a$ og $M$ positive, nærmer $y$ sig $M$, når $x$ vokser.
 
 </Begreb>
 
@@ -343,7 +343,7 @@ Vækst, der følger differentialligningen $y' = a \cdot y \cdot (M - y)$. Løsni
 **Eksempler på problemstillinger**
 
 - Du har målt antallet af bakterier i en kultur hver halve time i ti timer. Afgræns den del af data, der hører til den eksponentielle fase, og begrund dit valg. Bestem en forskrift, og beregn fordoblingstiden.
-- Hvordan kan temperatur og pH påvirke væksten af bakterierne i en yoghurtkultur? Inddrag en vækstkurve.
+- Hvordan kan temperatur og pH påvirke, hvor hurtigt bakterier vokser i en fødevare, fx en sauce, der står på køkkenbordet? Brug Fødevarestyrelsens oversigt, og inddrag en vækstkurve.
 - En kultur vokser eksponentielt de første timer, men senere flader kurven ud. Sammenlign en eksponentiel og en logistisk model, og vurdér, hvilken der passer bedst til hele forløbet.
 
 Øv dig på rigtige opgaver: Skriftlige opgaver fra 2010 og frem ligger i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). [vejledningen, s. 31](kilde:vejledning) [emu.dk: Skriftlig prøve i bioteknologi](kilde:emu-skriftlig) Lærerens hæfte og eksemplerne på mundtlige prøveopgaver finder du på [emu.dk](https://emu.dk/stx/bioteknologi/proever-og-eksamen).
