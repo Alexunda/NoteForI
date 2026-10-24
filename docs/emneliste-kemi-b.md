@@ -2,7 +2,7 @@
 
 Emnesiderne til kemi B bygger på kernestoffet i læreplanen (pkt. 2.2) og vejledningen til kemi A, B og C fra 2025 (afsnit 2.2, s. 14–24). Ejeren har valgt B-niveau (oktober 2026). Læreplanen fra 2017 er den eneste for kemi B på uvm.dk.
 
-- **Fælles med bioteknologi.** Otte emner findes også i bioteknologi A. De står kun ét sted (under bioteknologi med `ogsaaFag: [kemi]`) og vises under begge fag. Hver af dem siger, hvad kemi A, B og C har med. De nye sider herunder er kun til kemi.
+- **Fælles med bioteknologi.** Ni emner findes også i bioteknologi A. De står kun ét sted (under bioteknologi med `ogsaaFag: [kemi]`) og vises under begge fag. Hver af dem siger, hvad kemi A, B og C har med. De nye sider herunder er kun til kemi.
 - **Prøven.** Kemi B har kun en mundtlig prøve med eksperimentelt arbejde (læreplanen pkt. 4.2).
 - **Ingen forsøgsvejledninger.** Siderne forklarer, hvad en metode eller reaktion går ud på, og hvad du skal kunne til prøven. Sikkerhed følger skolens regler og din lærers anvisninger.
 - **Klassetrin:** Hverken læreplanen eller vejledningen siger, hvornår emnerne ligger. Derfor står der "ukendt".
@@ -18,6 +18,7 @@ Emnesiderne til kemi B bygger på kernestoffet i læreplanen (pkt. 2.2) og vejle
 | – | Syrer, baser og pH (`bioteknologi/syrer-og-baser`) | syre-basereaktioner, herunder beregning af pH for vandige opløsninger af syrer henholdsvis baser | s. 20–21 | bioteknologi |
 | – | Redoxreaktioner (`bioteknologi/redoxreaktioner`) | redoxreaktioner, herunder afstemning med oxidationstal | s. 20 | bioteknologi |
 | – | Kondensation og hydrolyse (`bioteknologi/kondensation-og-hydrolyse`) | organiske reaktionstyper: kondensation og hydrolyse | s. 16–18 | bioteknologi |
+| – | Makromolekyler (`bioteknologi/makromolekyler`) | eksempel på makromolekyler | s. 17 | bioteknologi |
 | **Kun kemi** | | | | |
 | 1 | Atomer og periodesystemet (`kemi/atomer-og-periodesystemet`) | grundstoffernes periodesystem, herunder atomets opbygning | s. 14–15 | kemi |
 | 2 | Formler og reaktionsskemaer (`kemi/formler-og-reaktionsskemaer`) | kemisk fagsprog, herunder navngivning, kemiske formler og reaktionsskemaer | s. 14–19 | kemi |
@@ -28,7 +29,7 @@ Emnesiderne til kemi B bygger på kernestoffet i læreplanen (pkt. 2.2) og vejle
 | 7 | Eksperimentelle metoder i kemi (`kemi/eksperimentelle-metoder-kemi`) | kvalitative og kvantitative eksperimentelle metoder, herunder separation, simpel syntese, titrering, vejeanalyse, spektrofotometri og chromatografi | s. 23 (også s. 12, 21 og 32) | kemi |
 | 8 | Kemikaliemærkning og sikkerhed (`kemi/kemikaliemaerkning`) | kemikaliemærkning og sikkerhedsvurdering ved eksperimentelt arbejde | s. 24 og 31–33 | kemi |
 
-"Eksempel på makromolekyler" (pkt. 2.2) dækkes af siden om makromolekyler i bioteknologi, hvis den får `ogsaaFag: [kemi]` og en kort note om, hvad kemi B kræver (vejledningen s. 16–17). Ellers skrives en kort side til kemi.
+"Eksempel på makromolekyler" (pkt. 2.2) dækkes af siden om makromolekyler i bioteknologi. Den har `ogsaaFag: [kemi]` og et afsnit om, hvad kemi A, B og C kræver (vejledningen s. 17–18).
 
 ## Kilder
 - Læreplan for kemi B, stx, august 2017: https://uvm.dk/media/qrbpki0v/kemi-b-stx-august-2017-ua.pdf

@@ -37,7 +37,7 @@ Siden er til STX-elever i alle tre klassetrin:
 | Samfundsfag A | 2017 (vejledning 2024) | |
 | Dansk A | 2017 og 2026 | Elever fra forskellige årgange kan være på hver sin version |
 | Bioteknologi A | 2017 (vejledning 2025) | Findes kun på A-niveau på STX. Overlapper med kemi, så emnesiderne linker til hinanden |
-| Kemi B | 2017 (vejledning 2025) | Niveauet er besluttet i oktober 2026. Otte emner deles med bioteknologi A og står kun ét sted, så de vises under begge fag |
+| Kemi B | 2017 (vejledning 2025) | Niveauet er besluttet i oktober 2026. Ni emner deles med bioteknologi A og står kun ét sted, så de vises under begge fag |
 
 De øvrige obligatoriske fag (fx engelsk og historie) kommer bagefter.
 - **Privatliv:** Repoet er offentligt. Der må ikke stå navne, skole, klasse eller andre personoplysninger om brugerne i koden eller indholdet.
