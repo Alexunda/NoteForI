@@ -1,0 +1,299 @@
+---
+titel: "Procent- og rentesregning"
+beskrivelse: "Vækstrate, fremskrivningsfaktor, relativ vækst og kapitalformlen for et beløb, der får den samme rente flere gange."
+fag: matematik
+nummer: 3
+omraade: "Tal og algebra"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+I procent- og rentesregning regner du med ændringer målt i procent. Det vigtigste redskab er fremskrivningsfaktoren $F = 1 + r$, hvor $r$ er vækstraten skrevet som decimaltal. Slutværdien får du ved at gange begyndelsesværdien med $F$. [formelsamlingen, s. 8, formel (2) og (3)](kilde:formelsamling) Får et beløb den samme rente flere gange, bruger du kapitalformlen $K = K_0 \cdot (1 + r)^n$. [formelsamlingen, s. 8, formel (5)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Procent bliver til decimaltal.** Du dividerer procenttallet med 100. 12 % giver altså $r = 0{,}12$. [formelsamlingen, s. 8, formel (1)](kilde:formelsamling)
+- **Der ganges, ikke lægges til.** Slutværdien er $S = B \cdot F$, hvor $B$ er begyndelsesværdien og $F = 1 + r$. En stigning på 12 % giver $F = 1{,}12$. [formelsamlingen, s. 8, formel (2) og (3)](kilde:formelsamling)
+- **Et fald giver en negativ vækstrate.** Er slutværdien mindre end begyndelsesværdien, er $r$ negativ. Et fald på 12 % giver $r = -0{,}12$ og $F = 0{,}88$. [formelsamlingen, s. 8, formel (2) og (4)](kilde:formelsamling)
+- **Relativ vækst.** Den relative vækst er ændringen målt i forhold til begyndelsesværdien: $r = \frac{S - B}{B}$. Du dividerer altså altid med begyndelsesværdien. [formelsamlingen, s. 8, formel (4)](kilde:formelsamling)
+- **Tilbage til begyndelsesværdien.** Kender du slutværdien og vækstraten, får du begyndelsesværdien ved at dividere med $F$: $B = \frac{S}{F}$. [formelsamlingen, s. 8, formel (3), og s. 74, formel (318)](kilde:formelsamling)
+- **Flere ændringer efter hinanden.** Så ganger du med fremskrivningsfaktorerne én ad gangen. En stigning på 20 % og derefter et fald på 20 % giver $1{,}20 \cdot 0{,}80 = 0{,}96$. Det er et fald på 4 % og ikke 0 %. [formelsamlingen, s. 8, formel (3)](kilde:formelsamling)
+- **Kapitalformlen.** Står et beløb $K_0$ med rentefoden $r$ i $n$ terminer (perioder, fx år), bliver det til $K = K_0 \cdot (1 + r)^n$. [formelsamlingen, s. 8, formel (5)](kilde:formelsamling) I læreplanen står der renteformlen. [læreplanen, pkt. 2.2](kilde:laereplan)
+- **Samme form som en eksponentiel funktion.** Kapitalformlen har samme form som $f(x) = b \cdot (1 + r)^x$, så du kan bruge det, du ved om [eksponentielle funktioner](/fag/matematik/eksponentielle-funktioner/). [formelsamlingen, s. 18, formel (44)](kilde:formelsamling)
+- **Find tiden eller renten.** Kender du tre af de fire størrelser i kapitalformlen, kan du finde den sidste ved at løse en [ligning](/fag/matematik/ligninger/). Vejledningen nævner beregning på kapitalfremskrivning som et eksempel på, hvor du skal kunne løse ligninger. [vejledningen, s. 12](kilde:vejledning)
+
+## Formler
+
+<Formel navn="Vækstraten som decimaltal" tex="r = \frac{p}{100}" kilde="formelsamling" henvisning="formelsamlingen, s. 8, formel (1)">
+
+<Symboler>
+
+- $p$: vækstraten i procent.
+- $r$: vækstraten som decimaltal.
+
+</Symboler>
+
+<Bruges>
+
+Hver gang en procent skal sættes ind i en formel. Formlerne for procent og rente bruger $r$ som decimaltal. [formelsamlingen, s. 8](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Huslejen stiger med 2,5 %. Så er
+
+$$
+r = \frac{2{,}5}{100} = 0{,}025
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At flytte kommaet én plads for lidt: 2,5 % er $0{,}025$ og ikke $0{,}25$.
+- At sætte procenttallet $p$ ind i en formel, hvor der skal stå $r$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fremskrivningsfaktoren" tex="F = 1 + r" kilde="formelsamling" henvisning="formelsamlingen, s. 8, formel (2)">
+
+<Symboler>
+
+- $F$: fremskrivningsfaktoren, som du ganger med.
+- $r$: vækstraten som decimaltal. Den er negativ ved et fald.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal lave en procentvis ændring om til det tal, du ganger med.
+
+</Bruges>
+
+<Eksempel>
+
+Et tilbud giver 35 % rabat. Så er $r = -0{,}35$, og
+
+$$
+F = 1 + (-0{,}35) = 0{,}65
+$$
+
+Du betaler altså 65 % af den normale pris.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge $F = 0{,}35$ ved 35 % rabat. Så regner du rabatten ud og ikke den nye pris.
+- At glemme minus ved et fald, så et fald på 35 % bliver til $F = 1{,}35$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Slutværdien" tex="S = B \cdot (1 + r)" kilde="formelsamling" henvisning="formelsamlingen, s. 8, formel (3)">
+
+<Symboler>
+
+- $S$: slutværdien, altså værdien efter ændringen.
+- $B$: begyndelsesværdien, altså værdien før ændringen.
+- $r$: vækstraten som decimaltal. Med $F = 1 + r$ kan formlen også skrives $S = B \cdot F$.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender værdien før og vækstraten og skal finde værdien efter. Skal du den anden vej, dividerer du med $F$: $B = \frac{S}{F}$.
+
+</Bruges>
+
+<Eksempel>
+
+En cykel koster 4.800 kr. Prisen sættes ned med 15 %, så $F = 0{,}85$, og
+
+$$
+S = 4800 \cdot 0{,}85 = 4080
+$$
+
+Cyklen koster nu 4.080 kr.
+
+Den anden vej: Efter en stigning på 8 % koster en vare 270 kr. Før stigningen kostede den
+
+$$
+B = \frac{270}{1{,}08} = 250
+$$
+
+altså 250 kr.
+
+</Eksempel>
+
+<Fejl>
+
+- At trække procenten fra slutværdien for at finde begyndelsesværdien. 270 kr. minus 8 % er 248,40 kr. og ikke 250 kr.
+- At lægge procenten til som et tal, fx $4800 + 15$, i stedet for at gange med $F$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Vækstraten ud fra to værdier" tex="r = \frac{S - B}{B}" kilde="formelsamling" henvisning="formelsamlingen, s. 8, formel (4)">
+
+<Symboler>
+
+- $S$: slutværdien.
+- $B$: begyndelsesværdien.
+- $r$: vækstraten, altså den relative vækst, som decimaltal.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender værdien før og efter og skal finde den procentvise ændring.
+
+</Bruges>
+
+<Eksempel>
+
+Antallet af elever på en skole steg fra 640 til 720. Så er
+
+$$
+r = \frac{720 - 640}{640} = \frac{80}{640} = 0{,}125
+$$
+
+Antallet steg altså med 12,5 %.
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere med slutværdien: $\frac{80}{720} \approx 0{,}111$ er forkert.
+- At glemme at gange med 100, når svaret skal være i procent.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Kapitalformlen" tex="K = K_0 \cdot (1 + r)^n" kilde="formelsamling" henvisning="formelsamlingen, s. 8, formel (5)">
+
+<Symboler>
+
+- $K$: slutkapitalen, altså beløbet efter $n$ terminer.
+- $K_0$: startkapitalen, altså beløbet til at begynde med.
+- $r$: rentefoden som decimaltal. Den skal passe til terminen, fx årlig rente, når $n$ er antal år.
+- $n$: antal terminer.
+
+</Symboler>
+
+<Bruges>
+
+Når et beløb får den samme rente i hver termin, fx et beløb på en konto med fast årlig rente.
+
+</Bruges>
+
+<Eksempel>
+
+Du sætter 5.000 kr. ind på en konto med en fast rente på 2 % om året. Renten lægges til én gang om året. Efter 8 år er beløbet
+
+$$
+K = 5000 \cdot 1{,}02^8 \approx 5858{,}30
+$$
+
+altså ca. 5.858 kr. Hvornår er beløbet vokset til 6.000 kr.? Løs $5000 \cdot 1{,}02^n = 6000$. Divider med 5000, og tag $\log$ på begge sider:
+
+$$
+1{,}02^n = 1{,}2 \quad \text{giver} \quad n = \frac{\log(1{,}2)}{\log(1{,}02)} \approx 9{,}2
+$$
+
+Da renten kun lægges til én gang om året, er beløbet først over 6.000 kr. efter 10 år.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange renten med antal år: 8 gange 2 % er 16 %, men beløbet vokser med ca. 17,2 %.
+- At skrive $r = 2$ eller $r = 1{,}02$ i stedet for $r = 0{,}02$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Vækstrate">
+
+Den procentvise ændring skrevet som decimaltal. En stigning på 6 % giver $r = 0{,}06$, og et fald på 6 % giver $r = -0{,}06$. [formelsamlingen, s. 8, formel (1) og (4)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fremskrivningsfaktor">
+
+Tallet $F = 1 + r$, som du ganger begyndelsesværdien med for at få slutværdien. [formelsamlingen, s. 8, formel (2) og (3)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Relativ vækst">
+
+Ændringen målt i forhold til begyndelsesværdien, altså $\frac{S - B}{B}$. Skrevet som decimaltal er det vækstraten $r$. [formelsamlingen, s. 8, formel (4)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Begyndelsesværdi og slutværdi">
+
+Begyndelsesværdien $B$ er værdien før en ændring, og slutværdien $S$ er værdien efter. De hænger sammen ved $S = B \cdot F$. [formelsamlingen, s. 8, formel (3)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Rentefod">
+
+Renten skrevet som decimaltal. Den hedder $r$ i kapitalformlen. En rente på 3 % om året giver $r = 0{,}03$. [formelsamlingen, s. 8, formel (1) og (5)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Kapitalformlen">
+
+Formlen $K = K_0 \cdot (1 + r)^n$ for et beløb $K_0$, der får rentefoden $r$ i $n$ terminer. I læreplanen står der renteformlen. [formelsamlingen, s. 8, formel (5)](kilde:formelsamling) [læreplanen, pkt. 2.2](kilde:laereplan)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Du skal have rutine i opgaver med procentregning, hvor du bruger fremskrivningsfaktor og vækstrate. [vejledningen, s. 12](kilde:vejledning) Procent og rente kan også dukke op i ligningsopgaver, fx ved beregning på kapitalfremskrivning. [vejledningen, s. 12](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Øv dig i at regne med fremskrivningsfaktorer i hånden med pæne tal, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
+
+- Skriv formlen, før du sætter tal ind, eller nævn dens navn eller nummer, fx ”kapitalformlen (5)”. [vejledningen, s. 42](kilde:vejledning)
+- Husk enheden i svaret, fx kr. [vejledningen, s. 43](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her kan du fx løse kapitalformlen for $n$ eller $r$ med dit digitale værktøj. Skriv, hvilken ligning du løser, og hvilken kommando du bruger. [vejledningen, s. 41–42](kilde:vejledning)
+
+**Ikke kernestof.** Formlerne for annuitetsopsparing og annuitetslån står også i formelsamlingen. [formelsamlingen, s. 8, formel (6) og (7)](kilde:formelsamling) Vejledningen nævner annuiteter som supplerende stof, fx i et samarbejde med samfundsfag om privatøkonomi. [vejledningen, s. 12 og 19](kilde:vejledning) Den skriftlige prøve bygger på kernestoffet. Andre emner kan komme med, men så står grundlaget i opgaveteksten. [vejledningen, s. 36](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner ikke et bestemt bevis i procent- og rentesregning. Øv dig i at forklare, hvorfor kapitalformlen gælder: I hver termin bliver beløbet ganget med $1 + r$. [formelsamlingen, s. 8, formel (3)](kilde:formelsamling) Efter $n$ terminer er det ganget med $1 + r$ i alt $n$ gange, altså med $(1 + r)^n$. [formelsamlingen, s. 77, formel (338)](kilde:formelsamling) På treårige hold kan et eksamensspørgsmål om fx vækstmodeller også blive udvidet med stof fra senere i forløbet. [vejledningen, s. 38](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- En vare stiger først med 10 % og falder derefter med 10 %. Koster den nu mere eller mindre end før? Begrund svaret med fremskrivningsfaktorer.
+- Et beløb står på en konto med fast årlig rente. På 6 år vokser det fra 12.000 kr. til 13.500 kr. Bestem rentefoden.
+- En pris stiger med 25 %. Hvor mange procent skal den falde bagefter for at komme tilbage til den oprindelige pris?
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
