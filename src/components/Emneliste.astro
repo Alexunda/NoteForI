@@ -21,7 +21,6 @@ const { emner, beskrivelse = false } = Astro.props;
           <a href={url(emneSti(emne))}>
             <span class="emneliste-titel">
               {emne.data.titel}
-              {emne.data.pladsholder && <span class="emneliste-pladsholder">pladsholder</span>}
             </span>
             {beskrivelse && <span class="emneliste-beskrivelse">{emne.data.beskrivelse}</span>}
           </a>
@@ -81,18 +80,6 @@ const { emner, beskrivelse = false } = Astro.props;
 
   .emneliste-beskrivelse {
     color: var(--farve-tekst-svag);
-  }
-
-  .emneliste-pladsholder {
-    margin-left: var(--afstand-2);
-    padding: 0 var(--afstand-2);
-    border: 1px dashed var(--farve-kant-staerk);
-    border-radius: var(--radius-rund);
-    color: var(--farve-tekst-svag);
-    font-size: var(--skrift-lille);
-    font-weight: 400;
-    text-decoration: none;
-    display: inline-block;
   }
 
   .emneliste-trin {

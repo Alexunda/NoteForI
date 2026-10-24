@@ -34,7 +34,7 @@ interface Props {
 }
 
 const { emne } = Astro.props;
-const { titel, beskrivelse, fag, ogsaaFag, niveau, klassetrin, laereplan, kilder, verificeret, pladsholder } =
+const { titel, beskrivelse, fag, ogsaaFag, niveau, klassetrin, laereplan, kilder, verificeret } =
   emne.data;
 const { Content, headings } = await render(emne);
 
@@ -76,14 +76,6 @@ const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb, Graf, Fo
         }
       </ul>
       {!verificeret && <Maerkat />}
-      {
-        pladsholder && (
-          <p class="emne-pladsholder">
-            <strong>Pladsholder.</strong> Siden viser kun, hvordan en emneside ser ud. Teksten og formlerne er ikke
-            rigtigt fagligt indhold.
-          </p>
-        )
-      }
     </header>
 
     <div class="emne-indhold">

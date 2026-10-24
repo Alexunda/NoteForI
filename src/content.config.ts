@@ -48,8 +48,6 @@ const emner = defineCollection({
     klassetrin: z.union([z.array(z.enum(KLASSETRIN)).min(1), z.literal('ukendt')]),
     /** Den læreplanversion, indholdet bygger på, fx "2024", eller flere, fx ["2017", "2026"] */
     laereplan: laereplaner,
-    /** Siden er kun et eksempel med pladsholdertekst og ikke rigtigt fagligt indhold */
-    pladsholder: z.boolean().default(false),
     kilder: kildeliste,
     /** Sættes kun til true af repoets ejer, når siden er gennemlæst (CLAUDE.md, regel 3) */
     verificeret: z.boolean(),

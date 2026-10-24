@@ -22,7 +22,8 @@ import { afsnitNoegle } from '../emneside.ts';
 export const FORMEL_DELE = ['Symboler', 'Bruges', 'Eksempel', 'Fejl'] as const;
 
 function erEmne(ctx: PluginFactoryContext): boolean {
-  return (ctx.fileURL?.pathname ?? '').includes('/src/content/emner/');
+  const sti = ctx.fileURL?.pathname ?? '';
+  return sti.includes('/src/content/emner/') || sti.endsWith('/tests/komponenter.mdx');
 }
 
 function filnavn(ctx: { fileURL: URL | undefined }): string {

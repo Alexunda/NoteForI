@@ -61,9 +61,9 @@ export interface Flashcard {
   verificeret: boolean;
 }
 
-/** Alle begreber fra emnesiderne. Sider med pladsholdertekst er ikke med. */
+/** Alle begreber fra emnesiderne */
 export async function hentFlashcards(): Promise<Flashcard[]> {
-  const emner = (await hentEmner()).filter((emne) => !emne.data.pladsholder);
+  const emner = await hentEmner();
   return emner.flatMap((emne) => {
     const fil = new URL(emne.filePath ?? emne.id, 'file:///projekt/');
     return udtraekBegreber(emne.body ?? '').map((begreb) => ({

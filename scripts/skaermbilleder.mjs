@@ -29,7 +29,7 @@ try {
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 const MAPPE = fileURLToPath(new URL('../skaermbilleder/', import.meta.url));
 const BASE = (config.base ?? '/').replace(/\/+$/, '');
-const SIDER = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ['/', '/eksamen/', '/fag/matematik/eksempel/'];
+const SIDER = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ['/', '/eksamen/', '/fag/matematik/eksponentielle-funktioner/'];
 const BREDDER = [
   { bredde: 375, hoejde: 812 },
   { bredde: 1280, hoejde: 800 },

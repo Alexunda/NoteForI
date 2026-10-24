@@ -1,0 +1,57 @@
+---
+// Testside til komponenterne på emnesiderne (Formel, Begreb, Graf osv.).
+// Indholdet står i tests/komponenter.mdx uden for content collections, så det
+// ikke kommer i fagoversigten, søgningen eller flashcards. Siden bygges kun,
+// når KOMPONENTTEST=1 (fx i `npm run tjek:graf`), og kommer aldrig med på den
+// udgivne side.
+import 'katex/dist/katex.min.css';
+import '../../styles/emne.css';
+import Side from '../../layouts/Side.astro';
+import Formel from '../../components/emne/Formel.astro';
+import Symboler from '../../components/emne/Symboler.astro';
+import Bruges from '../../components/emne/Bruges.astro';
+import Eksempel from '../../components/emne/Eksempel.astro';
+import Fejl from '../../components/emne/Fejl.astro';
+import Begreb from '../../components/emne/Begreb.astro';
+import Graf from '../../components/emne/Graf.astro';
+import Forskel from '../../components/emne/Forskel.astro';
+import Plan from '../../components/emne/Plan.astro';
+import Indhold, { frontmatter } from '../../../tests/komponenter.mdx';
+
+export function getStaticPaths() {
+  // Projektet har ikke Nodes typer, så process.env læses via globalThis
+  const miljoe = (globalThis as { process?: { env: Record<string, string | undefined> } }).process?.env;
+  return miljoe?.KOMPONENTTEST === '1' ? [{ params: { side: 'komponenter' } }] : [];
+}
+
+const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb, Graf, Forskel, Plan };
+const kilder = frontmatter.kilder as { id: string; navn: string; url: string }[];
+---
+
+<Side titel={frontmatter.titel} beskrivelse={frontmatter.beskrivelse}>
+  <article class="emne">
+    <header class="emne-hoved">
+      <h1>{frontmatter.titel}</h1>
+      <p class="emne-pladsholder">
+        <strong>Testside.</strong> Siden viser kun komponenterne. Teksten og formlerne er ikke rigtigt fagligt indhold.
+      </p>
+    </header>
+
+    <div class="emne-indhold">
+      <Indhold components={komponenter} />
+    </div>
+
+    <section class="emne-afsnit" data-afsnit="kilder" aria-labelledby="kilder">
+      <h2 id="kilder">Kilder</h2>
+      <ul class="emne-kilder">
+        {
+          kilder.map((kilde) => (
+            <li>
+              <a href={kilde.url}>{kilde.navn}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Side>

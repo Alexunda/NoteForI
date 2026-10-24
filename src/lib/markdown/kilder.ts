@@ -31,8 +31,8 @@ export interface Kilde {
   url: string;
 }
 
-/** De mapper, hvis filer bruger kildehenvisningerne */
-const MAPPER = ['/src/content/emner/', '/src/content/fag/'];
+/** De mapper, hvis filer bruger kildehenvisningerne, og testsiden til komponenterne */
+const MAPPER = ['/src/content/emner/', '/src/content/fag/', '/tests/komponenter.mdx'];
 
 /** Holder fx "s. 15", "pkt. 4.2.1" og "§ 27" samlet på én linje. */
 export function holdSammen(tekst: string): string {
