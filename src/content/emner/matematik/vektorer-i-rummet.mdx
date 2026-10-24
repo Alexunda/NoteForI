@@ -23,6 +23,8 @@ kilder:
   - id: enkeltopgaver
     navn: "Vejledende enkeltopgaver til matematik A, stx, 2024-læreplanen, december 2025 (uvm.dk, PDF)"
     url: https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf
+  - id: egen
+    navn: "Egen forklaring, godkendt af redaktionen"
   - id: lex-plan
     navn: "lex.dk: Plan (geometrisk begreb) (hentet 24. oktober 2026)"
     url: https://lex.dk/plan_-_geometrisk_begreb
@@ -46,7 +48,7 @@ I rummet har en vektor tre koordinater, fx $\vec{a} = \begin{pmatrix} 2 \\ 1 \\ 
 - **Tangentplan.** Tangentplanen rører kuglen i røringspunktet $P$. Den har $\overrightarrow{PC}$ som normalvektor, hvor $C$ er kuglens centrum. [formelsamlingen, s. 61, formel (247)](kilde:formelsamling)
 - **Skæring og vinkler.** Skæring mellem linje og plan, vinkler mellem linje og plan og vinkler mellem to planer hører også med. [vejledningen, s. 13](kilde:vejledning)
 - **Skæring mellem linje og plan.** Ligger en linje ikke i en plan, er der to muligheder: Linjen er parallel med planen, eller den rammer planen i præcis ét punkt. [lex.dk: Plan](kilde:lex-plan) Skæringspunktet ligger både på linjen og i planen, så du finder det ved at løse ligningerne for dem sammen. [lex.dk: Analytisk geometri](kilde:lex-analytisk-geometri) I eksemplet herunder sætter du koordinaterne fra linjens parameterfremstilling ind i planens ligning.
-- **Vinkler i rummet.** Til vinklerne mellem linje og plan og mellem to planer har formelsamlingen ingen formler med de navne, men den har formlen for vinklen mellem to vektorer. [formelsamlingen, s. 56, formel (232)](kilde:formelsamling) Se i dine noter, hvordan I har brugt den på linjer og planer.
+- **Vinkler i rummet.** Til vinklerne mellem linje og plan og mellem to planer har formelsamlingen ingen formler med de navne, men den har formlen for vinklen mellem to vektorer. [formelsamlingen, s. 56, formel (232)](kilde:formelsamling) Under Formler står formler for vinklen mellem en linje og en plan og mellem to planer. De bygger på formel (232). Den spidse vinkel mellem to linjer i rummet finder du på samme måde som i planen, bare med tre koordinater: se [vinklen mellem to linjer](/fag/matematik/vektorer-i-planen/#formel-vinklen-mellem-to-linjer). [egen forklaring](kilde:egen) En [stedvektor](/fag/matematik/vektorer-i-planen/#begreb-stedvektor) i rummet har tre koordinater.
 
 ### Eksempel: skæringspunkt mellem linje og plan
 
@@ -104,6 +106,77 @@ $$
 
 - At glemme den tredje koordinat i skalarproduktet eller i længderne.
 - At svare med $\cos(v)$ i stedet for $v$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Vinklen mellem en linje og en plan" tex="\sin(v) = \frac{|\vec{r} \cdot \vec{n}|}{|\vec{r}| \cdot |\vec{n}|}" kilde="egen" henvisning="egen forklaring, bygget på formel (232)">
+
+<Symboler>
+
+- $v$: den spidse vinkel mellem linjen og planen. Den ligger mellem $0^\circ$ og $90^\circ$.
+- $\vec{r}$: en retningsvektor for linjen.
+- $\vec{n}$: en normalvektor for planen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde vinklen mellem en linje og en plan. Normalvektoren står vinkelret på planen. Den spidse vinkel mellem $\vec{r}$ og $\vec{n}$ er derfor $90^\circ - v$, og da $\cos(90^\circ - v) = \sin(v)$, står der sinus i formlen. Resten er formlen for vinklen mellem to vektorer med numerisk tegn. [formelsamlingen, s. 56, formel (232)](kilde:formelsamling) [egen forklaring](kilde:egen)
+
+</Bruges>
+
+<Eksempel>
+
+Linjen $l$ fra eksemplet under Vigtige pointer har retningsvektoren $\vec{r} = \begin{pmatrix} 1 \\ 2 \\ -1 \end{pmatrix}$, og planen $\alpha: x + y + z - 10 = 0$ har normalvektoren $\vec{n} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$. Skalarproduktet er $1 + 2 - 1 = 2$, og længderne er $\sqrt{6}$ og $\sqrt{3}$. Så er
+
+$$
+\sin(v) = \frac{|2|}{\sqrt{6} \cdot \sqrt{3}} \approx 0{,}4714
+$$
+
+og $v = \sin^{-1}(0{,}4714) \approx 28{,}1^\circ$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge $\cos^{-1}$ i stedet for $\sin^{-1}$. Så får du vinklen mellem $\vec{r}$ og $\vec{n}$, her $61{,}9^\circ$, og ikke vinklen mellem linjen og planen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Vinklen mellem to planer" tex="\cos(v) = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1| \cdot |\vec{n}_2|}" kilde="egen" henvisning="egen forklaring, bygget på formel (232)">
+
+<Symboler>
+
+- $v$: den spidse vinkel mellem planerne. Den ligger mellem $0^\circ$ og $90^\circ$.
+- $\vec{n}_1$ og $\vec{n}_2$: en normalvektor for hver af de to planer.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde vinklen mellem to planer, der skærer hinanden. Den spidse vinkel mellem planerne er den samme som den spidse vinkel mellem deres normalvektorer, så du bruger formlen for vinklen mellem to vektorer med numerisk tegn. [formelsamlingen, s. 56, formel (232)](kilde:formelsamling) [egen forklaring](kilde:egen)
+
+</Bruges>
+
+<Eksempel>
+
+Planen $\alpha: x + y + z - 10 = 0$ har normalvektoren $\vec{n}_1 = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$, og planen $\beta: 2x - y + 2z - 4 = 0$ har normalvektoren $\vec{n}_2 = \begin{pmatrix} 2 \\ -1 \\ 2 \end{pmatrix}$. Skalarproduktet er $2 - 1 + 2 = 3$, og længderne er $\sqrt{3}$ og $3$. Så er
+
+$$
+\cos(v) = \frac{|3|}{\sqrt{3} \cdot 3} \approx 0{,}5774
+$$
+
+og $v = \cos^{-1}(0{,}5774) \approx 54{,}7^\circ$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme det numeriske tegn. Så kan du få den stumpe vinkel i stedet for den spidse.
 
 </Fejl>
 

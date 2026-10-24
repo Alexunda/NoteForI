@@ -20,6 +20,7 @@ import { parse as laesYaml } from 'yaml';
 import { FAG_IDER } from '../src/data/fag.ts';
 import { udtraekBegreber } from '../src/lib/begreber.ts';
 import { tjekEmneAfsnit } from '../src/lib/emneside.ts';
+import { EGEN_FORKLARING } from '../src/lib/huller.ts';
 import { fortolk } from '../src/lib/graf/udtryk.ts';
 import { emneAfsnit, emneTjek } from '../src/lib/markdown/emneside.ts';
 import { katexPlugin } from '../src/lib/markdown/katex.ts';
@@ -66,6 +67,8 @@ function tjekFrontmatter(data, fil) {
       if (ider.has(k?.id)) fejl.push(`to kilder har id'et "${k?.id}"`);
       ider.add(k?.id);
       if (!k?.navn) fejl.push(`kilden "${k?.id}" mangler et navn`);
+      // Kun en egen forklaring må mangle url (CLAUDE.md, regel 1)
+      if (k?.url === undefined && k?.navn === EGEN_FORKLARING) continue;
       if (!/^https?:\/\//.test(k?.url ?? '')) fejl.push(`kilden "${k?.id}" mangler en url`);
     }
   } else if (data.kilder !== undefined) {
