@@ -2,10 +2,15 @@
 // forskrifter på et lærred (canvas) med math.js. Andre bogstaver end x får
 // hver sin skyder, så man kan se, hvad parameteren gør ved grafen.
 //
-// Man flytter grafen ved at trække med en finger eller musen og zoomer ved
-// at knibe med to fingre, med knapperne eller med musehjulet, når grafen har
+// Man flytter grafen ved at trække med musen eller to fingre og zoomer ved at
+// knibe med to fingre, med knapperne eller med musehjulet, når grafen har
 // fokus (eller Ctrl er nede, fx ved knib på en touchpad). Med tastaturet
 // flytter piletasterne, + og − zoomer, og 0 nulstiller.
+//
+// På emnesiderne ruller én finger siden, så grafen ikke fanger en elev, der
+// bare vil læse videre. Trækker man med én finger på grafen, kommer et kort
+// hint om at bruge to fingre. Med enFinger (grafværktøjet i fase 4) flytter
+// én finger grafen i stedet.
 //
 // Komponenten bruges på emnesiderne via src/components/emne/Graf.astro og
 // skal genbruges i grafværktøjet i fase 4. Logikken ligger i src/lib/graf/.
@@ -44,6 +49,8 @@ export interface GrafProps {
   /** Udsnittet, grafen starter med: [mindste, største] */
   x?: [number, number];
   y?: [number, number];
+  /** Én finger flytter grafen i stedet for at rulle siden. Kun til grafværktøjet */
+  enFinger?: boolean;
 }
 
 /** Kurvernes farver (design tokens) og stregmønstre, så de kan skelnes uden farver */
@@ -68,7 +75,15 @@ export function skyder(p: GrafParameter | undefined): Skyder {
 
 type Fortolket = { forskrift: Forskrift; fejl: null } | { forskrift: null; fejl: string };
 
-export default function Graf({ id, titel, funktioner, parametre = {}, x = [-10, 10], y = [-10, 10] }: GrafProps) {
+export default function Graf({
+  id,
+  titel,
+  funktioner,
+  parametre = {},
+  x = [-10, 10],
+  y = [-10, 10],
+  enFinger = false,
+}: GrafProps) {
   const start: Visning = { xMin: x[0], xMax: x[1], yMin: y[0], yMax: y[1] };
   const fortolkede = useMemo<Fortolket[]>(
     () =>
@@ -97,6 +112,8 @@ export default function Graf({ id, titel, funktioner, parametre = {}, x = [-10, 
   const [stoerrelse, saetStoerrelse] = useState({ bredde: 0, hoejde: 0 });
   // Tælles op, når temaet skifter, så grafen tegnes igen med de nye farver
   const [tema, saetTema] = useState(0);
+  // Hintet om at bruge to fingre, når man trækker med én finger på en emneside
+  const [hint, saetHint] = useState(false);
 
   const laerred = useRef<HTMLCanvasElement>(null);
   // Den nyeste visning, så håndteringen af fingre og hjul ikke bruger en gammel
@@ -125,6 +142,57 @@ export default function Graf({ id, titel, funktioner, parametre = {}, x = [-10, 
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-tema'] });
     return () => observer.disconnect();
   }, []);
+
+  // På emnesiderne håndteres fingrene her og ikke med pointer events: Én finger
+  // ruller siden som normalt, og to fingre flytter og zoomer grafen. Lytterne
+  // må ikke være passive, for to fingre skal kunne stoppe siden i at rulle.
+  useEffect(() => {
+    const el = laerred.current;
+    if (!el || enFinger) return;
+    let fra: { visning: Visning; a: Punkt; b: Punkt } | null = null;
+    let hintTimer = 0;
+    const punktFra = (beroering: Touch): Punkt => {
+      const kasse = el.getBoundingClientRect();
+      return { x: beroering.clientX - kasse.left, y: beroering.clientY - kasse.top };
+    };
+    const nyStart = (haendelse: TouchEvent) => {
+      fra =
+        haendelse.touches.length >= 2
+          ? { visning: visningNu.current, a: punktFra(haendelse.touches[0]), b: punktFra(haendelse.touches[1]) }
+          : null;
+    };
+    const start = (haendelse: TouchEvent) => {
+      nyStart(haendelse);
+      if (fra) {
+        haendelse.preventDefault();
+        saetHint(false);
+      }
+    };
+    const bevaeg = (haendelse: TouchEvent) => {
+      if (fra && haendelse.touches.length >= 2) {
+        haendelse.preventDefault();
+        const kasse = el.getBoundingClientRect();
+        const a = punktFra(haendelse.touches[0]);
+        const b = punktFra(haendelse.touches[1]);
+        skift(knib(fra.visning, kasse.width, kasse.height, fra.a, fra.b, a, b));
+      } else if (haendelse.touches.length === 1) {
+        saetHint(true);
+        clearTimeout(hintTimer);
+        hintTimer = window.setTimeout(() => saetHint(false), 1800);
+      }
+    };
+    el.addEventListener('touchstart', start, { passive: false });
+    el.addEventListener('touchmove', bevaeg, { passive: false });
+    el.addEventListener('touchend', nyStart);
+    el.addEventListener('touchcancel', nyStart);
+    return () => {
+      clearTimeout(hintTimer);
+      el.removeEventListener('touchstart', start);
+      el.removeEventListener('touchmove', bevaeg);
+      el.removeEventListener('touchend', nyStart);
+      el.removeEventListener('touchcancel', nyStart);
+    };
+  }, [enFinger]);
 
   // Musehjulet zoomer kun, når grafen har fokus, eller når Ctrl er nede. Ellers
   // ruller siden som normalt, når musen kommer forbi grafen.
@@ -197,6 +265,8 @@ export default function Graf({ id, titel, funktioner, parametre = {}, x = [-10, 
 
   function ned(haendelse: PointerEvent) {
     if (haendelse.pointerType === 'mouse' && haendelse.button !== 0) return;
+    // Fingrene på en emneside håndteres med touch events (se ovenfor)
+    if (haendelse.pointerType === 'touch' && !enFinger) return;
     laerred.current?.setPointerCapture(haendelse.pointerId);
     fingre.current.set(haendelse.pointerId, punkt(haendelse));
     nyGestus();
@@ -254,19 +324,25 @@ export default function Graf({ id, titel, funktioner, parametre = {}, x = [-10, 
 
   return (
     <div class="graf">
-      <canvas
-        ref={laerred}
-        class="graf-laerred"
-        role="img"
-        aria-label={beskrivelse}
-        aria-describedby={`${id}-tastatur`}
-        tabIndex={0}
-        onPointerDown={ned}
-        onPointerMove={bevaeg}
-        onPointerUp={op}
-        onPointerCancel={op}
-        onKeyDown={tast}
-      />
+      <div class="graf-ramme">
+        <canvas
+          ref={laerred}
+          class="graf-laerred"
+          data-en-finger={enFinger || undefined}
+          role="img"
+          aria-label={beskrivelse}
+          aria-describedby={`${id}-tastatur`}
+          tabIndex={0}
+          onPointerDown={ned}
+          onPointerMove={bevaeg}
+          onPointerUp={op}
+          onPointerCancel={op}
+          onKeyDown={tast}
+        />
+        <p class={hint ? 'graf-hint graf-hint-vist' : 'graf-hint'} aria-hidden="true">
+          Brug to fingre for at flytte og zoome grafen
+        </p>
+      </div>
       <p class="skjult-visuelt" id={`${id}-tastatur`}>
         Piletasterne flytter grafen, plus og minus zoomer, og 0 nulstiller.
       </p>
@@ -281,7 +357,11 @@ export default function Graf({ id, titel, funktioner, parametre = {}, x = [-10, 
           <Ikon navn="nulstil" />
           Nulstil
         </button>
-        <p class="graf-hjaelp">Træk for at flytte. Knib for at zoome.</p>
+        <p class="graf-hjaelp">
+          {enFinger
+            ? 'Træk for at flytte. Knib for at zoome.'
+            : 'Flyt og zoom med to fingre eller knapperne. Med én finger ruller siden.'}
+        </p>
       </div>
       <ul class="graf-forklaring">
         {funktioner.map((f, i) => (

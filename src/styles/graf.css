@@ -20,14 +20,50 @@
   background: var(--farve-flade);
 }
 
-/* Fingrene flytter og zoomer grafen i stedet for at rulle siden */
+.graf-ramme {
+  position: relative;
+}
+
+/*
+ * Én finger ruller siden, og to fingre flytter og zoomer grafen (Graf.tsx).
+ * I grafværktøjet flytter én finger grafen, så her må siden ikke rulle.
+ */
 .graf-laerred {
   display: block;
   width: 100%;
   max-height: 70vh;
   aspect-ratio: 5 / 4;
-  touch-action: none;
+  touch-action: pan-x pan-y;
   cursor: grab;
+}
+
+.graf-laerred[data-en-finger] {
+  touch-action: none;
+}
+
+/* Kort hint, når man trækker med én finger på grafen */
+.graf-hint {
+  position: absolute;
+  inset: auto var(--afstand-3) var(--afstand-3);
+  margin: 0;
+  padding: var(--afstand-2) var(--afstand-3);
+  border-radius: var(--radius-s);
+  background: var(--farve-tekst);
+  color: var(--farve-flade);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.graf-hint-vist {
+  opacity: 0.92;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graf-hint {
+    transition: none;
+  }
 }
 
 .graf-laerred:active {

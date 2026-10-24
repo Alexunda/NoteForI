@@ -14,7 +14,7 @@
     "astro": "astro",
     "tjek:eksterne-links": "NODE_USE_ENV_PROXY=1 node scripts/tjek-eksterne-links.mjs",
     "skaermbilleder": "node scripts/skaermbilleder.mjs",
-    "tjek:graf": "node scripts/tjek-graf.mjs",
+    "tjek:graf": "KOMPONENTTEST=1 astro build && node scripts/tjek-graf.mjs",
     "tjek:emne": "node scripts/tjek-emne.mjs"
   },
   "dependencies": {

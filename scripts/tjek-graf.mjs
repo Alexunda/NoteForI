@@ -1,12 +1,19 @@
 // Tjekker i en rigtig browser, at grafkomponenten kan betjenes med fingrene,
-// musen og tastaturet. Kør det efter et build:
+// musen og tastaturet:
 //
-//   npm run build && npm run tjek:graf
+//   npm run tjek:graf
 //   npm run tjek:graf -- /fag/matematik/et-emne/     (en anden side med en graf)
 //
+// `npm run tjek:graf` bygger først siden med testsiden til komponenterne
+// (KOMPONENTTEST=1, se src/pages/test/[side].astro). Kør `npm run build`
+// bagefter, så dist/ igen er den side, der udgives.
+//
 // Scriptet bruger en telefon i 375 px med touch og tjekker, at
-// - et træk med én finger flytter grafen
+// - et træk med én finger ruller siden og ikke flytter grafen, og at der
+//   kommer et hint om at bruge to fingre
+// - et træk med to fingre flytter grafen
 // - et knib med to fingre zoomer ind, og at knib ind zoomer ud
+// - knapperne zoomer, så grafen kan bruges med én hånd
 // - en skyder ændrer parameteren
 // - tastaturet kan flytte og zoome, og at Nulstil virker
 // Det tjekker også, at der ikke kommer fejl i konsollen.
@@ -32,7 +39,7 @@ try {
 
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 const BASE = (config.base ?? '/').replace(/\/+$/, '');
-const SIDE = process.argv[2] ?? '/fag/matematik/eksempel/';
+const SIDE = process.argv[2] ?? '/test/komponenter/';
 const TYPER = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2' };
 
 function startServer() {
@@ -105,26 +112,60 @@ async function gestus(fra, til, trin = 8) {
   await fane.waitForTimeout(100);
 }
 
-// Træk til højre med én finger: udsnittet flytter sig mod venstre
+// Træk opad med én finger: siden ruller, grafen bliver, og hintet kommer frem
 let foer = udsnit(await beskrivelse());
-await gestus([[cx, cy]], [[cx + 80, cy]]);
+const rulFoer = await fane.evaluate(() => window.scrollY);
+await gestus([[cx + 40, cy + 60]], [[cx + 40, cy - 60]], 4);
+const hintVist = await fane.locator('.graf-hint-vist').count();
+await fane.waitForTimeout(400);
+const rulEfter = await fane.evaluate(() => window.scrollY);
 let efter = udsnit(await beskrivelse());
-tjek('Træk med én finger flytter grafen', efter.xMin < foer.xMin && Math.abs(efter.bredde - foer.bredde) < 1e-6,
+tjek('Træk med én finger flytter ikke grafen', efter.xMin === foer.xMin && efter.yMin === foer.yMin,
+  `y fra ${foer.yMin} til ${efter.yMin}`);
+tjek('Træk med én finger ruller siden', rulEfter > rulFoer, `scrollY ${rulFoer} → ${rulEfter}`);
+tjek('Hintet om to fingre kommer frem', hintVist > 0);
+
+// Rul tilbage, så grafen står samme sted som før
+await laerred.scrollIntoViewIfNeeded();
+await fane.waitForTimeout(200);
+const kasse2 = await laerred.boundingBox();
+const [mx, my] = [kasse2.x + kasse2.width / 2, kasse2.y + kasse2.height / 2];
+
+// Træk til højre med to fingre: udsnittet flytter sig mod venstre
+foer = udsnit(await beskrivelse());
+const rulFoerTo = await fane.evaluate(() => window.scrollY);
+await gestus([[mx - 30, my], [mx + 30, my + 40]], [[mx + 50, my - 40], [mx + 110, my]]);
+efter = udsnit(await beskrivelse());
+tjek('Træk med to fingre flytter grafen', efter.xMin < foer.xMin && Math.abs(efter.bredde - foer.bredde) < 1e-6,
   `x fra ${foer.xMin} til ${efter.xMin}`);
+const rulEfterTo = await fane.evaluate(() => window.scrollY);
+tjek('Træk med to fingre ruller ikke siden', rulEfterTo === rulFoerTo, `scrollY ${rulFoerTo} → ${rulEfterTo}`);
 
 // Knib ud med to fingre: udsnittet bliver mindre (zoom ind)
 foer = efter;
-await gestus([[cx - 30, cy], [cx + 30, cy]], [[cx - 90, cy], [cx + 90, cy]]);
+await gestus([[mx - 30, my], [mx + 30, my]], [[mx - 90, my], [mx + 90, my]]);
 efter = udsnit(await beskrivelse());
 tjek('Knib ud med to fingre zoomer ind', efter.bredde < foer.bredde * 0.6, `bredde ${foer.bredde} → ${efter.bredde}`);
 
 // Knib ind: udsnittet bliver større (zoom ud)
 foer = efter;
-await gestus([[cx - 90, cy], [cx + 90, cy]], [[cx - 30, cy], [cx + 30, cy]]);
+await gestus([[mx - 90, my], [mx + 90, my]], [[mx - 30, my], [mx + 30, my]]);
 efter = udsnit(await beskrivelse());
 tjek('Knib ind med to fingre zoomer ud', efter.bredde > foer.bredde * 1.6, `bredde ${foer.bredde} → ${efter.bredde}`);
 
-// Siden må ikke være rullet eller zoomet af gestusserne
+// Knapperne zoomer, så grafen kan bruges med én hånd
+foer = efter;
+await fane.getByRole('button', { name: 'Zoom ind' }).first().click();
+await fane.waitForTimeout(100);
+efter = udsnit(await beskrivelse());
+tjek('Knappen Zoom ind zoomer ind', efter.bredde < foer.bredde, `bredde ${foer.bredde} → ${efter.bredde}`);
+foer = efter;
+await fane.getByRole('button', { name: 'Zoom ud' }).first().click();
+await fane.waitForTimeout(100);
+efter = udsnit(await beskrivelse());
+tjek('Knappen Zoom ud zoomer ud', efter.bredde > foer.bredde, `bredde ${foer.bredde} → ${efter.bredde}`);
+
+// Siden må ikke være zoomet af gestusserne
 const sideZoom = await fane.evaluate(() => window.visualViewport?.scale ?? 1);
 tjek('Siden zoomer ikke med, når man kniber i grafen', Math.abs(sideZoom - 1) < 0.01, `skala ${sideZoom}`);
 
