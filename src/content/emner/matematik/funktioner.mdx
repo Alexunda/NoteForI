@@ -1,0 +1,288 @@
+---
+titel: "Funktioner"
+beskrivelse: "Hvad en funktion er: forskrift, graf og tabel, definitions- og værdimængde, gaffelforskrift, sammensatte funktioner og parallelforskydning af grafer."
+fag: matematik
+nummer: 9
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En funktion $f$ tager et tal $x$ og giver en funktionsværdi $f(x)$. Du kan beskrive den med en forskrift, en graf, en tabel eller med ord. [vejledningen, s. 13–14](kilde:vejledning) Definitionsmængden er de $x$-værdier, du må sætte ind, og værdimængden er de funktionsværdier, du kan få ud. [formelsamlingen, s. 14, formel (30), og s. 80](kilde:formelsamling) Du kan også flytte en graf med $f(x - h) + k$ og sætte to funktioner sammen til $f(g(x))$. [formelsamlingen, s. 15, formel (36), og s. 80](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Skift mellem repræsentationer.** En funktion kan være givet ved en definitionsmængde og en regneforskrift, en graf, en tabel, en algoritme (en fremgangsmåde i trin) eller med ord. Du skal kunne skifte mellem dem. [vejledningen, s. 13–14](kilde:vejledning)
+- **Beregn eller aflæs.** Du beregner en funktionsværdi ved at sætte tallet ind i forskriften. Er $f(x) = 3x - 5$, så er $f(4) = 3 \cdot 4 - 5 = 7$. På en graf aflæser du $f(4)$ ved at gå lodret fra $x = 4$ til grafen og derfra vandret over til $y$-aksen. [formelsamlingen, s. 15, formel (32) og (33)](kilde:formelsamling)
+- **Definitions- og værdimængde.** De skrives $\text{Dm}(f)$ og $\text{Vm}(f)$, fx som intervaller (se under Formler). Grafen findes kun over definitionsmængden. [formelsamlingen, s. 14, formel (30), og s. 78 og 80](kilde:formelsamling) Du skal kunne bestemme definitionsmængden i simple tilfælde, fx når der er en kvadratrod i forskriften eller en brøk med $x$ i nævneren. [vejledningen, s. 14](kilde:vejledning) Et eksempel: $g(x) = \sqrt{x - 3}$ kræver, at $x - 3 \ge 0$, så $\text{Dm}(g) = [3; \infty[$.
+- **Gaffelforskrift.** En stykkevis defineret funktion har forskellige forskrifter på hver sin del af definitionsmængden. Den skrives med en gaffelforskrift. [formelsamlingen, s. 14, formel (31)](kilde:formelsamling) Du skal kunne opstille og fortolke den. [vejledningen, s. 14](kilde:vejledning) Se eksemplet under listen.
+- **Ligninger og nulpunkter.** Ligningen $f(x) = 5$ betyder, at forskriften skal give 5. På grafen finder du løsningerne der, hvor grafen skærer den vandrette linje $y = 5$. [formelsamlingen, s. 15, formel (34) og (35)](kilde:formelsamling) Nulpunkterne er løsningerne til $f(x) = 0$, altså der, hvor grafen rammer $x$-aksen. [formelsamlingen, s. 23, formel (72), og s. 64, formel (255)](kilde:formelsamling)
+- **Monotoniforhold.** Det er en opdeling af definitionsmængden i intervaller, hvor funktionen enten er voksende eller aftagende. [formelsamlingen, s. 65, formel (256)](kilde:formelsamling) Voksende betyder, at grafen går opad, når du går mod højre, og aftagende betyder, at den går nedad. Du skal kunne aflæse monotoniforhold på en graf. [vejledningen, s. 16](kilde:vejledning)
+- **Parallelforskydning.** Grafen for $f(x - h) + k$ er grafen for $f$ flyttet $h$ vandret og $k$ lodret. [formelsamlingen, s. 15, formel (36)](kilde:formelsamling) Læg mærke til minusset: $f(x - 2)$ flytter grafen 2 mod højre, og $f(x + 2)$ flytter den 2 mod venstre, fordi $x + 2 = x - (-2)$.
+- **Sammensat funktion.** I $f(g(x))$ regner du først $g(x)$ ud. Så sætter du resultatet ind i $f$. [formelsamlingen, s. 80](kilde:formelsamling)
+
+Et eksempel på en gaffelforskrift: En taxa koster 40 kr. i startgebyr. De første 10 km koster 12 kr. pr. km, og derefter koster hver km 9 kr. Prisen i kr. for en tur på $x$ km er
+
+$$
+f(x) = \begin{cases} 12x + 40 & \text{for } 0 \le x \le 10 \\ 9x + 70 & \text{for } x > 10 \end{cases}
+$$
+
+Den nederste forskrift får du sådan: En tur på 10 km koster $12 \cdot 10 + 40 = 160$ kr., og hver km derefter koster 9 kr. Så er prisen $160 + 9 \cdot (x - 10) = 9x + 70$. En tur på 15 km koster altså $f(15) = 9 \cdot 15 + 70 = 205$ kr.
+
+Kernestoffet har disse funktionstyper: lineære funktioner, polynomier (særligt andengradspolynomier), eksponential- og potensfunktioner, $\log$ og $\ln$ (titalslogaritmen og den naturlige logaritme) samt cosinus og sinus. [læreplanen, pkt. 2.2](kilde:laereplan) Læs mere om dem på siderne om [lineære funktioner](/fag/matematik/lineaere-funktioner/), [andengradspolynomier](/fag/matematik/andengradspolynomier/), [eksponentielle funktioner](/fag/matematik/eksponentielle-funktioner/), [potensfunktioner](/fag/matematik/potensfunktioner/), [logaritmefunktioner](/fag/matematik/logaritmefunktioner/) og [trigonometriske funktioner](/fag/matematik/trigonometriske-funktioner/).
+
+Prøv selv: Den stiplede graf er $f(x) = x^2$. Den fuldt optrukne er $g(x) = f(x - h) + k = (x - h)^2 + k$. Træk i skyderne. Hvilken vej flytter grafen, når $h$ bliver større? Hvad sker der, når $k$ er negativ?
+
+<Graf
+  titel="Parallelforskydning med skydere"
+  funktioner={[
+    { forskrift: 'g(x) = (x - h)^2 + k', tex: 'g(x) = (x - h)^2 + k' },
+    { forskrift: 'f(x) = x^2', tex: 'f(x) = x^2' },
+  ]}
+  parametre={{ h: { min: -5, max: 5, start: 2, trin: 0.5 }, k: { min: -5, max: 5, start: 1, trin: 0.5 } }}
+  x={[-8, 8]}
+  y={[-6, 10]}
+/>
+
+## Formler
+
+<Formel navn="Parallelforskydning af en graf" tex="y = f(x - h) + k" kilde="formelsamling" henvisning="formelsamlingen, s. 15, formel (36)">
+
+<Symboler>
+
+- $f$: den funktion, hvis graf du flytter.
+- $h$: hvor meget grafen flyttes vandret. Er $h$ positiv, flyttes den mod højre. Er $h$ negativ, flyttes den mod venstre.
+- $k$: hvor meget grafen flyttes lodret. Er $k$ positiv, flyttes den op. Er $k$ negativ, flyttes den ned.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal skrive forskriften for en graf, der er flyttet, eller aflæse, hvor meget en graf er flyttet.
+
+</Bruges>
+
+<Eksempel>
+
+Grafen for $f(x) = \sqrt{x}$ flyttes 2 mod højre og 1 ned. Så er $h = 2$ og $k = -1$, og den nye graf har forskriften
+
+$$
+y = f(x - 2) - 1 = \sqrt{x - 2} - 1
+$$
+
+Tjek: Punktet $(0, 0)$ på grafen for $f$ flytter til $(2, -1)$, og $\sqrt{2 - 2} - 1 = -1$.
+
+</Eksempel>
+
+<Fejl>
+
+- At flytte den forkerte vej: $f(x - 2)$ flytter grafen 2 mod højre, ikke mod venstre.
+- At glemme fortegnet, når $h$ er negativ: $h = -4$ giver $f(x + 4)$.
+- At sætte $k$ ind i parentesen, fx $f(x - h + k)$ i stedet for $f(x - h) + k$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sammensat funktion" tex="(f \circ g)(x) = f(g(x))" kilde="formelsamling" henvisning="formelsamlingen, s. 80">
+
+<Symboler>
+
+- $g$: den funktion, du bruger først.
+- $f$: den funktion, du sætter resultatet $g(x)$ ind i.
+- $f \circ g$: den sammensatte funktion.
+
+</Symboler>
+
+<Bruges>
+
+Når to udregninger sker efter hinanden, eller når en forskrift har en funktion inden i en anden, fx $(2x + 1)^2$.
+
+</Bruges>
+
+<Eksempel>
+
+Lad $f(x) = x^2$ og $g(x) = 2x + 1$. Så er
+
+$$
+f(g(x)) = (2x + 1)^2 \quad \text{og} \quad g(f(x)) = 2x^2 + 1
+$$
+
+Med $x = 3$ får du $f(g(3)) = 7^2 = 49$, men $g(f(3)) = 2 \cdot 9 + 1 = 19$. Rækkefølgen betyder altså noget.
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på rækkefølgen og regne $g(f(x))$ i stedet for $f(g(x))$.
+- At gange funktionerne: $f(g(x))$ er ikke det samme som $f(x) \cdot g(x)$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Invers funktion" tex="y = f(x) \Leftrightarrow x = f^{-1}(y)" kilde="formelsamling" henvisning="formelsamlingen, s. 80">
+
+<Symboler>
+
+- $f^{-1}$: den omvendte (inverse) funktion til $f$. Den går den modsatte vej, fra funktionsværdien $y$ tilbage til $x$.
+- $\Leftrightarrow$: ensbetydende med. De to udsagn betyder det samme.
+
+</Symboler>
+
+<Bruges>
+
+Når du løser en ligning ved at gå baglæns gennem en funktion, fx ved at tage $\log$ eller $\ln$ på begge sider af lighedstegnet.
+
+</Bruges>
+
+<Eksempel>
+
+Løs ligningen $10^x = 1000$. Funktionen $\log$ går den modsatte vej af $10^x$, fordi $\log(10^x) = x$. [formelsamlingen, s. 25, formel (85)](kilde:formelsamling) Tag $\log$ på begge sider:
+
+$$
+x = \log(1000) = \log(10^3) = 3
+$$
+
+Tjek: $10^3 = 1000$.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $f^{-1}(x)$ betyder $\frac{1}{f(x)}$. Det gør det ikke.
+- At glemme en løsning. Fx har $x^2 = 9$ både løsningen $x = -3$ og $x = 3$. [formelsamlingen, s. 75, formel (324)](kilde:formelsamling)
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Intervaller" tex="[a; b] \quad ]a; b] \quad [a; b[ \quad ]a; b[" kilde="formelsamling" henvisning="formelsamlingen, s. 78">
+
+<Symboler>
+
+- $[a; b]$: lukket interval. Alle tal fra $a$ til $b$, med begge endepunkter: $a \le x \le b$.
+- $]a; b]$ og $[a; b[$: halvåbne intervaller. Klammen vender væk fra det endepunkt, der ikke er med. Fx svarer $]a; b]$ til $a < x \le b$.
+- $]a; b[$: åbent interval, uden endepunkterne: $a < x < b$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal skrive en definitionsmængde, en værdimængde eller de intervaller, hvor en funktion er voksende eller aftagende.
+
+</Bruges>
+
+<Eksempel>
+
+Funktionen $f(x) = 2x + 1$ har definitionsmængden $\text{Dm}(f) = \mathopen{]}-1; 3]$. Den er voksende, fordi $a = 2$ er positiv. [formelsamlingen, s. 16, formel (38)](kilde:formelsamling) Funktionsværdierne ligger derfor mellem $f(-1) = -1$, som ikke er med, og $f(3) = 7$, som er med:
+
+$$
+\text{Vm}(f) = \mathopen{]}-1; 7]
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At vende klammen forkert, så et endepunkt kommer med, selvom det ikke skal.
+- At skrive $[3; \infty]$. Ved $\infty$ vender klammen udad: $[3; \infty[$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Funktionsværdi">
+
+Det tal $f(x)$, som funktionen giver for en bestemt $x$-værdi. Du kan beregne det med forskriften eller aflæse det på grafen. [formelsamlingen, s. 15, formel (32) og (33)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Definitionsmængde">
+
+De $x$-værdier, funktionen er defineret for, altså dem, du må sætte ind. Den skrives $\text{Dm}(f)$. [formelsamlingen, s. 14, formel (30), og s. 80](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Værdimængde">
+
+Alle de funktionsværdier, funktionen kan give. Den skrives $\text{Vm}(f)$. [formelsamlingen, s. 80](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Gaffelforskrift">
+
+En forskrift for en stykkevis defineret funktion. Den har forskellige udtryk på hver sin del af definitionsmængden. [formelsamlingen, s. 14, formel (31)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Nulpunkt">
+
+En $x$-værdi, hvor $f(x) = 0$. På grafen er det der, hvor grafen rammer $x$-aksen. [formelsamlingen, s. 23, formel (72), og s. 64, formel (255)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Monotoniforhold">
+
+En opdeling af definitionsmængden i intervaller, hvor funktionen enten er voksende eller aftagende. [formelsamlingen, s. 65, formel (256)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Parallelforskydning">
+
+At flytte en graf vandret og lodret uden at ændre dens form. Grafen for $f(x - h) + k$ er grafen for $f$ flyttet $h$ vandret og $k$ lodret. [formelsamlingen, s. 15, formel (36)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Sammensat funktion">
+
+En funktion, hvor du først bruger $g$ og så $f$ på resultatet: $(f \circ g)(x) = f(g(x))$. [formelsamlingen, s. 80](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Invers funktion">
+
+Den funktion $f^{-1}$, der går den modsatte vej af $f$: $y = f(x)$ betyder det samme som $x = f^{-1}(y)$. [formelsamlingen, s. 80](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Du skal være fortrolig med de forskellige repræsentationsformer og med at skifte mellem dem. Du skal kunne opstille og fortolke en gaffelforskrift og kende betydningen af $h$ og $k$ i $y = f(x - h) + k$. [vejledningen, s. 13–14](kilde:vejledning) Du skal også kende notationen for definitions- og værdimængde og kunne bestemme definitionsmængden i simple tilfælde. [vejledningen, s. 14](kilde:vejledning) Invers funktion gennemgås ikke systematisk. Du skal forstå tankegangen, når du løser en ligning med en invers funktion, fx ved at tage $\ln$ på begge sider. [vejledningen, s. 14](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i at beregne funktionsværdier, finde $f(g(x))$, bestemme definitionsmængder og skrive forskriften for en forskudt graf i hånden. Vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Når du beregner en funktionsværdi, er det nok som konklusion at skrive udregningen med resultatet til sidst, fx $f(4) = 3 \cdot 4 - 5 = 7$. [vejledningen, s. 43](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).**
+
+- Du får ikke opgaver, hvor du skal tegne grafen for en funktion med gaffelforskrift i dit digitale værktøj. [vejledningen, s. 14](kilde:vejledning)
+- "Beregn" betyder, at svaret skal bygge på en beregning med et formeludtryk, fx sammen med en CAS-kommando. "Aflæs" betyder, at du skal aflæse præcist med en indbygget kommando på en graf, du har lavet i dit digitale værktøj. [vejledningen, s. 36](kilde:vejledning)
+- Tegner du en graf, er det nok at skrive, hvilket værktøj du har brugt, og vise forskriften, fx på et skærmklip. [vejledningen, s. 42](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Under funktioner skriver vejledningen, at topunktsformlen for hældningskoefficienten bevises, se [lineære funktioner](/fag/matematik/lineaere-funktioner/). [vejledningen, s. 14](kilde:vejledning) Den nævner også udledningen af løsningsformlen for andengradsligningen som et eksempel på et sammenhængende ræsonnement, se [andengradspolynomier](/fag/matematik/andengradspolynomier/). [vejledningen, s. 23](kilde:vejledning) Øv dig desuden i at forklare med dine egne ord, hvorfor grafen for $f(x - 3)$ ligger 3 til højre for grafen for $f$.
+
+**Eksempler på problemstillinger**
+
+- Grafen for en funktion $f$ flyttes 3 mod venstre og 4 op. Skriv forskriften for den nye graf ved hjælp af $f$, og forklar fortegnene.
+- Et mobilabonnement koster 99 kr. om måneden med 20 GB data. Hver ekstra GB koster 10 kr. Opstil en gaffelforskrift for prisen som funktion af dit dataforbrug.
+- Bestem definitionsmængden for $f(x) = \sqrt{12 - 3x}$, og skriv den med intervalnotation.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
