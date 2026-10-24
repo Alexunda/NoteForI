@@ -1,0 +1,364 @@
+---
+titel: "Kombinatorik og sandsynlighed"
+beskrivelse: "Tæl muligheder med additions- og multiplikationsprincippet og K(n, r), og find sandsynligheder i et sandsynlighedsfelt."
+fag: matematik
+nummer: 24
+omraade: "Sandsynlighedsregning og statistik"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Kombinatorik handler om at tælle muligheder. Kan du vælge enten én ting blandt $m$ eller én ting blandt $n$, har du $m + n$ muligheder. Skal du vælge både én blandt $m$ og én blandt $n$, har du $m \cdot n$ muligheder. [formelsamlingen, s. 35, formel (140) og (141)](kilde:formelsamling) $K(n, r)$ er antallet af måder at vælge $r$ elementer blandt $n$, når rækkefølgen ikke betyder noget. [formelsamlingen, s. 36, formel (143)](kilde:formelsamling) Er alle udfald lige sandsynlige, er sandsynligheden for en hændelse antal gunstige udfald divideret med antal mulige udfald. [formelsamlingen, s. 37, formel (153) og (154)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Sandsynlighedsfelt.** Et sandsynlighedsfelt $(U, P)$ består af et udfaldsrum $U$, altså mængden af alle udfald, og en sandsynlighedsfunktion $P$, der giver hvert udfald en sandsynlighed. Du kan skrive det som en tabel med udfaldene $u_1, u_2, \ldots, u_n$ og deres sandsynligheder $p_1, p_2, \ldots, p_n$. [formelsamlingen, s. 37, formel (145)–(147)](kilde:formelsamling) Sandsynlighedsfelter bruges som modeller for eksperimenter, fx et slag med en terning. [vejledningen, s. 18](kilde:vejledning)
+- **Summen er 1.** Lægger du alle sandsynlighederne sammen, får du 1. [formelsamlingen, s. 37, formel (148)](kilde:formelsamling) Mangler der én sandsynlighed i en tabel, kan du altså regne den ud. Står der fx $0{,}15$, $0{,}40$ og $0{,}30$, er den sidste $1 - 0{,}15 - 0{,}40 - 0{,}30 = 0{,}15$.
+- **Hændelser er mængder.** En hændelse $A$ er en mængde af udfald fra $U$, og $P(A)$ er summen af sandsynlighederne for udfaldene i $A$. [formelsamlingen, s. 37, formel (149) og (150)](kilde:formelsamling) Du skal kunne læse hændelser, der er skrevet med mængder, fx $A \cup B$ eller $\overline{A}$. [vejledningen, s. 11 og 18](kilde:vejledning) Mængderne kan du læse mere om under [tal og algebra](/fag/matematik/tal-og-algebra/).
+- **Den modsatte hændelse.** $\overline{A}$ er komplementærmængden, altså de udfald i $U$, der ikke er med i $A$. [formelsamlingen, s. 79](kilde:formelsamling) Der gælder $P(\overline{A}) = 1 - P(A)$. [vejledningen, s. 11](kilde:vejledning) Det er nyttigt, når $A$ har mange udfald. Et eksempel: Du slår tre gange med en terning, hvor alle sider er lige sandsynlige, og slagene er uafhængige. Den modsatte hændelse til »mindst én sekser« er »ingen seksere«, og den har sandsynligheden $\frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6}$. [formelsamlingen, s. 37, formel (152)](kilde:formelsamling) Så er sandsynligheden for mindst én sekser $1 - \left(\frac{5}{6}\right)^3 \approx 0{,}421$.
+- **Eller og og.** Har $A$ og $B$ ikke noget fælles udfald, lægger du deres sandsynligheder sammen. Er $A$ og $B$ uafhængige, ganger du dem. [formelsamlingen, s. 37, formel (151) og (152)](kilde:formelsamling)
+- **A priori og frekventiel.** En a priori sandsynlighed er givet på forhånd, fx $\frac{1}{6}$ for en sekser, hvis du går ud fra, at alle seks sider er lige sandsynlige. En frekventiel sandsynlighed er bestemt statistisk, fx ud fra mange slag med terningen. Du skal kende forskellen. [vejledningen, s. 18](kilde:vejledning)
+- **Rækkefølge eller ej.** $K(n, r)$ tæller udvalg, hvor rækkefølgen ikke har betydning. [formelsamlingen, s. 36, formel (143)](kilde:formelsamling) $K(n, r)$ kaldes også binomialkoefficienten og skrives $\binom{n}{r}$. [formelsamlingen, s. 38, formel (160), og s. 84](kilde:formelsamling) For $n$ op til 10 kan du aflæse den i Pascals trekant i formelsamlingen. [formelsamlingen, s. 36, formel (144)](kilde:formelsamling) Den bruges igen i [binomialfordelingen](/fag/matematik/binomialfordelingen/).
+
+## Formler
+
+<Formel navn="Additionsprincippet" tex="m + n" kilde="formelsamling" henvisning="formelsamlingen, s. 35, formel (140)">
+
+<Symboler>
+
+- $m$: antallet af elementer i mængden $M$.
+- $n$: antallet af elementer i mængden $N$.
+- $m + n$: antallet af måder, du kan vælge enten ét element fra $M$ eller ét element fra $N$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal vælge én ting, og den kan komme fra den ene eller den anden gruppe.
+
+</Bruges>
+
+<Eksempel>
+
+I kantinen kan du vælge én ret: en af 4 varme retter eller en af 3 salater. Så kan du vælge på
+
+$$
+4 + 3 = 7
+$$
+
+måder.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange, selv om du kun skal vælge én ting i alt.
+- At lægge sammen, selv om de to grupper har elementer til fælles. Så tæller du de fælles elementer to gange.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Multiplikationsprincippet" tex="m \cdot n" kilde="formelsamling" henvisning="formelsamlingen, s. 35, formel (141)">
+
+<Symboler>
+
+- $m$: antallet af elementer i mængden $M$.
+- $n$: antallet af elementer i mængden $N$.
+- $m \cdot n$: antallet af måder, du kan vælge både ét element fra $M$ og ét element fra $N$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal vælge flere ting efter hinanden, fx først en forret og så en hovedret. Du kan bruge princippet flere gange i træk.
+
+</Bruges>
+
+<Eksempel>
+
+En menu består af én forret og én hovedret. Der er 3 forretter og 5 hovedretter, så der er
+
+$$
+3 \cdot 5 = 15
+$$
+
+forskellige menuer. Kan du også vælge mellem 2 desserter, er der $3 \cdot 5 \cdot 2 = 30$ menuer.
+
+</Eksempel>
+
+<Fejl>
+
+- At lægge sammen, når du skal vælge både det ene og det andet.
+- At glemme, at der er én mulighed mindre for hvert valg, når den samme ting ikke må vælges to gange. Skal 3 af 25 elever være formand, næstformand og kasserer, er der $25 \cdot 24 \cdot 23$ måder og ikke $25 \cdot 25 \cdot 25$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="n fakultet" tex="n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot n \qquad 0! = 1" kilde="formelsamling" henvisning="formelsamlingen, s. 35, formel (142)">
+
+<Symboler>
+
+- $n$: et naturligt tal, altså 1, 2, 3 og så videre.
+- $n!$: læses »$n$ fakultet«. Det er alle hele tal fra 1 til $n$ ganget sammen.
+- $0!$: er 1. Det står i formelsamlingen sammen med formlen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde antallet af måder at stille $n$ ting i rækkefølge, og når du bruger formlen for $K(n, r)$.
+
+</Bruges>
+
+<Eksempel>
+
+Fem venner skal stille sig i kø. Den første plads kan gå til 5 personer, den næste til 4 og så videre. Med multiplikationsprincippet er der
+
+$$
+5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 5! = 120
+$$
+
+forskellige køer.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $0! = 0$. Formelsamlingen siger $0! = 1$.
+- At stoppe for tidligt, fx $5! = 5 \cdot 4 = 20$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Kombinationer" tex="K(n, r) = \frac{n!}{r! \cdot (n - r)!}" kilde="formelsamling" henvisning="formelsamlingen, s. 36, formel (143)">
+
+<Symboler>
+
+- $n$: antallet af elementer i alt.
+- $r$: antallet af elementer, du vælger.
+- $K(n, r)$: antallet af måder at vælge $r$ elementer blandt $n$, når rækkefølgen ikke har betydning.
+
+</Symboler>
+
+<Bruges>
+
+Når du vælger en gruppe, hvor det er ligegyldigt, hvem der blev valgt først, fx et udvalg eller et hold.
+
+</Bruges>
+
+<Eksempel>
+
+En klasse med 25 elever skal vælge 3 elever til elevrådet. Rækkefølgen betyder ikke noget, så antallet af måder er
+
+$$
+K(25, 3) = \frac{25!}{3! \cdot 22!} = \frac{25 \cdot 24 \cdot 23}{3 \cdot 2 \cdot 1} = 2300
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge $K(n, r)$, når rækkefølgen betyder noget. Skal de 3 elever være formand, næstformand og kasserer, er der $25 \cdot 24 \cdot 23 = 13\,800$ måder.
+- At bytte om på $n$ og $r$.
+- At regne $(n - r)!$ som $n! - r!$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Enten A eller B" tex="P(A \text{ eller } B) = P(A) + P(B)" kilde="formelsamling" henvisning="formelsamlingen, s. 37, formel (151)">
+
+<Symboler>
+
+- $A$ og $B$: to hændelser, der ikke har noget fælles udfald.
+- $P(A \text{ eller } B)$: sandsynligheden for, at enten $A$ eller $B$ indtræffer.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde sandsynligheden for, at den ene eller den anden af to hændelser indtræffer, og de ikke kan indtræffe på samme tid.
+
+</Bruges>
+
+<Eksempel>
+
+Du slår med en terning, hvor alle seks sider er lige sandsynlige. $A$ er »1 eller 2«, og $B$ er »6«. De har ikke noget fælles udfald, så
+
+$$
+P(A \text{ eller } B) = \frac{2}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2}
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge formlen, når hændelserne har fælles udfald. Er $A$ »lige tal« og $B$ »mindst 5«, er 6 med i begge. Så er $P(A \text{ eller } B)$ ikke $\frac{3}{6} + \frac{2}{6}$, men $\frac{4}{6}$, for hændelsen er $\{2, 4, 5, 6\}$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Både A og B" tex="P(A \text{ og } B) = P(A) \cdot P(B)" kilde="formelsamling" henvisning="formelsamlingen, s. 37, formel (152)">
+
+<Symboler>
+
+- $A$ og $B$: to uafhængige hændelser.
+- $P(A \text{ og } B)$: sandsynligheden for, at både $A$ og $B$ indtræffer.
+
+</Symboler>
+
+<Bruges>
+
+Når to ting begge skal ske, og hændelserne er uafhængige, fx et slag med en terning og et kast med en mønt.
+
+</Bruges>
+
+<Eksempel>
+
+Du slår med en terning og kaster en mønt, hvor plat og krone er lige sandsynlige. Terningen og mønten påvirker ikke hinanden. Sandsynligheden for en sekser og plat er
+
+$$
+P(\text{sekser og plat}) = \frac{1}{6} \cdot \frac{1}{2} = \frac{1}{12}
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At lægge sammen i stedet for at gange, når begge dele skal ske.
+- At gange, selv om hændelserne påvirker hinanden. Trækker du to lodsedler fra en pose uden at lægge den første tilbage, ændrer det første træk, hvad der er tilbage i posen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Gunstige divideret med mulige" tex="P(A) = \frac{k}{n} = \frac{\text{antal gunstige udfald}}{\text{antal mulige udfald}}" kilde="formelsamling" henvisning="formelsamlingen, s. 37, formel (154)">
+
+<Symboler>
+
+- $n$: antallet af udfald i udfaldsrummet. Feltet skal være symmetrisk, så alle udfald har sandsynligheden $\frac{1}{n}$.
+- $k$: antallet af udfald i hændelsen $A$, altså de gunstige udfald.
+- $P(A)$: sandsynligheden for $A$.
+
+</Symboler>
+
+<Bruges>
+
+Når alle udfald er lige sandsynlige, fx når du trækker lod. Tit skal du tælle de gunstige og de mulige udfald med kombinatorik.
+
+</Bruges>
+
+<Eksempel>
+
+En pose har 5 røde og 3 blå kugler. Du trækker 2 kugler på én gang, og alle par af kugler er lige sandsynlige. Hvad er sandsynligheden for, at begge er røde? Antal mulige udfald er $K(8, 2) = 28$, og antal gunstige udfald er $K(5, 2) = 10$. Så er
+
+$$
+P(\text{to røde}) = \frac{10}{28} \approx 0{,}357
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge formlen, når udfaldene ikke er lige sandsynlige. Slår du med to terninger, er sandsynligheden for summen 7 ikke $\frac{1}{11}$, selv om der er 11 mulige summer. Summen 7 kommer i 6 af de 36 lige sandsynlige par, så sandsynligheden er $\frac{6}{36} = \frac{1}{6}$.
+- At tælle de mulige udfald med rækkefølge og de gunstige uden. Tæl på samme måde i tæller og nævner.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Udfaldsrum">
+
+Mængden $U$ af alle udfald i et eksperiment, fx $U = \{1, 2, 3, 4, 5, 6\}$, når du slår med en terning. [formelsamlingen, s. 37, formel (146)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Hændelse">
+
+En mængde af udfald fra udfaldsrummet, fx hændelsen »lige tal«, som er $\{2, 4, 6\}$, når du slår med en terning. Sandsynligheden for hændelsen er summen af udfaldenes sandsynligheder. [formelsamlingen, s. 37, formel (149) og (150)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Sandsynlighedsfelt">
+
+Et udfaldsrum $U$ sammen med en sandsynlighedsfunktion $P$, der giver hvert udfald en sandsynlighed. Det skrives $(U, P)$, og alle sandsynlighederne giver 1 tilsammen. [formelsamlingen, s. 37, formel (145)–(148)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Symmetrisk sandsynlighedsfelt">
+
+Et sandsynlighedsfelt, hvor alle $n$ udfald har den samme sandsynlighed $\frac{1}{n}$. Her er sandsynligheden antal gunstige divideret med antal mulige udfald. [formelsamlingen, s. 37, formel (153) og (154)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Komplementærmængde">
+
+$\overline{A}$ er de udfald i $U$, der ikke er med i $A$. [formelsamlingen, s. 79](kilde:formelsamling) Der gælder $P(\overline{A}) = 1 - P(A)$. [vejledningen, s. 11](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Kombination">
+
+Et udvalg af $r$ elementer blandt $n$, hvor rækkefølgen ikke har betydning. Antallet af kombinationer er $K(n, r)$. [formelsamlingen, s. 36, formel (143)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="A priori sandsynlighed">
+
+En sandsynlighed, der er givet på forhånd, fx fordi du går ud fra, at alle udfald er lige sandsynlige. [vejledningen, s. 18](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Frekventiel sandsynlighed">
+
+En sandsynlighed, der er bestemt statistisk, fx ud fra mange gentagelser af et eksperiment. [vejledningen, s. 18](kilde:vejledning)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Sandsynlighed, sandsynlighedsfelt, særligt symmetrisk sandsynlighedsfelt, hændelse og kombinatorik, herunder kombinationer, er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) I kombinatorik indgår additions- og multiplikationsprincippet og formlen for $K(n, r)$. Du skal kende forskel på a priori og frekventielle sandsynligheder og kunne læse hændelser, der er skrevet med mængder. [vejledningen, s. 18](kilde:vejledning)
+
+- Du skal kunne regne sandsynligheder i symmetriske sandsynlighedsfelter og bruge formlen for $K(n, r)$. Når du regner sandsynligheder med formlen, forventes du kun at kunne løse opgaver af typen »antal gunstige divideret med antal mulige«. Her kan antal gunstige kræve en eller flere kombinatoriske beregninger, mens antal mulige kun kræver én. [vejledningen, s. 18](kilde:vejledning)
+- Et eksempel med posen fra før, hvor du trækker 2 af 8 kugler: Sandsynligheden for én rød og én blå er $\frac{K(5, 1) \cdot K(3, 1)}{K(8, 2)} = \frac{15}{28} \approx 0{,}536$. Antal gunstige kræver to beregninger, og antal mulige kræver én.
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Pascals trekant står i formelsamlingen, så du kan aflæse $K(n, r)$ for $n$ op til 10. [formelsamlingen, s. 36, formel (144)](kilde:formelsamling) Vis dine mellemregninger, og skriv formlens nummer, når du bruger den. [vejledningen, s. 41](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning) Forklar, hvordan du bruger dit digitale værktøj, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+
+- Kombinatorik og sandsynlighed er ikke undtaget fra den skriftlige prøve. I sandsynlighedsregning og statistik er det kun deskriptiv statistik og estimation og hypotesetest, der ikke kommer til den skriftlige prøve. [vejledningen, s. 18–19](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) Formlen for $K(n, r)$ skal bevises, eventuelt ud fra eksempler. [vejledningen, s. 18](kilde:vejledning) Står der »redegør for« i et spørgsmål, skal du bevise eller udlede. [vejledningen, s. 39](kilde:vejledning)
+
+- **Idéen i beviset for $K(n, r)$:** Vælg 3 personer blandt 5. Tæller du med rækkefølge, er der $5 \cdot 4 \cdot 3 = 60$ måder efter multiplikationsprincippet. Men så bliver hver gruppe på 3 talt én gang for hver rækkefølge, og 3 personer kan stilles i rækkefølge på $3! = 6$ måder. Der er altså $\frac{60}{6} = 10$ grupper, og det passer med $K(5, 3) = 10$. Generelt er der $n \cdot (n - 1) \cdot \ldots \cdot (n - r + 1) = \frac{n!}{(n - r)!}$ måder med rækkefølge, og hver gruppe bliver talt $r!$ gange. Divider med $r!$, så får du formlen. [formelsamlingen, s. 35–36, formel (141)–(143)](kilde:formelsamling)
+
+**Eksempler på problemstillinger**
+
+- Fire ud af ni venner kan få pladser helt foran til en koncert, og det trækkes der lod om. Hvad er sandsynligheden for, at både du og din bedste ven kommer helt frem?
+- Du slår med to terninger. Er summen 9 mere sandsynlig end summen 4? Begrund dit svar med udfaldsrummet.
+- En kode består af fire cifre. Hvor mange koder findes der? Hvor mange af dem har fire forskellige cifre, og hvad er sandsynligheden for, at en tilfældig kode har det?
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
