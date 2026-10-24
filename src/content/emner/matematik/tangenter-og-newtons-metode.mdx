@@ -39,7 +39,7 @@ Tangenten til grafen for $f$ i punktet $P(x_0, f(x_0))$ er den rette linje genne
 - **Eksakt eller numerisk.** Newtons metode giver en numerisk løsning, altså et tilnærmet tal som $2{,}2361$, og ikke en eksakt løsning som $\sqrt{5}$. Metoden er en god lejlighed til at arbejde med algoritmer, dvs. opskrifter, du følger trin for trin. [vejledningen, s. 16](kilde:vejledning) Et regneark kan hjælpe dig med de mange udregninger. [vejledningen, s. 32](kilde:vejledning)
 - **Når metoden går i stå.** Er $f'(x_n) = 0$, kan du ikke dividere med det. Tangenten er så vandret. Prøv et andet startgæt. [formelsamlingen, s. 64–65, formel (255) og (257)](kilde:formelsamling)
 
-Prøv selv: Træk i skyderen x0, så røringspunktet $(x_0, f(x_0))$ flytter sig langs grafen for $f(x) = x^3 - 3x$. Hvor er tangenten vandret? Sæt så $x_0 = 2$. Hvor skærer tangenten $x$-aksen? Det er det næste tal i Newtons metode, når du starter i 2.
+Prøv selv: Træk i skyderen x0, så røringspunktet $(x_0, f(x_0))$ flytter sig langs grafen for $f(x) = x^3 - 3x$. Hvor er tangenten vandret? Sæt så $x_0 = 1{,}5$. Hvor skærer tangenten $x$-aksen? Det er det næste tal i Newtons metode, når du starter i $1{,}5$.
 
 <Graf
   titel="Tangent med skyder for røringspunktet"
@@ -47,7 +47,7 @@ Prøv selv: Træk i skyderen x0, så røringspunktet $(x_0, f(x_0))$ flytter sig
     { forskrift: 'f(x) = x^3 - 3 · x', tex: 'f(x) = x^3 - 3x' },
     { forskrift: 't(x) = (3 · x0^2 - 3) · (x - x0) + x0^3 - 3 · x0', tex: 't(x) = (3x_0^2 - 3) \\cdot (x - x_0) + x_0^3 - 3x_0' },
   ]}
-  parametre={{ x0: { min: -2.5, max: 2.5, start: 2, trin: 0.1 } }}
+  parametre={{ x0: { min: -2.5, max: 2.5, start: 1.5, trin: 0.1 } }}
   x={[-3, 3]}
   y={[-5, 5]}
 />

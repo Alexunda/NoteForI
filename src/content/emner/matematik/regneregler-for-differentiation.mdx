@@ -32,10 +32,10 @@ Når du differentierer en funktion $f$, finder du dens afledede funktion $f'$. [
 - **Slå op i tabellen.** For hver funktionstype står den afledede funktion i tabellen. Fx er $(x^5)' = 5x^4$, $(e^{4x})' = 4e^{4x}$ og $(\ln(x))' = \frac{1}{x}$. [formelsamlingen, s. 66, formel (265), (267) og (270)](kilde:formelsamling) Hvad $f'$ betyder, kan du læse om under [grænseværdi og differentialkvotient](/fag/matematik/differentialkvotient/).
 - **Brøker og rødder som potenser.** Skriver du $\frac{1}{x} = x^{-1}$ og $\sqrt{x} = x^{\frac{1}{2}}$, kan du bruge formlen for $x^a$. Det giver det samme som formel (268) og (269). [formelsamlingen, s. 66 og 77, formel (267)–(269), (345) og (351)](kilde:formelsamling) Fx er $\frac{1}{x^3} = x^{-3}$, så den afledede er $-3x^{-4} = -\frac{3}{x^4}$. [formelsamlingen, s. 77, formel (344)](kilde:formelsamling) Se også [potensfunktioner](/fag/matematik/potensfunktioner/).
 - **Konstanter.** Et konstant led forsvinder, fordi $(k)' = 0$. En konstant, der er ganget på, bliver stående: $(k \cdot f(x))' = k \cdot f'(x)$. [formelsamlingen, s. 66–67, formel (261) og (273)](kilde:formelsamling)
-- **Led for led.** En sum og en differens differentierer du led for led. [formelsamlingen, s. 67, formel (274) og (275)](kilde:formelsamling) Sammen med reglen for $x^a$ kan du derfor differentiere ethvert polynomium. [formelsamlingen, s. 66, formel (267)](kilde:formelsamling)
+- **Led for led.** En sum og en differens differentierer du led for led. [formelsamlingen, s. 67, formel (274) og (275)](kilde:formelsamling) Sammen med reglerne for $k$, $k \cdot f(x)$ og $x^a$ kan du derfor differentiere ethvert polynomium. [formelsamlingen, s. 66–67, formel (261), (267) og (273)](kilde:formelsamling)
 - **Et produkt er ikke faktor for faktor.** $(f(x) \cdot g(x))'$ er ikke $f'(x) \cdot g'(x)$. Brug reglen for et produkt, formel (276). Tjek selv med $x \cdot x = x^2$: Den afledede er $2x$, men $1 \cdot 1 = 1$. [formelsamlingen, s. 66–67, formel (262), (267) og (276)](kilde:formelsamling)
 - **Sammensat funktion.** I $f(g(x))$ står $g$ inden i $f$. Du differentierer $f$, sætter $g(x)$ ind og ganger med $g'(x)$. [formelsamlingen, s. 67, formel (277)](kilde:formelsamling) Formel (265) for $e^{k \cdot x}$ er et eksempel: Her er $f(x) = e^x$ og $g(x) = k \cdot x$, så $g'(x) = k$. [formelsamlingen, s. 66, formel (263)–(265)](kilde:formelsamling) Læs mere om sammensatte funktioner under [funktioner](/fag/matematik/funktioner/).
-- **En brøk med $x$ i nævneren.** Formelsamlingen har også en regel for en kvotient, altså en brøk, i formel (278). [formelsamlingen, s. 67, formel (278)](kilde:formelsamling) Den står ikke på læreplanens liste over regneregler, som nævner $f + g$, $f - g$, $k \cdot f$, $f \cdot g$ og $f \circ g$. [læreplanen, pkt. 2.2](kilde:laereplan)
+- **En brøk med $x$ i både tæller og nævner.** Formelsamlingen har også en regel for en kvotient, altså en brøk, i formel (278). [formelsamlingen, s. 67, formel (278)](kilde:formelsamling) Den står ikke på læreplanens liste over regneregler, som nævner $f + g$, $f - g$, $k \cdot f$, $f \cdot g$ og $f \circ g$. [læreplanen, pkt. 2.2](kilde:laereplan)
 - **Andengradspolynomier.** For $f(x) = a \cdot x^2 + b \cdot x + c$ giver reglerne $f'(x) = 2a \cdot x + b$, så $f'(0) = b$. Derfor er $b$ tangenthældningen i parablens skæringspunkt med $y$-aksen. [formelsamlingen, s. 22, formel (65) og (69)](kilde:formelsamling) Se [andengradspolynomier](/fag/matematik/andengradspolynomier/).
 
 ## Formler
@@ -57,9 +57,11 @@ Når du differentierer en funktion $f$, finder du dens afledede funktion $f'$. [
 | $\cos(x)$ | $-\sin(x)$ | (271) |
 | $\sin(x)$ | $\cos(x)$ | (272) |
 
-I tabellen er $k$ og $a$ konstanter. [formelsamlingen, s. 66, formel (261)–(272)](kilde:formelsamling)
+I tabellen er $k$ og $a$ konstanter. [formelsamlingen, s. 66, formel (261)–(272)](kilde:formelsamling) Formlerne gælder kun, hvor funktionen er defineret og kan differentieres, fx $a > 0$ i (266), $x \neq 0$ i (268) og $x > 0$ i (269) og (270). Formelsamlingen skriver ikke den slags forudsætninger. [formelsamlingen, s. 3 og 82](kilde:formelsamling)
 
 ### Regneregler
+
+Reglerne gælder, når $f'(x)$ og $g'(x)$ findes. I reglen for en sammensat funktion skal $g'(x)$ og $f'(g(x))$ findes. Formelsamlingen skriver ikke den slags forudsætninger. [formelsamlingen, s. 3](kilde:formelsamling)
 
 <Formel navn="Konstant gange funktion" tex="(k \cdot f(x))' = k \cdot f'(x)" kilde="formelsamling" henvisning="formelsamlingen, s. 67, formel (273)">
 
@@ -140,16 +142,16 @@ $$
 
 <Bruges>
 
-Når forskriften er to funktioner ganget med hinanden, og ingen af dem er en konstant, fx $x^2 \cdot \ln(x)$ eller $x \cdot e^{2x}$.
+Når forskriften er to funktioner ganget med hinanden, og ingen af dem er en konstant, fx $x^2 \cdot \sin(x)$ eller $\sqrt{x} \cdot \cos(x)$.
 
 </Bruges>
 
 <Eksempel>
 
-For $h(x) = x^2 \cdot \ln(x)$ er $f(x) = x^2$ og $g(x) = \ln(x)$. Så er $f'(x) = 2x$ og $g'(x) = \frac{1}{x}$, og
+For $h(x) = x^2 \cdot \sin(x)$ er $f(x) = x^2$ og $g(x) = \sin(x)$. Så er $f'(x) = 2x$ og $g'(x) = \cos(x)$, og
 
 $$
-h'(x) = 2x \cdot \ln(x) + x^2 \cdot \frac{1}{x} = 2x \cdot \ln(x) + x
+h'(x) = 2x \cdot \sin(x) + x^2 \cdot \cos(x)
 $$
 
 </Eksempel>
@@ -271,7 +273,7 @@ $(f(g(x)))' = f'(g(x)) \cdot g'(x)$. Du differentierer $f$, sætter $g(x)$ ind o
 **Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. Her skal du kunne bruge regnereglerne. [vejledningen, s. 15 og 36](kilde:vejledning) Tabellen og reglerne står i formelsamlingen, så øv dig i at finde dem hurtigt.
 
 - Vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
-- Skriv gerne, hvilken formel du bruger, fx "jf. formel (276)". Det kan give point, selv om du laver en fejl undervejs. [vejledningen, s. 41](kilde:vejledning)
+- Skriv formlen op, eller nævn dens navn eller nummer, fx "jf. formel (276)", før du sætter ind. Det forventes som hovedregel i begge delprøver. [vejledningen, s. 42](kilde:vejledning) Det kan også give point, selv om du laver en fejl undervejs. [vejledningen, s. 41](kilde:vejledning)
 
 **Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning) Dit digitale værktøj kan hjælpe med lange beregninger, fx i en funktionsundersøgelse. [vejledningen, s. 28](kilde:vejledning) Forklar, hvad du har gjort med værktøjet, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
 
@@ -280,13 +282,13 @@ I vejledningens afsnit om differentialregning står der ikke, at dele af emnet e
 **Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan)
 
 - Regnereglerne for $f + g$, $f - g$, $k \cdot f$ og $f \cdot g$ bevises. Beviset for, at en sammensat funktion $f \circ g$ kan differentieres, forventes ikke gennemgået. [vejledningen, s. 15](kilde:vejledning)
-- Beviserne bygger på [grænseværdier og definitionen af differentialkvotienten](/fag/matematik/differentialkvotient/). [vejledningen, s. 15](kilde:vejledning) For $f + g$ er idéen fx at skrive differenskvotienten som en sum af to differenskvotienter og så lade $h$ gå mod 0.
+- Beviserne bygger på [grænseværdi, kontinuitet og definitionen af differentialkvotienten](/fag/matematik/differentialkvotient/). [vejledningen, s. 15](kilde:vejledning) Start beviset med forudsætningerne, fx at $f'(x_0)$ og $g'(x_0)$ findes. [vejledningen, s. 39](kilde:vejledning) For $f + g$ er idéen fx at skrive differenskvotienten som en sum af to differenskvotienter og så lade $h$ gå mod 0.
 - Er du på et étårigt hold fra B- til A-niveau, hører beviserne for regnereglerne til det supplerende stof. [vejledningen, s. 15](kilde:vejledning)
 
 **Eksempler på problemstillinger**
 
 - Bestem $f'(x)$ for $f(x) = 2x^3 - 4\sqrt{x} + 7$, og skriv for hvert led, hvilken formel du bruger.
-- Bestem $g'(x)$ og $g'(0)$ for $g(x) = x \cdot e^{2x}$.
+- Bestem $g'(x)$ og $g'(\pi)$ for $g(x) = x \cdot \cos(x)$.
 - Bevis regnereglen $(k \cdot f(x))' = k \cdot f'(x)$ ud fra definitionen af differentialkvotienten.
 
 Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
