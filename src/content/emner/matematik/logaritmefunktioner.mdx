@@ -33,7 +33,7 @@ En logaritme svarer på spørgsmålet: Hvad skal et tal opløftes i for at give 
 - **Definitionsmængde.** Graferne for $\log(x)$ og $\ln(x)$ ligger kun til højre for $y$-aksen. Definitionsmængden, altså de $x$-værdier, funktionerne er defineret for, er derfor de positive tal, $]0; \infty[$. [formelsamlingen, s. 25](kilde:formelsamling) Det passer med, at $y = \log(x)$ betyder $x = 10^y$, og en potens af 10 er altid positiv. [formelsamlingen, s. 18 og 82, formel (46)](kilde:formelsamling)
 - **Værdimængde.** For ethvert tal $t$ er $\log(10^t) = t$. Værdimængden, altså de værdier, funktionen kan give, er derfor alle reelle tal, $\mathbb{R}$. Det samme gælder for $\ln$. [formelsamlingen, s. 25, formel (85) og (92)](kilde:formelsamling)
 - **Nulpunkt.** $\log(1) = 0$ og $\ln(1) = 0$, så begge grafer skærer $x$-aksen i $x = 1$. [formelsamlingen, s. 25, formel (80) og (87)](kilde:formelsamling)
-- **Monotoniforhold.** Monotoniforhold handler om, hvor en funktion vokser og aftager. $\log$ og $\ln$ er begge voksende i hele definitionsmængden, så $x = 1$ er det eneste nulpunkt. [formelsamlingen, s. 25](kilde:formelsamling)
+- **Monotoniforhold.** Monotoniforhold handler om, hvor en funktion vokser og aftager. $\log$ og $\ln$ er begge voksende i hele definitionsmængden, så $x = 1$ er det eneste nulpunkt. [formelsamlingen, s. 25 og 65, formel (256)](kilde:formelsamling)
 - **Grafernes forløb.** Når $x$ kommer tæt på 0, går graferne stejlt nedad langs $y$-aksen. For store $x$ vokser de langsomt: $\log(10) = 1$, $\log(100) = 2$ og $\log(1000) = 3$. [formelsamlingen, s. 25, formel (81) og (85)](kilde:formelsamling) Grafen for $\ln$ går gennem punktet $(e, 1)$, fordi $\ln(e) = 1$. [formelsamlingen, s. 25, formel (88)](kilde:formelsamling)
 - **Regnereglerne.** Logaritmen laver gange om til plus, division om til minus og en potens om til gange. Reglerne er de samme for $\log$ og $\ln$. [formelsamlingen, s. 25, formel (82)–(84) og (89)–(91)](kilde:formelsamling)
 - **Logaritme og potens ophæver hinanden.** $\log(10^x) = x$ og $10^{\log(x)} = x$. Det samme gælder for $\ln$ og $e$. [formelsamlingen, s. 25, formel (85), (86), (92) og (93)](kilde:formelsamling)
@@ -95,7 +95,7 @@ $$
 
 - $x$: et positivt tal.
 - $y = \ln(x)$: det tal, $e$ skal opløftes i for at give $x$.
-- $e$: grundtallet i den naturlige eksponentialfunktion $e^x$. Det er ca. $2{,}718$.
+- $e$: grundtallet i den naturlige eksponentialfunktion $e^x$. Det er ca. $2{,}718$. [formelsamlingen, s. 78](kilde:formelsamling)
 
 </Symboler>
 
@@ -314,11 +314,11 @@ De værdier, en funktion kan give. Den skrives $\text{Vm}(f)$. For $\log$ og $\l
 
 - Du skal forstå tankegangen i at tage $\ln$ eller $\log$ på begge sider af en ligning. [vejledningen, s. 14](kilde:vejledning) Det er sådan, du får $x$ ned fra eksponenten.
 
-**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i regnereglerne med pæne tal, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Et eksempel: $\log(4) + \log(25) = \log(100) = 2$.
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i regnereglerne med pæne tal, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Et eksempel: $\log(4) + \log(25) = \log(100) = 2$.
 
 **Med hjælpemidler (delprøve 2).** I delprøve 2 forudsættes det, at du har et digitalt værktøj. [vejledningen, s. 36](kilde:vejledning) Står der "Bestem ved beregning", skal svaret bygge på en algebraisk beregning med et formeludtryk sammen med en kommando i dit CAS-værktøj. [vejledningen, s. 36](kilde:vejledning)
 
-**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Sætninger og formler gennemgås som hovedregel med bevis. [vejledningen, s. 23](kilde:vejledning) Øv dig fx i at forklare, hvorfor $\log(a \cdot b) = \log(a) + \log(b)$. Skriv $a = 10^r$ og $b = 10^s$, så $r = \log(a)$ og $s = \log(b)$. Så er
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) I undervisningen gennemgås sætninger og formler som hovedregel med bevis. [vejledningen, s. 23](kilde:vejledning) Øv dig fx i at forklare, hvorfor $\log(a \cdot b) = \log(a) + \log(b)$. Skriv $a = 10^r$ og $b = 10^s$, så $r = \log(a)$ og $s = \log(b)$. Så er
 
 $$
 \log(a \cdot b) = \log(10^r \cdot 10^s) = \log(10^{r+s}) = r + s = \log(a) + \log(b)
