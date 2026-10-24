@@ -1,0 +1,420 @@
+---
+titel: "Deskriptiv statistik"
+beskrivelse: "Beskriv data med median, kvartiler, middelværdi og spredning og med diagrammer som boksplot, histogram og sumkurve."
+fag: matematik
+nummer: 23
+omraade: "Sandsynlighedsregning og statistik"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+  - id: lex-beskrivende-statistik
+    navn: "lex.dk: Beskrivende statistik (hentet 24. oktober 2026)"
+    url: https://lex.dk/beskrivende_statistik
+  - id: lex-frekvens
+    navn: "lex.dk: Frekvens (hyppighed) (hentet 24. oktober 2026)"
+    url: https://lex.dk/frekvens_-_hyppighed
+  - id: lex-kumuleret-hyppighed
+    navn: "lex.dk: Kumuleret hyppighed (hentet 24. oktober 2026)"
+    url: https://lex.dk/kumuleret_hyppighed
+  - id: lex-standardafvigelse
+    navn: "lex.dk: Standardafvigelse (hentet 24. oktober 2026)"
+    url: https://lex.dk/standardafvigelse
+verificeret: false
+---
+
+## Kort fortalt
+
+Deskriptiv statistik handler om at beskrive et observationsmateriale, altså en samling af observationer, med tal og diagrammer. [læreplanen, pkt. 2.2](kilde:laereplan) Tallene kaldes statistiske deskriptorer, fx middelværdi, spredning, median og kvartiler. Ugrupperede observationer viser du i søjlediagram og boksplot, og grupperede observationer i histogram og sumkurve. [vejledningen, s. 17–18](kilde:vejledning) Emnet kommer ikke til den skriftlige prøve, men det er stadig kernestof. [vejledningen, s. 18](kilde:vejledning) [læreplanen, pkt. 2.2](kilde:laereplan)
+
+## Vigtige pointer
+
+- **Ugrupperet eller grupperet.** Ugrupperede observationer er de enkelte tal $x_1, x_2, \ldots, x_n$. Grupperede observationer er samlet i intervaller. [formelsamlingen, s. 32–34, formel (133) og (135)](kilde:formelsamling) [vejledningen, s. 18](kilde:vejledning)
+- **Hyppighed.** Hyppigheden er et antal: hvor mange gange en bestemt værdi forekommer, eller hvor mange observationer der falder i en kategori. [lex.dk: Beskrivende statistik](kilde:lex-beskrivende-statistik) [lex.dk: Frekvens (hyppighed)](kilde:lex-frekvens)
+- **Frekvens.** Frekvensen er hyppigheden i forhold til det samlede antal observationer, altså hyppigheden divideret med antallet. Den kaldes også den relative hyppighed. [lex.dk: Frekvens (hyppighed)](kilde:lex-frekvens)
+- **Kumuleret frekvens.** Den kumulerede hyppighed for en værdi er antallet af observationer, der ikke er større end værdien. Du lægger altså hyppighederne sammen for værdien og alle mindre værdier. [lex.dk: Kumuleret hyppighed](kilde:lex-kumuleret-hyppighed) Den kumulerede frekvens er den kumulerede hyppighed regnet som andel af alle observationer, altså divideret med antallet. Det følger af, at frekvensen er den relative hyppighed. [lex.dk: Frekvens (hyppighed)](kilde:lex-frekvens) [lex.dk: Kumuleret hyppighed](kilde:lex-kumuleret-hyppighed) På sumkurven i formelsamlingen står den kumulerede frekvens i procent og ender ved 100 %. [formelsamlingen, s. 34, formel (137)](kilde:formelsamling) Se eksemplet herunder.
+- **Sortér først.** Før du finder medianen $m$, skal observationerne sorteres efter størrelse. Er antallet ulige, er medianen den midterste observation. Er antallet lige, er medianen gennemsnittet af de to midterste observationer. [formelsamlingen, s. 32, formel (123)](kilde:formelsamling)
+- **Kvartilerne er medianer af hver halvdel.** Den nedre kvartil $Q_1$ er medianen af observationerne til venstre for medianen. Den øvre kvartil $Q_3$ er medianen af observationerne til højre for medianen. [formelsamlingen, s. 32, formel (124) og (125)](kilde:formelsamling)
+- **Ulige antal.** Er antallet ulige, er den midterste observation ikke med i nogen af halvdelene. [formelsamlingen, s. 32, formel (124)](kilde:formelsamling) Med de fem tal 5, 7, 8, 9 og 11 er $m = 8$. Til venstre står 5 og 7, så $Q_1 = 6$. Til højre står 9 og 11, så $Q_3 = 10$.
+- **Boksplot.** Et boksplot viser det udvidede kvartilsæt $(\mathit{min}, Q_1, m, Q_3, \mathit{max})$. Boksen går fra $Q_1$ til $Q_3$ med en streg ved medianen, og linjerne går ud til den mindste og den største observation. [formelsamlingen, s. 33, formel (131) og (132)](kilde:formelsamling)
+- **To slags bredde.** Variationsbredden er $\mathit{max} - \mathit{min}$, og kvartilbredden er $Q_3 - Q_1$. I et boksplot er kvartilbredden altså boksens bredde. [formelsamlingen, s. 33, formel (128), (129) og (132)](kilde:formelsamling)
+- **Middelværdi og spredning.** Middelværdien $\overline{x}$ er summen af observationerne divideret med antallet. Spredningen $\sigma$ bygger på, hvor langt hver observation ligger fra middelværdien. [formelsamlingen, s. 33, formel (133) og (134)](kilde:formelsamling) Middelværdi og spredning indgår også i sandsynlighedsregning, fx i [binomialfordelingen](/fag/matematik/binomialfordelingen/) og [normalfordelingen](/fag/matematik/normalfordelingen/). [læreplanen, pkt. 2.2](kilde:laereplan)
+- **Varians.** Variansen er spredningen i anden, og spredningen er kvadratroden af variansen. For en stokastisk variabel står det i formelsamlingen som $\sigma = \sqrt{\text{Var}(X)}$, se [binomialfordelingen](/fag/matematik/binomialfordelingen/). [formelsamlingen, s. 38, formel (157) og (158)](kilde:formelsamling) Spredningen er et mål for, hvor meget værdierne varierer omkring middelværdien. [lex.dk: Standardafvigelse](kilde:lex-standardafvigelse) Formelsamlingen har ingen formel for variansen af et observationssæt. Bruger du samme sammenhæng på formel (134), er variansen tallet under kvadratroden: $\sigma^2 = \frac{(x_1 - \overline{x})^2 + \ldots + (x_n - \overline{x})^2}{n}$. [formelsamlingen, s. 33, formel (134)](kilde:formelsamling) I eksemplet med lektierne under Formler er $\sigma = 2$, så variansen er $\sigma^2 = 4$.
+- **Grupperede observationer.** Her arbejder du med intervalhyppighed, intervalfrekvens og kumuleret frekvens, og du tegner histogram og sumkurve. [vejledningen, s. 18](kilde:vejledning) Intervalhyppigheden er antallet af observationer i et interval. [lex.dk: Beskrivende statistik](kilde:lex-beskrivende-statistik) Intervalfrekvensen er intervallets frekvens, altså intervalhyppigheden divideret med det samlede antal. [lex.dk: Frekvens (hyppighed)](kilde:lex-frekvens) [formelsamlingen, s. 34, formel (135)](kilde:formelsamling)
+- **Histogram.** I et histogram svarer arealet af en blok til intervallets frekvens. Har alle intervaller samme længde, svarer højden af en blok til frekvensen. På figurerne i formelsamlingen står frekvensen i procent. [formelsamlingen, s. 34, formel (135) og (136)](kilde:formelsamling)
+- **Sumkurve og kvartiler.** En sumkurve viser den kumulerede frekvens i procent. På den kan du aflæse kvartilerne: $Q_1$ er 25 %-fraktilen, $m$ er 50 %-fraktilen, og $Q_3$ er 75 %-fraktilen. [formelsamlingen, s. 34, formel (137) og (138)](kilde:formelsamling)
+- **Sådan aflæser du en fraktil.** Gå vandret ud fra $p$ % på aksen med kumuleret frekvens, til du rammer sumkurven. Gå så lodret ned til $x$-aksen. Der aflæser du $p$ %-fraktilen $x_p$. [formelsamlingen, s. 34, formel (139)](kilde:formelsamling)
+- **Brug et regneark.** Med et regneark kan du bestemme deskriptorerne for et datasæt. [vejledningen, s. 32](kilde:vejledning)
+
+### Eksempel: hyppighed, frekvens og kumuleret frekvens
+
+20 elever har svaret på, hvor mange søskende de har:
+
+| Søskende | Hyppighed | Frekvens | Kumuleret frekvens |
+|---|---|---|---|
+| 0 | 4 | 20 % | 20 % |
+| 1 | 9 | 45 % | 65 % |
+| 2 | 5 | 25 % | 90 % |
+| 3 | 2 | 10 % | 100 % |
+
+Frekvensen for 1 søskende er $\frac{9}{20} = 0{,}45 = 45\,\%$. Den kumulerede frekvens for 2 søskende er
+
+$$
+\frac{4 + 9 + 5}{20} = \frac{18}{20} = 0{,}90 = 90\,\%
+$$
+
+Altså har 90 % af eleverne højst 2 søskende. Hyppighederne giver tilsammen 20, og frekvenserne giver tilsammen 100 %.
+
+## Formler
+
+<Formel navn="Kvartilsæt" tex="(Q_1, m, Q_3)" kilde="formelsamling" henvisning="formelsamlingen, s. 33, formel (130)">
+
+<Symboler>
+
+- $m$: medianen. [formelsamlingen, s. 32, formel (123)](kilde:formelsamling)
+- $Q_1$: den nedre kvartil, altså medianen af observationerne til venstre for $m$. [formelsamlingen, s. 32, formel (124)](kilde:formelsamling)
+- $Q_3$: den øvre kvartil, altså medianen af observationerne til højre for $m$. [formelsamlingen, s. 32, formel (125)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde medianen og kvartilerne for ugrupperede observationer, fx for at tegne et boksplot.
+
+</Bruges>
+
+<Eksempel>
+
+Ti elever har målt, hvor mange minutter de er om at komme i skole:
+
+15, 8, 24, 12, 33, 10, 17, 6, 25, 20
+
+Sorteret efter størrelse:
+
+6, 8, 10, 12, 15, 17, 20, 24, 25, 33
+
+Antallet er lige, så medianen er gennemsnittet af de to midterste observationer:
+
+$$
+m = \frac{15 + 17}{2} = 16
+$$
+
+Til venstre for medianen står 6, 8, 10, 12 og 15, så $Q_1 = 10$. Til højre står 17, 20, 24, 25 og 33, så $Q_3 = 24$. Kvartilsættet er $(10, 16, 24)$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at sortere observationerne først.
+- At tage den midterste observation med i halvdelene, når antallet er ulige.
+- At finde $Q_1$ og $Q_3$ som gennemsnittet af hver halvdel i stedet for medianen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Udvidet kvartilsæt" tex="(\mathit{min}, Q_1, m, Q_3, \mathit{max})" kilde="formelsamling" henvisning="formelsamlingen, s. 33, formel (131)">
+
+<Symboler>
+
+- $\mathit{min}$: den mindste observation. [formelsamlingen, s. 33, formel (126)](kilde:formelsamling)
+- $\mathit{max}$: den største observation. [formelsamlingen, s. 33, formel (127)](kilde:formelsamling)
+- $Q_1$, $m$ og $Q_3$: kvartilsættet.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal tegne et boksplot. Boksplottet viser netop de fem tal. [formelsamlingen, s. 33, formel (132)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+For skolevejene er $\mathit{min} = 6$ og $\mathit{max} = 33$, så det udvidede kvartilsæt er
+
+$$
+(6, 10, 16, 24, 33)
+$$
+
+I boksplottet går boksen fra 10 til 24 med en streg ved 16. Linjerne går ud til 6 og 33.
+
+</Eksempel>
+
+<Fejl>
+
+- At lade boksen gå fra $\mathit{min}$ til $\mathit{max}$.
+- At sætte stregen i boksen ved middelværdien i stedet for medianen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Variationsbredde" tex="\mathit{VB} = \mathit{max} - \mathit{min}" kilde="formelsamling" henvisning="formelsamlingen, s. 33, formel (128)">
+
+<Symboler>
+
+- $\mathit{VB}$: variationsbredden.
+- $\mathit{max}$ og $\mathit{min}$: den største og den mindste observation.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde afstanden fra den mindste til den største observation.
+
+</Bruges>
+
+<Eksempel>
+
+For skolevejene er
+
+$$
+\mathit{VB} = 33 - 6 = 27
+$$
+
+Der er altså 27 minutter mellem den korteste og den længste skolevej.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge det første og det sidste tal i den usorterede liste.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Kvartilbredde" tex="\mathit{KB} = Q_3 - Q_1" kilde="formelsamling" henvisning="formelsamlingen, s. 33, formel (129)">
+
+<Symboler>
+
+- $\mathit{KB}$: kvartilbredden.
+- $Q_3$ og $Q_1$: den øvre og den nedre kvartil.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde bredden af boksen i et boksplot. [formelsamlingen, s. 33, formel (132)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+For skolevejene er
+
+$$
+\mathit{KB} = 24 - 10 = 14
+$$
+
+Boksen i boksplottet er altså 14 minutter bred.
+
+</Eksempel>
+
+<Fejl>
+
+- At trække medianen fra i stedet for $Q_1$.
+- At bytte om, så kvartilbredden bliver negativ.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Middelværdi" tex="\overline{x} = \frac{x_1 + x_2 + \ldots + x_n}{n}" kilde="formelsamling" henvisning="formelsamlingen, s. 33, formel (133)">
+
+<Symboler>
+
+- $x_1, x_2, \ldots, x_n$: observationerne.
+- $n$: antallet af observationer.
+- $\overline{x}$: middelværdien, også kaldet gennemsnittet.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde gennemsnittet af et observationssæt.
+
+</Bruges>
+
+<Eksempel>
+
+For skolevejene er summen 170 minutter, og der er 10 observationer. Så er
+
+$$
+\overline{x} = \frac{170}{10} = 17
+$$
+
+Den gennemsnitlige skolevej er altså 17 minutter.
+
+Hvis den længste skolevej i stedet var 90 minutter, ville summen blive 227, og middelværdien ville blive
+
+$$
+\overline{x} = \frac{227}{10} = 22{,}7
+$$
+
+Medianen er stadig 16, fordi de to midterste observationer er de samme.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme en observation, der står flere gange.
+- At dividere med et forkert antal.
+- At forveksle middelværdien med medianen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Spredning" tex="\sigma = \sqrt{\frac{(x_1 - \overline{x})^2 + \ldots + (x_n - \overline{x})^2}{n}}" kilde="formelsamling" henvisning="formelsamlingen, s. 33, formel (134)">
+
+<Symboler>
+
+- $x_1, \ldots, x_n$: observationerne.
+- $\overline{x}$: middelværdien.
+- $n$: antallet af observationer.
+- $\sigma$: spredningen.
+
+</Symboler>
+
+<Bruges>
+
+Når en opgave beder om spredningen af et observationssæt. Ligger observationerne langt fra middelværdien, bliver tallene i tælleren store, og så bliver $\sigma$ stor.
+
+</Bruges>
+
+<Eksempel>
+
+Fem venner har brugt 5, 7, 8, 9 og 11 timer på lektier i en uge. Middelværdien er
+
+$$
+\overline{x} = \frac{5 + 7 + 8 + 9 + 11}{5} = 8
+$$
+
+Afstandene til middelværdien er $-3$, $-1$, $0$, $1$ og $3$. Så er
+
+$$
+\sigma = \sqrt{\frac{(-3)^2 + (-1)^2 + 0^2 + 1^2 + 3^2}{5}} = \sqrt{\frac{20}{5}} = \sqrt{4} = 2
+$$
+
+Spredningen er altså 2 timer.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at opløfte i anden. I eksemplet giver afstandene uden kvadrat $-3 - 1 + 0 + 1 + 3 = 0$.
+- At glemme kvadratroden til sidst.
+- At stole blindt på en kommando i GeoGebra eller regnearket. Tjek, at den giver det samme som formlen, fx med tallene her.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Median">
+
+Den midterste observation, når observationerne er sorteret efter størrelse. Er antallet lige, er medianen gennemsnittet af de to midterste observationer. Den skrives $m$. [formelsamlingen, s. 32, formel (123)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Kvartiler">
+
+Den nedre kvartil $Q_1$ er medianen af observationerne til venstre for medianen, og den øvre kvartil $Q_3$ er medianen af observationerne til højre for den. På en sumkurve er de 25 %- og 75 %-fraktilen. [formelsamlingen, s. 32 og 34, formel (124), (125) og (138)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Boksplot">
+
+Et diagram, der viser det udvidede kvartilsæt $(\mathit{min}, Q_1, m, Q_3, \mathit{max})$. Boksen går fra $Q_1$ til $Q_3$. [formelsamlingen, s. 33, formel (131) og (132)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Middelværdi">
+
+Summen af observationerne divideret med antallet. Den kaldes også gennemsnittet og skrives $\overline{x}$. [formelsamlingen, s. 33, formel (133)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Spredning">
+
+Et tal, der bygger på, hvor langt observationerne ligger fra middelværdien. Den skrives $\sigma$. [formelsamlingen, s. 33, formel (134)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Varians">
+
+Spredningen i anden, $\sigma^2$, så spredningen er kvadratroden af variansen. For en stokastisk variabel står det i formelsamlingen som $\sigma = \sqrt{\text{Var}(X)}$. [formelsamlingen, s. 38, formel (157) og (158)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Hyppighed">
+
+Et antal: hvor mange gange en værdi forekommer, eller hvor mange observationer der ligger i en kategori, fx et interval. [lex.dk: Beskrivende statistik](kilde:lex-beskrivende-statistik) Ved grupperede observationer hedder antallet i et interval intervalhyppigheden. [vejledningen, s. 18](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Frekvens">
+
+Hyppigheden divideret med det samlede antal observationer, altså den relative hyppighed. Forekommer en værdi 6 gange blandt 25 observationer, er frekvensen $\frac{6}{25} = 0{,}24 = 24\,\%$. [lex.dk: Frekvens (hyppighed)](kilde:lex-frekvens)
+
+</Begreb>
+
+<Begreb navn="Kumuleret frekvens">
+
+Den andel af observationerne, der ikke er større end en bestemt værdi. Det er den kumulerede hyppighed divideret med det samlede antal. [lex.dk: Kumuleret hyppighed](kilde:lex-kumuleret-hyppighed) [lex.dk: Frekvens (hyppighed)](kilde:lex-frekvens) En sumkurve viser den kumulerede frekvens i procent. [formelsamlingen, s. 34, formel (137)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Histogram">
+
+Et diagram til grupperede observationer. Arealet af en blok svarer til intervallets frekvens. [formelsamlingen, s. 34, formel (135)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Sumkurve">
+
+En kurve, der viser den kumulerede frekvens for grupperede observationer. På den kan du aflæse kvartiler og andre fraktiler. [formelsamlingen, s. 34, formel (137)–(139)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fraktil">
+
+$p$ %-fraktilen $x_p$ er det tal, du aflæser på $x$-aksen, når du går ud fra $p$ % på sumkurvens akse med kumuleret frekvens. Medianen er 50 %-fraktilen. [formelsamlingen, s. 34, formel (138) og (139)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Ikke til den skriftlige prøve.** Ved den skriftlige prøve stilles der ikke opgaver i deskriptiv statistik. Det gælder både delprøve 1, hvor du kun må bruge formelsamlingen, og delprøve 2, hvor du må bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 18 og 36](kilde:vejledning)
+
+**Det skal du kunne.** Deskriptiv statistik er kernestof: beskrivelse og grafisk repræsentation af ugrupperet og grupperet observationsmateriale og statistiske deskriptorer. [læreplanen, pkt. 2.2](kilde:laereplan)
+
+- Til ugrupperede observationer skal du være fortrolig med hyppighed, frekvens og kumuleret frekvens. Deskriptorerne er middelværdi, varians, spredning, median og de øvrige kvartiler, og diagrammerne er søjlediagram og boksplot. [vejledningen, s. 17](kilde:vejledning)
+- Til grupperede observationer skal du være fortrolig med intervalhyppighed, intervalfrekvens og kumuleret frekvens. Deskriptorerne er de samme plus fraktiler, og diagrammerne er histogram og sumkurve. [vejledningen, s. 18](kilde:vejledning)
+- Formelsamlingen har ingen formel for variansen af et observationssæt og ingen formler for middelværdi og spredning af grupperede observationer. [formelsamlingen, s. 32–34](kilde:formelsamling) Variansen er spredningen i anden, se under Vigtige pointer. [formelsamlingen, s. 38, formel (158)](kilde:formelsamling)
+- Dele af statistikken bruges også i andre fag, fx samfundsfag A. [vejledningen, s. 33](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Eksamensspørgsmålene skal tilsammen i al væsentlighed dække kernestoffet, og deskriptiv statistik er en del af kernestoffet. [læreplanen, pkt. 2.2 og 4.2](kilde:laereplan) I statistik fylder mindre stramme ræsonnementer mere, og vejledningen nævner ingen beviser til deskriptiv statistik. [vejledningen, s. 17–18 og 23](kilde:vejledning) Øv dig i at forklare, hvad deskriptorerne fortæller, og hvordan du aflæser et boksplot og en sumkurve. Øv dig også i at forklare, hvorfor medianen ikke ændrede sig i eksemplet med middelværdien, da den længste skolevej blev 90 minutter.
+
+**Eksempler på problemstillinger**
+
+- To klasser har noteret, hvor mange timer de sov natten før en prøve. Tegn et boksplot for hver klasse, og sammenlign dem.
+- Forklar med et eksempel, at to observationssæt kan have samme middelværdi, men forskellig spredning.
+- En sumkurve viser ventetiden i en kantine. Forklar, hvordan du aflæser medianen og kvartilbredden.
+
+Til de emner, der kommer til den skriftlige prøve, kan du øve dig på [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711) Ser du en opgave i deskriptiv statistik i et gammelt sæt, så husk, at emnet ikke kommer til den skriftlige prøve efter 2024-læreplanen. [vejledningen, s. 18](kilde:vejledning)

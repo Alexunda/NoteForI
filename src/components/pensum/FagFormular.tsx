@@ -1,10 +1,12 @@
-// Formularen til at tilføje et fag eller rette navn og niveau. Fag og
-// niveau vælges med store knapper, så det er let at ramme med tommelfingeren.
+// Formularen til at tilføje et fag eller rette navn, niveau og læreplan. Fag,
+// niveau og læreplan vælges med store knapper, så det er let at ramme med
+// tommelfingeren. Læreplanen skal kun vælges, når faget og niveauet har
+// lister til flere læreplaner, fx dansk A.
 
 import { useEffect, useId, useRef, useState } from 'preact/hooks';
 import type { TargetedSubmitEvent } from 'preact';
 import { FAG_IDER, FAG_NAVNE, type FagId } from '../../data/fag';
-import { NIVEAUER, type Niveau } from '../../data/pensum';
+import { NIVEAUER, type GeneriskVisning, type Niveau } from '../../data/pensum';
 import { MAKS_NAVN, rensNavn, type NytFag } from '../../lib/pensum';
 
 type Valg = FagId | 'andet';
@@ -16,6 +18,8 @@ interface Props {
   knaptekst: string;
   /** Fagets nuværende data, når faget rettes */
   start?: NytFag;
+  /** Læreplanerne, man kan vælge imellem, for hvert "fag/niveau" (laereplanValg) */
+  laereplaner: Record<string, GeneriskVisning[]>;
   /** Giver en fejlbesked tilbage, hvis faget ikke kunne gemmes */
   onGem: (nyt: NytFag) => string | null;
   onAnnuller?: () => void;
@@ -29,11 +33,12 @@ function findKendtFag(navn: string): FagId | null {
   return FAG_IDER.find((fag) => FAG_NAVNE[fag].toLocaleLowerCase('da') === soeg) ?? null;
 }
 
-export default function FagFormular({ overskrift, knaptekst, start, onGem, onAnnuller, autofokus }: Props) {
+export default function FagFormular({ overskrift, knaptekst, start, laereplaner, onGem, onAnnuller, autofokus }: Props) {
   const id = useId();
   const [valg, saetValg] = useState<Valg | null>(start ? (start.fagside ?? 'andet') : null);
   const [andetNavn, saetAndetNavn] = useState(start && start.fagside === null ? start.navn : '');
   const [niveau, saetNiveau] = useState<Niveau | null>(start?.niveau ?? null);
+  const [laereplan, saetLaereplan] = useState<string | null>(start?.laereplan ?? null);
   const [fejl, saetFejl] = useState<string | null>(null);
   const formular = useRef<HTMLFormElement>(null);
   const navnefelt = useRef<HTMLInputElement>(null);
@@ -64,7 +69,10 @@ export default function FagFormular({ overskrift, knaptekst, start, onGem, onAnn
 
     const fagside = valg === 'andet' ? findKendtFag(andetNavn) : valg;
     const navn = fagside ? FAG_NAVNE[fagside] : andetNavn;
-    const besked = onGem({ fagside, navn, niveau });
+    const muligheder = fagside ? laereplaner[`${fagside}/${niveau}`] : undefined;
+    const valgtPlan = muligheder?.some((liste) => liste.laereplan === laereplan) ? laereplan : null;
+    if (muligheder && valgtPlan === null) return vis('Vælg din læreplan.', `input[name="${id}-laereplan"]`);
+    const besked = onGem({ fagside, navn, niveau, laereplan: valgtPlan });
     if (besked) vis(besked, `input[name="${id}-fag"]:checked`);
   }
 
@@ -133,6 +141,37 @@ export default function FagFormular({ overskrift, knaptekst, start, onGem, onAnn
           ))}
         </div>
       </fieldset>
+
+      {valg !== null && valg !== 'andet' && niveau !== null && laereplaner[`${valg}/${niveau}`] && (
+        <fieldset class="pensum-felt">
+          <legend>Læreplan</legend>
+          <div class="pensum-chips pensum-chips-niveau">
+            {laereplaner[`${valg}/${niveau}`].map((liste) => (
+              <label class="pensum-chip" key={liste.laereplan}>
+                <input
+                  type="radio"
+                  name={`${id}-laereplan`}
+                  value={liste.laereplan}
+                  checked={laereplan === liste.laereplan}
+                  onChange={() => {
+                    saetLaereplan(liste.laereplan);
+                    saetFejl(null);
+                  }}
+                />
+                <span>{liste.laereplan}</span>
+              </label>
+            ))}
+          </div>
+          <ul class="pensum-laereplan-hjaelp">
+            {laereplaner[`${valg}/${niveau}`].map((liste) => (
+              <li key={liste.laereplan}>
+                <strong>{liste.laereplan}:</strong> {liste.gaelder}
+              </li>
+            ))}
+            <li>Spørg din lærer, hvis du er i tvivl.</li>
+          </ul>
+        </fieldset>
+      )}
 
       <p class="pensum-fejl" role="alert">
         {fejl}

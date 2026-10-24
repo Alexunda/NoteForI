@@ -1,0 +1,394 @@
+---
+titel: "Regression og modeller"
+beskrivelse: "Find den model, der passer bedst til en tabel med data, brug den til at regne videre, og se, hvor meget data afviger fra modellen."
+fag: matematik
+nummer: 16
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+  - id: lex-mindste-kvadraters-metode
+    navn: "lex.dk: Mindste kvadraters metode (hentet 24. oktober 2026)"
+    url: https://lex.dk/mindste_kvadraters_metode
+  - id: lex-regressionsanalyse
+    navn: "lex.dk: Regressionsanalyse (hentet 24. oktober 2026)"
+    url: https://lex.dk/regressionsanalyse
+  - id: lex-interpolation
+    navn: "lex.dk: Interpolation (matematisk metode) (hentet 24. oktober 2026)"
+    url: https://lex.dk/interpolation_-_matematisk_metode
+  - id: lex-ekstrapolation
+    navn: "lex.dk: Ekstrapolation (hentet 24. oktober 2026)"
+    url: https://lex.dk/ekstrapolation
+verificeret: false
+---
+
+## Kort fortalt
+
+Har du en tabel med datapunkter, kan et digitalt værktøj finde den model, der passer bedst til punkterne. Det kaldes regression, og modellen kaldes en regressionsmodel. [formelsamlingen, s. 30, formel (114) og (117)](kilde:formelsamling) [vejledningen, s. 9](kilde:vejledning) Til den skriftlige prøve står modeltypen, fx lineær eller eksponentiel, altid i opgaven. [vejledningen, s. 37](kilde:vejledning) Med modellen kan du regne videre, og med afvigelserne kan du se, hvor godt den passer til data. [vejledningen, s. 15](kilde:vejledning) [formelsamlingen, s. 31, formel (119)–(121)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Modeltypen står i opgaven.** Til den skriftlige prøve skal du kunne opstille modeller ved regression, men du forventes ikke at kunne begrunde, hvorfor én model er bedre end en anden. Derfor står modeltypen altid i opgaven. [vejledningen, s. 37](kilde:vejledning)
+- **Funktionstyperne.** Du skal kunne lave regression med [lineære funktioner](/fag/matematik/lineaere-funktioner/), [eksponentielle funktioner](/fag/matematik/eksponentielle-funktioner/), [potensfunktioner](/fag/matematik/potensfunktioner/), [andengradspolynomier](/fag/matematik/andengradspolynomier/) og de [trigonometriske funktioner](/fag/matematik/trigonometriske-funktioner/) cosinus og sinus. [vejledningen, s. 15](kilde:vejledning)
+- **Hvad betyder ”passer bedst”?** Regressionsmodellen er den model, der passer bedst til datapunkterne. [formelsamlingen, s. 30, formel (115) og (117)](kilde:formelsamling) Ved en ret linje bruger man ofte mindste kvadraters metode: For hvert datapunkt tager du den lodrette afvigelse, altså forskellen mellem punktets $y$-værdi og linjens $y$-værdi, og sætter den i anden. Den bedste linje er den, hvor summen af kvadraterne er mindst. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) [lex.dk: Regressionsanalyse](kilde:lex-regressionsanalyse) Med datapunkterne $(x_1, y_1), \ldots, (x_n, y_n)$ og linjen $y = a \cdot x + b$ er det summen $(a \cdot x_1 + b - y_1)^2 + \ldots + (a \cdot x_n + b - y_n)^2$, der skal være så lille som muligt. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) Mindste kvadraters metode står ikke i læreplanen fra 2024, vejledningen eller formelsamlingen. Det, du skal kunne, er at lave regression med [GeoGebra](https://www.geogebra.org/) og bruge modellen. [vejledningen, s. 15 og 37](kilde:vejledning) Forklaringen her er baggrund, så du ved, hvad »passer bedst« betyder. Se eksemplet med stearinlyset herunder.
+- **Tegn data og model sammen.** Tegn datapunkterne og grafen for modellen i samme koordinatsystem. Vælg et passende grafvindue, altså det udsnit af koordinatsystemet, du viser, så punkter og graf står tydeligt. [vejledningen, s. 15 og 41](kilde:vejledning)
+- **Brug modellen.** Med modellen kan du lave fremskrivninger og prognoser, altså bud på, hvordan udviklingen fortsætter. Du kan også fortolke tallene i forskriften og regne konkrete ting ud i sammenhængen. [vejledningen, s. 15](kilde:vejledning)
+- **Interpolation og ekstrapolation.** Når du bruger kendte værdier, fx fra en tabel, til at give et bud på en værdi, der ligger mellem dem, kaldes det interpolation. [lex.dk: Interpolation](kilde:lex-interpolation) Ligger værdien uden for det interval, de kendte værdier dækker, kaldes det ekstrapolation. [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation) Et bud uden for intervallet er mere usikkert. [lex.dk: Interpolation](kilde:lex-interpolation) Vejledningen nævner forskellen mellem at bruge en model til interpolation og til ekstrapolation som noget, I kan diskutere, når I arbejder med modeller. [vejledningen, s. 9 og 27](kilde:vejledning)
+- **Afvigelser.** Den absolutte afvigelse er forskellen mellem en observeret værdi og modelværdien. Den relative afvigelse er den absolutte afvigelse divideret med modelværdien. Du skal kunne beregne begge. [formelsamlingen, s. 31, formel (120) og (121)](kilde:formelsamling) [vejledningen, s. 15](kilde:vejledning)
+- **Vær kritisk.** Vurdér, om modellen faktisk beskriver data, eller om der er en systematisk variation. Ligger punkterne tilfældigt omkring grafen, eller afviger de systematisk fra den? [vejledningen, s. 15 og 27](kilde:vejledning)
+- **Skjulte variable.** To variable kan se ud til at afhænge direkte af hinanden, selv om de i virkeligheden begge afhænger af en fælles tredje variabel, ofte tiden. Det kaldes skjulte variable, og du skal kende begrebet. [vejledningen, s. 9 og 15](kilde:vejledning)
+- **Rækkevidde.** En model er en forenkling af virkeligheden. Når du fortolker en model, hører det med at diskutere, hvad den kan bruges til, og hvor langt den rækker. [læreplanen, pkt. 2.1](kilde:laereplan) [vejledningen, s. 9](kilde:vejledning)
+
+### Sådan gør du
+
+1. Få data ind i GeoGebra. Til eksamen kan data ligge i et Excel-regneark, som du skal kunne importere. [vejledningen, s. 36](kilde:vejledning)
+2. Lav regression med den modeltype, opgaven nævner. [vejledningen, s. 37](kilde:vejledning)
+3. Skriv modellens forskrift, og skriv, hvad de variable står for, og hvilke enheder de har. [vejledningen, s. 42](kilde:vejledning)
+4. Tegn datapunkterne og grafen i samme koordinatsystem, og se, om modellen passer. [vejledningen, s. 15](kilde:vejledning)
+5. Brug modellen til at svare på spørgsmålene, og forklar, hvordan du har brugt GeoGebra. [vejledningen, s. 41](kilde:vejledning)
+
+### Eksempel: et stearinlys
+
+Et stearinlys brænder, og du måler højden hver time:
+
+| Tid $x$ (timer) | Højde $y$ (cm) |
+|---|---|
+| 0 | 24,1 |
+| 1 | 22,2 |
+| 2 | 20,9 |
+| 3 | 19,3 |
+| 4 | 17,4 |
+| 5 | 16,1 |
+
+Opgaven siger, at du skal bruge lineær regression. GeoGebra giver modellen
+
+$$
+f(x) = -1{,}6 \cdot x + 24{,}0
+$$
+
+hvor $f(x)$ er højden i cm efter $x$ timer. Grafen herunder viser modellen.
+
+Prøv selv: Find punktet på grafen, hvor $x = 4$, og sammenlign med målingen i tabellen. Ligger målingen over eller under grafen?
+
+<Graf
+  titel="Model for stearinlysets højde"
+  funktioner={[{ forskrift: 'f(x) = -1,6 · x + 24,0', tex: 'f(x) = -1{,}6 \\cdot x + 24{,}0' }]}
+  x={[-1, 17]}
+  y={[-4, 28]}
+/>
+
+Grafen skærer $x$-aksen ved $x = 15$. Efter 15 timer giver modellen altså højden 0 cm, og bagefter giver den negative højder. Det kan et lys ikke have, så modellen kan højst bruges i de første 15 timer. Modellen har altså en begrænset rækkevidde.
+
+**Interpolation eller ekstrapolation?** Målingerne går fra 0 til 5 timer. Bruger du modellen efter 2,5 timer, er det interpolation, fordi 2,5 ligger mellem målingerne: $f(2{,}5) = -1{,}6 \cdot 2{,}5 + 24{,}0 = 20{,}0$. Prognosen under Formler, hvor lyset er 5 cm højt efter ca. 11,9 timer, er ekstrapolation, fordi 11,9 ligger uden for intervallet fra 0 til 5. [lex.dk: Interpolation](kilde:lex-interpolation) [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation)
+
+**Ekstra: Hvorfor netop denne linje?** De absolutte afvigelser mellem målingerne og modelværdierne er $0{,}1$, $-0{,}2$, $0{,}1$, $0{,}1$, $-0{,}2$ og $0{,}1$ cm. [formelsamlingen, s. 31, formel (120)](kilde:formelsamling) Summen af kvadraterne er
+
+$$
+0{,}1^2 + (-0{,}2)^2 + 0{,}1^2 + 0{,}1^2 + (-0{,}2)^2 + 0{,}1^2 = 0{,}12
+$$
+
+Prøver du i stedet linjen $y = -1{,}5 \cdot x + 24{,}0$, bliver summen $0{,}67$. Efter mindste kvadraters metode passer modellen altså bedst af de to linjer. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode)
+
+## Formler
+
+<Formel navn="Lineær regressionsmodel" tex="f(x) = a \cdot x + b" kilde="formelsamling" henvisning="formelsamlingen, s. 30, formel (115)">
+
+<Symboler>
+
+- $f(x)$: modellens værdi, når den variable er $x$.
+- $a$: hældningskoefficienten. Når $x$ vokser med 1, vokser $f(x)$ med $a$. [formelsamlingen, s. 17, formel (42)](kilde:formelsamling)
+- $b$: begyndelsesværdien, altså $f(0)$. [formelsamlingen, s. 16, formel (39)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når opgaven siger, at du skal bruge lineær regression på en tabel med datapunkter. Modellen er den lineære funktion, der passer bedst til datapunkterne.
+
+</Bruges>
+
+<Eksempel>
+
+For stearinlyset giver lineær regression $a = -1{,}6$ og $b = 24{,}0$. Det betyder:
+
+- Højden falder med 1,6 cm i timen, fordi $f(x)$ vokser med $a = -1{,}6$, hver gang $x$ vokser med 1.
+- Ifølge modellen var lyset 24,0 cm højt, da du startede, fordi $f(0) = b = 24{,}0$.
+
+Du kan også bruge modellen til en prognose. Hvornår er lyset 5 cm højt? Du skal løse ligningen
+
+$$
+-1{,}6 \cdot x + 24{,}0 = 5
+$$
+
+og det giver
+
+$$
+x = \frac{5 - 24{,}0}{-1{,}6} \approx 11{,}9
+$$
+
+Ifølge modellen er lyset 5 cm højt efter ca. 11,9 timer.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge en anden modeltype end den, opgaven nævner.
+- At bytte om på $x$ og $y$, når du taster data ind. Så får du en helt anden model.
+- At glemme at skrive, hvad $x$ og $f(x)$ står for, og hvilke enheder de har.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Regressionsmodel" tex="y = f(x)" kilde="formelsamling" henvisning="formelsamlingen, s. 30, formel (117)">
+
+<Symboler>
+
+- $x$ og $y$: de to størrelser i tabellen, fx tiden og antal brugere.
+- $f$: modellen. Den er en funktion af den type, opgaven nævner.
+
+</Symboler>
+
+<Bruges>
+
+Når opgaven siger, at du skal bruge regression med en anden funktionstype end den lineære, fx eksponentiel regression.
+
+</Bruges>
+
+<Eksempel>
+
+En ny app får flere brugere hver måned. Tabellen viser antal brugere $x$ måneder efter lanceringen.
+
+| Måneder $x$ | Brugere $y$ (tusinder) |
+|---|---|
+| 0 | 8,1 |
+| 1 | 9,5 |
+| 2 | 11,6 |
+| 3 | 13,9 |
+| 4 | 16,5 |
+| 5 | 20,0 |
+
+Opgaven siger, at du skal bruge eksponentiel regression. Så har modellen formen $f(x) = b \cdot a^x$. [formelsamlingen, s. 18, formel (44)](kilde:formelsamling) GeoGebra giver $b \approx 8{,}0$ og $a \approx 1{,}20$, så
+
+$$
+f(x) = 8{,}0 \cdot 1{,}20^x
+$$
+
+Fremskrivningsfaktoren er $a = 1{,}20 = 1 + 0{,}20$, så antallet af brugere vokser med 20 % om måneden ifølge modellen. [formelsamlingen, s. 18, formel (45)](kilde:formelsamling) Begyndelsesværdien $b = 8{,}0$ betyder, at appen havde ca. 8000 brugere ved lanceringen ifølge modellen. [formelsamlingen, s. 18, formel (47)](kilde:formelsamling)
+
+</Eksempel>
+
+<Fejl>
+
+- At vælge en anden modeltype end den, opgaven nævner.
+- At glemme at tegne punkterne og grafen sammen og se, om modellen faktisk beskriver data.
+- At skrive 8,0 brugere i stedet for ca. 8000 brugere, når $y$ er målt i tusinder.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Modelværdi" tex="y_{\text{model}} = f(x_0)" kilde="formelsamling" henvisning="formelsamlingen, s. 31, formel (119)">
+
+<Symboler>
+
+- $x_0$: den $x$-værdi, du ser på.
+- $f$: modellen.
+- $y_{\text{model}}$: modelværdien, altså den værdi, modellen giver for $x_0$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde det, modellen siger, fx for at sammenligne med en måling eller for at lave en prognose.
+
+</Bruges>
+
+<Eksempel>
+
+For stearinlyset er $f(x) = -1{,}6 \cdot x + 24{,}0$. Efter 4 timer er modelværdien
+
+$$
+y_{\text{model}} = f(4) = -1{,}6 \cdot 4 + 24{,}0 = 17{,}6
+$$
+
+Modellen siger altså, at lyset er 17,6 cm højt efter 4 timer.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge målingen fra tabellen i stedet for at sætte $x_0$ ind i forskriften.
+- At sætte $x_0$ ind i en anden enhed end den, modellen bruger, fx minutter i stedet for timer.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Absolut afvigelse" tex="\Delta y = y_{\text{obs}} - y_{\text{model}}" kilde="formelsamling" henvisning="formelsamlingen, s. 31, formel (120)">
+
+<Symboler>
+
+- $y_{\text{obs}}$: den observerede værdi, altså målingen fra tabellen.
+- $y_{\text{model}}$: modelværdien for den samme $x$-værdi.
+- $\Delta y$: den absolutte afvigelse. Den har samme enhed som $y$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde, hvor langt en måling ligger fra modellen. Er $\Delta y$ positiv, ligger målingen over grafen. Er den negativ, ligger målingen under grafen.
+
+</Bruges>
+
+<Eksempel>
+
+Efter 4 timer målte du 17,4 cm, og modelværdien er 17,6 cm. Så er
+
+$$
+\Delta y = 17{,}4 - 17{,}6 = -0{,}2
+$$
+
+Målingen ligger altså 0,2 cm under grafen.
+
+</Eksempel>
+
+<Fejl>
+
+- At trække fra i den forkerte rækkefølge, så fortegnet bliver forkert.
+- At sammenligne en måling med modelværdien for en anden $x$-værdi.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Relativ afvigelse" tex="r = \frac{y_{\text{obs}} - y_{\text{model}}}{y_{\text{model}}}" kilde="formelsamling" henvisning="formelsamlingen, s. 31, formel (121)">
+
+<Symboler>
+
+- $y_{\text{obs}}$: den observerede værdi.
+- $y_{\text{model}}$: modelværdien.
+- $r$: den relative afvigelse som decimaltal. Ganger du med 100, får du den i procent, ligesom med en vækstrate. [formelsamlingen, s. 8, formel (1)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde, hvor stor afvigelsen er i forhold til modelværdien, fx når en opgave beder om afvigelsen i procent.
+
+</Bruges>
+
+<Eksempel>
+
+Efter 4 timer er $y_{\text{obs}} = 17{,}4$ og $y_{\text{model}} = 17{,}6$. Så er
+
+$$
+r = \frac{17{,}4 - 17{,}6}{17{,}6} = \frac{-0{,}2}{17{,}6} \approx -0{,}0114
+$$
+
+Målingen ligger altså ca. 1,1 % under modelværdien.
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere med den observerede værdi i stedet for modelværdien.
+- At glemme at gange med 100, når svaret skal være i procent.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Regressionsmodel">
+
+Den model $y = f(x)$, der passer bedst til datapunkterne i en tabel. Ved lineær regression er modellen af typen $f(x) = a \cdot x + b$. [formelsamlingen, s. 30, formel (114), (115) og (117)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Observeret værdi">
+
+En værdi, du har målt eller fået opgivet, fx et tal i tabellen med datapunkter. Den skrives $y_{\text{obs}}$. [formelsamlingen, s. 30–31, formel (114) og (120)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Modelværdi">
+
+Den værdi, modellen giver for en bestemt $x$-værdi $x_0$, altså $y_{\text{model}} = f(x_0)$. [formelsamlingen, s. 31, formel (119)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Absolut afvigelse">
+
+Forskellen mellem den observerede værdi og modelværdien: $\Delta y = y_{\text{obs}} - y_{\text{model}}$. [formelsamlingen, s. 31, formel (120)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Relativ afvigelse">
+
+Den absolutte afvigelse divideret med modelværdien. Ganget med 100 giver den afvigelsen i procent, ligesom med en vækstrate. [formelsamlingen, s. 8 og 31, formel (1) og (121)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Skjulte variable">
+
+To variable kan se ud til at afhænge direkte af hinanden, selv om de i virkeligheden begge afhænger af en fælles tredje variabel, ofte tiden. Det kaldes skjulte variable. [vejledningen, s. 9 og 15](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Mindste kvadraters metode">
+
+En metode til at finde den funktion, der passer bedst til en række målte datapunkter. Ved en ret linje sætter du hver lodret afvigelse mellem et datapunkt og linjen i anden og lægger kvadraterne sammen. Den bedste linje er den, der giver den mindste sum. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) Metoden står ikke i de officielle kilder til læreplanen fra 2024.
+
+</Begreb>
+
+<Begreb navn="Interpolation">
+
+Et bud på en funktionsværdi, der ligger mellem nogle værdier, du kender, fx fra en tabel. [lex.dk: Interpolation](kilde:lex-interpolation)
+
+</Begreb>
+
+<Begreb navn="Ekstrapolation">
+
+Et bud på en funktionsværdi uden for det interval, dine kendte værdier dækker, fx med en model. Det er mere usikkert end interpolation. [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation) [lex.dk: Interpolation](kilde:lex-interpolation)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Matematisk modellering med funktionstyperne, herunder regression, er kernestof i matematik A. [læreplanen, pkt. 2.2](kilde:laereplan) Du skal kunne lave regression med funktionstyperne ovenfor, tegne data og model i et passende grafvindue, forholde dig kritisk til modellen og beregne absolut og relativ afvigelse. [vejledningen, s. 15](kilde:vejledning) Kernestoffet er grundlaget for den skriftlige prøve. [vejledningen, s. 11](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Modellering kan komme i begge delprøver, men især i delprøve 2. [vejledningen, s. 9](kilde:vejledning) Øv dig derfor i at regne modelværdier og afvigelser i hånden med formel (119)–(121), og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Brugen af digitale værktøjer til modellering, fx regression, prøves i delprøve 2. [vejledningen, s. 9](kilde:vejledning)
+
+- Data kan komme som et Excel-regneark med heltal eller decimaltal, som du skal kunne importere i GeoGebra. [vejledningen, s. 15 og 36](kilde:vejledning)
+- Modeltypen står altid i opgaven. [vejledningen, s. 37](kilde:vejledning) Står der fx "Benyt regression", er det et metodekrav. Bruger du ikke metoden, giver et ellers rigtigt svar ikke fuldt point. [vejledningen, s. 36](kilde:vejledning)
+- Præsentér modellen med forskriften eller navnet, og skriv, hvad de variable betyder, og hvilke enheder de har. [vejledningen, s. 42](kilde:vejledning)
+- Forklar din brug af GeoGebra, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+
+Til den skriftlige prøve forventes du ikke at diskutere årsager til, at en model ikke ser ud til at beskrive data, fx skjulte variable. [vejledningen, s. 15](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner ikke et bestemt bevis til regression, men den siger, at matematisk ræsonnement også bør trænes i arbejdet med modellering. [vejledningen, s. 23](kilde:vejledning) Til lineære funktioner hører beviset for topunktsformlen for hældningskoefficienten, se [lineære funktioner](/fag/matematik/lineaere-funktioner/). [vejledningen, s. 14](kilde:vejledning) Øv dig i at forklare, hvad tallene i en model betyder, hvad modellen forenkler, og hvor langt den rækker. [vejledningen, s. 9](kilde:vejledning) På treårige hold kan et eksamensspørgsmål fx handle om vækstmodeller og suppleres med [differentialligninger](/fag/matematik/differentialligninger/). [vejledningen, s. 38](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- En tabel viser prisen på en bestemt type brugt bil i forhold til bilens alder. Bestem en eksponentiel model ved regression, og forklar, hvad tallene i forskriften betyder.
+- En lineær model giver, at en plante er 14 cm høj efter 10 dage, men du har målt 15,4 cm. Bestem den absolutte og den relative afvigelse.
+- En model for antallet af elbiler er lavet ud fra tal fra fem år. Diskutér, om den kan bruges til at sige noget om antallet om 30 år. Er det interpolation eller ekstrapolation?
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

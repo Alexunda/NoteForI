@@ -1,0 +1,105 @@
+---
+titel: "Test af komponenterne"
+beskrivelse: "Testside med pladsholdertekst, der viser skabelonen for emnesider med formler, begreber og graf."
+kilder:
+  - id: laereplaner
+    navn: "Læreplaner for stx (uvm.dk)"
+    url: "https://uvm.dk/uddannelse-til-unge/gymnasiale-uddannelser/fag-og-laereplaner/stx-laereplaner/"
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, 2024-læreplanen (uvm.dk, PDF)"
+    url: "https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf"
+  - id: egen
+    navn: "Egen forklaring, godkendt af redaktionen"
+---
+
+## Kort fortalt
+
+Her står tre til fem linjer, der forklarer emnet. Teksten er en pladsholder. [læreplanerne](kilde:laereplaner)
+
+Formler kan stå midt i en linje, fx $y = a \cdot x + b$ og $2{,}5$.
+
+## Vigtige pointer
+
+- Her står den første pointe. [læreplanerne](kilde:laereplaner)
+- Her står den anden pointe med en formel: $x^2 + 1$.
+- Her står den tredje pointe. [egen forklaring](kilde:egen)
+
+  <Hul navn="Et pladsholderbegreb i en liste" />
+
+<Hul navn="Et pladsholderbegreb" />
+
+En formel kan også stå på sin egen linje:
+
+$$
+\frac{a + b}{2} \cdot \sqrt{c}
+$$
+
+En graf med skydere. Træk i skyderne, og flyt og zoom med fingrene eller musen.
+
+<Graf
+  titel="Pladsholdergraf"
+  funktioner={[
+    { forskrift: 'f(x) = a · x^2 + b', tex: 'f(x) = a \\cdot x^2 + b' },
+    { forskrift: 'g(x) = b · 1,2^x', tex: 'g(x) = b \\cdot 1{,}2^x' },
+  ]}
+  parametre={{ a: { min: -3, max: 3, start: 0.5 }, b: { min: -5, max: 5, start: 1 } }}
+  x={[-6, 6]}
+  y={[-4, 10]}
+/>
+
+## Formler
+
+<Formel navn="Pladsholderformel" tex="y = a \cdot x + b" kilde="formelsamling" henvisning="formelsamlingen (side og formelnummer kommer her)">
+
+<Symboler>
+
+- $y$: her står, hvad $y$ betyder.
+- $a$ og $b$: her står, hvad $a$ og $b$ betyder.
+
+</Symboler>
+
+<Bruges>
+
+Her står, hvornår man bruger formlen.
+
+</Bruges>
+
+<Eksempel>
+
+Her står et gennemregnet eksempel trin for trin:
+
+$$
+y = 2 \cdot 3 + 1 = 7
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- Her står en typisk fejl.
+- Her står en anden typisk fejl.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Pladsholderbegreb">
+
+Her står en forklaring på begrebet. Den kan have formler som $a \neq 0$. [læreplanerne](kilde:laereplaner)
+
+</Begreb>
+
+<Begreb navn="Et andet begreb">
+
+Her står en forklaring på et andet begreb.
+
+</Begreb>
+
+## Eksamenshjørnet
+
+Her står, hvordan emnet typisk kommer til eksamen, og eksempler på problemstillinger.
+
+- Her står en problemstilling.
+- Her står en anden problemstilling.

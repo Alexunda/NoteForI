@@ -1,0 +1,412 @@
+---
+titel: "Integralregning"
+beskrivelse: "Stamfunktioner, ubestemt og bestemt integral, regneregler og substitution, og hvordan du bruger integraler til areal og rumfang af omdrejningslegemer."
+fag: matematik
+nummer: 21
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En stamfunktion til $f$ er en funktion $F$, hvor $F'(x) = f(x)$. At finde en stamfunktion er altså den omvendte proces af at differentiere. [vejledningen, s. 16](kilde:vejledning) [formelsamlingen, s. 66 og 68](kilde:formelsamling) Det ubestemte integral skrives $\int f(x)\,dx = F(x) + k$, og det bestemte integral fra $a$ til $b$ er tallet $F(b) - F(a)$. [formelsamlingen, s. 69, formel (291) og (296)](kilde:formelsamling) Med bestemte integraler kan du fx finde arealer under grafer og rumfang af omdrejningslegemer. [formelsamlingen, s. 70–71, formel (302)–(306)](kilde:formelsamling)
+
+## Vigtige pointer
+
+### Stamfunktioner
+
+- **Baglæns differentiation.** Du kan altid tjekke en stamfunktion ved at differentiere den. Fx er $\sin(x)$ en stamfunktion til $\cos(x)$. [formelsamlingen, s. 68, formel (289)](kilde:formelsamling) Differentierer du $\sin(x)$, får du netop $\cos(x)$. [formelsamlingen, s. 66, formel (272)](kilde:formelsamling) Reglerne for at differentiere finder du under [regneregler for differentiation](/fag/matematik/regneregler-for-differentiation/).
+- **Plus en konstant.** Lægger du en konstant til en stamfunktion, får du en ny stamfunktion. Konstanten bliver nemlig til 0, når du differentierer. [formelsamlingen, s. 66, formel (261)](kilde:formelsamling) Derfor skrives det ubestemte integral med $+ \, k$. [formelsamlingen, s. 69, formel (291)](kilde:formelsamling) Kender du et punkt på grafen for $F$, kan du bestemme $k$. Det samme gør du, når du løser differentialligningen $y' = h(x)$. [formelsamlingen, s. 72, formel (307)](kilde:formelsamling) Se [differentialligninger](/fag/matematik/differentialligninger/).
+- **Led for led.** Du må integrere en sum eller differens led for led og sætte en konstant uden for integraltegnet. [formelsamlingen, s. 69, formel (292), (293) og (294)](kilde:formelsamling) Fx er $\int (3x^2 + \cos(x))\,dx = x^3 + \sin(x) + k$.
+
+Stamfunktionerne til de funktioner, du kender, står i formelsamlingen. Her er nogle af dem: [formelsamlingen, s. 68](kilde:formelsamling)
+
+- $x^a$ har stamfunktionen $\frac{1}{a+1} \cdot x^{a+1}$, formel (285).
+- $\frac{1}{x}$ har stamfunktionen $\ln(|x|)$, formel (286).
+- $e^{k \cdot x}$ har stamfunktionen $\frac{1}{k} \cdot e^{k \cdot x}$, formel (283).
+- $a^x$ har stamfunktionen $\frac{a^x}{\ln(a)}$, formel (284).
+- $\ln(x)$ har stamfunktionen $x \cdot \ln(x) - x$, formel (288).
+- $\cos(x)$ har stamfunktionen $\sin(x)$, og $\sin(x)$ har stamfunktionen $-\cos(x)$, formel (289) og (290).
+
+Prøv selv: Den fuldt optrukne graf er $F(x) = \frac{1}{3}x^3 - x + k$, som er en stamfunktion til den stiplede $f(x) = x^2 - 1$. Træk i skyderen for $k$. Hvad sker der med grafen for $F$? Sammenlign de steder, hvor $F$ har vandret tangent, med nulpunkterne for $f$. Sammenhængen kan du læse mere om under [monotoniforhold og optimering](/fag/matematik/monotoniforhold-og-optimering/).
+
+<Graf
+  titel="Stamfunktioner med skyder"
+  funktioner={[
+    { forskrift: 'F(x) = 1/3 · x^3 - x + k', tex: 'F(x) = \\frac{1}{3}x^3 - x + k' },
+    { forskrift: 'f(x) = x^2 - 1', tex: 'f(x) = x^2 - 1' },
+  ]}
+  parametre={{ k: { min: -4, max: 4, start: 0, trin: 0.5 } }}
+  x={[-4, 4]}
+  y={[-5, 5]}
+/>
+
+### Bestemt integral og areal
+
+- **Bestemt integral.** $\int_a^b f(x)\,dx = F(b) - F(a)$, hvor $F$ er en stamfunktion til $f$. [formelsamlingen, s. 69, formel (296)](kilde:formelsamling) Konstanten $k$ går ud, når du trækker fra, så du kan bruge en hvilken som helst stamfunktion.
+- **Areal over og under $x$-aksen.** Ligger grafen over $x$-aksen fra $a$ til $b$, er arealet mellem grafen og $x$-aksen $A = \int_a^b f(x)\,dx$. Ligger grafen under $x$-aksen, er $A = -\int_a^b f(x)\,dx$. [formelsamlingen, s. 70, formel (302) og (303)](kilde:formelsamling)
+- **Når grafen skifter side** i et nulpunkt $c$, deler du området i to og finder arealet af hver del for sig med formel (302) og (303). Arealet er summen af de to dele. Integralet fra $a$ til $b$ er ikke arealet. Efter indskudsreglen er $\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$, og her går delene over og under $x$-aksen ud mod hinanden. [formelsamlingen, s. 69, formel (297), og s. 70, formel (302) og (303)](kilde:formelsamling)
+- **Areal mellem to grafer.** Ligger grafen for $f$ over grafen for $g$ fra $a$ til $b$, er arealet mellem dem $A = \int_a^b (f(x) - g(x))\,dx$. [formelsamlingen, s. 70, formel (304)](kilde:formelsamling)
+- **Sandsynligheder som integraler.** I normalfordelingen er en intervalsandsynlighed et integral af tæthedsfunktionen, og fordelingsfunktionen er også et integral. [formelsamlingen, s. 41, formel (170), og s. 43, formel (174)](kilde:formelsamling) Du skal kunne opstille integraler til intervalsandsynligheder og bestemme dem med [GeoGebra](https://www.geogebra.org/). [vejledningen, s. 18](kilde:vejledning) Se [normalfordelingen](/fag/matematik/normalfordelingen/).
+
+### Substitution og rumfang
+
+- **Substitution.** Står der en sammensat funktion ganget med den indre funktions afledede, kan du kalde den indre funktion $t$: $\int f(g(x)) \cdot g'(x)\,dx = \int f(t)\,dt$, hvor $t = g(x)$. [formelsamlingen, s. 69, formel (295)](kilde:formelsamling) I et bestemt integral skifter du grænserne $a$ og $b$ ud med $g(a)$ og $g(b)$. [formelsamlingen, s. 69, formel (301)](kilde:formelsamling)
+- **Omdrejningslegemer.** Drejer du området mellem grafen for $f$ og $x$-aksen fra $a$ til $b$ rundt om $x$-aksen, får du et omdrejningslegeme med rumfanget $V = \pi \cdot \int_a^b f(x)^2\,dx$. Er legemet hult, trækker du rumfanget af hullet fra. [formelsamlingen, s. 71, formel (305) og (306)](kilde:formelsamling)
+- **GeoGebra.** Giver en model et udtryk, som du ikke kan integrere med de funktioner og regneregler, du kender, så brug GeoGebra. [vejledningen, s. 16](kilde:vejledning)
+
+## Formler
+
+<Formel navn="Det ubestemte integral" tex="\int f(x)\,dx = F(x) + k" kilde="formelsamling" henvisning="formelsamlingen, s. 69, formel (291)">
+
+<Symboler>
+
+- $f(x)$: den funktion, du integrerer.
+- $F(x)$: en stamfunktion til $f$, altså $F'(x) = f(x)$.
+- $k$: en konstant. Den kan være et hvilket som helst tal.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde stamfunktionerne til $f$, eller den stamfunktion, hvis graf går gennem et bestemt punkt.
+
+</Bruges>
+
+<Eksempel>
+
+Find $\int (6x^2 - 4x + 3)\,dx$. Med regnereglerne (292)–(294) og stamfunktionerne (279), (281) og (285) får du
+
+$$
+\int (6x^2 - 4x + 3)\,dx = 6 \cdot \frac{1}{3}x^3 - \frac{4}{2}x^2 + 3x + k = 2x^3 - 2x^2 + 3x + k
+$$
+
+Skal grafen for $F$ gå gennem punktet $(1, 7)$, skal $F(1) = 7$:
+
+$$
+2 \cdot 1^3 - 2 \cdot 1^2 + 3 \cdot 1 + k = 7
+$$
+
+Det giver $3 + k = 7$, så $k = 4$, og stamfunktionen er $F(x) = 2x^3 - 2x^2 + 3x + 4$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme $+ \, k$.
+- At differentiere i stedet for at integrere, fx at skrive $12x - 4$.
+- At glemme at dividere med den nye eksponent. Stamfunktionen til $6x^2$ er $2x^3$, ikke $6x^3$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Stamfunktion til en potens" tex="f(x) = x^a \quad \text{har stamfunktionen} \quad F(x) = \frac{1}{a+1} \cdot x^{a+1}" kilde="formelsamling" henvisning="formelsamlingen, s. 68, formel (285)">
+
+<Symboler>
+
+- $a$: eksponenten. Formlen virker ikke, når $a = -1$, for så dividerer du med 0. Stamfunktionen til $\frac{1}{x}$ er i stedet $\ln(|x|)$, formel (286).
+- $F(x)$: en stamfunktion til $f$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal integrere en potens af $x$. Skriv først brøker og rødder om til potenser, fx $\frac{1}{x^2} = x^{-2}$, formel (344).
+
+</Bruges>
+
+<Eksempel>
+
+$f(x) = x^4$ har stamfunktionen $F(x) = \frac{1}{5}x^5$.
+
+$g(x) = \frac{1}{x^2} = x^{-2}$ har stamfunktionen
+
+$$
+G(x) = \frac{1}{-2+1} \cdot x^{-2+1} = -x^{-1} = -\frac{1}{x}
+$$
+
+Tjek: Med formel (268) og (273) er $G'(x) = -\left(-\frac{1}{x^2}\right) = \frac{1}{x^2}$.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange med $a$ i stedet for at dividere med $a + 1$. Det er reglen for at differentiere.
+- At bruge formlen på $\frac{1}{x}$.
+- At glemme at skrive en brøk eller en rod om til en potens først.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Det bestemte integral" tex="\int_a^b f(x)\,dx = \left[F(x)\right]_a^b = F(b) - F(a)" kilde="formelsamling" henvisning="formelsamlingen, s. 69, formel (296)">
+
+<Symboler>
+
+- $a$ og $b$: du integrerer fra $a$ til $b$.
+- $F$: en stamfunktion til $f$.
+- $\left[F(x)\right]_a^b$: en kort måde at skrive $F(b) - F(a)$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal regne et bestemt integral ud, fx for at finde et areal.
+
+</Bruges>
+
+<Eksempel>
+
+En stamfunktion til $2x + 1$ er $x^2 + x$. Så er
+
+$$
+\int_1^3 (2x + 1)\,dx = \left[x^2 + x\right]_1^3 = (3^2 + 3) - (1^2 + 1) = 12 - 2 = 10
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At regne $F(a) - F(b)$ i stedet for $F(b) - F(a)$.
+- At glemme parentesen om $F(a)$, når den har flere led.
+- At sætte tallene ind i $f$ i stedet for i $F$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Areal mellem graf og x-akse" tex="A = \int_a^b f(x)\,dx" kilde="formelsamling" henvisning="formelsamlingen, s. 70, formel (302)">
+
+<Symboler>
+
+- $A$: arealet af området mellem grafen for $f$, $x$-aksen og de lodrette linjer $x = a$ og $x = b$.
+- Formlen gælder, når grafen ligger over $x$-aksen fra $a$ til $b$. Ligger grafen under, er $A = -\int_a^b f(x)\,dx$, formel (303).
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde arealet af et område under en graf.
+
+</Bruges>
+
+<Eksempel>
+
+Grafen for $f(x) = 4 - x^2$ og $x$-aksen afgrænser et område. Nulpunkterne er $x = -2$ og $x = 2$, fordi $4 - x^2 = 0$ giver $x^2 = 4$. Grafen ligger over $x$-aksen mellem nulpunkterne, fx er $f(0) = 4$. Så er
+
+$$
+A = \int_{-2}^{2} (4 - x^2)\,dx = \left[4x - \frac{1}{3}x^3\right]_{-2}^{2} = \left(8 - \frac{8}{3}\right) - \left(-8 + \frac{8}{3}\right) = \frac{32}{3}
+$$
+
+Arealet er altså $\frac{32}{3} \approx 10{,}67$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge formlen, når grafen ligger under $x$-aksen. Så bliver integralet negativt, og du skal bruge formel (303) med minus foran.
+- At integrere hen over et nulpunkt, hvor grafen skifter side. Så kan delene over og under $x$-aksen gå ud mod hinanden.
+- At glemme at finde nulpunkterne, når grænserne ikke står i opgaven.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Areal mellem to grafer" tex="A = \int_a^b \left(f(x) - g(x)\right)dx" kilde="formelsamling" henvisning="formelsamlingen, s. 70, formel (304)">
+
+<Symboler>
+
+- $f$: funktionen, hvis graf ligger øverst fra $a$ til $b$.
+- $g$: funktionen, hvis graf ligger nederst.
+- $A$: arealet mellem de to grafer fra $a$ til $b$.
+
+</Symboler>
+
+<Bruges>
+
+Når et område er afgrænset af to grafer.
+
+</Bruges>
+
+<Eksempel>
+
+Graferne for $f(x) = 4x - x^2$ og $g(x) = x$ afgrænser et område. Skæringspunkterne finder du ved at løse $4x - x^2 = x$, som giver $x \cdot (3 - x) = 0$. Med nulreglen er $x = 0$ eller $x = 3$. Fx er $f(1) = 3$ og $g(1) = 1$, så grafen for $f$ ligger øverst. Arealet er
+
+$$
+A = \int_0^3 \left((4x - x^2) - x\right)dx = \int_0^3 (3x - x^2)\,dx = \left[\frac{3}{2}x^2 - \frac{1}{3}x^3\right]_0^3 = \frac{27}{2} - 9 = \frac{9}{2}
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At trække den øverste funktion fra den nederste. Så får du et negativt tal.
+- At glemme parentesen om $g(x)$, når $g(x)$ har flere led.
+- At gætte på, hvilken graf der ligger øverst, i stedet for at tjekke det.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Integration ved substitution" tex="\int f(g(x)) \cdot g'(x)\,dx = \int f(t)\,dt, \quad t = g(x)" kilde="formelsamling" henvisning="formelsamlingen, s. 69, formel (295)">
+
+<Symboler>
+
+- $g(x)$: den indre funktion, som du kalder $t$.
+- $g'(x)$: den indre funktions afledede. Den skal stå som en faktor.
+- $f(t)$: den ydre funktion.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal integrere en sammensat funktion, der er ganget med den indre funktions afledede.
+
+</Bruges>
+
+<Eksempel>
+
+Find $\int 3x^2 \cdot e^{x^3}\,dx$. Den indre funktion er $t = g(x) = x^3$ med $g'(x) = 3x^2$, og den ydre er $f(t) = e^t$. Så er
+
+$$
+\int 3x^2 \cdot e^{x^3}\,dx = \int e^t\,dt = e^t + k = e^{x^3} + k
+$$
+
+Med grænser bruger du formel (301) og skifter grænserne ud med $g(0) = 0$ og $g(1) = 1$:
+
+$$
+\int_0^1 3x^2 \cdot e^{x^3}\,dx = \int_0^1 e^t\,dt = e^1 - e^0 = e - 1 \approx 1{,}72
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at skifte grænserne ud i et bestemt integral.
+- At skrive svaret med $t$ i stedet for at sætte $t = g(x)$ ind igen.
+- At glemme, at $g'(x)$ skal stå som en faktor. Mangler der en konstant, som i $\int x^2 \cdot e^{x^3}\,dx$, så skriv $x^2 = \frac{1}{3} \cdot 3x^2$, og sæt $\frac{1}{3}$ uden for integraltegnet med formel (292).
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Rumfang af omdrejningslegeme" tex="V = \pi \cdot \int_a^b f(x)^2\,dx" kilde="formelsamling" henvisning="formelsamlingen, s. 71, formel (305)">
+
+<Symboler>
+
+- $V$: rumfanget af det legeme, du får, når området mellem grafen for $f$ og $x$-aksen fra $a$ til $b$ drejes rundt om $x$-aksen.
+- $f(x)^2$: funktionsværdien i anden.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde rumfanget af en genstand, der er rund om en akse, fx en skål eller en vase.
+
+</Bruges>
+
+<Eksempel>
+
+Området mellem grafen for $f(x) = \sqrt{x}$ og $x$-aksen fra $x = 0$ til $x = 4$ drejes rundt om $x$-aksen. Da $\left(\sqrt{x}\right)^2 = x$, er rumfanget
+
+$$
+V = \pi \cdot \int_0^4 x\,dx = \pi \cdot \left[\frac{1}{2}x^2\right]_0^4 = \pi \cdot 8 \approx 25{,}1
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme $\pi$.
+- At glemme at sætte $f(x)$ i anden.
+- At sætte hele integralet i anden i stedet for $f(x)$.
+- At bruge formlen på et hult legeme. Så skal du bruge formel (306) og trække rumfanget af hullet fra.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Stamfunktion">
+
+En funktion $F$, som giver $f$, når du differentierer den: $F'(x) = f(x)$. At finde en stamfunktion er den omvendte proces af at differentiere. [vejledningen, s. 16](kilde:vejledning) [formelsamlingen, s. 66 og 68](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Ubestemt integral">
+
+Skrives $\int f(x)\,dx = F(x) + k$, hvor $F$ er en stamfunktion til $f$, og $k$ er en konstant. [formelsamlingen, s. 69, formel (291)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Bestemt integral">
+
+Tallet $\int_a^b f(x)\,dx = F(b) - F(a)$, hvor $F$ er en stamfunktion til $f$. Ligger grafen for $f$ over $x$-aksen, er det arealet mellem grafen og $x$-aksen fra $a$ til $b$. [formelsamlingen, s. 69, formel (296), og s. 70, formel (302)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Indskudsreglen">
+
+Du kan dele et bestemt integral op i to: $\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$. [formelsamlingen, s. 69, formel (297)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Integration ved substitution">
+
+En regneregel til at integrere en sammensat funktion, der er ganget med den indre funktions afledede. Du kalder den indre funktion $t$. [formelsamlingen, s. 69, formel (295) og (301)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Omdrejningslegeme">
+
+Det legeme, du får, når et område drejes rundt om $x$-aksen. Drejes området mellem grafen for $f$ og $x$-aksen fra $a$ til $b$, er rumfanget $V = \pi \cdot \int_a^b f(x)^2\,dx$. [formelsamlingen, s. 71, formel (305)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Stamfunktioner, ubestemt og bestemt integral, sammenhængen mellem areal og stamfunktion, regnereglerne for $f + g$, $f - g$ og $k \cdot f$, integration ved substitution og anvendelser som rumfang af omdrejningslegemer er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) Du skal være så fortrolig med stamfunktionerne og regnereglerne, at du kan bruge dem i problemløsning, fx til arealer afgrænset af grafer og rumfang af omdrejningslegemer. [vejledningen, s. 16](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Stamfunktionerne og regnereglerne står på s. 68–69 og formlerne for areal og rumfang på s. 70–71, så øv dig i at finde dem hurtigt. [formelsamlingen, s. 68–71](kilde:formelsamling) Vis dine mellemregninger, og skriv formlens nummer, før du sætter ind. [vejledningen, s. 41 og 42](kilde:vejledning)
+
+- Tjek din stamfunktion ved at differentiere den. Får du $f(x)$, er den rigtig.
+- Integralet som grænseværdi for summer står ikke i kernestoffet, men kan behandles som supplerende stof. [læreplanen, pkt. 2.2](kilde:laereplan) [vejledningen, s. 16](kilde:vejledning) Opgaverne bygger på kernestoffet. Andre emner kan godt indgå, men så står grundlaget i opgaveteksten. [vejledningen, s. 36](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også GeoGebra. [vejledningen, s. 36](kilde:vejledning) Giver en model et udtryk, som rækker ud over de funktioner og regneregler, du kender, så forventes det, at du bruger GeoGebra. [vejledningen, s. 16](kilde:vejledning)
+
+- Dokumentér brugen af værktøjet, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+- Står der »Bestem ved beregning«, skal svaret bygge på en algebraisk beregning med et formeludtryk sammen med en CAS-kommando. [vejledningen, s. 36](kilde:vejledning)
+- Vejledningen undtager ikke noget fra dette emne til den skriftlige prøve. [vejledningen, s. 16 og 36](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) Vejledningen nævner ikke bestemte beviser i integralregning, men i undervisningen gennemgås sætninger og formler som hovedregel med bevis. [vejledningen, s. 16 og 23](kilde:vejledning) Overskriften kan fx være læreplanens overskrift for området, her »Stamfunktion og integral«. [vejledningen, s. 38](kilde:vejledning) [læreplanen, pkt. 2.2](kilde:laereplan)
+
+- **Regnereglen for en sum** kan du selv vise ved at differentiere. Er $F$ en stamfunktion til $f$ og $G$ en stamfunktion til $g$, giver formel (274), at $(F(x) + G(x))' = f(x) + g(x)$. Altså er $F + G$ en stamfunktion til $f + g$. [formelsamlingen, s. 67, formel (274), og s. 69, formel (293)](kilde:formelsamling)
+- **Substitution** hænger sammen med reglen for at differentiere en sammensat funktion: $(F(g(x)))' = F'(g(x)) \cdot g'(x) = f(g(x)) \cdot g'(x)$. Altså er $F(g(x))$ en stamfunktion til $f(g(x)) \cdot g'(x)$. [formelsamlingen, s. 67, formel (277), og s. 69, formel (295)](kilde:formelsamling)
+- **Sammenhængen mellem areal og stamfunktion** er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) Find beviset i dit undervisningsmateriale, og øv dig i at gennemføre det ved tavlen, hvor eksaminationen normalt foregår. [vejledningen, s. 39](kilde:vejledning)
+- Står der »redegør for«, skal du bevise eller udlede. Husk også at sige, hvad sætningens forudsætninger er. [vejledningen, s. 39](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- Grafen for $f(x) = x^2 - 2x$ og $x$-aksen afgrænser et område. Bestem arealet uden hjælpemidler. Ligger området over eller under $x$-aksen?
+- Indersiden af en skål kan beskrives ved at dreje grafen for $f(x) = 1{,}5 \cdot \sqrt{x}$, hvor $0 \le x \le 8$, rundt om $x$-aksen. Målene er i cm. Hvor mange liter kan skålen rumme?
+- Bestem $\int x \cdot e^{x^2}\,dx$ med substitution, og tjek dit svar ved at differentiere.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

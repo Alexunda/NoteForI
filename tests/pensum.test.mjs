@@ -20,6 +20,7 @@ import {
   optaelAlt,
   procent,
   retFag,
+  vaelgLaereplan,
   saetGeneriskPunkt,
   saetPunkt,
   sletFag,
@@ -46,7 +47,7 @@ function frys(vaerdi) {
 /** Matematik A (t1) med forløbene Lineære (t2), Eksponentielle (t3) og Differential (t4). */
 function eksempel() {
   const lavId = taeller();
-  const medFag = tilfoejFag({ fag: [] }, { fagside: 'matematik', navn: 'Matematik', niveau: 'A' }, lavId);
+  const medFag = tilfoejFag({ fag: [] }, { fagside: 'matematik', navn: 'Matematik', niveau: 'A', laereplan: null }, lavId);
   const { pensum } = tilfoejForloeb(medFag.pensum, 't1', ['Lineære', 'Eksponentielle', 'Differential'], lavId);
   return frys(pensum);
 }
@@ -98,32 +99,39 @@ describe('delLinjer', () => {
 
 describe('fag', () => {
   test('tilfoejFag giver et nyt fag med rensede data', () => {
-    const { pensum, fag } = tilfoejFag(frys({ fag: [] }), { fagside: null, navn: '  Historie ', niveau: 'B' }, taeller());
-    assert.deepEqual(fag, { id: 't1', fagside: null, navn: 'Historie', niveau: 'B', forloeb: [], generisk: [] });
+    const { pensum, fag } = tilfoejFag(frys({ fag: [] }), { fagside: null, navn: '  Historie ', niveau: 'B', laereplan: null }, taeller());
+    assert.deepEqual(fag, { id: 't1', fagside: null, navn: 'Historie', niveau: 'B', laereplan: null, forloeb: [], generisk: [] });
     assert.deepEqual(pensum.fag, [fag]);
   });
 
   test('fagFejl afviser tomme navne og fag, man har i forvejen', () => {
     const pensum = eksempel();
-    assert.equal(fagFejl(pensum, { fagside: null, navn: '  ', niveau: 'A' }), 'Skriv navnet på faget.');
+    assert.equal(fagFejl(pensum, { fagside: null, navn: '  ', niveau: 'A', laereplan: null }), 'Skriv navnet på faget.');
     assert.equal(
-      fagFejl(pensum, { fagside: null, navn: 'matematik', niveau: 'A' }),
+      fagFejl(pensum, { fagside: null, navn: 'matematik', niveau: 'A', laereplan: null }),
       'Du har allerede Matematik A.',
     );
-    assert.equal(fagFejl(pensum, { fagside: 'matematik', navn: 'Matematik', niveau: 'B' }), null);
-    assert.equal(fagFejl(pensum, { fagside: 'matematik', navn: 'Matematik', niveau: 'A' }, 't1'), null);
+    assert.equal(fagFejl(pensum, { fagside: 'matematik', navn: 'Matematik', niveau: 'B', laereplan: null }), null);
+    assert.equal(fagFejl(pensum, { fagside: 'matematik', navn: 'Matematik', niveau: 'A', laereplan: null }, 't1'), null);
+  });
+
+  test('vaelgLaereplan gemmer læreplanen og beholder krydserne', () => {
+    let pensum = saetGeneriskPunkt(eksempel(), 't1', 'et-punkt', true);
+    pensum = vaelgLaereplan(pensum, 't1', '2026');
+    assert.equal(pensum.fag[0].laereplan, '2026');
+    assert.deepEqual(pensum.fag[0].generisk, ['et-punkt']);
   });
 
   test('retFag ændrer navn og niveau og beholder forløbene', () => {
-    const pensum = retFag(eksempel(), 't1', { fagside: 'matematik', navn: 'Matematik', niveau: 'B' });
+    const pensum = retFag(eksempel(), 't1', { fagside: 'matematik', navn: 'Matematik', niveau: 'B', laereplan: null });
     assert.equal(pensum.fag[0].niveau, 'B');
     assert.deepEqual(navne(pensum), ['Lineære', 'Eksponentielle', 'Differential']);
   });
 
   test('et slettet fag kan sættes ind igen på sin plads', () => {
     const lavId = taeller();
-    let pensum = tilfoejFag({ fag: [] }, { fagside: 'dansk', navn: 'Dansk', niveau: 'A' }, lavId).pensum;
-    pensum = tilfoejFag(pensum, { fagside: 'kemi', navn: 'Kemi', niveau: 'B' }, lavId).pensum;
+    let pensum = tilfoejFag({ fag: [] }, { fagside: 'dansk', navn: 'Dansk', niveau: 'A', laereplan: null }, lavId).pensum;
+    pensum = tilfoejFag(pensum, { fagside: 'kemi', navn: 'Kemi', niveau: 'B', laereplan: null }, lavId).pensum;
     frys(pensum);
 
     const { pensum: uden, slettet } = sletFag(pensum, 't1');
@@ -330,6 +338,7 @@ describe('laesPensum', () => {
           fagside: null,
           navn: 'Historie',
           niveau: 'A',
+          laereplan: null,
           forloeb: [
             { id: 'b2', navn: 'Den kolde krig', punkter: { forklare: 'ja' } },
             { id: 'b3', navn: 'Reformationen', punkter: { opgaver: 'irrelevant' } },
@@ -337,6 +346,31 @@ describe('laesPensum', () => {
           generisk: ['x'],
         },
       ],
+    });
+  });
+
+  test('læreplanen bliver kun stående, hvis den er et årstal', () => {
+    const raa = { fag: [{ id: 'a1', navn: 'Dansk', niveau: 'A', laereplan: '2026', forloeb: [] }] };
+    assert.equal(laesPensum(raa).fag[0].laereplan, '2026');
+    raa.fag[0].laereplan = 'snart';
+    assert.equal(laesPensum(raa).fag[0].laereplan, null);
+  });
+
+  test('data fra version 1 får læreplanen null og beholder alt andet', () => {
+    const v1 = {
+      fag: [
+        {
+          id: 'a1',
+          fagside: 'dansk',
+          navn: 'Dansk',
+          niveau: 'A',
+          forloeb: [{ id: 'b1', navn: 'Romantikken', punkter: { noter: 'ja' } }],
+          generisk: ['kernestof-kanon-2017'],
+        },
+      ],
+    };
+    assert.deepEqual(laesPensum(v1), {
+      fag: [{ ...v1.fag[0], laereplan: null }],
     });
   });
 

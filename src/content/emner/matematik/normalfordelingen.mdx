@@ -1,0 +1,363 @@
+---
+titel: "Normalfordelingen"
+beskrivelse: "Normalfordelte stokastiske variable: tæthedsfunktion, fordelingsfunktion og sandsynligheder som integraler."
+fag: matematik
+nummer: 26
+omraade: "Sandsynlighedsregning og statistik"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En normalfordelt stokastisk variabel $X$ med middelværdi $\mu$ og spredning $\sigma$ skrives $X \sim N(\mu, \sigma)$. [formelsamlingen, s. 40, formel (164)](kilde:formelsamling) Grafen for tæthedsfunktionen $f$ har sin top ved $\mu$. [formelsamlingen, s. 40, formel (165) og (166)](kilde:formelsamling) Sandsynligheden for, at $X$ ligger i et interval, er et integral af $f$, altså arealet under grafen. [formelsamlingen, s. 40–41, formel (167)–(170)](kilde:formelsamling) Integralerne skal du kunne opstille og regne ud med [GeoGebra](https://www.geogebra.org/). [vejledningen, s. 18](kilde:vejledning)
+
+## Vigtige pointer
+
+- **To tal bestemmer fordelingen.** I $N(\mu, \sigma)$ er det første tal middelværdien og det andet spredningen. [formelsamlingen, s. 40, formel (164)](kilde:formelsamling) $X \sim N(200, 4)$ betyder altså middelværdi 200 og spredning 4.
+- **Toppen ligger ved middelværdien.** Grafen for $f$ har sin top ved $x = \mu$. [formelsamlingen, s. 40, formel (166)](kilde:formelsamling) Sætter du $x = \mu$ ind i forskriften, bliver eksponenten 0, og $e^0 = 1$. Toppen har altså højden $\frac{1}{\sqrt{2\pi} \cdot \sigma}$. Grafen er også symmetrisk om linjen $x = \mu$: $f(\mu + d)$ og $f(\mu - d)$ er ens, fordi $d^2 = (-d)^2$. [formelsamlingen, s. 40, formel (165)](kilde:formelsamling)
+- **Sandsynlighed er areal.** $P(X \leq a)$ er integralet af $f$ fra $-\infty$ til $a$. På figuren i formelsamlingen er det arealet under grafen til venstre for $a$. [formelsamlingen, s. 40, formel (167)](kilde:formelsamling) Ligger en graf over $x$-aksen, er integralet netop arealet mellem grafen og $x$-aksen. [formelsamlingen, s. 70, formel (302)](kilde:formelsamling) Se mere om integraler og arealer under [integralregning](/fag/matematik/integralregning/).
+- **Hele arealet er 1.** $P(X \geq a) = 1 - P(X \leq a)$, så de to sandsynligheder giver 1 tilsammen. [formelsamlingen, s. 41, formel (169)](kilde:formelsamling) Arealet under hele grafen er altså 1.
+- **Fordelingsfunktionen.** Med fordelingsfunktionen $F$ er $P(X \leq a) = F(a)$. Grafen for $F$ vokser op mod 1, og middelværdien ligger der, hvor $F(x) = 0{,}5$. [formelsamlingen, s. 43, formel (174)–(176)](kilde:formelsamling)
+- **Én, to og tre spredninger.** Sandsynligheden for, at $X$ ligger inden for én spredning fra middelværdien, er $0{,}68$. For to og tre spredninger er den $0{,}95$ og $0{,}997$. [formelsamlingen, s. 42, formel (171)–(173)](kilde:formelsamling)
+
+Prøv selv: Træk i skyderne. På skyderne hedder $\mu$ m, og $\sigma$ hedder s. Den stiplede graf er tæthedsfunktionen for $N(0, 1)$, så du kan sammenligne. Hvad sker der, når du ændrer $\mu$? Og hvad sker der med toppen og bredden, når $\sigma$ bliver større?
+
+<Graf
+  titel="Normalfordelingens tæthedsfunktion med skydere"
+  funktioner={[
+    { forskrift: 'f(x) = e^(-1/2 · ((x - m)/s)^2) / (sqrt(2 · pi) · s)', tex: 'f(x) = \\frac{1}{\\sqrt{2\\pi} \\cdot \\sigma} \\cdot e^{-\\frac{1}{2} \\cdot \\left(\\frac{x - \\mu}{\\sigma}\\right)^2}' },
+    { forskrift: 'g(x) = 1/sqrt(2 · pi) · e^(-1/2 · x^2)', tex: 'g(x) = \\frac{1}{\\sqrt{2\\pi}} \\cdot e^{-\\frac{1}{2} \\cdot x^2}' },
+  ]}
+  parametre={{ m: { min: -4, max: 4, start: 1, trin: 0.5 }, s: { min: 0.5, max: 3, start: 1.5, trin: 0.1 } }}
+  x={[-8, 8]}
+  y={[-0.1, 0.9]}
+/>
+
+## Formler
+
+<Formel navn="Tæthedsfunktionen" tex="f(x) = \frac{1}{\sqrt{2\pi} \cdot \sigma} \cdot e^{-\frac{1}{2} \cdot \left(\frac{x - \mu}{\sigma}\right)^2}" kilde="formelsamling" henvisning="formelsamlingen, s. 40, formel (165)">
+
+<Symboler>
+
+- $\mu$: middelværdien.
+- $\sigma$: spredningen.
+- $e$: Eulers tal, $e \approx 2{,}71828$.
+- $f(x)$: tæthedsfunktionen, som også kaldes frekvensfunktionen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal opstille et integral for en sandsynlighed, eller når du skal tegne grafen for en normalfordeling.
+
+</Bruges>
+
+<Eksempel>
+
+Vægten af en pose nødder fra en bestemt maskine er normalfordelt med $\mu = 200$ g og $\sigma = 4$ g. Så er
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi} \cdot 4} \cdot e^{-\frac{1}{2} \cdot \left(\frac{x - 200}{4}\right)^2}
+$$
+
+Toppen ligger ved $x = 200$, hvor $f(200) = \frac{1}{\sqrt{2\pi} \cdot 4} \approx 0{,}0997$, fordi $e^0 = 1$.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $f(x)$ er sandsynligheden for, at $X = x$. Med $\sigma = 0{,}2$ er $f(\mu) \approx 1{,}99$, og en sandsynlighed kan ikke være større end 1. Sandsynligheder får du som integraler af $f$.
+- At bytte om på $\mu$ og $\sigma$.
+- At glemme parentesen om $\frac{x - \mu}{\sigma}$, før du sætter i anden.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sandsynligheden for højst a" tex="P(X \leq a) = \int_{-\infty}^{a} f(x) \, dx" kilde="formelsamling" henvisning="formelsamlingen, s. 40, formel (167)">
+
+<Symboler>
+
+- $f$: tæthedsfunktionen for $X$.
+- $a$: grænsen.
+- $P(X \leq a)$: sandsynligheden for, at $X$ er mindre end eller lig med $a$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde sandsynligheden for, at $X$ højst er en bestemt værdi.
+
+</Bruges>
+
+<Eksempel>
+
+Poserne fra før har $X \sim N(200, 4)$. Med tæthedsfunktionen for $\mu = 200$ og $\sigma = 4$ er
+
+$$
+P(X \leq 195) = \int_{-\infty}^{195} f(x) \, dx \approx 0{,}106
+$$
+
+Integralet regner du ud med GeoGebra. Sandsynligheden for, at en pose vejer højst 195 g, er altså ca. 10,6 %.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge de forkerte grænser, fx fra 195 til $\infty$.
+- At bruge en tæthedsfunktion med forkert $\mu$ eller $\sigma$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sandsynligheden for mindst a" tex="P(X \geq a) = \int_{a}^{\infty} f(x) \, dx = 1 - P(X \leq a)" kilde="formelsamling" henvisning="formelsamlingen, s. 41, formel (168) og (169)">
+
+<Symboler>
+
+- $f$: tæthedsfunktionen for $X$.
+- $a$: grænsen.
+- $P(X \geq a)$: sandsynligheden for, at $X$ er større end eller lig med $a$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde sandsynligheden for, at $X$ mindst er en bestemt værdi. Kender du allerede $P(X \leq a)$, kan du bare trække den fra 1.
+
+</Bruges>
+
+<Eksempel>
+
+Poserne fra før har $P(X \leq 195) \approx 0{,}106$. Så er
+
+$$
+P(X \geq 195) = 1 - P(X \leq 195) \approx 1 - 0{,}106 = 0{,}894
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at trække fra 1 og svare med $P(X \leq a)$.
+- At sætte grænserne i integralet forkert, fx fra $-\infty$ til $a$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sandsynligheden for et interval" tex="P(a \leq X \leq b) = \int_{a}^{b} f(x) \, dx" kilde="formelsamling" henvisning="formelsamlingen, s. 41, formel (170)">
+
+<Symboler>
+
+- $f$: tæthedsfunktionen for $X$.
+- $a$ og $b$: intervallets endepunkter, hvor $a$ er mindst.
+- $P(a \leq X \leq b)$: sandsynligheden for, at $X$ ligger mellem $a$ og $b$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde en intervalsandsynlighed, fx sandsynligheden for, at en pose vejer mellem 196 g og 206 g.
+
+</Bruges>
+
+<Eksempel>
+
+Poserne fra før har $X \sim N(200, 4)$. Med GeoGebra får du
+
+$$
+P(196 \leq X \leq 206) = \int_{196}^{206} f(x) \, dx \approx 0{,}775
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på grænserne, så du får et negativt tal.
+- At lægge $P(X \leq b)$ og $P(X \leq a)$ sammen. Du skal trække fra: $P(X \leq b) - P(X \leq a)$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Inden for én, to og tre spredninger" tex="\begin{aligned} P(\mu - \sigma \leq X \leq \mu + \sigma) &= 0{,}68 \\ P(\mu - 2\sigma \leq X \leq \mu + 2\sigma) &= 0{,}95 \\ P(\mu - 3\sigma \leq X \leq \mu + 3\sigma) &= 0{,}997 \end{aligned}" kilde="formelsamling" henvisning="formelsamlingen, s. 42, formel (171)–(173)">
+
+<Symboler>
+
+- $\mu$: middelværdien.
+- $\sigma$: spredningen.
+- $\mu - \sigma \leq X \leq \mu + \sigma$: $X$ ligger inden for én spredning fra middelværdien.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal svare uden digitalt værktøj, og grænserne ligger én, to eller tre spredninger fra middelværdien.
+
+</Bruges>
+
+<Eksempel>
+
+Poserne fra før har $\mu = 200$ og $\sigma = 4$. Så er $\mu - 2\sigma = 192$ og $\mu + 2\sigma = 208$, og
+
+$$
+P(192 \leq X \leq 208) = 0{,}95
+$$
+
+Arealet uden for intervallet er $1 - 0{,}95 = 0{,}05$. Grafen er symmetrisk om $\mu$, så halvdelen af det ligger til højre for 208:
+
+$$
+P(X \geq 208) = \frac{1 - 0{,}95}{2} = 0{,}025
+$$
+
+Regner du integralet ud med GeoGebra, får du $P(192 \leq X \leq 208) \approx 0{,}9545$. Tallene i formelsamlingen er altså afrundede.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge tallene, når grænserne ikke ligger én, to eller tre spredninger fra $\mu$.
+- At blande tallene sammen: $0{,}68$ hører til én spredning, $0{,}95$ til to og $0{,}997$ til tre.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fordelingsfunktionen" tex="F(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi} \cdot \sigma} \cdot e^{-\frac{1}{2} \cdot \left(\frac{t - \mu}{\sigma}\right)^2} \, dt" kilde="formelsamling" henvisning="formelsamlingen, s. 43, formel (174)">
+
+<Symboler>
+
+- $\mu$ og $\sigma$: middelværdien og spredningen.
+- $t$: den variabel, der integreres efter. Den hedder $t$, fordi $x$ allerede er den øvre grænse.
+- $F(x)$: fordelingsfunktionen. Udtrykket under integraltegnet er tæthedsfunktionen med $t$ i stedet for $x$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde $P(X \leq a)$ for flere værdier af $a$, eller når du skal aflæse middelværdien på grafen for $F$.
+
+</Bruges>
+
+<Eksempel>
+
+For poserne fra før er
+
+$$
+F(195) = P(X \leq 195) \approx 0{,}106
+$$
+
+og $F(200) = 0{,}5$, fordi 200 er middelværdien.
+
+</Eksempel>
+
+<Fejl>
+
+- At forveksle $F$ og $f$. $F(a)$ er en sandsynlighed, men $f(a)$ er ikke.
+- At bruge $x$ både som øvre grænse og som den variabel, der integreres efter.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sandsynligheder med fordelingsfunktionen" tex="\begin{aligned} P(X \leq a) &= F(a) \\ P(X \geq a) &= 1 - F(a) \\ P(a \leq X \leq b) &= F(b) - F(a) \end{aligned}" kilde="formelsamling" henvisning="formelsamlingen, s. 43, formel (176)–(178)">
+
+<Symboler>
+
+- $F$: fordelingsfunktionen for $X$.
+- $a$ og $b$: grænserne, hvor $a$ er mindst.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender værdier af $F$, fx fra GeoGebra eller fra opgaven, og skal finde en sandsynlighed uden at opstille et nyt integral.
+
+</Bruges>
+
+<Eksempel>
+
+For poserne fra før er $F(206) \approx 0{,}9332$ og $F(196) \approx 0{,}1587$. Så er
+
+$$
+P(196 \leq X \leq 206) = F(206) - F(196) \approx 0{,}9332 - 0{,}1587 = 0{,}7745
+$$
+
+Det passer med integralet fra før.
+
+</Eksempel>
+
+<Fejl>
+
+- At regne $F(a) - F(b)$, så du får et negativt tal.
+- At glemme »$1 -$« i $P(X \geq a) = 1 - F(a)$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Normalfordeling">
+
+$X \sim N(\mu, \sigma)$ betyder, at $X$ er normalfordelt med middelværdi $\mu$ og spredning $\sigma$. Sandsynlighederne finder du som integraler af tæthedsfunktionen. [formelsamlingen, s. 40, formel (164)–(167)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Tæthedsfunktion">
+
+Funktionen $f$, hvor arealet under grafen over et interval er sandsynligheden for, at $X$ ligger i intervallet. Den kaldes også frekvensfunktionen. [formelsamlingen, s. 40–41, formel (165) og (170)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fordelingsfunktion">
+
+Funktionen $F$, hvor $F(a) = P(X \leq a)$. Den er integralet af tæthedsfunktionen fra $-\infty$ til $a$. [formelsamlingen, s. 43, formel (174) og (176)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Intervalsandsynlighed">
+
+Sandsynligheden for, at $X$ ligger i et interval, fx $P(a \leq X \leq b)$. [formelsamlingen, s. 41, formel (170)](kilde:formelsamling) Du skal kunne opstille den som et integral og regne den ud med GeoGebra. [vejledningen, s. 18](kilde:vejledning)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Normalfordelingen med beregning af sandsynligheder, middelværdi og spredning er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) Tæthedsfunktionen og fordelingsfunktionen indgår som integraler. Du skal kunne opstille integraler for intervalsandsynligheder og regne dem ud med GeoGebra. [vejledningen, s. 18](kilde:vejledning) Normalfordelingen er ikke undtaget fra den skriftlige prøve. [vejledningen, s. 18–19 og 36](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig i at bruge tallene for én, to og tre spredninger og formlerne med $F$, når værdier af $F$ er oplyst. Vis dine mellemregninger. [formelsamlingen, s. 42–43, formel (171)–(178)](kilde:formelsamling) [vejledningen, s. 41](kilde:vejledning)
+
+- Et eksempel: $X \sim N(30, 2)$. Middelværdien 30 ligger der, hvor $F(x) = 0{,}5$, så $P(X \leq 30) = 0{,}5$. [formelsamlingen, s. 43, formel (175) og (176)](kilde:formelsamling) Grafen er symmetrisk om 30, så halvdelen af de $0{,}68$ ligger mellem 30 og 32. Altså er $P(X \leq 32) = 0{,}5 + \frac{0{,}68}{2} = 0{,}84$.
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning) Opstil integralet, og regn det ud med GeoGebra. [vejledningen, s. 18](kilde:vejledning) Forklar, hvordan du bruger værktøjet, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) Vejledningen peger ikke på et bestemt bevis i normalfordelingen. [vejledningen, s. 18](kilde:vejledning) På étårige hold kan beviset for binomialfordelingens punktsandsynligheder dog genbesøges i forbindelse med normalfordelingen. [vejledningen, s. 24](kilde:vejledning) Øv dig derfor i at forklare, hvorfor formlerne gælder, og ikke kun hvordan du bruger dem.
+
+- **Et ræsonnement, du kan øve:** Hvorfor er $P(a \leq X \leq b) = F(b) - F(a)$? $F(b)$ er arealet under grafen for $f$ til venstre for $b$, og $F(a)$ er arealet til venstre for $a$. Efter indskudsreglen er forskellen arealet mellem $a$ og $b$, og det er netop $P(a \leq X \leq b)$. [formelsamlingen, s. 41, 43 og 69, formel (170), (174), (178) og (297)](kilde:formelsamling)
+- Stokastiske variable, middelværdi og spredning møder du også i [binomialfordelingen](/fag/matematik/binomialfordelingen/).
+
+**Eksempler på problemstillinger**
+
+- Mængden af saft i en flaske er normalfordelt med middelværdi 500 ml og spredning 3 ml. Opstil et integral for sandsynligheden for, at en flaske indeholder under 495 ml, og regn det ud.
+- $X \sim N(50, 5)$. Bestem uden hjælpemidler $P(40 \leq X \leq 60)$ og $P(X \geq 60)$.
+- Grafen for en fordelingsfunktion $F$ er givet. Aflæs middelværdien, og forklar, hvorfor den ligger der, hvor $F(x) = 0{,}5$.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

@@ -1,0 +1,25 @@
+---
+// Et centralt begreb på en emneside (projektplan afsnit 6.3). Bruges i MDX:
+//
+//   <Begreb navn="Fremskrivningsfaktor">
+//   Forklaringen i Markdown, gerne med en kildehenvisning.
+//   </Begreb>
+//
+// Begreberne samles også ved build, så de kan bruges som flashcards
+// (src/lib/begreber.ts og /data/begreber.json).
+import { begrebId } from '../../lib/emneside';
+
+interface Props {
+  navn: string;
+}
+
+const { navn } = Astro.props;
+const id = begrebId(navn);
+---
+
+<div class="begreb" id={id}>
+  <h3 class="begreb-navn"><dfn>{navn}</dfn></h3>
+  <div class="begreb-forklaring">
+    <slot />
+  </div>
+</div>

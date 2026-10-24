@@ -20,6 +20,8 @@ export const IKONER = {
   'status-groen': '<circle cx="12" cy="12" r="8"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/>',
   flueben: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
+  minus: '<path d="M5 12h14"/>',
+  nulstil: '<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/>',
   'pil-venstre': '<path d="m15 6-6 6 6 6"/>',
   'pil-hoejre': '<path d="m9 6 6 6-6 6"/>',
   'pil-ned': '<path d="m6 9 6 6 6-6"/>',

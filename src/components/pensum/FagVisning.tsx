@@ -14,8 +14,16 @@ import { Ikon } from './Ikon';
 
 interface Props {
   fag: Fag;
-  /** Det generiske lag til fagets fag og niveau. Tomt, indtil listerne er skrevet. */
+  /** Det generiske lag til fagets fag, niveau og læreplan */
   generisk: GeneriskVisning[];
+  /**
+   * Alle lister til fagets fag og niveau, når der er flere læreplaner at
+   * vælge imellem (fx dansk A). Ellers tom.
+   */
+  laereplanValg: GeneriskVisning[];
+  /** Læreplanerne til formularen, når faget rettes */
+  laereplaner: Record<string, GeneriskVisning[]>;
+  onVaelgLaereplan: (laereplan: string) => void;
   onVisOversigt: () => void;
   onTilfoejForloeb: (navne: string[]) => Tilfoejet;
   onPunkt: (forloebId: string, punkt: PunktId, svar: Svar | null) => void;
@@ -30,6 +38,9 @@ interface Props {
 export default function FagVisning({
   fag,
   generisk,
+  laereplanValg,
+  laereplaner,
+  onVaelgLaereplan,
   onVisOversigt,
   onTilfoejForloeb,
   onPunkt,
@@ -98,11 +109,38 @@ export default function FagVisning({
 
       <HurtigIndtastning onTilfoej={onTilfoejForloeb} />
 
+      {laereplanValg.length > 0 && generisk.length === 0 && (
+        <section class="pensum-kort pensum-vaelg-laereplan" aria-labelledby="pensum-vaelg-laereplan">
+          <h3 id="pensum-vaelg-laereplan">Hvilken læreplan følger dit hold?</h3>
+          <p>Vælg den, så du får den rigtige liste over det, du skal kunne. Dine krydser bliver, hvor de er.</p>
+          <ul class="pensum-laereplan-hjaelp">
+            {laereplanValg.map((liste) => (
+              <li key={liste.laereplan}>
+                <strong>{liste.laereplan}:</strong> {liste.gaelder}
+              </li>
+            ))}
+            <li>Spørg din lærer, hvis du er i tvivl.</li>
+          </ul>
+          <div class="pensum-knapper">
+            {laereplanValg.map((liste) => (
+              <button
+                type="button"
+                class="pensum-knap"
+                key={liste.laereplan}
+                onClick={() => onVaelgLaereplan(liste.laereplan)}
+              >
+                Læreplan {liste.laereplan}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
       {generisk.map((liste) => (
         <GeneriskListe
           key={liste.laereplan}
           liste={liste}
-          medAarstal={generisk.length > 1}
+          medAarstal={laereplanValg.length > 0}
           afkrydsede={fag.generisk}
           onKryds={onGeneriskPunkt}
         />
@@ -113,7 +151,8 @@ export default function FagVisning({
           <FagFormular
             overskrift="Ret faget"
             knaptekst="Gem"
-            start={{ fagside: fag.fagside, navn: fag.navn, niveau: fag.niveau }}
+            start={{ fagside: fag.fagside, navn: fag.navn, niveau: fag.niveau, laereplan: fag.laereplan }}
+            laereplaner={laereplaner}
             onGem={(nyt) => {
               const besked = onRetFag(nyt);
               if (!besked) lukFormular();

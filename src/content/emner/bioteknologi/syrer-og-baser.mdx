@@ -1,0 +1,288 @@
+---
+titel: "Syrer, baser og pH"
+beskrivelse: "Syre-basereaktioner som hydronoverførsel, vands selvionisering, pH, puffersystemer og bjerrumdiagrammer."
+fag: bioteknologi
+ogsaaFag: [kemi]
+nummer: 6
+omraade: "Kemi"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2017"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for bioteknologi A, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/morjd5sk/bioteknologi-a-stx-august-2017.pdf
+  - id: vejledning
+    navn: "Vejledning til bioteknologi A, stx, 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/011cm4jy/250819-vejledning-til-bioteknologi-a-stx-2025.pdf
+  - id: evaluering
+    navn: "Evaluering af skriftlig prøve sommer 2024 i bioteknologi A stx (uvm.dk, PDF)"
+    url: https://uvm.dk/media/h52bjmz2/241218-evaluering-af-skriftlig-proeve-sommer-2024-i-bioteknologi-a-stx.pdf
+  - id: laererens-haefte
+    navn: "Lærerens hæfte 2025-26. Vejledning til skriftlig bioteknologi A stx (emu.dk, PDF)"
+    url: https://emu.dk/sites/default/files/2025-07/L%C3%A6rerens%20h%C3%A6fte%202025-26.%20Vejledning%20til%20skriftlig%20bioteknologi%20A%20stx.pdf
+  - id: laererens-haefte-kemi
+    navn: "Lærerens hæfte 2025-26. Vejledning til skriftlig kemi A stx (emu.dk, PDF)"
+    url: https://emu.dk/sites/default/files/2025-07/L%C3%A6rerens%20h%C3%A6fte%202025-26.%20Vejledning%20til%20skriftlig%20kemi%20A%20stx.pdf
+  - id: vejledning-kemi
+    navn: "Vejledning til kemi A, B og C, stx, august 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/wm1ll2ab/250819-vejledning-til-kemi-a-b-c-stx-2025.pdf
+  - id: laereplan-kemi-a
+    navn: "Læreplan for kemi A, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/szpd3dfo/kemi-a-stx-august-2017.pdf
+  - id: laereplan-kemi-b
+    navn: "Læreplan for kemi B, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/qrbpki0v/kemi-b-stx-august-2017-ua.pdf
+  - id: laereplan-kemi-c
+    navn: "Læreplan for kemi C, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/ykrd5w53/kemi-c-stx-august-2017-ua.pdf
+  - id: lex-ph
+    navn: "lex.dk: pH (hentet 24. oktober 2026)"
+    url: https://lex.dk/pH
+  - id: lex-styrkekonstant
+    navn: "lex.dk: Styrkekonstant (hentet 24. oktober 2026)"
+    url: https://lex.dk/styrkekonstant
+  - id: lex-styrkeeksponent
+    navn: "lex.dk: Styrkeeksponent (hentet 24. oktober 2026)"
+    url: https://lex.dk/styrkeeksponent
+  - id: lex-buffer
+    navn: "lex.dk: Buffer (kemisk opløsning) (hentet 24. oktober 2026)"
+    url: https://lex.dk/buffer_-_kemisk_opl%C3%B8sning
+  - id: lex-henderson-hasselbalch
+    navn: "lex.dk: Henderson-Hasselbalchs ligning (hentet 24. oktober 2026)"
+    url: https://lex.dk/Henderson-Hasselbalchs_ligning
+  - id: egen
+    navn: "Egen forklaring, godkendt af redaktionen"
+  - id: lex-surhedsgrad
+    navn: "lex.dk: Surhedsgrad (hentet 24. oktober 2026)"
+    url: https://lex.dk/surhedsgrad
+verificeret: false
+---
+
+## Kort fortalt
+
+Til bioteknologi A skal du kunne syre-basereaktioner og beregne pH i vandige opløsninger af syrer, baser, blandinger af dem og puffersystemer. Bjerrumdiagrammer hører også med. [læreplanen, pkt. 2.2](kilde:laereplan) En syre-basereaktion er en hydronoverførsel. [vejledningen, s. 12](kilde:vejledning) Det betyder, at en syre afgiver en hydron, altså $\text{H}^+$, til en base. [Lærerens hæfte, s. 15](kilde:laererens-haefte) Begrebet pH forklares ud fra vands selvionisering. [vejledningen, s. 12](kilde:vejledning)
+
+## Vigtige pointer
+
+- **Definitionen.** Vejledningen skriver, at syre-basereaktioner tager udgangspunkt i Brønsteds definition af syrer og baser. [vejledningen, s. 12](kilde:vejledning)
+- **pH og oxonium.** pH hænger sammen med den aktuelle stofmængdekoncentration af oxonium, og sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Koncentrationen af oxonium skrives $[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+- **Formlen for pH.** I Lærerens hæfte til kemi A beregnes pH med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Du tager altså [titalslogaritmen](/fag/matematik/logaritmefunktioner/#begreb-titalslogaritme) til koncentrationen i mol/L (kun tallet, uden enhed) og skifter fortegn. [lex.dk: pH](kilde:lex-ph) Se formlen nedenfor.
+- **Sur, neutral og basisk.** I rent vand ved 25 °C er pH 7, og vandet er neutralt. En sur opløsning har pH under 7, og en basisk opløsning har pH over 7. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
+- **Det skal du kunne regne på.** pH i vandige opløsninger af både stærke og ikke-stærke syrer og baser og i puffersystemer. [vejledningen, s. 12](kilde:vejledning)
+- **Syrestyrke.** pKs kaldes syrestyrkeeksponenten. [Lærerens hæfte til kemi A, s. 22](kilde:laererens-haefte-kemi) Du kan finde pKs-værdier med dit kemiske tegneprogram. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+- **Styrkekonstant og styrkeeksponent.** En syres styrke i vand måles med styrkekonstanten, og syrestyrkeeksponenten er minus logaritmen til den. Jo stærkere syren er, jo svagere er dens korresponderende base. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant) [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent) Se formlen nedenfor.
+- **Aminer og aminosyrer.** Du skal kende aminers egenskab som baser og aminosyrers syre-baseegenskaber. [vejledningen, s. 10](kilde:vejledning) Aminosyrer skal især ses i forbindelse med, at proteiner dannes ved peptidbinding. [vejledningen, s. 10](kilde:vejledning)
+- **Ordene i opgaverne.** De skriftlige opgaver bruger ikke ordet hydronolyse, som nogle lærebøger bruger. I stedet bruger de hydronoverførsel, selvionisering og omdannelsesgrad. [Lærerens hæfte, s. 15](kilde:laererens-haefte)
+- **Titrering.** Syre-base-titrering for monohydrone syrer og baser, herunder at bruge titrerkurver til kvantitative undersøgelser, hører til de eksperimentelle metoder. [vejledningen, s. 13](kilde:vejledning) Sikkerhed: Følg skolens regler og din lærers anvisninger.
+- **I kemi afhænger det af niveauet.** Kemi C har syre-basereaktioner, herunder pH-begrebet. [læreplanen for kemi C, pkt. 2.2](kilde:laereplan-kemi-c) Kemi B har syre-basereaktioner, herunder beregning af pH for vandige opløsninger af syrer henholdsvis baser. [læreplanen for kemi B, pkt. 2.2](kilde:laereplan-kemi-b) Kemi A har det samme som bioteknologi A, altså også blandinger, puffersystemer og bjerrumdiagrammer. [læreplanen for kemi A, pkt. 2.2](kilde:laereplan-kemi-a)
+
+### Puffere
+
+- **Hvad en puffer er.** En puffer, også kaldet en buffer, er en opløsning, der holder sin pH nogenlunde stabil, selv om du hælder lidt syre eller base i. Typisk opløser man en svag syre sammen med dens korresponderende base i vand, ofte med samme stofmængde af hver. [lex.dk: Buffer](kilde:lex-buffer)
+- **I laboratoriet.** Puffere bruges fx ved biokemiske og mikrobiologiske undersøgelser, hvor pH skal holdes konstant. [lex.dk: Buffer](kilde:lex-buffer)
+- **I kroppen.** Enzymer og transportmolekyler virker kun optimalt i et bestemt pH-interval. I blodet hjælper kulsyre og hydrogencarbonat med at holde pH stabil, og i cellerne virker phosphat og proteiner som puffere. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad) Om enzymer og pH kan du læse under [pH-optimum](/fag/bioteknologi/enzymer/#begreb-ph-optimum).
+- **Et eksempel fra blodet.** I blodet er hydrogencarbonat, $\text{HCO}_3^-$, med til at holde pH stabil, fordi det virker som puffer. Ligningen, der beskriver dette system, blodets vigtigste puffersystem, kaldes Henderson-Hasselbalchs ligning. Ligningen giver blodets pH ud fra koncentrationerne af stofferne i systemet [lex.dk: Henderson-Hasselbalchs ligning](kilde:lex-henderson-hasselbalch):
+
+$$
+\text{pH} = 6{,}1 + \log\frac{[\text{HCO}_3^-]}{[\text{CO}_2] + [\text{H}_2\text{CO}_3]}
+$$
+
+- **Kemi B.** Puffersystemer er ikke kernestof i kemi B. [vejledningen til kemi, s. 21](kilde:vejledning-kemi)
+
+Prøv selv: Udled pufferligningen under Formler. Tag minus logaritmen på begge sider af udtrykket for styrkekonstanten, og brug, at $\text{pH} = -\log[\text{H}_3\text{O}^+]$ og $\text{p}K_A = -\log K_A$. Hvad bliver pH, når $[\text{A}^-] = [\text{HA}]$?
+
+## Formler
+
+<Formel navn="pH" tex="\text{pH} = -\log[\text{H}_3\text{O}^+]" kilde="laererens-haefte-kemi" henvisning="Lærerens hæfte til kemi A, s. 23">
+
+<Symboler>
+
+- $[\text{H}_3\text{O}^+]$: den aktuelle stofmængdekoncentration af oxonium. [vejledningen til kemi, s. 20](kilde:vejledning-kemi) Du sætter talværdien ind, målt i mol pr. liter. [lex.dk: pH](kilde:lex-ph)
+- $\log$: titalslogaritmen. [lex.dk: pH](kilde:lex-ph)
+
+</Symboler>
+
+<Bruges>
+
+Når du kender koncentrationen af oxonium og skal finde pH. Er syren ikke-stærk, finder du først $[\text{H}_3\text{O}^+]$ med styrkekonstanten og sætter derefter ind i formlen. Sådan gør eksemplet i Lærerens hæfte til kemi A. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Bruges>
+
+<Eksempel>
+
+En opløsning har $[\text{H}_3\text{O}^+] = 2{,}5 \cdot 10^{-4}\ \text{M}$. Så er
+
+$$
+\text{pH} = -\log(2{,}5 \cdot 10^{-4}) \approx 3{,}60
+$$
+
+Koncentrationen har to betydende cifre, så strengt taget skal pH have to decimaler. [Lærerens hæfte, s. 19](kilde:laererens-haefte) Til den skriftlige prøve accepteres det også at skrive 3,6. [evalueringen, s. 9](kilde:evaluering)
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme minus. Så får du en negativ pH for en sur opløsning.
+- At sætte den formelle koncentration af en ikke-stærk syre direkte ind. Find først $[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+- At bruge en færdig pH-formel uden at begrunde, hvorfor den passer. Bruger du pH-formler, skal du argumentere for dit valg. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Styrkekonstanten for en syre" tex="K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}" kilde="lex-styrkekonstant" henvisning="lex.dk: Styrkekonstant">
+
+<Symboler>
+
+- $\text{HA}$: syren. $\text{A}^-$: syrens korresponderende base. Sammen er de et korresponderende syre-base-par. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+- De firkantede parenteser: koncentrationerne ved ligevægt. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+- $K_A$: syrens styrkekonstant. I Lærerens hæfte til kemi A skrives den $K_s$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Syrestyrkeeksponenten er $\text{p}K_A = -\log K_A$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
+
+</Symboler>
+
+<Bruges>
+
+Formlen beskriver ligevægten $\text{HA} + \text{H}_2\text{O} \rightleftharpoons \text{A}^- + \text{H}_3\text{O}^+$, når syren er opløst i vand. Jo større $K_A$ er, jo stærkere er syren. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant) I Lærerens hæfte til kemi A bruges den i formen
+
+$$
+K_s = \frac{[\text{H}_3\text{O}^+]^2}{c_s - [\text{H}_3\text{O}^+]}
+$$
+
+til at finde $[\text{H}_3\text{O}^+]$ i en opløsning af en ikke-stærk syre, hvor $c_s$ er syrens formelle koncentration. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Bruges>
+
+<Eksempel>
+
+En ikke-stærk syre har $K_s = 1{,}00 \cdot 10^{-5}\ \text{M}$, og den formelle koncentration er $c_s = 0{,}100\ \text{M}$. Du kalder $[\text{H}_3\text{O}^+]$ for $x$ og løser ligningen med et CAS-program:
+
+$$
+1{,}00 \cdot 10^{-5} = \frac{x^2}{0{,}100 - x}
+$$
+
+Den positive løsning er $x \approx 9{,}95 \cdot 10^{-4}$, så $[\text{H}_3\text{O}^+] \approx 9{,}95 \cdot 10^{-4}\ \text{M}$ og $\text{pH} \approx 3{,}00$. Den negative løsning dur ikke, fordi en koncentration ikke kan være negativ. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte startkoncentrationerne ind i stedet for koncentrationerne ved ligevægt. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+- At blande $K_s$ og $\text{p}K_s$ sammen. $\text{p}K_s$ er minus logaritmen til $K_s$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
+- At bytte om på syre og base i brøken. Syren $\text{HA}$ står i nævneren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Pufferligningen" tex="\text{pH} = \text{p}K_A + \log\frac{[\text{A}^-]}{[\text{HA}]}" kilde="egen" henvisning="egen forklaring, bygget på formlerne for pH og styrkekonstanten">
+
+<Symboler>
+
+- $\text{p}K_A$: syrestyrkeeksponenten, $\text{p}K_A = -\log K_A$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
+- $[\text{A}^-]$: koncentrationen af baseformen ved ligevægt.
+- $[\text{HA}]$: koncentrationen af syreformen ved ligevægt.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal regne pH ud i en puffer, altså en opløsning med en svag syre og dens korresponderende base. Formlen kommer fra styrkekonstanten ovenfor. Tager du minus logaritmen på begge sider af $K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}$, får du $\text{p}K_A = \text{pH} - \log\frac{[\text{A}^-]}{[\text{HA}]}$, og det kan du omskrive til pufferligningen. Er der lige meget af syreform og baseform, er $\text{pH} = \text{p}K_A$, fordi $\log 1 = 0$. Blodets ligning under Vigtige pointer har samme form med $6{,}1$ på pladsen for $\text{p}K_A$. [egen forklaring](kilde:egen)
+
+</Bruges>
+
+<Eksempel>
+
+En puffer har $\text{p}K_A = 4{,}8$. Ved ligevægt er koncentrationen af baseformen $0{,}20\ \text{M}$, og koncentrationen af syreformen er $0{,}10\ \text{M}$. Så er
+
+$$
+\text{pH} = 4{,}8 + \log\frac{0{,}20}{0{,}10} = 4{,}8 + \log 2 \approx 5{,}1
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på syreform og baseform i brøken. I eksemplet ville du så få $\text{pH} \approx 4{,}5$.
+- At bruge formlen, når der kun er syre eller kun base i opløsningen. Så er det ikke en puffer.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Hydron">
+
+Betegnelsen for $\text{H}^+$. Ved en syre-basereaktion afgiver syren en hydron til basen. [Lærerens hæfte, s. 15](kilde:laererens-haefte)
+
+</Begreb>
+
+<Begreb navn="Hydronoverførsel">
+
+Reaktionen, hvor en hydron afgives fra en syre til en base. [Lærerens hæfte, s. 15](kilde:laererens-haefte) Syre-basereaktioner er hydronoverførsler. [vejledningen, s. 12](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Selvionisering">
+
+Betegnelsen for denne ligevægt i vand [Lærerens hæfte, s. 15](kilde:laererens-haefte):
+
+$$
+\text{H}_2\text{O(l)} + \text{H}_2\text{O} \rightleftharpoons \text{H}_3\text{O}^+\text{(aq)} + \text{OH}^-\text{(aq)}
+$$
+
+Begrebet pH forklares ud fra vands selvionisering. [vejledningen, s. 12](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Omdannelsesgrad">
+
+Den brøkdel af det oprindelige antal syremolekyler, som har reageret. [Lærerens hæfte, s. 15](kilde:laererens-haefte)
+
+</Begreb>
+
+<Begreb navn="pH">
+
+Et tal, der hænger sammen med den aktuelle stofmængdekoncentration af oxonium. Sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Du beregner den med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Ved 25 °C er opløsningen sur under pH 7 og basisk over pH 7. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
+
+</Begreb>
+
+<Begreb navn="Styrkekonstant">
+
+Fortæller, hvor stærk en syre eller en base er, når den er opløst i vand. For en syre HA er $K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}$, hvor koncentrationerne er dem ved ligevægt. Jo stærkere syren er, jo svagere er dens korresponderende base. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+
+</Begreb>
+
+<Begreb navn="Puffer">
+
+En opløsning, der holder sin pH nogenlunde stabil, når der kommer lidt syre eller base i. Den består typisk af en svag syre sammen med dens korresponderende base, tit med samme stofmængde af hver. [lex.dk: Buffer](kilde:lex-buffer)
+
+</Begreb>
+
+<Begreb navn="Bjerrumdiagram">
+
+Et diagram med pH på x-aksen. Det viser, hvor stor en brøkdel af et stof der er på syreform og på baseform ved forskellige pH-værdier, så du kan aflæse syrebrøken eller basebrøken ved en bestemt pH. [Lærerens hæfte til kemi A, s. 13 og 22–23](kilde:laererens-haefte-kemi)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+Eksamenshjørnet handler om prøverne i bioteknologi A. Kemi B har kun en mundtlig prøve, og opgaven dækker både teori og eksperimentelt arbejde. [læreplanen for kemi B, pkt. 4.2](kilde:laereplan-kemi-b) Læs mere i [guiden til mundtlige prøver](/eksamen/mundtlig/).
+
+**Den skriftlige prøve i bioteknologi A** har opgaver inden for kernestoffet. [læreplanen, pkt. 4.2](kilde:laereplan) pH-beregninger og brug af bjerrumdiagrammer er en af de opgavetyper, der ofte er med. [Lærerens hæfte, s. 11](kilde:laererens-haefte)
+
+- Markér dine aflæsninger på grafen, når du bruger et bjerrumdiagram. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+- Det accepteres, at du angiver pH med én decimal, uanset hvor mange betydende cifre koncentrationen af oxonium har. [evalueringen, s. 9](kilde:evaluering) Strengt taget skal pH have lige så mange decimaler, som koncentrationen af oxonium har betydende cifre. [Lærerens hæfte, s. 19](kilde:laererens-haefte)
+- I rettevejledningen til en opgave fra maj 2024 skulle man kende sammenhængen mellem pH og pOH eller mellem $[\text{OH}^-]$ og $[\text{H}_3\text{O}^+]$ og skrive formler og mellemregninger. [evalueringen, s. 12](kilde:evaluering)
+- I en anden opgave fra maj 2024 skulle man bruge opgivne pKb-værdier til at argumentere for, hvilken base der er stærkest. [evalueringen, s. 16](kilde:evaluering)
+
+**Den mundtlige prøve i bioteknologi A.** En prøveopgave i bioteknologi skal samle kemisk og biologisk viden. [vejledningen, s. 25](kilde:vejledning) Syrer og baser kan fx kobles til biologi gennem aminosyrernes syre-baseegenskaber. [vejledningen, s. 10](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- Du fortynder en opløsning af en stærk syre 10 gange med vand. Bliver pH 10 gange så stor, eller ændrer den sig på en anden måde? Brug, at sammenhængen mellem pH og koncentrationen af oxonium ikke er lineær.
+- Forklar, hvad der sker i en hydronoverførsel, når en amin reagerer med vand. Hvilket stof er syre, og hvilket er base?
+- Aminosyrer har syre-baseegenskaber. Hvordan kan du bruge et bjerrumdiagram til at finde ud af, hvilken form en aminosyre mest findes på ved en bestemt pH?
+
+Øv dig på rigtige opgaver: Skriftlige opgaver fra 2010 og frem ligger i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). [vejledningen, s. 31](kilde:vejledning) Lærerens hæfte og typeordene finder du på [emu.dk](https://emu.dk/stx/bioteknologi/proever-og-eksamen).

@@ -1,0 +1,264 @@
+---
+titel: "Monotoniforhold og optimering"
+beskrivelse: "Hvor en funktion vokser og aftager: vandret tangent, fortegnslinje for f′(x), lokale maksima og minima og optimering."
+fag: matematik
+nummer: 20
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Monotoniforholdene fortæller, i hvilke intervaller en funktion er voksende, og i hvilke den er aftagende. [formelsamlingen, s. 65, formel (256)](kilde:formelsamling) Du finder dem med den afledede funktion $f'$: Løs ligningen $f'(x) = 0$, lav en fortegnslinje for $f'(x)$, og aflæs, hvor $f$ vokser og aftager. [formelsamlingen, s. 65, formel (257), (258) og (259)](kilde:formelsamling) Samtidig finder du funktionens lokale maksima og minima. [formelsamlingen, s. 65, formel (260)](kilde:formelsamling) Det bruger du til optimering, hvor du skal finde den største eller mindste værdi af en størrelse. [vejledningen, s. 16](kilde:vejledning)
+
+## Vigtige pointer
+
+- **Voksende og aftagende.** En funktion er voksende i et interval, hvis grafen går opad, når du går mod højre. Den er aftagende, hvis grafen går nedad. Monotoniforholdene er en opdeling af definitionsmængden i intervaller, hvor funktionen enten er voksende eller aftagende. [formelsamlingen, s. 65, formel (256)](kilde:formelsamling) Du kan også aflæse dem på en graf, se [funktioner](/fag/matematik/funktioner/).
+- **$f'$ viser, hvordan grafen hælder.** Differentialkvotienten $f'(x_0)$ er hældningen for tangenten til grafen i punktet $(x_0, f(x_0))$. [formelsamlingen, s. 62, formel (248)](kilde:formelsamling) Se [grænseværdi og differentialkvotient](/fag/matematik/differentialkvotient/). Fortegnslinjen i formelsamlingen viser sammenhængen: Hvor $f'(x)$ er positiv, er $f$ voksende, og hvor $f'(x)$ er negativ, er $f$ aftagende. [formelsamlingen, s. 65, formel (258) og (259)](kilde:formelsamling)
+- **Vandret tangent.** Du finder de $x$-værdier, hvor grafen har vandret tangent, ved at løse ligningen $f'(x) = 0$. Her kan $f$ have et lokalt maksimum eller minimum, men det er ikke sikkert. Det afgør fortegnslinjen. [formelsamlingen, s. 65, formel (257) og (260)](kilde:formelsamling) Ofte er $f'(x) = 0$ en andengradsligning, se [ligninger](/fag/matematik/ligninger/).
+- **Fortegnslinjen.** Den viser, hvor $f'(x)$ er positiv ($+$), nul ($0$) og negativ ($-$). Ud fra den skriver du monotoniforholdene. [formelsamlingen, s. 65, formel (258) og (259)](kilde:formelsamling)
+- **Lokalt maksimum og minimum.** Skifter $f'(x)$ fra $+$ til $-$, går $f$ fra at vokse til at aftage. Så har $f$ et lokalt maksimum. Skifter $f'(x)$ fra $-$ til $+$, har $f$ et lokalt minimum. [formelsamlingen, s. 65, formel (258), (259) og (260)](kilde:formelsamling)
+- **Svar med begge koordinater.** Et ekstremumspunkt skrives med begge koordinater. Førstekoordinaten er ekstremumsstedet, og andenkoordinaten er ekstremum, altså maksimum eller minimum. [vejledningen, s. 37](kilde:vejledning)
+- **Vandret tangent er ikke altid et ekstremum.** Er $f(x) = x^3$, så er $f'(x) = 3x^2$, og $f'(0) = 0$. [formelsamlingen, s. 66, formel (267)](kilde:formelsamling) Men $f'(x)$ er positiv på begge sider af 0, så fortegnslinjen er $+ \; 0 \; +$. Altså er $f$ voksende hele vejen, og der er intet maksimum eller minimum i 0. [formelsamlingen, s. 65, formel (258) og (259)](kilde:formelsamling)
+- **Fra graf til $f'$ og omvendt.** Du skal kunne aflæse monotoniforhold og ekstrema på en graf, bruge $f'$ til at bestemme dem og omvendt sige noget om $f'$ ud fra grafen for $f$. [vejledningen, s. 16](kilde:vejledning) Hvor grafen for $f$ går nedad, hælder tangenterne også nedad, så dér er $f'(x)$ negativ eller 0. [formelsamlingen, s. 62, formel (248)](kilde:formelsamling)
+- **Optimering.** I en optimeringsopgave skal du finde den største eller mindste værdi af en størrelse under visse betingelser. Opstil en forskrift for størrelsen ud fra situationen, og undersøg den med differentialregning. [vejledningen, s. 16](kilde:vejledning) Slut med en konklusion med den rigtige enhed. [vejledningen, s. 43](kilde:vejledning)
+
+Prøv selv: Den fuldt optrukne graf er $f(x) = x^3 - a \cdot x$, og den stiplede er dens afledede funktion $g(x) = f'(x) = 3x^2 - a$. Træk i skyderen. Ligger den stiplede graf over eller under $x$-aksen, hvor $f$ er voksende? Hvad sker der med det lokale maksimum og minimum, når $a$ bliver 0 eller negativ?
+
+<Graf
+  titel="Funktion og afledet funktion med skyder"
+  funktioner={[
+    { forskrift: 'f(x) = x^3 - a · x', tex: 'f(x) = x^3 - a \\cdot x' },
+    { forskrift: 'g(x) = 3x^2 - a', tex: "g(x) = f'(x) = 3x^2 - a" },
+  ]}
+  parametre={{ a: { min: -3, max: 6, start: 3, trin: 0.5 } }}
+  x={[-4, 4]}
+  y={[-8, 8]}
+/>
+
+### Et eksempel på optimering
+
+En festival sælger billetter. I en model sælger festivalen $3000 - 5x$ billetter, når en billet koster $x$ kr. Indtægten i kr. er så
+
+$$
+I(x) = x \cdot (3000 - 5x) = 3000x - 5x^2
+$$
+
+Prisen og antallet af billetter kan ikke være negative, så $0 \le x \le 600$. Med formel (263), (267), (273) og (275) får du
+
+$$
+I'(x) = 3000 - 10x
+$$
+
+Ligningen $I'(x) = 0$ giver $x = 300$. Tjek fortegnet: $I'(100) = 2000$ er positiv, og $I'(400) = -1000$ er negativ. Så er $I$ voksende i $[0; 300]$ og aftagende i $[300; 600]$, og indtægten er størst, når $x = 300$:
+
+$$
+I(300) = 3000 \cdot 300 - 5 \cdot 300^2 = 450\,000
+$$
+
+Konklusion: Ifølge modellen giver en billetpris på 300 kr. den største indtægt, nemlig 450 000 kr.
+
+Her er indtægten et andengradspolynomium, så du kunne også have brugt formlen for toppunktet. [formelsamlingen, s. 23, formel (73)](kilde:formelsamling) Se [andengradspolynomier](/fag/matematik/andengradspolynomier/).
+
+## Formler
+
+<Formel navn="Vandret tangent" tex="f'(x) = 0" kilde="formelsamling" henvisning="formelsamlingen, s. 65, formel (257)">
+
+<Symboler>
+
+- $f'(x)$: den afledede funktion. $f'(x_0)$ er hældningen for tangenten i punktet $(x_0, f(x_0))$.
+- $f'(x) = 0$: tangenten har hældningen 0, så den er vandret.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde de $x$-værdier, hvor grafen har vandret tangent. Det er første skridt, når du skal bestemme monotoniforhold og lokale ekstrema.
+
+</Bruges>
+
+<Eksempel>
+
+Funktionen er $f(x) = x^3 - 9x^2 + 24x - 10$. Med regnereglerne på s. 66–67 i formelsamlingen får du
+
+$$
+f'(x) = 3x^2 - 18x + 24
+$$
+
+Løs $f'(x) = 0$. Divider først med 3 på begge sider:
+
+$$
+x^2 - 6x + 8 = 0
+$$
+
+Med formel (322) er diskriminanten $d = (-6)^2 - 4 \cdot 1 \cdot 8 = 4$. Med formel (323) får du $x = \frac{6 - 2}{2} = 2$ eller $x = \frac{6 + 2}{2} = 4$. Grafen har altså vandret tangent, når $x = 2$ og $x = 4$.
+
+</Eksempel>
+
+<Fejl>
+
+- At løse $f(x) = 0$ i stedet for $f'(x) = 0$. Så finder du nulpunkterne og ikke punkterne med vandret tangent.
+- At tro, at der altid er et maksimum eller minimum, hvor tangenten er vandret. Det er fortegnslinjen, der afgør det.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fortegnslinje og monotoniforhold" tex="\begin{array}{c|ccccc} x & & x_1 & & x_2 & \\ \hline f'(x) & + & 0 & - & 0 & + \end{array}" kilde="formelsamling" henvisning="formelsamlingen, s. 65, formel (258) og (259)">
+
+<Symboler>
+
+- $x_1$ og $x_2$: løsningerne til $f'(x) = 0$.
+- $+$ og $-$: fortegnet for $f'(x)$ i intervallerne mellem løsningerne.
+- I formelsamlingens eksempel er $f$ voksende i $]-\infty; x_1]$ og $[x_2; \infty[$ og aftagende i $[x_1; x_2]$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal bestemme monotoniforholdene for $f$, altså i hvilke intervaller $f$ er voksende og aftagende.
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: $f'(x) = 3x^2 - 18x + 24$ er 0, når $x = 2$ og $x = 4$. Sæt et tal fra hvert interval ind i $f'(x)$: $f'(0) = 24$, $f'(3) = -3$ og $f'(5) = 9$. Fortegnslinjen er
+
+$$
+\begin{array}{c|ccccc} x & & 2 & & 4 & \\ \hline f'(x) & + & 0 & - & 0 & + \end{array}
+$$
+
+Så er $f$ voksende i $]-\infty; 2]$ og i $[4; \infty[$ og aftagende i $[2; 4]$.
+
+</Eksempel>
+
+<Fejl>
+
+- At lave fortegnslinjen for $f(x)$ i stedet for $f'(x)$.
+- At skrive monotoniforholdene med $y$-værdier. Intervallerne er $x$-værdier.
+- At gætte på, at fortegnet skifter ved hver løsning, i stedet for at tjekke det.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Lokale ekstrema" tex="\text{lokalt maksimum } f(x_1) \text{ i } x_1, \quad \text{lokalt minimum } f(x_2) \text{ i } x_2" kilde="formelsamling" henvisning="formelsamlingen, s. 65, formel (260)">
+
+<Symboler>
+
+- $x_1$: maksimumsstedet. Her skifter $f'(x)$ fra $+$ til $-$.
+- $f(x_1)$: det lokale maksimum, altså funktionsværdien i $x_1$.
+- $x_2$: minimumsstedet. Her skifter $f'(x)$ fra $-$ til $+$.
+- $f(x_2)$: det lokale minimum.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal bestemme de lokale maksima og minima og skrive ekstremumspunkterne op.
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: $f(x) = x^3 - 9x^2 + 24x - 10$ har lokalt maksimum i $x = 2$ og lokalt minimum i $x = 4$. Funktionsværdierne er
+
+$$
+f(2) = 8 - 36 + 48 - 10 = 10 \quad \text{og} \quad f(4) = 64 - 144 + 96 - 10 = 6
+$$
+
+Det lokale maksimum er altså 10, og det lokale minimum er 6. Ekstremumspunkterne er $(2, 10)$ og $(4, 6)$.
+
+</Eksempel>
+
+<Fejl>
+
+- At svare $x = 2$, når der spørges om maksimum. Maksimum er funktionsværdien $f(2) = 10$, og $x = 2$ er maksimumsstedet.
+- At sætte ind i $f'(x)$ i stedet for $f(x)$. $f'(2)$ er jo 0.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Monotoniforhold">
+
+En opdeling af funktionens definitionsmængde i intervaller, hvor funktionen enten er voksende eller aftagende. [formelsamlingen, s. 65, formel (256)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Vandret tangent">
+
+En tangent med hældningen 0. Du finder $x$-værdierne til punkterne med vandret tangent ved at løse $f'(x) = 0$. [formelsamlingen, s. 65, formel (257)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fortegnslinje">
+
+En tallinje, der viser, hvor $f'(x)$ er positiv, nul og negativ. Du bruger den til at bestemme monotoniforhold og lokale ekstrema. [formelsamlingen, s. 65, formel (258)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Lokalt maksimum og minimum">
+
+Skifter $f$ fra at være voksende til at være aftagende i $x_1$, har $f$ et lokalt maksimum $f(x_1)$ i $x_1$. Skifter $f$ fra aftagende til voksende i $x_2$, har $f$ et lokalt minimum $f(x_2)$ i $x_2$. [formelsamlingen, s. 65, formel (259) og (260)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Ekstremumssted og ekstremum">
+
+Ekstremumsstedet er førstekoordinaten til et maksimums- eller minimumspunkt. Ekstremum er andenkoordinaten, altså funktionens maksimum eller minimum. Sammen giver de ekstremumspunktet. [vejledningen, s. 37](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Optimering">
+
+At finde den største eller mindste værdi af en størrelse under visse betingelser. Ekstrema bruges netop i sådanne opgaver. [vejledningen, s. 16](kilde:vejledning)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Monotoniforhold, ekstrema og optimering er kernestof, og det samme er sammenhængen mellem disse begreber og differentialkvotienten. [læreplanen, pkt. 2.2](kilde:laereplan) Du skal kunne aflæse monotoniforhold og ekstrema på en graf, bruge $f'$ til at bestemme dem og omvendt udtale dig om $f'$ ud fra en graf for $f$. [vejledningen, s. 16](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Regnereglerne for differentialkvotienter skal kunne bruges i delprøve 1. [vejledningen, s. 15](kilde:vejledning) Dem finder du under [regneregler for differentiation](/fag/matematik/regneregler-for-differentiation/). Øv dig derfor i at differentiere og løse $f'(x) = 0$ i hånden, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
+
+- Undersøgelse af monotoniforhold er et af de steder, hvor du skal kunne løse ligninger, der indgår i en anden sammenhæng. [vejledningen, s. 12](kilde:vejledning) Er $f'(x) = 0$ en andengradsligning, så brug diskriminanten og løsningsformlen. [formelsamlingen, s. 75, formel (322) og (323)](kilde:formelsamling)
+- Skriv formlens navn eller nummer, før du sætter tal ind. [vejledningen, s. 42](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også [GeoGebra](https://www.geogebra.org/). [vejledningen, s. 36](kilde:vejledning) Opgaver med modellering kan komme i begge delprøver, men især i delprøve 2. [vejledningen, s. 9](kilde:vejledning) Ud fra en beskrevet situation skal du kunne opstille en model i form af en forskrift, undersøge den fx med differentialregning og drage konklusioner. [vejledningen, s. 16](kilde:vejledning)
+
+- »Benyt $f'(x)$« er et eksempel på et metodekrav. Bruger du ikke den metode, får du ikke fuldt point, selv om svaret er rigtigt. [vejledningen, s. 36](kilde:vejledning)
+- Du skal kunne argumentere for monotoniforhold ved hjælp af den afledede funktion i de opgaver, hvor det er relevant. [vejledningen, s. 37](kilde:vejledning)
+- Skriv, hvad du gør med værktøjet, fx »Jeg løser $f'(x) = 0$« efterfulgt af din kommando. [vejledningen, s. 42](kilde:vejledning)
+- Vejledningen undtager ikke noget fra dette emne til den skriftlige prøve. [vejledningen, s. 16 og 36](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) I undervisningen gennemgås sætninger som hovedregel med bevis, men vejledningen nævner monotonisætningen som et eksempel på en sætning, hvor beviset kan udelades. [vejledningen, s. 23](kilde:vejledning) Du skal stadig kunne forklare sammenhængen mellem monotoniforhold, ekstrema og differentialkvotient, for den er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan)
+
+- Optimering hører også til modellering, fordi en række modeller udspringer af en matematisk analyse af et optimeringsproblem. [vejledningen, s. 27](kilde:vejledning)
+- Står der »redegør for«, skal du bevise eller udlede. Står der »forklar«, skal du forklare, hvad en påstand betyder, eller hvordan den bruges. [vejledningen, s. 39](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- Bestem monotoniforholdene og ekstremumspunkterne for $f(x) = 2x^3 - 3x^2 - 12x + 4$ uden hjælpemidler.
+- Grafen for $f'$ er en parabel med grenene opad, der skærer $x$-aksen i $-1$ og $4$. Hvor er $f$ voksende og aftagende? Har $f$ et lokalt maksimum eller minimum, og hvor?
+- Et rektangel har to sider på koordinatakserne og hjørnet $(x, f(x))$ på grafen for $f(x) = 12 - x^2$, hvor $0 < x < \sqrt{12}$. Bestem $x$, så arealet bliver størst muligt.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

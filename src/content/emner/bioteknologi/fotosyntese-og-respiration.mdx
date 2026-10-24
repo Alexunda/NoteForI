@@ -1,0 +1,246 @@
+---
+titel: "Fotosyntese, respiration og gæring"
+beskrivelse: "Hvordan planter bruger lys til at binde CO₂, og hvordan celler nedbryder sukker med og uden ilt: lysprocesser, Calvin-cyklus, glycolyse, citronsyrecyklus, elektrontransportkæde og gæring."
+fag: bioteknologi
+nummer: 11
+omraade: "Biokemi"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2017"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for bioteknologi A, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/morjd5sk/bioteknologi-a-stx-august-2017.pdf
+  - id: vejledning
+    navn: "Vejledning til bioteknologi A, stx, 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/011cm4jy/250819-vejledning-til-bioteknologi-a-stx-2025.pdf
+  - id: laererens-haefte
+    navn: "Lærerens hæfte 2025-26. Vejledning til skriftlig bioteknologi A stx (emu.dk, PDF)"
+    url: https://emu.dk/sites/default/files/2025-07/L%C3%A6rerens%20h%C3%A6fte%202025-26.%20Vejledning%20til%20skriftlig%20bioteknologi%20A%20stx.pdf
+  - id: evaluering
+    navn: "Evaluering af skriftlig prøve sommer 2024 i bioteknologi A stx (uvm.dk, PDF)"
+    url: https://uvm.dk/media/h52bjmz2/241218-evaluering-af-skriftlig-proeve-sommer-2024-i-bioteknologi-a-stx.pdf
+  - id: emu-mundtlig
+    navn: "Eksempler på opgaver til mundtlig prøve i bioteknologi A, fagkonsulenterne, opdateret 31. maj 2024 (emu.dk)"
+    url: https://emu.dk/stx/bioteknologi/proever-og-eksamen/eksempler-paa-opgaver-til-mundtlig-proeve-i-bioteknologi
+  - id: nhgri
+    navn: "Talking Glossary of Genomic and Genetic Terms, National Human Genome Research Institute (genome.gov, engelsk, hentet oktober 2026)"
+    url: https://www.genome.gov/genetics-glossary
+  - id: iubmb
+    navn: "Enzyme Nomenclature (ExplorEnz), IUBMB, opslag efter EC-nummer og enzymklasse (enzyme-database.org, engelsk, hentet oktober 2026)"
+    url: https://www.enzyme-database.org/
+  - id: iubmb-calvin
+    navn: "Calvin Cycle, reaktionsdiagram, IUBMB (enzyme-database.org, engelsk)"
+    url: https://www.enzyme-database.org/reaction/polysacc/Calvin1.html
+  - id: iubmb-calvin-co2
+    navn: "Calvin Cycle (carbon fixation stages), reaktionsdiagram, IUBMB (enzyme-database.org, engelsk)"
+    url: https://www.enzyme-database.org/reaction/polysacc/Calvin3.html
+  - id: iubmb-glycolyse
+    navn: "Glycolysis, reaktionsdiagram, IUBMB (enzyme-database.org, engelsk)"
+    url: https://www.enzyme-database.org/reaction/polysacc/glycolysis.html
+  - id: iubmb-citronsyrecyklus
+    navn: "Citric acid cycle, reaktionsdiagram, IUBMB (enzyme-database.org, engelsk)"
+    url: https://www.enzyme-database.org/reaction/misc/CAcycle.html
+  - id: gemet-fotosyntese
+    navn: "photosynthesis (fotosyntese), GEMET, Det Europæiske Miljøagentur (eionet.europa.eu, engelsk)"
+    url: https://www.eionet.europa.eu/gemet/en/concept/6211
+  - id: gemet-klorofyl
+    navn: "chlorophyll (klorofyl), GEMET, Det Europæiske Miljøagentur (eionet.europa.eu, engelsk)"
+    url: https://www.eionet.europa.eu/gemet/en/concept/1391
+  - id: gemet-gaering
+    navn: "fermentation (gæring), GEMET, Det Europæiske Miljøagentur (eionet.europa.eu, engelsk)"
+    url: https://www.eionet.europa.eu/gemet/en/concept/3159
+  - id: gemet-gaer
+    navn: "yeast (gær), GEMET, Det Europæiske Miljøagentur (eionet.europa.eu, engelsk)"
+    url: https://www.eionet.europa.eu/gemet/en/concept/9403
+  - id: gemet-anaerob
+    navn: "anaerobic process (anaerob proces), GEMET, Det Europæiske Miljøagentur (eionet.europa.eu, engelsk)"
+    url: https://www.eionet.europa.eu/gemet/en/concept/394
+  - id: energistyrelsen-ethanol
+    navn: "Technology Data – Renewable fuels, version 0015, kapitel 105 First Generation Ethanol, Energistyrelsen, august 2026 (ens.dk, engelsk, PDF)"
+    url: https://ens.dk/media/7823/download
+  - id: lex-glykolyse
+    navn: "lex.dk: Glykolyse (hentet 24. oktober 2026)"
+    url: https://lex.dk/glykolyse
+  - id: lex-pyruvat
+    navn: "lex.dk: Pyruvat (hentet 24. oktober 2026)"
+    url: https://lex.dk/pyruvat
+verificeret: false
+---
+
+## Kort fortalt
+
+Ved fotosyntesen omdanner planter kuldioxid og vand til kulhydrater. Energien kommer fra sollys, som klorofyl opfanger, og ilt er et biprodukt. [GEMET: photosynthesis](kilde:gemet-fotosyntese) Respiration og gæring, herunder carbohydraternes intermediære stofskifte, er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) Ved respiration indgår en ekstern elektronacceptor, og ved gæring gør der ikke. [vejledningen, s. 12](kilde:vejledning) Hos aerobe organismer er ilt den sidste elektronacceptor, og den bliver til vand. [IUBMB: EC 7.1.1.9](kilde:iubmb)
+
+## Vigtige pointer
+
+**Det skal du kunne.** Du skal kende fotosyntesens opdeling i lysprocesser og mørkeprocesser og den rolle, ATP og NADPH har. Du skal kunne skelne mellem respiration og gæring og kunne genkende delprocesser i glycolyse, alkoholgæring, citronsyrecyklus og elektrontransportkæde. Du skal også kende cofaktorernes roller, fx ATP, $\text{NAD}^+$, FAD og coenzym A. [vejledningen, s. 12](kilde:vejledning)
+
+Navnene på enzymerne er lange. Læg mærke til, hvad der går ind og ud af hvert trin. Om mitokondrier og kloroplaster kan du læse mere på siden om [celler og membranprocesser](/fag/bioteknologi/celler/).
+
+### Lysprocesserne
+
+- **Klorofyl fanger lyset.** Klorofyl er et grønt farvestof i alger og planter, der opfanger lysenergi. Undtagen hos blågrønalger sidder klorofyllet i kloroplasterne (grønkornene). [GEMET: chlorophyll](kilde:gemet-klorofyl)
+- **Vand bliver til ilt.** Fotosystem II indeholder bl.a. klorofyl a. Det bruger lysenergi til at oxidere vand, så to vandmolekyler bliver til ét iltmolekyle. [IUBMB: EC 1.10.3.9](kilde:iubmb)
+- **Elektronerne går videre.** Cytochrom-$b_6f$-komplekset fører elektronerne fra fotosystem II videre til fotosystem I. Samtidig flytter det protoner ($\text{H}^+$) gennem thylakoidmembranen fra stroma til lumen. [IUBMB: EC 7.1.1.6](kilde:iubmb)
+- **NADPH bliver dannet.** Fotosystem I bruger også lys og afleverer elektronerne til ferredoxin. [IUBMB: EC 1.97.1.12](kilde:iubmb) Enzymet ferredoxin-$\text{NADP}^+$-reduktase bruger elektronerne fra ferredoxin til at danne NADPH. [IUBMB: EC 1.18.1.2](kilde:iubmb)
+- **ATP bliver dannet.** ATP-syntase i thylakoidmembranen danner ATP. Den drives af forskellen i $\text{H}^+$ på de to sider af membranen. [IUBMB: EC 7.1.2.2](kilde:iubmb)
+
+### Mørkeprocesserne: Calvin-cyklussen
+
+- **Brændstof fra lysprocesserne.** Lysprocesserne leverer det NADPH og ATP, der driver opbygningen af kulhydrat i Calvin-cyklussen. [IUBMB: Calvin-cyklussen, kulstofbinding](kilde:iubmb-calvin-co2)
+- **$\text{CO}_2$ bliver bundet.** Enzymet rubisco sætter $\text{CO}_2$ på ribulose-1,5-bisphosphat, så der dannes to molekyler 3-phosphoglycerat. Rubisco kan også bruge $\text{O}_2$ i stedet for $\text{CO}_2$. [IUBMB: EC 4.1.1.39](kilde:iubmb)
+- **ATP og NADPH bliver brugt.** 3-phosphoglycerat bliver omdannet til glyceraldehyd-3-phosphat. Det kræver både ATP og NADPH. [IUBMB: Calvin-cyklussen](kilde:iubmb-calvin)
+- **Cyklussen lukker sig.** Af seks molekyler glyceraldehyd-3-phosphat bliver de fem omdannet tilbage til ribulose-1,5-bisphosphat. Det sjette er det nye kulhydrat. [IUBMB: Calvin-cyklussen, kulstofbinding](kilde:iubmb-calvin-co2) Trinnet, hvor ribulose-1,5-bisphosphat bliver dannet, bruger også ATP. [IUBMB: EC 2.7.1.19](kilde:iubmb)
+- **Det samlede regnskab.** For hvert molekyle glucose-6-phosphat, Calvin-cyklussen danner, gælder: [IUBMB: Calvin-cyklussen](kilde:iubmb-calvin)
+
+$$
+\begin{aligned}
+&6\,\text{CO}_2 + 12\,\text{NADPH} + 18\,\text{ATP} + 11\,\text{H}_2\text{O} \\
+&\rightarrow \text{glucose-6-phosphat} + 12\,\text{NADP}^+ + 18\,\text{ADP} + 17\,\text{phosphat}
+\end{aligned}
+$$
+
+### Respiration eller gæring?
+
+- **Elektronacceptoren afgør det.** Ved respiration indgår en ekstern elektronacceptor. Ved gæring gør der ikke. [vejledningen, s. 12](kilde:vejledning)
+- **Aerob respiration.** Her er ilt den sidste elektronacceptor. Det sidste kompleks i respirationskæden reducerer $\text{O}_2$ til vand. [IUBMB: EC 7.1.1.9](kilde:iubmb)
+- **Anaerob respiration.** En proces er anaerob, når fri ilt er udelukket. [GEMET: anaerobic process](kilde:gemet-anaerob) Nogle organismer respirerer uden ilt og bruger et andet stof som sidste elektronacceptor, fx fumarat. [IUBMB: EC 1.3.5.1](kilde:iubmb)
+- **Gæring.** Gæring gør det muligt for visse organismer at leve og vokse uden luft. Den bruges i industrien til at lave fx alkohol, syrer og ost, og alkoholgæring er det bedst kendte eksempel. [GEMET: fermentation](kilde:gemet-gaering)
+
+### Glycolysen
+
+- **Glucose får en phosphatgruppe.** Enzymet hexokinase sætter en phosphatgruppe fra ATP på glucose, så der dannes glucose-6-phosphat. [IUBMB: EC 2.7.1.1](kilde:iubmb)
+- **Spaltning i to.** I glycolysen bliver glucose-6-phosphat til fructose-6-phosphat og derefter til fructose-1,6-bisphosphat. Når enzymet 6-phosphofructokinase står for det trin, bruger det ATP. Så bliver fructose-1,6-bisphosphat spaltet i to stoffer med tre C-atomer: glyceraldehyd-3-phosphat og glyceronphosphat. De to kan omdannes til hinanden. [IUBMB: diagram over glycolysen](kilde:iubmb-glycolyse)
+- **Videre til pyruvat.** IUBMB's diagram over glycolysen stopper ved glyceraldehyd-3-phosphat. Derfra kan fem enzymer føre det videre til pyruvat. I det første trin bliver $\text{NAD}^+$ til NADH, og i to af trinnene bliver ADP til ATP. [IUBMB: EC 1.2.1.12, 2.7.2.3, 5.4.2.11, 4.2.1.11 og 2.7.1.40](kilde:iubmb)
+- **Hvor slutter glycolysen?** Man kan lade glycolysen slutte ved pyruvat. Den foregår i cytosolen. [lex.dk: Glykolyse](kilde:lex-glykolyse) Pyruvat dannes altså fra glucose ved glycolysen. [lex.dk: Pyruvat](kilde:lex-pyruvat) lex.dk regner også omdannelsen af pyruvat til lactat med til glycolysen. Det sker fx i hårdtarbejdende muskler, indtil de får ilt nok. [lex.dk: Glykolyse](kilde:lex-glykolyse)
+- **Pyruvat går videre.** Pyruvat kan blive til acetyl-CoA i mitokondrierne og derefter via citronsyrecyklussen nedbrydes helt til carbondioxid og vand. Den fulde nedbrydning giver mere ATP pr. glucose end glycolysen alene. [lex.dk: Glykolyse](kilde:lex-glykolyse)
+- **NADH i cytosolen.** Glycolysen danner NADH i cytosolen. Via en såkaldt shuttle kan mitokondriernes elektrontransportkæde gøre det til $\text{NAD}^+$ igen. [IUBMB: EC 1.1.5.3](kilde:iubmb)
+
+Prøv selv: Fordi glyceronphosphat kan omdannes til glyceraldehyd-3-phosphat, giver ét glucosemolekyle to molekyler glyceraldehyd-3-phosphat. [IUBMB: diagram over glycolysen](kilde:iubmb-glycolyse) Tæl, hvor mange ATP der bliver brugt og dannet, når de begge går hele vejen til pyruvat. Hvad er nettoudbyttet af ATP og NADH?
+
+### Alkoholgæring
+
+- **Det samlede skema.** Med gær bliver glucose gæret til ethanol og kuldioxid: [Energistyrelsen: Technology Data, kap. 105, s. 311](kilde:energistyrelsen-ethanol)
+
+$$
+\text{C}_6\text{H}_{12}\text{O}_6 \rightarrow 2\,\text{C}_2\text{H}_5\text{OH} + 2\,\text{CO}_2
+$$
+
+- **Gær og ilt.** Gærslægten *Saccharomyces* bruges til øl og vin, fordi den ved lav iltkoncentration nedbryder sukker til alkohol og $\text{CO}_2$. [GEMET: yeast](kilde:gemet-gaer)
+- **Fra pyruvat til ethanol.** Enzymet pyruvatdecarboxylase spalter $\text{CO}_2$ af pyruvat, så der dannes et aldehyd. [IUBMB: EC 4.1.1.1](kilde:iubmb) Alkoholdehydrogenase kan omdanne aldehydet til ethanol. Samtidig bliver NADH til $\text{NAD}^+$. [IUBMB: EC 1.1.1.1](kilde:iubmb) Elektronerne fra NADH ender altså på et stof, cellen selv har dannet, og ikke på en ekstern elektronacceptor. [vejledningen, s. 12](kilde:vejledning)
+- **Et andet eksempel.** L-lactatdehydrogenase kan omdanne pyruvat til lactat, mens NADH bliver til $\text{NAD}^+$. [IUBMB: EC 1.1.1.27](kilde:iubmb)
+
+### Fra pyruvat gennem citronsyrecyklussen
+
+- **Acetyl-CoA.** Pyruvatdehydrogenase-systemet omdanner pyruvat og coenzym A til acetyl-CoA. Der bliver frigjort $\text{CO}_2$, og $\text{NAD}^+$ bliver til NADH. [IUBMB: EC 1.2.1.104](kilde:iubmb)
+- **Cyklussen starter.** Acetylgruppen fra acetyl-CoA bliver sat på oxaloacetat, så der dannes citrat, og CoA bliver frigjort. [IUBMB: EC 2.3.3.1](kilde:iubmb)
+- **Regnskabet.** For hver acetylgruppe giver citronsyrecyklussen 2 $\text{CO}_2$, ét GTP og fire par hydrogenatomer. [IUBMB: diagram over citronsyrecyklussen](kilde:iubmb-citronsyrecyklus) Tre af parrene ender i NADH. [IUBMB: EC 1.1.1.41, 1.2.1.105 og 1.1.1.37](kilde:iubmb) Det fjerde par går fra succinat via enzymet succinatdehydrogenase til ubiquinon i membranen. Enzymet indeholder FAD. [IUBMB: EC 1.3.5.1](kilde:iubmb)
+- **I mitokondrierne.** Hos eukaryoter findes den $\text{NAD}^+$-afhængige isocitratdehydrogenase kun i mitokondrierne. [IUBMB: EC 1.1.1.41](kilde:iubmb) Succinatdehydrogenase sidder i den indre mitokondriemembran. Den er et vigtigt trin i citronsyrecyklussen og forbinder cyklussen med respirationskæden, hvor enzymet kaldes kompleks II. [IUBMB: EC 1.3.5.1](kilde:iubmb)
+
+### Elektrontransportkæden
+
+- **Kompleks I** tager to elektroner fra NADH og giver dem til ubiquinon i membranen. Samtidig pumper det protoner over membranen. [IUBMB: EC 7.1.1.2](kilde:iubmb)
+- **Kompleks III** er det tredje kompleks i elektrontransportkæden og findes i mitokondrierne hos alle aerobe eukaryoter. Det flytter også protoner. [IUBMB: EC 7.1.1.8](kilde:iubmb)
+- **Kompleks IV** (cytochrom c-oxidase) afslutter kæden. Det reducerer $\text{O}_2$ til vand og flytter samtidig protoner. [IUBMB: EC 7.1.1.9](kilde:iubmb)
+- **ATP-syntase** i den indre mitokondriemembran bruger forskellen i $\text{H}^+$ til at danne ATP. [IUBMB: EC 7.1.2.2](kilde:iubmb) Mitokondrierne danner det meste af den kemiske energi, cellen bruger, og energien bliver gemt i ATP. [NHGRI-ordlisten: Mitochondria](kilde:nhgri)
+
+### Cofaktorernes roller
+
+- **ATP** gemmer kemisk energi. [NHGRI-ordlisten: Mitochondria](kilde:nhgri) Når ATP afgiver en phosphatgruppe, bliver det til ADP, fx når hexokinase sætter phosphat på glucose. [IUBMB: EC 2.7.1.1](kilde:iubmb)
+- **$\text{NAD}^+$ og NADH.** $\text{NAD}^+$ tager imod hydrogen fra stoffer, der bliver oxideret, og bliver til NADH. NADH afleverer to elektroner til kompleks I og bliver til $\text{NAD}^+$ igen. [IUBMB: EC 1.2.1.12 og 7.1.1.2](kilde:iubmb) I fotosyntesen er det $\text{NADP}^+$ og NADPH, der har den rolle. [IUBMB: EC 1.18.1.2](kilde:iubmb)
+- **FAD** sidder fast i nogle enzymer, fx succinatdehydrogenase og ferredoxin-$\text{NADP}^+$-reduktase. [IUBMB: EC 1.3.5.1 og 1.18.1.2](kilde:iubmb)
+- **Coenzym A** binder acetylgruppen fra pyruvat og afleverer den til oxaloacetat i citronsyrecyklussen. [IUBMB: EC 1.2.1.104 og 2.3.3.1](kilde:iubmb) Hos mange transferaser er det en cofaktor (et coenzym), der bærer den gruppe, som bliver overført. [IUBMB: klasse EC 2](kilde:iubmb)
+
+## Centrale begreber
+
+<Begreb navn="Fotosyntese">
+
+Den proces, hvor planter omdanner kuldioxid og vand til kulhydrater og andre stoffer med energi fra sollys, som klorofyl opfanger. Ilt er et biprodukt. [GEMET: photosynthesis](kilde:gemet-fotosyntese)
+
+</Begreb>
+
+<Begreb navn="Klorofyl">
+
+Et grønt farvestof i alger og planter, der opfanger lysenergi og derfor har en vigtig rolle i fotosyntesen. Undtagen hos blågrønalger sidder det i kloroplasterne. [GEMET: chlorophyll](kilde:gemet-klorofyl)
+
+</Begreb>
+
+<Begreb navn="Calvin-cyklus">
+
+Den kreds af reaktioner, hvor $\text{CO}_2$ bliver bundet og bygget om til kulhydrat. Den drives af NADPH og ATP fra lysprocesserne. [IUBMB: Calvin-cyklussen, kulstofbinding](kilde:iubmb-calvin-co2)
+
+</Begreb>
+
+<Begreb navn="Rubisco">
+
+Enzymet, der binder $\text{CO}_2$ til ribulose-1,5-bisphosphat, så der dannes to molekyler 3-phosphoglycerat. Det kan også bruge $\text{O}_2$ i stedet for $\text{CO}_2$. [IUBMB: EC 4.1.1.39](kilde:iubmb)
+
+</Begreb>
+
+<Begreb navn="Respiration">
+
+Stofskifteprocesser, hvor der indgår en ekstern elektronacceptor. [vejledningen, s. 12](kilde:vejledning) Hos aerobe organismer er det ilt, som bliver reduceret til vand. [IUBMB: EC 7.1.1.9](kilde:iubmb)
+
+</Begreb>
+
+<Begreb navn="Gæring">
+
+Stofskifteprocesser, hvor der ikke indgår en ekstern elektronacceptor. [vejledningen, s. 12](kilde:vejledning) Gæring gør det muligt for visse organismer at leve og vokse uden luft. [GEMET: fermentation](kilde:gemet-gaering)
+
+</Begreb>
+
+<Begreb navn="Glycolyse">
+
+En af delprocesserne i carbohydraternes intermediære stofskifte. [vejledningen, s. 12](kilde:vejledning) IUBMB's diagram viser, hvordan glucose-6-phosphat via fructose-1,6-bisphosphat bliver spaltet i to stoffer med tre C-atomer. [IUBMB: diagram over glycolysen](kilde:iubmb-glycolyse) Glycolysen foregår i cytosolen og danner NADH. Man kan lade den slutte ved pyruvat. [IUBMB: EC 1.1.5.3](kilde:iubmb) [lex.dk: Glykolyse](kilde:lex-glykolyse)
+
+</Begreb>
+
+<Begreb navn="Citronsyrecyklus">
+
+En kreds af reaktioner, der for hver acetylgruppe fra acetyl-CoA giver 2 $\text{CO}_2$ og ét GTP. Samtidig bliver fire par hydrogenatomer afleveret til elektronbærere. [IUBMB: diagram over citronsyrecyklussen](kilde:iubmb-citronsyrecyklus)
+
+</Begreb>
+
+<Begreb navn="Elektrontransportkæde">
+
+En kæde af enzymkomplekser i en membran, der fører elektroner fra NADH videre til $\text{O}_2$ og samtidig pumper protoner over membranen. Den kaldes også respirationskæden. [IUBMB: EC 7.1.1.2 og 7.1.1.9](kilde:iubmb)
+
+</Begreb>
+
+<Begreb navn="ATP-syntase">
+
+Et enzym i den indre mitokondriemembran og i thylakoidmembranen, der danner ATP. Det drives af en forskel i $\text{H}^+$ over membranen. [IUBMB: EC 7.1.2.2](kilde:iubmb)
+
+</Begreb>
+
+<Begreb navn="ATP">
+
+Et lille molekyle, som den kemiske energi fra mitokondrierne bliver gemt i. [NHGRI-ordlisten: Mitochondria](kilde:nhgri)
+
+</Begreb>
+
+<Begreb navn="Coenzym A">
+
+En cofaktor [vejledningen, s. 12](kilde:vejledning), der binder acetylgruppen fra pyruvat, så der dannes acetyl-CoA. Acetyl-CoA afleverer acetylgruppen til oxaloacetat i citronsyrecyklussen. [IUBMB: EC 1.2.1.104 og 2.3.3.1](kilde:iubmb)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Den skriftlige prøve** varer fem timer og har opgaver inden for kernestoffet. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningens afgrænsning af dette emne er skrevet med særligt henblik på den skriftlige prøve. [vejledningen, s. 10 og 12](kilde:vejledning)
+
+- **Angiv enzymtypen.** Angivelse af enzymtype, reaktionstype og oxidationstal er blandt de opgavetyper, der ofte er med. [Lærerens hæfte, s. 11](kilde:laererens-haefte) Navnet hjælper dig: En dehydrogenase er en oxidoreduktase (EC 1), hvor det stof, der bliver oxideret, afgiver hydrogen eller elektroner. En decarboxylase eller en aldolase er en lyase (EC 4). [IUBMB: klasse EC 1 og EC 4](kilde:iubmb) Se også siden om [enzymer](/fag/bioteknologi/enzymer/).
+- **Redox.** I kernestoffet vælges redoxreaktioner, som har betydning i biologiske systemer. [vejledningen, s. 12](kilde:vejledning) Trinnene, hvor $\text{NAD}^+$ bliver til NADH, er gode eksempler: De bliver katalyseret af oxidoreduktaser, altså enzymer, der katalyserer redoxreaktioner. [IUBMB: EC 1.2.1.12, EC 1.1.1.41 og klasse EC 1](kilde:iubmb) Øv dig i oxidationstal på siden om [redoxreaktioner](/fag/bioteknologi/redoxreaktioner/).
+- **Brug figuren.** Inddrag figurerne fra opgaven, og svar ikke kun med generelle beskrivelser. [evalueringen, s. 8](kilde:evaluering) Svar fokuseret. Det er ikke nok at skrive generel teori af om emnet. [evalueringen, s. 9](kilde:evaluering)
+- **Forklar.** Står der "forklar", skal du bruge teori og fagbegreber på de konkrete resultater, figurer eller oplysninger i opgaven. [Lærerens hæfte, s. 9](kilde:laererens-haefte)
+
+**Den mundtlige prøve.** Opgaven bygger på et bilag med en artikel eller en case og inddrager eksperimentelt arbejde eller andet empiribaseret arbejde fra undervisningen. [læreplanen, pkt. 4.2](kilde:laereplan) Den skal samle kemisk og biologisk viden. [vejledningen, s. 25](kilde:vejledning) I fagkonsulenternes eksempel om ølbrygning og gær skal man fx komme ind på gærs opbygning og anvendelse, og på hvad gæren betyder for øllet. [emu.dk: eksempler på mundtlige prøveopgaver](kilde:emu-mundtlig) Har I lavet forsøg med gær eller planter, så øv dig i at forklare resultaterne med teorien fra denne side. Sikkerhed: Følg skolens regler og din lærers anvisninger.
+
+**Eksempler på problemstillinger**
+
+- Hvorfor er det vigtigt for en gærcelle at få $\text{NAD}^+$ tilbage, når der ikke er ilt? Sammenlign med det, der sker med NADH, når der er ilt.
+- En plante står i lys, men får ingen $\text{CO}_2$. Hvad sker der med forbruget af ATP og NADPH i Calvin-cyklussen? Begrund dit svar.
+- En celle uden ilt omdanner pyruvat til lactat med L-lactatdehydrogenase, mens NADH bliver til $\text{NAD}^+$. Er det respiration eller gæring? Argumentér ud fra vejledningens definition.
+
+Øv dig på rigtige opgaver: Skriftlige opgaver fra 2010 og frem ligger i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). [vejledningen, s. 31](kilde:vejledning) Lærerens hæfte og eksemplerne på mundtlige prøveopgaver finder du på [emu.dk](https://emu.dk/stx/bioteknologi/proever-og-eksamen).

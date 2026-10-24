@@ -1,36 +1,91 @@
 ---
+// Oversigten over alle fag. Hvert fags emner står direkte under faget, så
+// alle emner kan nås med to tryk fra forsiden (CLAUDE.md).
 import Side from '../../layouts/Side.astro';
 import Emneliste from '../../components/Emneliste.astro';
 import { FAG_IDER, FAG_NAVNE } from '../../data/fag';
 import { findSide } from '../../data/navigation';
 import { hentEmner } from '../../lib/emner';
+import { hentFagside } from '../../lib/fag';
 import { url } from '../../lib/sti';
 
 const side = findSide('/fag/');
-const emner = await hentEmner();
+const fagene = await Promise.all(
+  FAG_IDER.map(async (fag) => ({ fag, side: await hentFagside(fag), emner: await hentEmner(fag) })),
+);
 ---
 
 <Side titel={side.navn} beskrivelse={side.beskrivelse}>
   <h1>{side.navn}</h1>
   <p class="ingress">{side.beskrivelse}</p>
 
-  {/* Emnerne står direkte under hvert fag, så de kan nås med to tryk fra forsiden */}
+  <nav class="fag-genveje" aria-label="Gå til et fag">
+    <ul>
+      {
+        fagene.map(({ fag }) => (
+          <li>
+            <a href={`#fag-${fag}`}>{FAG_NAVNE[fag]}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
   {
-    FAG_IDER.map((fag) => (
-      <section aria-labelledby={`fag-${fag}`}>
+    fagene.map(({ fag, side: fagside, emner }) => (
+      <section aria-labelledby={`fag-${fag}`} class="fag">
         <h2 id={`fag-${fag}`}>
           <a href={url(`/fag/${fag}/`)}>{FAG_NAVNE[fag]}</a>
         </h2>
-        <Emneliste emner={emner.filter((emne) => emne.data.fag === fag)} />
+        {fagside && (
+          <p class="fag-beskrivelse">
+            {fagside.data.beskrivelse} <span class="fag-niveau">Niveau {fagside.data.niveauer.join(', ')}.</span>
+          </p>
+        )}
+        <Emneliste emner={emner} />
       </section>
     ))
   }
 </Side>
 
 <style>
+  .fag-genveje ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--afstand-2);
+    margin: 0 0 var(--afstand-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .fag-genveje a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+    padding: 0 var(--afstand-4);
+    border: 1px solid var(--farve-kant-staerk);
+    border-radius: var(--radius-rund);
+    background: var(--farve-flade);
+    color: var(--farve-tekst);
+    text-decoration: none;
+  }
+
+  .fag-genveje a:hover {
+    border-color: var(--farve-accent);
+  }
+
   h2 a {
     display: inline-flex;
     align-items: center;
     min-height: var(--trykflade);
+  }
+
+  .fag-beskrivelse {
+    max-width: var(--tekstbredde);
+    color: var(--farve-tekst-svag);
+  }
+
+  .fag {
+    scroll-margin-top: var(--afstand-4);
   }
 </style>

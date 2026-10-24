@@ -3,6 +3,8 @@
 //
 // Det tjekker, at
 // - hvert internt link (href og src) peger på en fil, der findes
+// - et link til et sted på en side (fx #begreb-vaekstrate) peger på et id,
+//   der findes på siden
 // - interne links har base-stien og skråstreg til sidst
 // - alle sider kan nås med højst to tryk fra forsiden (CLAUDE.md)
 //
@@ -49,6 +51,10 @@ async function erMappeMedIndex(mappe) {
   return findes(path.join(mappe, 'index.html'));
 }
 
+function idsI(html) {
+  return new Set([...html.matchAll(/\sid\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].map((m) => m[1] ?? m[2]));
+}
+
 function linksI(html) {
   const links = [];
   for (const match of html.matchAll(/\s(?:href|src)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)) {
@@ -69,6 +75,8 @@ function internSti(link, fraSide) {
 
 const fejl = [];
 const sider = new Map(); // side-url → links til andre sider
+const idsPaaSide = new Map(); // side-url → id'erne på siden
+const ankre = []; // { fra, link, side, id } for links med #
 let antalLinks = 0;
 
 for (const fil of await findHtmlFiler(DIST)) {
@@ -76,10 +84,15 @@ for (const fil of await findHtmlFiler(DIST)) {
   const tilSider = new Set();
   sider.set(fra, tilSider);
 
-  for (const link of linksI(await readFile(fil, 'utf8'))) {
+  const html = await readFile(fil, 'utf8');
+  idsPaaSide.set(fra, idsI(html));
+  for (const link of linksI(html)) {
+    if (link.length > 1 && link.startsWith('#')) ankre.push({ fra, link, side: fra, id: link.slice(1) });
     const sti = internSti(link, fra);
     if (sti === null) continue;
     antalLinks++;
+    const anker = new URL(link, `http://side${fra}`).hash;
+    if (anker.length > 1) ankre.push({ fra, link, side: sti, id: anker.slice(1) });
 
     if (!sti.startsWith(`${BASE}/`)) {
       fejl.push(`${fra}: "${link}" mangler base-stien ${BASE}/`);
@@ -98,6 +111,11 @@ for (const fil of await findHtmlFiler(DIST)) {
       fejl.push(`${fra}: "${link}" findes ikke`);
     }
   }
+}
+
+for (const { fra, link, side, id } of ankre) {
+  const ids = idsPaaSide.get(side);
+  if (ids && !ids.has(decodeURIComponent(id))) fejl.push(`${fra}: "${link}" peger på et id, der ikke findes på siden`);
 }
 
 // Antal tryk fra forsiden til hver side (bredde-først-søgning)

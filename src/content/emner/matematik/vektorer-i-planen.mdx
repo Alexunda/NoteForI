@@ -1,0 +1,567 @@
+---
+titel: "Vektorer i planen"
+beskrivelse: "Vektorer med to koordinater: regning med vektorer, længde, skalarprodukt, vinkel, projektion, determinant og parameterfremstillinger for linjer og cirkler."
+fag: matematik
+nummer: 7
+omraade: "Geometri, trigonometri og vektorer"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+  - id: enkeltopgaver
+    navn: "Vejledende enkeltopgaver til matematik A, stx, 2024-læreplanen, december 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf
+  - id: egen
+    navn: "Egen forklaring, godkendt af redaktionen"
+  - id: lex-topvinkler
+    navn: "lex.dk: Topvinkler (hentet 24. oktober 2026)"
+    url: https://lex.dk/topvinkler
+  - id: lex-supplementvinkler
+    navn: "lex.dk: Supplementvinkler (hentet 24. oktober 2026)"
+    url: https://lex.dk/supplementvinkler
+  - id: lex-vinkel
+    navn: "lex.dk: Vinkel (hentet 24. oktober 2026)"
+    url: https://lex.dk/vinkel
+verificeret: false
+---
+
+## Kort fortalt
+
+En vektor i planen har to koordinater, fx $\vec{a} = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$, og den tegnes som en pil. [formelsamlingen, s. 44, formel (179) og (180)](kilde:formelsamling) Du regner med vektorer ved at regne på hver koordinat for sig. [formelsamlingen, s. 45, formel (184)–(186)](kilde:formelsamling) Skalarproduktet og determinanten er tal, du regner ud fra to vektorer. Med dem finder du vinkler, projektioner og arealer og ser, om vektorerne er vinkelrette eller parallelle. [formelsamlingen, s. 47–48, formel (190)–(201)](kilde:formelsamling) Vektorer bruges også til at beskrive linjer og cirkler. [formelsamlingen, s. 51 og 53, formel (210), (211) og (217)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Koordinater.** Koordinatsættet $\vec{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$ betyder, at $\vec{a} = a_1 \cdot \vec{i} + a_2 \cdot \vec{j}$. Her er $\vec{i}$ og $\vec{j}$ basisvektorerne langs de to akser, og de har begge længden 1. [formelsamlingen, s. 44, formel (179) og (180)](kilde:formelsamling)
+- **Slut minus start.** Forbindelsesvektoren $\overrightarrow{PQ}$ fra punktet $P$ til punktet $Q$ får du ved at trække koordinaterne for $P$ fra koordinaterne for $Q$. Længden af $\overrightarrow{PQ}$ er afstanden mellem de to punkter. [formelsamlingen, s. 44 og 52, formel (182), (183) og (213)](kilde:formelsamling)
+- **Vinkelret eller parallel?** Ortogonal betyder vinkelret. To vektorer er ortogonale, netop når skalarproduktet er 0. De er parallelle, netop når determinanten er 0. [formelsamlingen, s. 47–48, formel (193) og (200)](kilde:formelsamling)
+- **Tværvektor.** Tværvektoren $\hat{\vec{a}}$ får du ved at bytte om på koordinaterne og sætte minus foran den nye førstekoordinat. Den står vinkelret på $\vec{a}$. [formelsamlingen, s. 48, formel (196)](kilde:formelsamling) Du kan selv tjekke det med skalarproduktet: $\vec{a} \cdot \hat{\vec{a}} = a_1 \cdot (-a_2) + a_2 \cdot a_1 = 0$.
+- **To måder at beskrive en linje.** I en parameterfremstilling giver hvert tal $t$ et punkt på linjen. Den bygger på et punkt og en retningsvektor, som peger langs linjen. Linjens ligning bygger i stedet på et punkt og en normalvektor, som står vinkelret på linjen. [formelsamlingen, s. 51, formel (210) og (211)](kilde:formelsamling) Omskrivning mellem forskellige beskrivelser af linjer og cirkler hører med til emnet. [vejledningen, s. 13](kilde:vejledning)
+- **Vinkel mellem linjer** står også i læreplanen. [læreplanen, pkt. 2.2](kilde:laereplan) Når to linjer skærer hinanden, opstår der fire vinkler. De to vinkler, der ligger lige over for hinanden, er lige store, og to vinkler, der ligger ved siden af hinanden, giver tilsammen $180^\circ$. [lex.dk: Topvinkler](kilde:lex-topvinkler) [lex.dk: Supplementvinkler](kilde:lex-supplementvinkler) Er den ene vinkel $v$, er nabovinklen altså $180^\circ - v$. I de vejledende opgaver skal du finde den spidse vinkel mellem linjerne, altså den, der er mindre end $90^\circ$. [vejledende enkeltopgaver, s. 56–57, opgave 4.D2.4–4.D2.6](kilde:enkeltopgaver) [lex.dk: Vinkel](kilde:lex-vinkel) Formelsamlingen har ingen formel med navnet vinkel mellem linjer, men den har formlen for vinklen mellem to vektorer, og den giver en vinkel mellem $0^\circ$ og $180^\circ$. [formelsamlingen, s. 47 og 83, formel (192)](kilde:formelsamling) Under Formler står formlen for vinklen mellem to linjer. Den bygger på formel (192) og giver den spidse vinkel, eller $90^\circ$, hvis linjerne står vinkelret på hinanden. [egen forklaring](kilde:egen)
+- **Analytisk plangeometri.** Afstande, linjens ligning og cirklens ligning står også på siden om [analytisk plangeometri](/fag/matematik/analytisk-plangeometri/). På et treårigt hold kan dele af den analytiske geometri gennemgås med vektorer. [vejledningen, s. 13](kilde:vejledning)
+- **I rummet** får en vektor en koordinat mere. [formelsamlingen, s. 54, formel (221)](kilde:formelsamling) Læs mere under [vektorer i rummet](/fag/matematik/vektorer-i-rummet/).
+
+## Formler
+
+<Formel navn="Længden af en vektor" tex="|\vec{a}| = \sqrt{a_1^2 + a_2^2}" kilde="formelsamling" henvisning="formelsamlingen, s. 44, formel (181)">
+
+<Symboler>
+
+- $\vec{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$: vektoren med koordinaterne $a_1$ og $a_2$.
+- $|\vec{a}|$: længden af $\vec{a}$, altså hvor lang pilen er.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde, hvor lang en vektor er, fx før du skal finde en vinkel eller en enhedsvektor.
+
+</Bruges>
+
+<Eksempel>
+
+Vektoren $\vec{a} = \begin{pmatrix} -6 \\ 8 \end{pmatrix}$ har længden
+
+$$
+|\vec{a}| = \sqrt{(-6)^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme parentesen om et negativt tal: $-6^2 = -36$, men $(-6)^2 = 36$.
+- At tage kvadratroden af hvert led for sig. $\sqrt{36 + 64}$ er ikke $6 + 8$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Forbindelsesvektor" tex="\overrightarrow{PQ} = \begin{pmatrix} x_2 - x_1 \\ y_2 - y_1 \end{pmatrix}" kilde="formelsamling" henvisning="formelsamlingen, s. 44, formel (182)">
+
+<Symboler>
+
+- $P(x_1, y_1)$: startpunktet.
+- $Q(x_2, y_2)$: slutpunktet.
+- $\overrightarrow{PQ}$: vektoren fra $P$ til $Q$.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to punkter og skal have vektoren fra det ene til det andet, fx for at finde afstanden mellem punkterne.
+
+</Bruges>
+
+<Eksempel>
+
+Punkterne er $P(-1, 4)$ og $Q(3, 1)$. Så er
+
+$$
+\overrightarrow{PQ} = \begin{pmatrix} 3 - (-1) \\ 1 - 4 \end{pmatrix} = \begin{pmatrix} 4 \\ -3 \end{pmatrix}
+$$
+
+Med formel (183) er længden $|\overrightarrow{PQ}| = \sqrt{4^2 + (-3)^2} = \sqrt{25} = 5$.
+
+</Eksempel>
+
+<Fejl>
+
+- At regne start minus slut. Så får du $\overrightarrow{QP}$ i stedet for $\overrightarrow{PQ}$.
+- At glemme, at minus et negativt tal giver plus: $3 - (-1) = 4$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Skalarproduktet" tex="\vec{a} \cdot \vec{b} = a_1 \cdot b_1 + a_2 \cdot b_2" kilde="formelsamling" henvisning="formelsamlingen, s. 47, formel (190)">
+
+<Symboler>
+
+- $\vec{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}$: to vektorer.
+- $\vec{a} \cdot \vec{b}$: skalarproduktet, som også kaldes prikproduktet. Det er et tal og ikke en vektor.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal undersøge, om to vektorer er ortogonale, og når du skal finde en vinkel eller en projektion. To vektorer er ortogonale, netop når $\vec{a} \cdot \vec{b} = 0$. [formelsamlingen, s. 47, formel (193)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Vektorerne er $\vec{a} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 4 \\ 6 \end{pmatrix}$. Så er
+
+$$
+\vec{a} \cdot \vec{b} = 3 \cdot 4 + (-2) \cdot 6 = 12 - 12 = 0
+$$
+
+Skalarproduktet er 0, så vektorerne er ortogonale.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange på kryds, fx $a_1 \cdot b_2$. Det hører til determinanten.
+- At skrive svaret som en vektor. Skalarproduktet er et tal.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Vinklen mellem to vektorer" tex="\cos(v) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}" kilde="formelsamling" henvisning="formelsamlingen, s. 47, formel (192)">
+
+<Symboler>
+
+- $v$: vinklen mellem $\vec{a}$ og $\vec{b}$. Den ligger mellem $0^\circ$ og $180^\circ$. [formelsamlingen, s. 83](kilde:formelsamling)
+- $\vec{a} \cdot \vec{b}$: skalarproduktet.
+- $|\vec{a}|$ og $|\vec{b}|$: længderne af de to vektorer.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to vektorer og skal finde vinklen mellem dem.
+
+</Bruges>
+
+<Eksempel>
+
+Vektorerne er $\vec{a} = \begin{pmatrix} 4 \\ 2 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}$. Skalarproduktet er $4 \cdot 1 + 2 \cdot 3 = 10$, og længderne er $|\vec{a}| = \sqrt{20}$ og $|\vec{b}| = \sqrt{10}$. Så er
+
+$$
+\cos(v) = \frac{10}{\sqrt{20} \cdot \sqrt{10}} \approx 0{,}7071
+$$
+
+og
+
+$$
+v = \cos^{-1}(0{,}7071) \approx 45^\circ
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At svare med $\cos(v)$ i stedet for $v$. Husk at bruge $\cos^{-1}$ til sidst.
+- At have GeoGebra indstillet til radianer, når du vil have vinklen i grader.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Vinklen mellem to linjer" tex="\cos(v) = \frac{|\vec{r}_1 \cdot \vec{r}_2|}{|\vec{r}_1| \cdot |\vec{r}_2|}" kilde="egen" henvisning="egen forklaring, bygget på formel (192)">
+
+<Symboler>
+
+- $v$: den spidse vinkel mellem linjerne. Den ligger mellem $0^\circ$ og $90^\circ$.
+- $\vec{r}_1$ og $\vec{r}_2$: en retningsvektor for hver af de to linjer.
+- $|\vec{r}_1 \cdot \vec{r}_2|$: den numeriske værdi af skalarproduktet. Den sørger for, at du får den spidse vinkel.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde den spidse vinkel mellem to linjer, der skærer hinanden. Det er formlen for vinklen mellem to vektorer, brugt på linjernes retningsvektorer. [formelsamlingen, s. 47, formel (192)](kilde:formelsamling) Uden det numeriske tegn kan du få den stumpe vinkel $u$, og så er den spidse vinkel $180^\circ - u$. Er linjerne givet ved ligninger, kan du bruge en normalvektor for hver linje i stedet. Den spidse vinkel mellem normalvektorerne er den samme som den spidse vinkel mellem linjerne. [egen forklaring](kilde:egen)
+
+</Bruges>
+
+<Eksempel>
+
+Linjen $l$ har retningsvektoren $\vec{r}_1 = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$, og linjen $m$ har retningsvektoren $\vec{r}_2 = \begin{pmatrix} 1 \\ -4 \end{pmatrix}$. Skalarproduktet er $3 \cdot 1 + 2 \cdot (-4) = -5$, og længderne er $\sqrt{13}$ og $\sqrt{17}$. Så er
+
+$$
+\cos(v) = \frac{|-5|}{\sqrt{13} \cdot \sqrt{17}} \approx 0{,}3363
+$$
+
+og $v = \cos^{-1}(0{,}3363) \approx 70{,}3^\circ$. Uden det numeriske tegn får du $\cos^{-1}(-0{,}3363) \approx 109{,}7^\circ$, og $180^\circ - 109{,}7^\circ = 70{,}3^\circ$.
+
+</Eksempel>
+
+<Fejl>
+
+- At svare med den stumpe vinkel, når opgaven spørger efter den spidse.
+- At bruge en retningsvektor for den ene linje og en normalvektor for den anden. Så får du $90^\circ$ minus vinklen mellem linjerne.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Projektion af en vektor på en anden" tex="\vec{b}_a = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}|^2} \cdot \vec{a}" kilde="formelsamling" henvisning="formelsamlingen, s. 47, formel (194)">
+
+<Symboler>
+
+- $\vec{b}_a$: projektionen af $\vec{b}$ på $\vec{a}$. På figuren i formelsamlingen ligger den langs $\vec{a}$, og den stiplede linje fra spidsen af $\vec{b}$ står vinkelret på $\vec{a}$.
+- $\vec{a} \cdot \vec{b}$: skalarproduktet.
+- $|\vec{a}|^2$: længden af $\vec{a}$ i anden.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde projektionen af en vektor på en anden. Længden af projektionen er $|\vec{b}_a| = \frac{|\vec{a} \cdot \vec{b}|}{|\vec{a}|}$. [formelsamlingen, s. 47, formel (195)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Vektorerne er $\vec{a} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 1 \\ 8 \end{pmatrix}$. Skalarproduktet er $2 \cdot 1 + 1 \cdot 8 = 10$, og $|\vec{a}|^2 = 2^2 + 1^2 = 5$. Så er
+
+$$
+\vec{b}_a = \frac{10}{5} \cdot \begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 4 \\ 2 \end{pmatrix}
+$$
+
+Projektionen har længden $|\vec{b}_a| = \frac{10}{\sqrt{5}} \approx 4{,}47$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på $\vec{a}$ og $\vec{b}$. Ved projektionen af $\vec{b}$ på $\vec{a}$ er det $\vec{a}$, der står i nævneren og til sidst.
+- At glemme, at længden står i anden i nævneren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Determinanten for to vektorer" tex="\det(\vec{a}, \vec{b}) = a_1 \cdot b_2 - a_2 \cdot b_1" kilde="formelsamling" henvisning="formelsamlingen, s. 48, formel (197)">
+
+<Symboler>
+
+- $\vec{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}$: to vektorer. Rækkefølgen betyder noget.
+- $\det(\vec{a}, \vec{b})$: determinanten. Det er et tal, som godt kan være negativt. Den skrives også $\begin{vmatrix} a_1 & b_1 \\ a_2 & b_2 \end{vmatrix}$. [formelsamlingen, s. 48, formel (198)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når du skal undersøge, om to vektorer er parallelle. Det er de, netop når determinanten er 0. [formelsamlingen, s. 48, formel (200)](kilde:formelsamling) Determinanten bruges også til at finde arealet af et parallelogram.
+
+</Bruges>
+
+<Eksempel>
+
+Vektorerne er $\vec{a} = \begin{pmatrix} 2 \\ -1 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$. Så er
+
+$$
+\det(\vec{a}, \vec{b}) = 2 \cdot 4 - (-1) \cdot 3 = 8 + 3 = 11
+$$
+
+Bytter du om på rækkefølgen, får du $\det(\vec{b}, \vec{a}) = 3 \cdot (-1) - 4 \cdot 2 = -11$.
+
+Med $\vec{c} = \begin{pmatrix} -4 \\ 2 \end{pmatrix}$ er $\det(\vec{a}, \vec{c}) = 2 \cdot 2 - (-1) \cdot (-4) = 0$, så $\vec{a}$ og $\vec{c}$ er parallelle.
+
+</Eksempel>
+
+<Fejl>
+
+- At lægge sammen i midten i stedet for at trække fra.
+- At miste et minus, når der er negative koordinater. Sæt parentes om dem.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Arealet af et parallelogram" tex="A = |\det(\vec{a}, \vec{b})|" kilde="formelsamling" henvisning="formelsamlingen, s. 48, formel (201)">
+
+<Symboler>
+
+- $A$: arealet af det parallelogram, som $\vec{a}$ og $\vec{b}$ udspænder.
+- $|\det(\vec{a}, \vec{b})|$: den numeriske værdi af determinanten, altså determinanten uden fortegn.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde arealet af et parallelogram, og du kender de to vektorer, der udspænder det.
+
+</Bruges>
+
+<Eksempel>
+
+Tre af hjørnerne i parallelogrammet $PQRS$ er $P(1, 1)$, $Q(6, 2)$ og $S(2, 4)$. Parallelogrammet udspændes af
+
+$$
+\overrightarrow{PQ} = \begin{pmatrix} 5 \\ 1 \end{pmatrix} \quad \text{og} \quad \overrightarrow{PS} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}
+$$
+
+Så er arealet
+
+$$
+A = |\det(\overrightarrow{PQ}, \overrightarrow{PS})| = |5 \cdot 3 - 1 \cdot 1| = 14
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme den numeriske værdi. Får du et negativt areal, mangler du de lodrette streger.
+- At regne determinanten af punkternes koordinater i stedet for af vektorerne mellem dem.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Parameterfremstilling for en linje" tex="\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x_0 \\ y_0 \end{pmatrix} + t \cdot \begin{pmatrix} r_1 \\ r_2 \end{pmatrix}" kilde="formelsamling" henvisning="formelsamlingen, s. 51, formel (210)">
+
+<Symboler>
+
+- $P_0(x_0, y_0)$: et punkt på linjen.
+- $\vec{r} = \begin{pmatrix} r_1 \\ r_2 \end{pmatrix}$: en retningsvektor, altså en vektor, der peger langs linjen.
+- $t$: parameteren. Hvert tal $t$ giver et punkt $(x, y)$ på linjen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal beskrive en linje ud fra et punkt og en retningsvektor, eller når du skal tjekke, om et punkt ligger på linjen.
+
+</Bruges>
+
+<Eksempel>
+
+Linjen $l$ går gennem $P_0(1, -2)$ og har retningsvektoren $\vec{r} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$. Så er
+
+$$
+\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 1 \\ -2 \end{pmatrix} + t \cdot \begin{pmatrix} 3 \\ 2 \end{pmatrix}
+$$
+
+$t = 2$ giver punktet $(1 + 6, -2 + 4) = (7, 2)$.
+
+Ligger $Q(10, 4)$ på linjen? Førstekoordinaten giver $1 + 3t = 10$, altså $t = 3$. Andenkoordinaten giver $-2 + 2 \cdot 3 = 4$. Det passer, så $Q$ ligger på linjen.
+
+</Eksempel>
+
+<Fejl>
+
+- At finde én værdi af $t$ for $x$ og en anden for $y$. Begge koordinater skal passe med den samme $t$.
+- At bytte om på punktet og retningsvektoren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Linjens ligning ud fra et punkt og en normalvektor" tex="a \cdot (x - x_0) + b \cdot (y - y_0) = 0" kilde="formelsamling" henvisning="formelsamlingen, s. 51, formel (211)">
+
+<Symboler>
+
+- $P_0(x_0, y_0)$: et punkt på linjen.
+- $\vec{n} = \begin{pmatrix} a \\ b \end{pmatrix}$: en normalvektor, altså en vektor, der står vinkelret på linjen.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender et punkt på linjen og en normalvektor og skal finde linjens ligning. Ganger du parenteserne ud, får du formen $a \cdot x + b \cdot y + c = 0$, hvor $c = -a \cdot x_0 - b \cdot y_0$. [formelsamlingen, s. 51, formel (212)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: Linjen $l$ går gennem $P_0(1, -2)$ og har retningsvektoren $\vec{r} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$. Tværvektoren $\hat{\vec{r}} = \begin{pmatrix} -2 \\ 3 \end{pmatrix}$ står vinkelret på $\vec{r}$, fordi $\vec{r} \cdot \hat{\vec{r}} = 3 \cdot (-2) + 2 \cdot 3 = 0$. Den kan derfor bruges som normalvektor:
+
+$$
+-2 \cdot (x - 1) + 3 \cdot (y - (-2)) = 0
+$$
+
+Gang ud, og saml leddene. Så får du $-2x + 3y + 8 = 0$. Tjek med punktet $(7, 2)$ fra før: $-2 \cdot 7 + 3 \cdot 2 + 8 = 0$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge retningsvektoren som normalvektor. Normalvektoren skal stå vinkelret på linjen.
+- At miste et fortegn, når en koordinat er negativ: $y - (-2) = y + 2$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Parameterfremstilling for en cirkel" tex="\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} a \\ b \end{pmatrix} + \begin{pmatrix} r \cdot \cos(t) \\ r \cdot \sin(t) \end{pmatrix}" kilde="formelsamling" henvisning="formelsamlingen, s. 53, formel (217)">
+
+<Symboler>
+
+- $C(a, b)$: cirklens centrum.
+- $r$: cirklens radius.
+- $t$: parameteren. Hvert tal $t$ giver et punkt $(x, y)$ på cirklen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal beskrive en cirkel med vektorer, eller når du skal omskrive mellem parameterfremstillingen og cirklens ligning $(x - a)^2 + (y - b)^2 = r^2$. [formelsamlingen, s. 53, formel (216)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Cirklen har centrum $C(2, -1)$ og radius 3. Så er
+
+$$
+\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2 \\ -1 \end{pmatrix} + \begin{pmatrix} 3 \cdot \cos(t) \\ 3 \cdot \sin(t) \end{pmatrix}
+$$
+
+For $t = 0$ er $\cos(t) = 1$ og $\sin(t) = 0$, så punktet er $(5, -1)$. Det passer med cirklens ligning $(x - 2)^2 + (y + 1)^2 = 9$, fordi $(5 - 2)^2 + (-1 + 1)^2 = 9$.
+
+</Eksempel>
+
+<Fejl>
+
+- At skrive $r^2$ i parameterfremstillingen. Det er kun i cirklens ligning, at radius står i anden.
+- At skifte fortegn på centrums koordinater. I parameterfremstillingen står de, som de er. Det er i ligningen, at der står $x - a$ og $y - b$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Vektor (matematik)">
+
+I planen er en vektor givet ved to koordinater, fx $\vec{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$, og den tegnes som en pil. Længden skrives $|\vec{a}|$. [formelsamlingen, s. 44, formel (180) og (181)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Forbindelsesvektor">
+
+Vektoren $\overrightarrow{PQ}$ fra punktet $P$ til punktet $Q$. Koordinaterne er slutpunktets koordinater minus startpunktets. [formelsamlingen, s. 44, formel (182)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Enhedsvektor">
+
+En vektor med længden 1. Dividerer du $\vec{a}$ med sin længde, får du enhedsvektoren med samme retning som $\vec{a}$: $\vec{e} = \frac{\vec{a}}{|\vec{a}|}$. [formelsamlingen, s. 46, formel (187) og (189)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Tværvektor">
+
+Vektoren $\hat{\vec{a}} = \begin{pmatrix} -a_2 \\ a_1 \end{pmatrix}$, som står vinkelret på $\vec{a}$. [formelsamlingen, s. 48, formel (196)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Skalarprodukt">
+
+Et tal, du regner ud fra to vektorer: $\vec{a} \cdot \vec{b} = a_1 \cdot b_1 + a_2 \cdot b_2$. Det kaldes også prikproduktet. Er det 0, er vektorerne ortogonale, altså vinkelrette. [formelsamlingen, s. 47, formel (190) og (193)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Projektion">
+
+$\vec{b}_a$ er projektionen af $\vec{b}$ på $\vec{a}$. Den ligger langs $\vec{a}$ og findes med skalarproduktet. [formelsamlingen, s. 47, formel (194)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Determinant">
+
+Et tal, du regner ud fra to vektorer: $\det(\vec{a}, \vec{b}) = a_1 \cdot b_2 - a_2 \cdot b_1$. Er det 0, er vektorerne parallelle. Den numeriske værdi er arealet af det parallelogram, vektorerne udspænder. [formelsamlingen, s. 48, formel (197), (200) og (201)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Retningsvektor">
+
+En vektor, der peger langs en linje. Den bruges i linjens parameterfremstilling. [formelsamlingen, s. 51, formel (210)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Normalvektor">
+
+En vektor, der står vinkelret på en linje. Den bruges i linjens ligning. [formelsamlingen, s. 51, formel (211)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Parameterfremstilling">
+
+En måde at beskrive en linje eller en cirkel på ved hjælp af et tal $t$. Hvert tal $t$ giver et punkt på linjen eller cirklen. [formelsamlingen, s. 51 og 53, formel (210) og (217)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Vinkel mellem linjer">
+
+Når to linjer krydser hinanden, får du fire vinkler omkring skæringspunktet. Modstående vinkler er lige store, og to nabovinkler giver tilsammen $180^\circ$, så vinklerne er $v$ og $180^\circ - v$. [lex.dk: Topvinkler](kilde:lex-topvinkler) [lex.dk: Supplementvinkler](kilde:lex-supplementvinkler) I de vejledende opgaver skal du finde den spidse vinkel, altså den, der er under $90^\circ$. [vejledende enkeltopgaver, s. 56–57](kilde:enkeltopgaver) [lex.dk: Vinkel](kilde:lex-vinkel) Du finder den med formlen for vinklen mellem to linjer under Formler. [egen forklaring](kilde:egen)
+
+</Begreb>
+
+<Begreb navn="Stedvektor">
+
+Stedvektoren for et punkt $P$ er vektoren $\overrightarrow{OP}$ fra origo $O(0, 0)$ til $P$. Den har de samme koordinater som punktet. Er $P = (3, -2)$, er $\overrightarrow{OP} = \begin{pmatrix} 3 \\ -2 \end{pmatrix}$. I rummet er det på samme måde, bare med tre koordinater. [egen forklaring](kilde:egen) Det er formlen for vektoren fra et punkt til et andet med $O(0, 0)$ som startpunkt. [formelsamlingen, s. 44, formel (182)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Til vektorer i planen hører koordinatsæt, regning med vektorer, længde, vinkel mellem vektorer, skalarprodukt og projektion. Dertil kommer determinant, areal af parallelogram, linjens ligning bestemt ved et punkt og en normalvektor, vinkel mellem linjer og parameterfremstilling for linje og cirkel. [læreplanen, pkt. 2.2](kilde:laereplan) Til grundbegreberne hører nulvektor, stedvektor, vektor fra et punkt til et andet, vektors længde, enhedsvektor, retningsvektor, tværvektor og normalvektor. [vejledningen, s. 13](kilde:vejledning) Tjek, at du kan forklare dem alle. Nulvektoren skrives $\vec{o}$. [formelsamlingen, s. 83](kilde:formelsamling) Stedvektoren står ikke i formelsamlingen. Se [Stedvektor](/fag/matematik/vektorer-i-planen/#begreb-stedvektor) under Centrale begreber.
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Her giver det god mening at vise dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Øv dig i at regne længde, skalarprodukt, determinant og tværvektor i hånden med pæne tal.
+
+- Skriv formlen eller dens nummer i formelsamlingen, før du sætter tal ind, fx formel (190). [vejledningen, s. 42](kilde:vejledning) Det kan sikre dig point, hvis du laver en fejl undervejs. [vejledningen, s. 41](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning)
+
+- I delprøve 2 kommer der ikke opgaver, hvor det er nødvendigt at tegne linjer eller cirkler ud fra en parameterfremstilling. [vejledningen, s. 13](kilde:vejledning)
+- Forklar, hvordan du bruger [GeoGebra](https://www.geogebra.org/), så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+- Står der ”Bestem ved beregning”, skal svaret bygge på en algebraisk beregning med en formel kombineret med en CAS-kommando og ikke på aflæsning. [vejledningen, s. 36](kilde:vejledning)
+
+**Kommaer i koordinater.** I opgavesættene skrives decimaltal i koordinater med punktum, hvis et komma kan misforstås, fx $P(2.5, 1)$. [vejledningen, s. 37](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Overskriften kan fx være ”trigonometri og vektorregning”, og på treårige hold kan et spørgsmål i trigonometri suppleres med krav om vektorregning. [vejledningen, s. 38](kilde:vejledning) Vejledningen nævner som eksempel, at cosinusrelationerne kan bevises med vektorregning. [vejledningen, s. 19](kilde:vejledning) Cosinusrelationerne står under [vilkårlige trekanter](/fag/matematik/vilkaarlige-trekanter/). Står der ”redegør for”, skal du bevise eller udlede, og du skal også gøre rede for sætningens forudsætninger. [vejledningen, s. 39](kilde:vejledning) Øv dig i at forklare, hvorfor formlerne gælder, fx formlen for vinklen mellem to vektorer, og ikke kun hvordan du bruger dem.
+
+**Eksempler på problemstillinger**
+
+- For hvilke værdier af $t$ er vektorerne $\begin{pmatrix} t \\ 2 \end{pmatrix}$ og $\begin{pmatrix} 3 \\ t - 1 \end{pmatrix}$ parallelle? Og for hvilke er de ortogonale?
+- Hvordan kan du bruge determinanten til at finde arealet af en trekant, når du kender koordinaterne til hjørnerne? Forklar din metode.
+- To linjer er givet ved hver sin parameterfremstilling. Bestem den spidse vinkel mellem linjerne, og omskriv den ene parameterfremstilling til en ligning.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

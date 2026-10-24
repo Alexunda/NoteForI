@@ -1,0 +1,216 @@
+---
+titel: "Statistik og lineær regression"
+beskrivelse: "Sådan beregner og tolker du statistiske mål i samfundsfag: lineær regression med tendenslinje og R² og statistisk usikkerhed ved meningsmålinger."
+fag: samfundsfag
+nummer: 17
+omraade: "Metode"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2017"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for samfundsfag A, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/hebopjjn/samfundsfag-a-stx-august-2017-ua.pdf
+  - id: vejledning
+    navn: "Vejledning til samfundsfag A, stx, juli 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/y00aher0/240827-vejledning-samfundsfag-a-stx-2024.pdf
+  - id: opgavetyper
+    navn: "Opgavetyper i samfundsfag, version 3, forår 2022, fra fagkonsulenten i samfundsfag (emu.dk, PDF)"
+    url: https://emu.dk/sites/default/files/2022-03/Opgavetyper%20i%20samfundsfag.%20Version%203%20for%C3%A5r%202022.pdf
+  - id: hjaelpemidler
+    navn: "Hjælpemiddeloversigt til de gymnasiale prøver, gælder for terminer påbegyndt efter 1. februar 2026 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/odslzaxr/260407-25_31776-4-hjaelpemiddeloversigt-til-de-gymnasiale-proever-2026-april-2002218_1_1.pdf
+verificeret: false
+---
+
+## Kort fortalt
+
+I samfundsfag bruger du beregninger, tabeller, diagrammer og modeller til at påvise sammenhænge og udviklinger. [læreplanen, pkt. 2.1](kilde:laereplan) Du skal kunne beregne og tolke indekstal, procentvis vækst, procentandele og statistisk usikkerhed og lave og tolke en lineær regression. [vejledningen, s. 19](kilde:vejledning) Lineær regression viser sammenhængen mellem to variable i et punktdiagram med en tendenslinje. [vejledningen, s. 11](kilde:vejledning) Statistisk usikkerhed angiver det interval, hvor du ud fra en stikprøve, fx en meningsmåling, typisk kan være 95 % sikker på, at procentandelen i hele populationen ligger. [vejledningen, s. 19](kilde:vejledning)
+
+## Vigtige pointer
+
+### Beregninger, tabeller og diagrammer
+
+- Egne beregninger laver du typisk på tabeller med absolutte tal, fx mia. kr. eller antal personer. Beregningerne kan gøre en udvikling eller en sammenhæng tydeligere. [vejledningen, s. 11](kilde:vejledning) [opgavetyper, s. 1](kilde:opgavetyper)
+- Typisk regner du om til procentandele, årlige procentvise ændringer eller indekstal. [opgavetyper, s. 1](kilde:opgavetyper) Hvordan du regner en procentvis ændring ud, kan du se på matematiksiden om [procent- og rentesregning](/fag/matematik/procent-og-rentesregning/).
+- Beregninger, tabeller og diagrammer laver du med digitale hjælpemidler, typisk et regneark. [vejledningen, s. 11](kilde:vejledning)
+- Vælg et diagram, der viser det, du vil vise. Fx passer et søjlediagram til procentandele, et kurvediagram til indekstal og et søjle- eller kurvediagram til årlige procentvise ændringer. [opgavetyper, s. 1](kilde:opgavetyper)
+- En tabel skal have overskrift, forspalte (rækkeoverskrifter), tabelhoved (kolonneoverskrifter) og måleenhed. Et diagram skal have titel, aksetitler, måleenhed og forklaring på kurver eller søjler. [vejledningen, s. 11](kilde:vejledning) [opgavetyper, s. 1](kilde:opgavetyper)
+- Statistiske mål kan også være almindelig deskriptiv statistik som gennemsnit, spredning, median, deciler og kvartiler. [vejledningen, s. 19](kilde:vejledning) Se matematiksiden om [deskriptiv statistik](/fag/matematik/deskriptiv-statistik/).
+- Vejledningen nævner også chi²-test, korrelationsanalyse, eksponentiel vækst og eksponentiel regression som andre statistiske mål. [vejledningen, s. 20](kilde:vejledning)
+- I en studieretning med samfundsfag A bliver dele af kvantitativ metode, fx anvendelse og tolkning af statistiske mål, samordnet med matematik. [læreplanen, pkt. 3.4](kilde:laereplan)
+
+### Lineær regression
+
+- Ud fra en tabel med samhørende $x$- og $y$-værdier laver du et punktdiagram med lineær regression. Det giver en tendenslinje, dens ligning og $R^2$. [vejledningen, s. 11](kilde:vejledning)
+- Variablen på $x$-aksen er den uafhængige variabel, og variablen på $y$-aksen er den afhængige. [opgavetyper, s. 2](kilde:opgavetyper) Du undersøger altså, om den uafhængige variabel har betydning for den afhængige. [vejledningen, s. 19](kilde:vejledning)
+- Ligningen for tendenslinjen har formen $y = ax + b$. [vejledningen, s. 19](kilde:vejledning) Om $a$ og $b$ i en lineær funktion kan du læse på matematiksiden om [lineære funktioner](/fag/matematik/lineaere-funktioner/).
+- Du skal kunne tolke hældningskoefficienten, $R^2$ og punkternes beliggenhed i diagrammet. Og du skal kunne forklare den faglige sammenhæng mellem de to variable. [vejledningen, s. 19](kilde:vejledning)
+- **Hældningskoefficienten** $a$: Stiger variablen på $x$-aksen med 1, ændres variablen på $y$-aksen med $a$. Husk de rigtige måleenheder. [opgavetyper, s. 2](kilde:opgavetyper)
+- **Forklaringsgraden** $R^2$ viser, hvor stor en del af variationen i den afhængige variabel $y$ der kan forklares af den uafhængige variabel $x$. Tolk altid $R^2$ sammen med punkternes beliggenhed. [opgavetyper, s. 2](kilde:opgavetyper)
+- **Punkternes beliggenhed:** Ligger punkterne tæt på tendenslinjen, som et bredt bælte omkring den eller helt spredt? Jo tættere punkterne ligger på linjen, jo højere er $R^2$. Se også efter punkter, der afviger meget fra linjen (outliers), og efter grupper af punkter. [opgavetyper, s. 2](kilde:opgavetyper)
+- **Årsag og virkning:** En lineær regression er ikke i sig selv et bevis for en årsagssammenhæng. For at tale om en sammenhæng og ikke blot en samvariation skal du kunne begrunde den fagligt. Overvej også, om årsagen kan gå begge veje. [opgavetyper, s. 2](kilde:opgavetyper) [vejledningen, s. 20](kilde:vejledning)
+- Vejledningen nævner også regressionsanalyse med forklaret variation, restvariation og totalvariation. [vejledningen, s. 24](kilde:vejledning) Matematiksiden om [regression og modeller](/fag/matematik/regression-og-modeller/) viser, hvordan du laver regression i et digitalt værktøj.
+
+### Eksempel: nyheder og viden om politik
+
+Du har spurgt otte elever, hvor mange timer om ugen de bruger på nyheder ($x$), og hvor mange rigtige svar de får i en quiz med 10 spørgsmål om politik ($y$). Tallene er opdigtede.
+
+| Elev | Timer med nyheder pr. uge ($x$) | Rigtige svar ud af 10 ($y$) |
+|---|---|---|
+| 1 | 0 | 2 |
+| 2 | 1 | 4 |
+| 3 | 2 | 3 |
+| 4 | 3 | 5 |
+| 5 | 4 | 4 |
+| 6 | 5 | 7 |
+| 7 | 6 | 6 |
+| 8 | 7 | 8 |
+
+En lineær regression i et regneark giver tendenslinjen
+
+$$
+y = 0{,}75x + 2{,}25
+$$
+
+og forklaringsgraden $R^2 \approx 0{,}82$.
+
+- **Hældningskoefficienten** er $0{,}75$. Bruger en elev 1 time mere om ugen på nyheder, får eleven altså $0{,}75$ flere rigtige svar ifølge tendenslinjen.
+- **Forklaringsgraden** er $0{,}82$. Tiden med nyheder kan forklare 82 % af variationen i antal rigtige svar. De sidste 18 % må forklares med andre årsager. [opgavetyper, s. 2](kilde:opgavetyper)
+- **Punkterne** ligger tæt omkring tendenslinjen. Intet punkt ligger mere end $1{,}25$ rigtige svar fra linjen, og det passer med, at $R^2$ er højt. [opgavetyper, s. 2](kilde:opgavetyper)
+- **Årsag?** Regressionen beviser ikke, at nyheder giver mere viden. Måske går det den anden vej: Elever, der ved meget om politik, synes måske, at nyheder er mere spændende. [opgavetyper, s. 2](kilde:opgavetyper)
+- **Kan du generalisere?** Du kan kun sige noget om alle unge, hvis stikprøven er repræsentativ og stor nok. [vejledningen, s. 18](kilde:vejledning) Otte elever fra én klasse er hverken en stor eller en repræsentativ stikprøve.
+
+### Statistisk usikkerhed
+
+- En meningsmåling er en stikprøve. Den bruges til at sige noget om hele populationen, fx alle vælgere i Danmark. [vejledningen, s. 19](kilde:vejledning)
+- Den statistiske usikkerhed angiver et interval, som kaldes konfidensintervallet. Du kan typisk være 95 % sikker på, at procentandelen i populationen ligger i intervallet. [vejledningen, s. 19](kilde:vejledning)
+- Usikkerheden afhænger bl.a. af stikprøvens størrelse og af konfidensniveauet, som normalt er 95 %. Jo større stikprøve, jo mindre statistisk usikkerhed. [vejledningen, s. 19](kilde:vejledning)
+- Der er også andre kilder til usikkerhed ved meningsmålinger: om stikprøven er repræsentativ, om folk svarer ærligt, og hvordan spørgsmålene er formuleret. Vejledningen kalder det undersøgelsens reliabilitet og validitet. [vejledningen, s. 20](kilde:vejledning)
+- Er et partis frem- eller tilbagegang i en måling siden sidste valg større end usikkerheden, kan du være 95 % sikker på, at ændringen er reel. [opgavetyper, s. 3](kilde:opgavetyper)
+
+Prøv selv: Grafen viser usikkerheden for en fast procentandel $p$, når stikprøven bliver større. Her er $x$ stikprøvens størrelse $n$, og $f(x)$ er usikkerheden i procentpoint. Hvor stor er usikkerheden, når 1.200 svarer? Hvor mange skal svare, før usikkerheden er under 1,5 procentpoint? Træk i skyderen for $p$. Hvad sker der med usikkerheden, når $p$ nærmer sig 50?
+
+<Graf
+  titel="Statistisk usikkerhed og stikprøvens størrelse"
+  funktioner={[{ forskrift: 'f(x) = 1,96 · sqrt(p · (100 − p) / x)', tex: 'f(x) = 1{,}96\\sqrt{\\frac{p(100 - p)}{x}}' }]}
+  parametre={{ p: { min: 1, max: 99, start: 15, trin: 1 } }}
+  x={[-150, 3000]}
+  y={[-1, 10]}
+/>
+
+## Formler
+
+<Formel navn="Statistisk usikkerhed" tex="\pm 1{,}96\sqrt{\frac{p(100 - p)}{n}}" kilde="vejledning" henvisning="vejledningen, s. 19–20">
+
+<Symboler>
+
+- $p$: procentandelen i stikprøven, skrevet i procent, fx $15$ for 15 %.
+- $n$: stikprøvens størrelse, altså hvor mange der har svaret.
+- $1{,}96$: tallet, du bruger ved et konfidensniveau på 95 %.
+- Resultatet er den statistiske usikkerhed i procentpoint.
+
+</Symboler>
+
+<Bruges>
+
+Når du har en procentandel fra en stikprøve, fx en meningsmåling, og vil finde det interval, hvor du typisk kan være 95 % sikker på, at procentandelen i hele populationen ligger. [vejledningen, s. 19](kilde:vejledning) Og når du vil afgøre, om et partis frem- eller tilbagegang siden sidste valg er større end usikkerheden. [opgavetyper, s. 3](kilde:opgavetyper)
+
+</Bruges>
+
+<Eksempel>
+
+I en meningsmåling svarer 1.200 vælgere. 15 % vil stemme på et parti, vi kalder Parti A. Så er $p = 15$ og $n = 1200$, og usikkerheden er
+
+$$
+\pm 1{,}96\sqrt{\frac{15 \cdot (100 - 15)}{1200}} = \pm 1{,}96\sqrt{1{,}0625} \approx \pm 2{,}0
+$$
+
+Usikkerheden er altså ca. 2,0 procentpoint. Du kan være 95 % sikker på, at Parti A's andel blandt alle vælgere ligger mellem 13,0 % og 17,0 %.
+
+Fik Parti A 12,0 % ved sidste valg, er fremgangen 3,0 procentpoint. Den er større end usikkerheden, så du kan være 95 % sikker på, at fremgangen er reel. Fik partiet i stedet 14,0 %, er fremgangen kun 1,0 procentpoint. Den er mindre end usikkerheden, så du kan ikke være 95 % sikker på, at partiet er gået frem. [opgavetyper, s. 3](kilde:opgavetyper)
+
+</Eksempel>
+
+<Fejl>
+
+- At skrive $p$ som decimaltal, fx $0{,}15$ i stedet for $15$. $p$ er procentandelen, og i formlen står $100 - p$. [vejledningen, s. 20](kilde:vejledning)
+- At glemme kvadratroden eller at glemme at gange med $1{,}96$.
+- At skrive usikkerheden i procent. Den er i procentpoint, fordi du lægger den til og trækker den fra en procentandel. [vejledningen, s. 19](kilde:vejledning)
+- At glemme de andre kilder til usikkerhed: om stikprøven er repræsentativ, om folk svarer ærligt, og hvordan spørgsmålene er formuleret. [vejledningen, s. 20](kilde:vejledning)
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Lineær regression">
+
+En model for sammenhængen mellem to variable. Du laver den ud fra en tabel med samhørende $x$- og $y$-værdier og får et punktdiagram med en tendenslinje, dens ligning og $R^2$. [vejledningen, s. 11](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Tendenslinje">
+
+Linjen i et punktdiagram med lineær regression. Dens ligning har formen $y = ax + b$. [vejledningen, s. 19](kilde:vejledning) Jo tættere punkterne ligger på den, jo højere er $R^2$. [opgavetyper, s. 2](kilde:opgavetyper)
+
+</Begreb>
+
+<Begreb navn="Forklaringsgrad (R²)">
+
+Viser, hvor stor en del af variationen i den afhængige variabel $y$ der kan forklares af den uafhængige variabel $x$. Er $R^2 = 0{,}60$, kan $x$ forklare 60 % af variationen i $y$. [opgavetyper, s. 2](kilde:opgavetyper)
+
+</Begreb>
+
+<Begreb navn="Statistisk usikkerhed">
+
+Det tal, du lægger til og trækker fra en procentandel fra en stikprøve. Så får du det interval, hvor du typisk kan være 95 % sikker på, at procentandelen i hele populationen ligger. [vejledningen, s. 19](kilde:vejledning) Intervallet kaldes et konfidensinterval. Jo større stikprøve, jo mindre statistisk usikkerhed. [vejledningen, s. 19](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Konfidensinterval">
+
+Intervallet fra procentandelen minus den statistiske usikkerhed til procentandelen plus usikkerheden. Ved et konfidensniveau på 95 % kan du være 95 % sikker på, at procentandelen i populationen ligger i intervallet. [vejledningen, s. 19](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Signifikant forskel">
+
+Er et partis frem- eller tilbagegang i en meningsmåling større end den statistiske usikkerhed, er der en signifikant forskel mellem målingen og valget. Så kan du være 95 % sikker på, at ændringen er reel. [opgavetyper, s. 3](kilde:opgavetyper)
+
+</Begreb>
+
+<Begreb navn="Outlier">
+
+Et punkt i et punktdiagram, der afviger meget fra tendenslinjen. Overvej, hvad det kan skyldes. [opgavetyper, s. 2](kilde:opgavetyper)
+
+</Begreb>
+
+**Se også:** [Hældningskoefficient](/fag/matematik/lineaere-funktioner/#begreb-haeldningskoefficient). I en tendenslinje $y = ax + b$ fortæller hældningskoefficienten $a$, hvor meget $y$ ændres, når $x$ stiger med 1. [vejledningen, s. 19](kilde:vejledning) [opgavetyper, s. 2](kilde:opgavetyper)
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Ved den skriftlige prøve lægges der vægt på, at du kan bearbejde et talmateriale: tolke statistiske mål, lave dine egne beregninger og diagrammer og dermed påvise faglige sammenhænge og udviklinger. Ved den mundtlige prøve lægges der bl.a. vægt på, at du kan tolke og bruge statistiske mål og sammenhænge. [læreplanen, pkt. 4.3](kilde:laereplan)
+
+**Hvad kan der udledes.** Det er en af de seks opgavetyper ved den skriftlige prøve. [vejledningen, s. 26](kilde:vejledning) Her skal du udlede konklusioner af en tabel eller en figur og forklare dem med din faglige viden. Som regel skal du understøtte besvarelsen med beregninger og/eller et diagram. Der er tre slags beregningskrav: [opgavetyper, s. 1](kilde:opgavetyper)
+
+- procentandele, årlige procentvise ændringer eller indekstal
+- et diagram med lineær regression
+- et 95 %-konfidensinterval, altså statistisk usikkerhed
+
+Omfanget er ca. 350 ord. Tabeller, du skal regne på, får du i et regneark, og tabellen med dine beregnede tal skal med i besvarelsen. [opgavetyper, s. 1](kilde:opgavetyper) Et diagram med lineær regression skal have overskrift og aksetitler med måleenhed og vise ligningen og $R^2$. [opgavetyper, s. 2](kilde:opgavetyper)
+
+**Undersøg.** Også en undersøgelsesopgave kan kræve beregninger og et diagram, fx med lineær regression. [opgavetyper, s. 5–6](kilde:opgavetyper)
+
+**Hjælpemidler.** Ved den skriftlige prøve skal dit regneark fungere offline. Skolen må heller ikke give adgang til databaser som Statistikbanken eller til interaktive programmer, der kan beregne statistiske mål. [hjælpemiddeloversigten, s. 10](kilde:hjaelpemidler) Øv dig derfor i selv at lave beregninger og diagrammer i dit regneark.
+
+**Den mundtlige prøve.** Ved prøveform a indeholder bilagene både tekster og statistik, og ved prøveform b så vidt muligt også. [læreplanen, pkt. 4.2](kilde:laereplan)
+
+**Eksempler på problemstillinger**
+
+- En meningsmåling med 1.500 svar giver et parti 8 %. Ved sidste valg fik partiet 6,5 %. Kan du være 95 % sikker på, at partiet er gået frem?
+- Et punktdiagram over kommuner har en tendenslinje med negativ hældningskoefficient og $R^2 = 0{,}15$. Hvad kan du udlede af det, og hvad kan du ikke udlede?
+- Du har lavet en spørgeskemaundersøgelse og fundet en sammenhæng mellem to variable. Hvilke metodiske overvejelser skal du gøre dig om årsag og virkning og om stikprøven?
+
+Øv dig på rigtige opgaver i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer), og læs fagkonsulentens [Opgavetyper i samfundsfag](https://emu.dk/stx/samfundsfag/proever-og-eksamen/opgavetyper-i-skriftlig-samfundsfag-version-3) på emu.dk. Om metode generelt kan du læse på siden [Samfundsfaglig metode](/fag/samfundsfag/samfundsfaglig-metode/).

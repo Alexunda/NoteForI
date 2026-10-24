@@ -1,5 +1,5 @@
 // Elevens pensumtjekliste (det personlige lag): datamodellen, der gemmes
-// under gh:v1:pensum, og de funktioner, siden bruger til at ændre og tælle
+// under gh:v2:pensum (src/lib/lager.ts flytter data fra gh:v1:pensum), og de funktioner, siden bruger til at ændre og tælle
 // den op. Funktionerne ændrer aldrig de data, de får, men giver nye data
 // tilbage. Status og fremdrift gemmes ikke. De regnes ud fra punkterne.
 //
@@ -9,7 +9,7 @@
 import { FAG_IDER, type FagId } from '../data/fag.ts';
 import { FASTE_PUNKTER, NIVEAUER, type Niveau, type PunktId } from '../data/pensum.ts';
 
-/** Det, der gemmes under gh:v1:pensum */
+/** Det, der gemmes under gh:v2:pensum */
 export interface Pensum {
   /** I den rækkefølge, eleven har oprettet dem */
   fag: Fag[];
@@ -23,6 +23,12 @@ export interface Fag {
   /** "Matematik" eller elevens eget navn, fx "Historie" */
   navn: string;
   niveau: Niveau;
+  /**
+   * Læreplanen (årstal), eleven har valgt, når faget og niveauet har lister
+   * til flere læreplaner, fx dansk A 2017 og 2026. Ellers null. Nyt i
+   * version 2. Data fra version 1 får null, og eleven vælger på siden.
+   */
+  laereplan: string | null;
   /** I elevens egen rækkefølge */
   forloeb: Forloeb[];
   /** Id'er på de punkter fra det generiske lag, eleven har krydset af */
@@ -134,6 +140,7 @@ export interface NytFag {
   fagside: FagId | null;
   navn: string;
   niveau: Niveau;
+  laereplan: string | null;
 }
 
 /** Giver en besked, hvis faget ikke kan oprettes (eller rettes) sådan. Ellers null. */
@@ -152,20 +159,27 @@ export function tilfoejFag(pensum: Pensum, nyt: NytFag, lavId: LavId = nytId): {
     fagside: nyt.fagside,
     navn: rensNavn(nyt.navn),
     niveau: nyt.niveau,
+    laereplan: nyt.laereplan,
     forloeb: [],
     generisk: [],
   };
   return { pensum: { ...pensum, fag: [...pensum.fag, fag] }, fag };
 }
 
-/** Ændrer fagets navn og niveau. Forløb og afkrydsninger bliver, hvor de er. */
+/** Ændrer fagets navn, niveau og læreplan. Forløb og afkrydsninger bliver, hvor de er. */
 export function retFag(pensum: Pensum, fagId: string, rettet: NytFag): Pensum {
   return opdaterFag(pensum, fagId, (fag) => ({
     ...fag,
     fagside: rettet.fagside,
     navn: rensNavn(rettet.navn),
     niveau: rettet.niveau,
+    laereplan: rettet.laereplan,
   }));
+}
+
+/** Gemmer den læreplan, eleven har valgt til faget. */
+export function vaelgLaereplan(pensum: Pensum, fagId: string, laereplan: string): Pensum {
+  return opdaterFag(pensum, fagId, (fag) => ({ ...fag, laereplan }));
 }
 
 export interface SlettetFag {
@@ -388,6 +402,7 @@ export function procent(optaelling: Optaelling): number {
 /* ---------- Indlæsning ---------- */
 
 const GYLDIGT_ID = /^[0-9a-z]{1,40}$/;
+const GYLDIG_LAEREPLAN = /^\d{4}$/;
 
 function erObjekt(vaerdi: unknown): vaerdi is Record<string, unknown> {
   return typeof vaerdi === 'object' && vaerdi !== null && !Array.isArray(vaerdi);
@@ -431,13 +446,16 @@ function laesFag(raa: unknown, brugte: Set<string>, lavId: LavId): Fag | null {
     ? [...new Set(raa.generisk.filter((g): g is string => typeof g === 'string' && g !== ''))]
     : [];
 
-  return { id, fagside: FAG_IDER.find((f) => f === raa.fagside) ?? null, navn, niveau, forloeb, generisk };
+  const laereplan = typeof raa.laereplan === 'string' && GYLDIG_LAEREPLAN.test(raa.laereplan) ? raa.laereplan : null;
+
+  return { id, fagside: FAG_IDER.find((f) => f === raa.fagside) ?? null, navn, niveau, laereplan, forloeb, generisk };
 }
 
 /**
  * Læser de gemte data og rydder op i dem: ukendte felter forsvinder, og fag
  * og forløb, der ikke kan bruges, springes over. Siden går derfor ikke i
- * stå, selv om data er tomme, gamle eller ødelagte.
+ * stå, selv om data er tomme, gamle eller ødelagte. Data fra version 1
+ * (gh:v1:pensum) læses på samme måde, og fagene får læreplanen null.
  */
 export function laesPensum(raa: unknown, lavId: LavId = nytId): Pensum {
   const brugte = new Set<string>();

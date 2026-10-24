@@ -1,8 +1,18 @@
 ---
+// Fagets overbliksside (projektplan afsnit 6.3): hvad faget handler om,
+// prøverne, emnerne og links til læreplan, vejledning og emu.dk. Teksten står
+// i src/content/fag/<fag>.mdx. Er den ikke skrevet endnu, vises kun emnerne.
+import { render } from 'astro:content';
 import Side from '../../../layouts/Side.astro';
 import Emneliste from '../../../components/Emneliste.astro';
+import Maerkat from '../../../components/Maerkat.astro';
+import Forskel from '../../../components/emne/Forskel.astro';
+import Plan from '../../../components/emne/Plan.astro';
+import '../../../styles/emne.css';
 import { FAG_IDER, FAG_NAVNE, type FagId } from '../../../data/fag';
 import { hentEmner } from '../../../lib/emner';
+import { hentFagside } from '../../../lib/fag';
+import { grupperEfterOmraade, tjekFagAfsnit } from '../../../lib/fagside';
 
 export function getStaticPaths() {
   return FAG_IDER.map((fag) => ({ params: { fag }, props: { fag } }));
@@ -15,16 +25,142 @@ interface Props {
 const { fag } = Astro.props;
 const navn = FAG_NAVNE[fag];
 const emner = await hentEmner(fag);
+const grupper = grupperEfterOmraade(emner);
+const side = await hentFagside(fag);
+
+let Content = null;
+if (side) {
+  const rendered = await render(side);
+  const fejl = tjekFagAfsnit(rendered.headings);
+  if (fejl.length > 0) throw new Error(`Fejl i src/content/fag/${side.id}.mdx:\n- ${fejl.join('\n- ')}`);
+  Content = rendered.Content;
+}
+
+const dato = new Intl.DateTimeFormat('da-DK', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const beskrivelse = side?.data.beskrivelse ?? `Emner og eksamen i ${navn.toLowerCase()}.`;
 ---
 
-<Side titel={navn} beskrivelse={`Emner og eksamen i ${navn.toLowerCase()}.`}>
-  <h1>{navn}</h1>
-  <p class="ingress">
-    Her kommer et overblik over faget: hvad det handler om, hvordan det eksamineres, og links til læreplan og
-    vejledning.
-  </p>
-  <p class="ikke-faerdig">Siden er ikke færdig endnu. Kig forbi igen senere.</p>
+<Side titel={navn} beskrivelse={beskrivelse}>
+  <article class="fagside">
+    <header>
+      <h1>{navn}</h1>
+      <p class="ingress">{beskrivelse}</p>
+      {
+        side && (
+          <>
+            <ul class="fagside-fakta">
+              <li>Niveau {side.data.niveauer.join(', ')}</li>
+              <li>
+                {side.data.laereplan.length === 1
+                  ? `Læreplan ${side.data.laereplan[0]}`
+                  : `Læreplan ${side.data.laereplan.join(' og ')}`}
+              </li>
+              <li>Tjekket {dato.format(side.data.tjekket)}</li>
+            </ul>
+            {!side.data.verificeret && <Maerkat />}
+          </>
+        )
+      }
+    </header>
 
-  <h2>Emner</h2>
-  <Emneliste emner={emner} />
+    {!side && <p class="ikke-faerdig">Overblikket over faget er ikke færdigt endnu. Kig forbi igen senere.</p>}
+
+    {
+      Content && (
+        <div class="fagside-indhold">
+          <Content components={{ Forskel, Plan }} />
+        </div>
+      )
+    }
+
+    <section aria-labelledby="emner">
+      <h2 id="emner">Emner</h2>
+      {
+        grupper.length === 0 ? (
+          <Emneliste emner={[]} />
+        ) : (
+          grupper.map((gruppe) => (
+            <>
+              {gruppe.omraade && <h3>{gruppe.omraade}</h3>}
+              <Emneliste emner={gruppe.emner} beskrivelse />
+            </>
+          ))
+        )
+      }
+    </section>
+
+    {
+      side && (
+        <>
+          <section aria-labelledby="laereplan-og-vejledning">
+            <h2 id="laereplan-og-vejledning">Læreplan, vejledning og emu.dk</h2>
+            <ul class="fagside-links">
+              {side.data.links.map((link) => (
+                <li>
+                  <a href={link.url}>{link.navn}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section aria-labelledby="kilder">
+            <h2 id="kilder">Kilder</h2>
+            <ul class="fagside-links">
+              {side.data.kilder.map((kilde) => (
+                <li>
+                  <a href={kilde.url}>{kilde.navn}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )
+    }
+  </article>
 </Side>
+
+<style>
+  .fagside {
+    max-width: var(--tekstbredde);
+  }
+
+  .fagside-fakta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--afstand-2) var(--afstand-4);
+    padding: 0;
+    color: var(--farve-tekst-svag);
+    list-style: none;
+  }
+
+  .fagside-indhold :global(:is(ul, ol)) {
+    padding-left: 1.375rem;
+  }
+
+  .fagside-indhold :global(li + li) {
+    margin-top: var(--afstand-2);
+  }
+
+  .fagside-indhold :global(.kilde) {
+    color: var(--farve-tekst-svag);
+    font-size: var(--skrift-lille);
+  }
+
+  .fagside-indhold :global(.kilde a) {
+    color: inherit;
+  }
+
+  .fagside-links {
+    padding-left: 1.375rem;
+  }
+
+  .fagside-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--trykflade);
+  }
+
+  h3 {
+    margin-top: var(--afstand-5);
+  }
+</style>

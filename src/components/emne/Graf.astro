@@ -1,0 +1,64 @@
+---
+// En graf med skydere på en emneside (projektplan afsnit 6.4). Bruges i MDX:
+//
+//   <Graf
+//     titel="Eksponentiel vækst"
+//     funktioner={[{ forskrift: 'f(x) = b · a^x', tex: 'f(x) = b \\cdot a^x' }]}
+//     parametre={{ a: { min: 0.5, max: 1.5, start: 1.1 }, b: { min: 1, max: 10, start: 2 } }}
+//     x={[-5, 20]}
+//     y={[-2, 30]}
+//   />
+//
+// Forskrifterne skrives med dansk skrivemåde (src/lib/graf/udtryk.ts), og
+// tex er den samme forskrift i TeX til forklaringen under grafen. Buildet
+// stopper, hvis en forskrift ikke kan læses, eller hvis en parameter ikke
+// står i nogen forskrift. Titlen skal være unik på siden.
+import GrafOe, { type GrafParameter } from '../graf/Graf';
+import { slug } from '../../lib/emneside';
+import { fortolk } from '../../lib/graf/udtryk';
+import { texTilHtml } from '../../lib/markdown/tex';
+import '../../styles/graf.css';
+
+interface Props {
+  /** Kort beskrivelse, der står over grafen og læses op af skærmlæsere */
+  titel: string;
+  funktioner: { forskrift: string; tex?: string }[];
+  parametre?: Record<string, GrafParameter>;
+  x?: [number, number];
+  y?: [number, number];
+}
+
+const { titel, funktioner, parametre = {}, x, y } = Astro.props;
+
+const fejl: string[] = [];
+const brugte = new Set<string>();
+for (const f of funktioner) {
+  try {
+    for (const p of fortolk(f.forskrift).parametre) brugte.add(p);
+  } catch (e) {
+    fejl.push(e instanceof Error ? e.message : String(e));
+  }
+}
+for (const [navn, p] of Object.entries(parametre)) {
+  if (!brugte.has(navn)) fejl.push(`Parameteren "${navn}" står ikke i nogen forskrift.`);
+  if (!(p.min < p.max)) fejl.push(`Parameteren "${navn}" skal have min mindre end max.`);
+  if (p.start !== undefined && (p.start < p.min || p.start > p.max)) {
+    fejl.push(`Startværdien for "${navn}" skal ligge mellem min og max.`);
+  }
+}
+for (const [akse, omraade] of [['x', x], ['y', y]] as const) {
+  if (omraade && !(omraade[0] < omraade[1])) fejl.push(`${akse} skal være [mindste, største].`);
+}
+if (fejl.length > 0) throw new Error(`Fejl i grafen "${titel}":\n- ${fejl.join('\n- ')}`);
+
+const oeFunktioner = funktioner.map((f) => ({
+  forskrift: f.forskrift,
+  ...(f.tex ? { html: texTilHtml(f.tex, false) } : {}),
+}));
+---
+
+<figure class="graf-figur">
+  <figcaption class="graf-titel">{titel}</figcaption>
+  <GrafOe client:visible id={`graf-${slug(titel)}`} titel={titel} funktioner={oeFunktioner} parametre={parametre} x={x} y={y} />
+  <noscript><p class="graf-uden-js">Grafen virker kun, når JavaScript er slået til i din browser.</p></noscript>
+</figure>

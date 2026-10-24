@@ -1,0 +1,352 @@
+---
+titel: "Ligninger"
+beskrivelse: "Løs ligninger med ligningsreglerne, nulreglen og løsningsformlen for andengradsligninger, og løs dem grafisk og med et digitalt værktøj."
+fag: matematik
+nummer: 2
+omraade: "Tal og algebra"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Du skal kunne løse ligninger på tre måder: analytisk, dvs. med regneregler og formler, grafisk og med et digitalt værktøj. [læreplanen, pkt. 2.2](kilde:laereplan) Det gælder førstegradsligninger, andengradsligninger, ligninger, hvor du bruger nulreglen, og grundligninger for de funktionstyper, du møder i matematik A. [vejledningen, s. 12](kilde:vejledning) Ligninger dukker op i mange sammenhænge, fx når du undersøger, hvor en funktion vokser, regner på renter eller arbejder med en vækstmodel. [vejledningen, s. 12](kilde:vejledning)
+
+## Vigtige pointer
+
+- **Gør det samme på begge sider.** Du må lægge det samme til og trække det samme fra på begge sider af lighedstegnet. Du må også gange eller dividere med det samme tal på begge sider, bare tallet ikke er 0. [formelsamlingen, s. 74, formel (316)–(319)](kilde:formelsamling) [formelsamlingen, s. 3](kilde:formelsamling)
+- **Nulreglen.** Er et produkt lig med 0, så er mindst én af faktorerne 0. Kan du skrive den ene side som et produkt, og står der 0 på den anden side, kan du altså løse en lille ligning for hver faktor. [formelsamlingen, s. 74, formel (320)](kilde:formelsamling)
+- **Andengradsligninger.** En andengradsligning $a \cdot x^2 + b \cdot x + c = 0$ løser du med diskriminanten $d = b^2 - 4a \cdot c$ og løsningsformlen. [formelsamlingen, s. 75, formel (321)–(323)](kilde:formelsamling)
+- **Antal løsninger.** Er $d > 0$, er der to løsninger. Er $d = 0$, er der én løsning, og er $d < 0$, er der ingen løsning. Det passer med, at [parablen](/fag/matematik/andengradspolynomier/) skærer $x$-aksen to gange, rører den én gang eller slet ikke skærer den. [formelsamlingen, s. 22, formel (71), og s. 75](kilde:formelsamling)
+- **Grundligninger.** Du skal også kunne løse grundligninger for funktionstyperne, fx ligninger med potenser, [eksponentialfunktioner](/fag/matematik/eksponentielle-funktioner/), kvadratrødder og cosinus. [vejledningen, s. 12](kilde:vejledning) Tanken er at bruge den omvendte funktion på begge sider, fx at tage $\ln$ på begge sider af en ligning med $e^x$. [vejledningen, s. 14](kilde:vejledning) Se eksemplerne længere nede.
+- **Grafisk løsning.** Løsningerne til fx $f(x) = 3$ kan du aflæse som de $x$-værdier, hvor grafen for $f$ skærer den vandrette linje $y = 3$. [formelsamlingen, s. 15, formel (34) og (35)](kilde:formelsamling) Du skal kunne løse grafisk både i hånden og med et digitalt værktøj. [vejledningen, s. 12](kilde:vejledning)
+- **To ligninger med to ubekendte** hører også med, fx når du skal finde skæringspunktet mellem to [linjer](/fag/matematik/lineaere-funktioner/). [vejledningen, s. 12 og 14](kilde:vejledning) Står begge ligninger på formen $y = \ldots$, kan du sætte højresiderne lig med hinanden. Fx giver $y = 2x - 1$ og $y = -x + 5$, at $2x - 1 = -x + 5$. Så er $3x = 6$ og $x = 2$, og $y = 2 \cdot 2 - 1 = 3$. Skæringspunktet er $(2, 3)$.
+- **Digitalt værktøj.** Du skal også kunne løse ligninger med et digitalt værktøj. [vejledningen, s. 12](kilde:vejledning) Dit værktøj til delprøve 2 skal kunne løse ligninger numerisk, dvs. med tilnærmede tal, og med CAS, som kan regne med bogstaver. [læreplanen, pkt. 3.3](kilde:laereplan)
+
+Prøv selv: Træk i skyderen $k$. Parablen $y = x^2$ og den vandrette linje $y = k$ har lige så mange skæringspunkter, som ligningen $x^2 = k$ har løsninger. Hvad sker der, når $k = 0$? Og når $k$ er negativ?
+
+<Graf
+  titel="Grafisk løsning med parabel og vandret linje"
+  funktioner={[
+    { forskrift: 'f(x) = x^2', tex: 'f(x) = x^2' },
+    { forskrift: 'g(x) = k', tex: 'g(x) = k' },
+  ]}
+  parametre={{ k: { min: -4, max: 9, start: 4, trin: 0.5 } }}
+  x={[-5, 5]}
+  y={[-5, 10]}
+/>
+
+### Eksempler på grundligninger
+
+- **Potens:** $x^5 = 32$. Opløft begge sider i $\frac{1}{5}$: $x = 32^{\frac{1}{5}} = \sqrt[5]{32} = 2$. [formelsamlingen, s. 77, formel (341) og (350)](kilde:formelsamling) Det virker her, fordi eksponenten er ulige. Er eksponenten lige, er der også en negativ løsning. Fx giver $x^4 = 16$, at $x = -2$ eller $x = 2$, ligesom ved $x^2 = k$. [formelsamlingen, s. 75, formel (324)](kilde:formelsamling)
+- **Eksponentialfunktion:** $4 \cdot 3^x = 324$. Divider med 4: $3^x = 81$. Tag $\log$ på begge sider: $x \cdot \log(3) = \log(81)$, så $x = \frac{\log(81)}{\log(3)} = 4$. [formelsamlingen, s. 25, formel (84)](kilde:formelsamling)
+- **Den naturlige eksponentialfunktion:** $e^{2x} = 7$. Tag $\ln$ på begge sider: $2x = \ln(7)$, så $x = \frac{\ln(7)}{2} \approx 0{,}97$. [formelsamlingen, s. 25, formel (92)](kilde:formelsamling)
+- **Kvadratrod:** $\sqrt{x - 3} = 5$. Sæt begge sider i anden: $x - 3 = 25$, så $x = 28$. Tjek: $\sqrt{28 - 3} = \sqrt{25} = 5$. [formelsamlingen, s. 77, formel (341) og (351)](kilde:formelsamling) Tjek altid, når du har sat i anden. Ligningen $\sqrt{x - 3} = -5$ giver også $x = 28$, men $\sqrt{25} = 5$ og ikke $-5$, så den ligning har ingen løsning.
+- **Cosinus og sinus:** Her kan der være flere løsninger. Vejledningen foreslår, at det bliver gennemgået sammen med netop den type ligninger. [vejledningen, s. 14](kilde:vejledning)
+
+## Formler
+
+<Formel navn="Divider med det samme på begge sider" tex="b \cdot x = a \quad \Rightarrow \quad x = \frac{a}{b}" kilde="formelsamling" henvisning="formelsamlingen, s. 74, formel (318)">
+
+<Symboler>
+
+- $x$: den ubekendte, som du vil isolere.
+- $b$: tallet, der er ganget på $x$. Det må ikke være 0.
+- $a$: det, der står på den anden side af lighedstegnet.
+
+</Symboler>
+
+<Bruges>
+
+Til sidst i en førstegradsligning, når der kun står et tal gange $x$ på den ene side. De andre ligningsregler er at lægge det samme til, trække det samme fra og gange med det samme tal, der ikke er 0, på begge sider. [formelsamlingen, s. 74, formel (316), (317) og (319)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Løs $5x - 7 = 2x + 8$. Brug én regel pr. linje:
+
+$$
+\begin{aligned}
+5x - 7 &= 2x + 8 && \text{træk } 2x \text{ fra} \\
+3x - 7 &= 8 && \text{læg } 7 \text{ til} \\
+3x &= 15 && \text{divider med } 3 \\
+x &= 5
+\end{aligned}
+$$
+
+Tjek: $5 \cdot 5 - 7 = 18$ og $2 \cdot 5 + 8 = 18$.
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere kun det ene led: $\frac{6x + 4}{2}$ er $3x + 2$, ikke $3x + 4$.
+- At gøre noget på den ene side og glemme den anden.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Nulreglen" tex="a \cdot b = 0 \quad \Rightarrow \quad a = 0 \;\text{ eller }\; b = 0" kilde="formelsamling" henvisning="formelsamlingen, s. 74, formel (320)">
+
+<Symboler>
+
+- $a$ og $b$: to faktorer, altså to tal eller udtryk, der er ganget sammen.
+
+</Symboler>
+
+<Bruges>
+
+Når den ene side af ligningen er et produkt, og der står 0 på den anden side. Står der ikke 0, skal du først samle alt på den ene side.
+
+</Bruges>
+
+<Eksempel>
+
+Løs $x^2 - 6x = 0$. Sæt $x$ uden for en parentes:
+
+$$
+x \cdot (x - 6) = 0
+$$
+
+Nulreglen giver $x = 0$ eller $x - 6 = 0$. Løsningerne er altså $x = 0$ og $x = 6$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge nulreglen, når der ikke står 0 på den ene side. Fra $x \cdot (x - 6) = 16$ kan du ikke slutte, at $x = 16$ eller $x - 6 = 16$.
+- At dividere med $x$ på begge sider. Så mister du løsningen $x = 0$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Diskriminanten" tex="d = b^2 - 4a \cdot c" kilde="formelsamling" henvisning="formelsamlingen, s. 75, formel (322)">
+
+<Symboler>
+
+- $a$, $b$ og $c$: tallene i andengradsligningen $a \cdot x^2 + b \cdot x + c = 0$.
+- $d$: diskriminanten.
+
+</Symboler>
+
+<Bruges>
+
+Først, når du skal løse en andengradsligning. Om $d$ er positiv, 0 eller negativ, fortæller, om ligningen har to, én eller ingen løsninger.
+
+</Bruges>
+
+<Eksempel>
+
+For $x^2 + 4x + 5 = 0$ er $a = 1$, $b = 4$ og $c = 5$, så
+
+$$
+d = 4^2 - 4 \cdot 1 \cdot 5 = 16 - 20 = -4
+$$
+
+Da $d < 0$, har ligningen ingen løsning. For $x^2 - 6x + 9 = 0$ er $d = (-6)^2 - 4 \cdot 1 \cdot 9 = 0$, så den ligning har netop én løsning.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme parentesen, når $b$ er negativ: $(-6)^2 = 36$, men $-6^2 = -36$.
+- At glemme fortegnet på $c$. Er $c = -3$, er $-4 \cdot a \cdot c = -4 \cdot a \cdot (-3) = 12a$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Løsningsformlen for andengradsligningen" tex="x = \frac{-b - \sqrt{d}}{2a} \;\text{ eller }\; x = \frac{-b + \sqrt{d}}{2a}" kilde="formelsamling" henvisning="formelsamlingen, s. 75, formel (323)">
+
+<Symboler>
+
+- $a$, $b$ og $c$: tallene i $a \cdot x^2 + b \cdot x + c = 0$. Tallet $a$ må ikke være 0, for så står der 0 i nævneren.
+- $d$: diskriminanten $d = b^2 - 4a \cdot c$. Formlen kræver, at $d \ge 0$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal løse en andengradsligning, og $d \ge 0$. Er $d < 0$, har ligningen ingen løsning. [formelsamlingen, s. 75](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Løs $2x^2 - 5x - 3 = 0$. Her er $a = 2$, $b = -5$ og $c = -3$, så
+
+$$
+d = (-5)^2 - 4 \cdot 2 \cdot (-3) = 25 + 24 = 49
+$$
+
+og
+
+$$
+x = \frac{5 - \sqrt{49}}{2 \cdot 2} = \frac{5 - 7}{4} = -0{,}5 \;\text{ eller }\; x = \frac{5 + 7}{4} = 3
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere kun $\sqrt{d}$ med $2a$ og ikke hele tælleren.
+- At skrive $-b$ som $-5$, når $b = -5$. Så er $-b = 5$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Ligningen x² = k" tex="x^2 = k \quad \Rightarrow \quad x = -\sqrt{k} \;\text{ eller }\; x = \sqrt{k}" kilde="formelsamling" henvisning="formelsamlingen, s. 75, formel (324)">
+
+<Symboler>
+
+- $x$: den ubekendte.
+- $k$: et tal, der skal være større end eller lig med 0.
+
+</Symboler>
+
+<Bruges>
+
+Når der kun er et led med $x^2$ og et tal, men intet led med $x$. Så behøver du ikke løsningsformlen.
+
+</Bruges>
+
+<Eksempel>
+
+Løs $3x^2 = 75$. Divider med 3 på begge sider:
+
+$$
+x^2 = 25
+$$
+
+Så er $x = -\sqrt{25} = -5$ eller $x = \sqrt{25} = 5$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme den negative løsning.
+- At tage kvadratroden af et negativt tal. Er $k < 0$, har ligningen ingen løsning. Det kan du se ved at skrive den som $x^2 - k = 0$. Så er $d = 0^2 - 4 \cdot 1 \cdot (-k) = 4k$, og det er negativt.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Logaritmen til en potens" tex="\log(a^x) = x \cdot \log(a)" kilde="formelsamling" henvisning="formelsamlingen, s. 25, formel (84)">
+
+<Symboler>
+
+- $\log$: titalslogaritmen.
+- $a$: grundtallet, et positivt tal.
+- $x$: eksponenten, som tit er den ubekendte.
+
+</Symboler>
+
+<Bruges>
+
+Når den ubekendte står i eksponenten, fx i en eksponentiel model eller i [kapitalformlen](/fag/matematik/procent-og-rentesregning/). Du tager $\log$ på begge sider og bruger formlen til at få $x$ ned fra eksponenten. Den samme regel gælder for $\ln$. [formelsamlingen, s. 25, formel (91)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Løs $2^x = 10$. Tag $\log$ på begge sider:
+
+$$
+\log(2^x) = \log(10)
+$$
+
+Venstre side er $x \cdot \log(2)$, og $\log(10) = 1$ [formelsamlingen, s. 25, formel (81)](kilde:formelsamling), så
+
+$$
+x = \frac{1}{\log(2)} \approx 3{,}32
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At skrive $\log(2^x)$ som $\log(2)^x$.
+- At tro, at $\frac{\log(10)}{\log(2)}$ er det samme som $\log(5)$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Ligningsregler">
+
+De regler, der fortæller, hvad du må gøre ved en ligning: lægge det samme til og trække det samme fra på begge sider og gange eller dividere med det samme tal, der ikke er 0, på begge sider. [formelsamlingen, s. 74, formel (316)–(319)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Nulreglen">
+
+Er et produkt lig med 0, er mindst én af faktorerne 0: Af $a \cdot b = 0$ følger, at $a = 0$ eller $b = 0$. [formelsamlingen, s. 74, formel (320)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Andengradsligning">
+
+En ligning, der kan skrives som $a \cdot x^2 + b \cdot x + c = 0$, hvor $a \neq 0$. Den kan have to, én eller ingen løsninger. [formelsamlingen, s. 22, formel (71), og s. 75, formel (321)–(323)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Grundligning">
+
+En enkel ligning med en af funktionstyperne fra matematik A, fx med en potens, en eksponentialfunktion, en kvadratrod eller cosinus. [vejledningen, s. 12](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Grafisk løsning">
+
+At løse en ligning ved at aflæse på en graf. Løsningerne til $f(x) = 3$ er de $x$-værdier, hvor grafen for $f$ skærer linjen $y = 3$. [formelsamlingen, s. 15, formel (35)](kilde:formelsamling)
+
+</Begreb>
+
+**Se også:** [Diskriminant](/fag/matematik/andengradspolynomier/#begreb-diskriminant).
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Du skal kunne løse ligninger analytisk, grafisk og digitalt. [læreplanen, pkt. 2.2](kilde:laereplan) Det gælder første- og andengradsligninger, nulreglen, grundligninger og to ligninger med to ubekendte. [vejledningen, s. 12](kilde:vejledning)
+
+**Til den skriftlige prøve** kan der både være ”rene” ligningsopgaver og opgaver med en sammenhæng, hvor du selv skal opstille ligningen, løse den og forklare, hvad løsningen betyder. [vejledningen, s. 12](kilde:vejledning) Vejledningen undtager ingen dele af emnet fra den skriftlige prøve. [vejledningen, s. 11–12 og 36](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning)
+
+- Vis så mange mellemregninger, at du kun bruger én ligningsregel pr. linje, og slut med løsningen. I en ren ligningsopgave er det nok, at sidste linje er fx $x = 5$. [vejledningen, s. 42–43](kilde:vejledning)
+- Står der fx ”Brug nulreglen”, er det et metodekrav. Bruger du en anden metode, får du ikke fuldt point. Står der bare ”løs ligningen”, må du selv vælge metoden. [vejledningen, s. 36–37](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her har du [GeoGebra](https://www.geogebra.org/). [vejledningen, s. 36](kilde:vejledning)
+
+- ”Bestem ved beregning” betyder, at svaret skal bygge på en beregning med en formel kombineret med en CAS-kommando, fx solve. ”Bestem ved aflæsning” betyder, at svaret skal bygge på en præcis aflæsning med en indbygget kommando på en graf eller figur, som du har lavet i GeoGebra. [vejledningen, s. 36](kilde:vejledning)
+- Skriv, hvilken ligning du løser, og hvilken kommando du bruger, så man kan følge din løsning. [vejledningen, s. 41–42](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner opstillingen af løsningsformlen for andengradsligningen som et eksempel på et sammenhængende matematisk ræsonnement. [vejledningen, s. 23](kilde:vejledning) Øv dig også i at forklare, hvorfor man tager $\ln$ eller $\log$ på begge sider af en ligning. [vejledningen, s. 14](kilde:vejledning) Et tip til udledningen af løsningsformlen: Divider først med $a$, og brug så kvadratkomplettering, som du kan læse om under [tal, algebra og proportionalitet](/fag/matematik/tal-og-algebra/). Kvadratkomplettering hører til kernestoffet. [vejledningen, s. 11](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- Graferne for $f(x) = x^2 - 4$ og $g(x) = 2x - 1$ skærer hinanden. Bestem skæringspunkterne både grafisk og ved beregning.
+- Forklar, hvorfor du ikke kan bruge nulreglen direkte på ligningen $(x - 1) \cdot (x + 3) = 12$. Løs den derefter.
+- Et beløb på 8.000 kr. står på en konto med en fast rente på 3 % om året. Opstil en ligning, der viser, hvornår beløbet er vokset til 10.000 kr., og løs den.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

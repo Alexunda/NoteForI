@@ -1,0 +1,336 @@
+---
+titel: "Mikrobiologi og vækstmodeller"
+beskrivelse: "Bakteriers vækst: eksponentiel vækst, fordoblingstid, logistisk vækst og de forhold, der afgør, om bakterier kan vokse."
+fag: bioteknologi
+nummer: 14
+omraade: "Celler og mikroorganismer"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2017"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for bioteknologi A, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/morjd5sk/bioteknologi-a-stx-august-2017.pdf
+  - id: vejledning
+    navn: "Vejledning til bioteknologi A, stx, 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/011cm4jy/250819-vejledning-til-bioteknologi-a-stx-2025.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: laererens-haefte
+    navn: "Lærerens hæfte 2025-26. Vejledning til skriftlig bioteknologi A stx (emu.dk, PDF)"
+    url: https://emu.dk/sites/default/files/2025-07/L%C3%A6rerens%20h%C3%A6fte%202025-26.%20Vejledning%20til%20skriftlig%20bioteknologi%20A%20stx.pdf
+  - id: evaluering
+    navn: "Evaluering af skriftlig prøve sommer 2024 i bioteknologi A stx (uvm.dk, PDF)"
+    url: https://uvm.dk/media/h52bjmz2/241218-evaluering-af-skriftlig-proeve-sommer-2024-i-bioteknologi-a-stx.pdf
+  - id: emu-mundtlig
+    navn: "Eksempler på opgaver til mundtlig prøve i bioteknologi A, fagkonsulenterne, opdateret 31. maj 2024 (emu.dk)"
+    url: https://emu.dk/stx/bioteknologi/proever-og-eksamen/eksempler-paa-opgaver-til-mundtlig-proeve-i-bioteknologi
+  - id: nhgri
+    navn: "Talking Glossary of Genomic and Genetic Terms, National Human Genome Research Institute (genome.gov, engelsk, hentet oktober 2026)"
+    url: https://www.genome.gov/genetics-glossary
+  - id: fvst-bakterier
+    navn: "Bakterier i fødevarer, oversigt, Fødevarestyrelsen, april 2025 (foedevarestyrelsen.dk, PDF)"
+    url: https://foedevarestyrelsen.dk/Media/638181819258416746/Bakterier%20i%20f%C3%B8devarer2022.pdf
+  - id: fvst-koel
+    navn: "Køl mad hurtigt ned i hjemmet, Fødevarestyrelsen (foedevarestyrelsen.dk)"
+    url: https://foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/koel-mad-hurtigt-ned
+  - id: fvst-fordaervende
+    navn: "Fordærvende bakterier, gær- og skimmelsvampe, Fødevarestyrelsen (foedevarestyrelsen.dk)"
+    url: https://foedevarestyrelsen.dk/kost-og-foedevarer/foedevaresikkerhed/bakterier-virus-og-parasitter/fordaervende-bakterier-gaer-og-skimmelsvampe
+  - id: emu-skriftlig
+    navn: "Skriftlig prøve i bioteknologi, opdateret 19. januar 2026 (emu.dk)"
+    url: https://emu.dk/stx/bioteknologi/proever-og-eksamen/skriftlig-proeve-i-bioteknologi
+verificeret: false
+---
+
+## Kort fortalt
+
+Bakterier er små encellede organismer. [NHGRI-ordlisten: Bacteria](kilde:nhgri) Antallet kan vokse meget hurtigt: Ved stuetemperatur kan 1 bakterie blive til 1.000 på tre timer og til 1 million på seks timer. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) Vækst, hvor antallet bliver ganget med det samme tal i hver periode, kaldes eksponentiel vækst. [formelsamlingen, s. 18–19, formel (44) og (50)](kilde:formelsamling) I bioteknologi A skal du kunne bestemme og bruge forskrifter for eksponentiel vækst og kende logistisk vækst. [vejledningen, s. 12](kilde:vejledning)
+
+## Vigtige pointer
+
+**Det skal du kunne.** Mikrobiologi i kernestoffet handler om vækst, vækstmodeller og vækstfaktorer. [læreplanen, pkt. 2.2](kilde:laereplan) Vækstmodellerne omfatter, at du kan bestemme og bruge forskrifter for eksponentiel vækst. Logistisk vækst skal du kende. [vejledningen, s. 12](kilde:vejledning)
+
+### Eksponentiel vækst
+
+- **Der ganges hver gang.** Når $x$ vokser med 1, bliver $f(x)$ ganget med fremskrivningsfaktoren $a$. [formelsamlingen, s. 19, formel (50)](kilde:formelsamling) Er $x$ tiden i timer, bliver antallet af bakterier altså ganget med $a$ hver time.
+- **Fra procent til faktor.** Fremskrivningsfaktoren er $a = 1 + r$, hvor vækstraten $r$ er skrevet som decimaltal. Vokser en kultur med 40 % i timen, er $a = 1{,}40$. [formelsamlingen, s. 18, formel (45)](kilde:formelsamling)
+- **Fødevarestyrelsens tal passer med eksponentiel vækst.** Ved stuetemperatur kan 1 bakterie blive til 1.000 på tre timer og til 1 million på seks timer. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) Fra time 3 til time 6 bliver antallet altså ganget med 1.000 igen, for $1000 \cdot 1000 = 1\,000\,000$.
+- **Fordoblingstiden afhænger kun af $a$.** Formlen for fordoblingskonstanten indeholder kun $a$ og ikke $b$. [formelsamlingen, s. 20, formel (52)](kilde:formelsamling) I en eksponentiel model tager det altså lige lang tid at gå fra 100 til 200 bakterier som fra 1.000 til 2.000.
+- **En anden skrivemåde.** Forskriften kan også skrives $f(x) = b \cdot e^{k \cdot x}$, hvor $k = \ln(a)$. [formelsamlingen, s. 18, formel (44)](kilde:formelsamling)
+
+### Vækstkurver og logistisk vækst
+
+- **Ikke alle målinger skal med.** Data fra et vækstforsøg kan have dele, der ikke skal indgå i analysen. Så skal du først afgrænse det område, du analyserer, og begrunde, hvordan du afgrænser det. Først derefter argumenterer du for, at væksten i området er eksponentiel (den eksponentielle fase), og regner. [Lærerens hæfte, s. 21](kilde:laererens-haefte)
+- **Vurdér modellen på grafen.** Når du bruger digitale værktøjer fra matematik, skal du bruge viden fra både bioteknologi og matematik til at vurdere, om modellen er rimelig. Vurderingen sker ud fra, hvordan grafen ser ud. [vejledningen, s. 21](kilde:vejledning)
+- **Logistisk vækst** følger differentialligningen $y' = a \cdot y \cdot (M - y)$. [formelsamlingen, s. 72, formel (310)](kilde:formelsamling) Formelsamlingen forklarer ikke modellen, men du kan se det af løsningen nedenfor: Er $a$ og $M$ positive, går $e^{-a \cdot M \cdot x}$ mod 0, når $x$ vokser, så $y$ nærmer sig $M$. Starter $y$ under $M$, er $M$ altså en øvre grænse. Er $y$ lille i forhold til $M$, er $M - y$ næsten lig med $M$, så $y' \approx a \cdot M \cdot y$. Det er differentialligningen for eksponentiel vækst, $y' = k \cdot y$, med $k = a \cdot M$. [formelsamlingen, s. 72, formel (308)](kilde:formelsamling)
+- Læs mere om modellerne på matematiksiderne om [eksponentielle funktioner](/fag/matematik/eksponentielle-funktioner/) og [differentialligninger](/fag/matematik/differentialligninger/).
+
+### Vækstfaktorer
+
+- **Ordet forklares ikke.** Læreplanen nævner vækstfaktorer, men vejledningen siger ikke, hvad der menes. [læreplanen, pkt. 2.2](kilde:laereplan) [vejledningen, s. 12](kilde:vejledning) I fagkonsulenternes eksempel på en mundtlig prøveopgave om yoghurt skal man forklare, hvordan forskellige faktorer kan påvirke mikroorganismers vækst. [emu.dk: eksempler på mundtlige prøveopgaver](kilde:emu-mundtlig)
+
+  <Hul navn="Hvad læreplanen mener med vækstfaktorer" />
+
+- **Fødevarestyrelsens oversigt** viser for en række sygdomsbakterier i fødevarer, i hvilket temperatur- og pH-interval den kan formere sig, om den vokser med eller uden ilt, og hvor meget salt den tåler. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3–4](kilde:fvst-bakterier)
+- **Temperatur.** Ifølge Fødevarestyrelsen stortrives bakterier mellem 20 og 40 °C. Når maden opbevares koldt, stopper de fleste bakterier med at vokse, og et køleskab bør højst være 5 °C. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) *Listeria monocytogenes* kan dog formere sig helt ned til 0–1 °C. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
+- **Ilt.** Nogle bakterier, fx *Salmonella* og *Listeria monocytogenes*, kan vokse både med og uden ilt. *Clostridium botulinum* vokser kun uden ilt. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
+- **pH.** Oversigten angiver et pH-interval for hver bakterie, og pH under 4 betragtes som sikkert. [Fødevarestyrelsen: Bakterier i fødevarer, s. 3](kilde:fvst-bakterier)
+- **Fugtighed.** Om mad bliver fordærvet af bakterier, gær- og skimmelsvampe, kan afhænge af, hvilken temperatur og fugtighed maden opbevares ved. [Fødevarestyrelsen: Fordærvende bakterier, gær- og skimmelsvampe](kilde:fvst-fordaervende)
+
+### Forsøg med mikroorganismer
+
+- Nogle forsøg i mikrobiologi er teknisk overskuelige, og ud fra resultaterne kan I uddybe teorien, fx om vækstmodeller. [vejledningen, s. 15](kilde:vejledning) Vejledningen nævner bestemmelse af celleantal som en målemetode, der med fordel kan komme tidligt i forløbet. [vejledningen, s. 16](kilde:vejledning)
+- Arbejde med mikroorganismer i undervisningen er omfattet af Arbejdstilsynets regler, og du skal have at vide, hvilke sundheds- og smitterisici der er. [vejledningen, s. 19](kilde:vejledning) Sikkerhed: Følg skolens regler og din lærers anvisninger.
+
+Prøv selv: $x$ er tiden i timer, og $f(x)$ er antal bakterier i tusinder pr. mL. Træk i skyderne. Hvad sker der med fordoblingstiden, når du gør $a$ større? Ændrer det noget ved fordoblingstiden, at du gør $b$ større?
+
+<Graf
+  titel="Eksponentiel vækst af en bakteriekultur"
+  funktioner={[{ forskrift: 'f(x) = b · a^x', tex: 'f(x) = b \\cdot a^x' }]}
+  parametre={{ a: { min: 1, max: 2.5, start: 1.5, trin: 0.05 }, b: { min: 1, max: 20, start: 2, trin: 1 } }}
+  x={[0, 12]}
+  y={[0, 200]}
+/>
+
+## Formler
+
+<Formel navn="Forskriften for eksponentiel vækst" tex="f(x) = b \cdot a^x" kilde="formelsamling" henvisning="formelsamlingen, s. 18, formel (44)">
+
+<Symboler>
+
+- $f(x)$: antal bakterier, fx pr. mL, efter $x$ timer.
+- $b$: begyndelsesværdien, altså antallet, når $x = 0$.
+- $a$: fremskrivningsfaktoren, som antallet ganges med hver time.
+
+</Symboler>
+
+<Bruges>
+
+Når antallet vokser med den samme procent pr. tidsenhed, fx i den eksponentielle fase af et vækstforsøg.
+
+</Bruges>
+
+<Eksempel>
+
+En bakteriekultur har 2000 bakterier pr. mL ved start og vokser med 40 % i timen. Så er $b = 2000$ og $a = 1 + 0{,}40 = 1{,}40$, og forskriften er
+
+$$
+f(x) = 2000 \cdot 1{,}40^x
+$$
+
+hvor $x$ er tiden i timer. Efter 5 timer er antallet
+
+$$
+f(5) = 2000 \cdot 1{,}40^5 \approx 10\,756
+$$
+
+Der er altså ca. 10.800 bakterier pr. mL.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge vækstraten som fremskrivningsfaktor, fx $2000 \cdot 0{,}40^x$ i stedet for $2000 \cdot 1{,}40^x$.
+- At blande enhederne for tid sammen, fx at regne med timer i forskriften og sætte minutter ind.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fremskrivningsfaktoren ud fra to målinger" tex="a = \sqrt[x_2 - x_1]{\frac{y_2}{y_1}}" kilde="formelsamling" henvisning="formelsamlingen, s. 19, formel (48)">
+
+<Symboler>
+
+- $(x_1, y_1)$ og $(x_2, y_2)$: to målinger, fx tid og antal bakterier.
+- $a$: fremskrivningsfaktoren.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender antallet på to tidspunkter og skal bestemme forskriften. Begyndelsesværdien finder du bagefter med $b = \frac{y_1}{a^{x_1}}$. [formelsamlingen, s. 19, formel (49)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Fødevarestyrelsens tal giver punkterne $(0, 1)$ og $(3, 1000)$, hvor $x$ er tiden i timer. [Fødevarestyrelsen: Køl mad hurtigt ned](kilde:fvst-koel) Så er
+
+$$
+a = \sqrt[3 - 0]{\frac{1000}{1}} = \sqrt[3]{1000} = 10
+$$
+
+og $b = \frac{1}{10^0} = 1$. Forskriften er $f(x) = 10^x$. Tjek: $f(6) = 10^6 = 1\,000\,000$, og det passer med, at der er 1 million bakterier efter seks timer.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge $y_2 - y_1$ i stedet for $\frac{y_2}{y_1}$. Differensen hører til lineær vækst, hvor $a = \frac{\Delta y}{\Delta x}$. [formelsamlingen, s. 17, formel (43)](kilde:formelsamling)
+- At glemme rodeksponenten $x_2 - x_1$. Du kan kun udelade den, når der er præcis 1 mellem $x_1$ og $x_2$. I eksemplet er $x_2 - x_1 = 3$, og uden rodeksponenten får du $a = 1000$ i stedet for $a = 10$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fordoblingstiden" tex="T_2 = \frac{\log(2)}{\log(a)}" kilde="formelsamling" henvisning="formelsamlingen, s. 20, formel (52)">
+
+<Symboler>
+
+- $T_2$: fordoblingskonstanten. Er $x$ tiden, er det den tid, det tager for antallet at blive fordoblet.
+- $a$: fremskrivningsfaktoren i $f(x) = b \cdot a^x$.
+- $\log$: titalslogaritmen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde, hvor lang tid det tager for en bakteriekultur i eksponentiel vækst at blive dobbelt så stor.
+
+</Bruges>
+
+<Eksempel>
+
+Fra før er $a = 10$ pr. time. Så er
+
+$$
+T_2 = \frac{\log(2)}{\log(10)} \approx 0{,}301
+$$
+
+Antallet fordobles altså på ca. 0,301 timer, og $0{,}301 \cdot 60 \approx 18$ minutter.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme enheden. $T_2$ har samme enhed som $x$, her timer.
+- At sætte $b$ ind i stedet for $a$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fordoblingstiden, når forskriften er skrevet med e" tex="T_2 = \frac{\ln(2)}{k}" kilde="formelsamling" henvisning="formelsamlingen, s. 20, formel (53)">
+
+<Symboler>
+
+- $T_2$: fordoblingskonstanten.
+- $k$: tallet i forskriften $f(x) = b \cdot e^{k \cdot x}$. Der gælder $k = \ln(a)$. [formelsamlingen, s. 18, formel (44)](kilde:formelsamling)
+- $\ln$: den naturlige logaritme.
+
+</Symboler>
+
+<Bruges>
+
+Når dit værktøj giver modellen på formen $f(x) = b \cdot e^{k \cdot x}$ i stedet for $f(x) = b \cdot a^x$.
+
+</Bruges>
+
+<Eksempel>
+
+Dit værktøj giver modellen $f(x) = 500 \cdot e^{0{,}46 \cdot x}$, hvor $x$ er tiden i timer. Så er $k = 0{,}46$, og
+
+$$
+T_2 = \frac{\ln(2)}{0{,}46} \approx 1{,}5
+$$
+
+Antallet fordobles altså på ca. 1,5 timer. Fremskrivningsfaktoren er $a = e^{0{,}46} \approx 1{,}58$, så antallet vokser med ca. 58 % i timen.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge $\log$ i stedet for $\ln$ i denne formel.
+- At tro, at $k$ er vækstraten. Vækstraten er $r = a - 1 = e^k - 1$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Logistisk vækst" tex="y = \frac{M}{1 + c \cdot e^{-a \cdot M \cdot x}}" kilde="formelsamling" henvisning="formelsamlingen, s. 72, formel (310)">
+
+<Symboler>
+
+- $y$: størrelsen efter tiden $x$, fx antal bakterier.
+- $M$: den værdi, som $y$ nærmer sig. Er $a$ og $M$ positive, og starter $y$ under $M$, er $M$ en øvre grænse.
+- $a$ og $c$: konstanter. $y$ er løsningen til differentialligningen $y' = a \cdot y \cdot (M - y)$.
+
+</Symboler>
+
+<Bruges>
+
+Når væksten først ligner eksponentiel vækst og derefter bremses op mod en øvre grænse.
+
+</Bruges>
+
+<Eksempel>
+
+I en model for en bakteriekultur er $y' = 0{,}001 \cdot y \cdot (900 - y)$, hvor $y$ er antal bakterier i millioner pr. mL efter $x$ timer. Så er $M = 900$ og $a \cdot M = 0{,}001 \cdot 900 = 0{,}9$:
+
+$$
+y = \frac{900}{1 + c \cdot e^{-0{,}9 \cdot x}}
+$$
+
+Ved start er $y = 10$, så $\frac{900}{1 + c} = 10$. Det giver $1 + c = 90$ og $c = 89$. Efter 5 og 10 timer er
+
+$$
+y(5) = \frac{900}{1 + 89 \cdot e^{-4{,}5}} \approx 453 \qquad y(10) = \frac{900}{1 + 89 \cdot e^{-9}} \approx 890
+$$
+
+Efter 10 timer er kulturen altså tæt på grænsen på 900 millioner pr. mL.
+
+</Eksempel>
+
+<Fejl>
+
+- At skrive $e^{-a \cdot x}$ i stedet for $e^{-a \cdot M \cdot x}$.
+- At tro, at $c$ er startværdien. Her er startværdien $\frac{M}{1 + c}$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Bakterie">
+
+En lille encellet organisme. Bakterier findes næsten overalt på Jorden. De fleste bakterier i kroppen er harmløse, og kun et relativt lille antal arter giver sygdom. [NHGRI-ordlisten: Bacteria](kilde:nhgri)
+
+</Begreb>
+
+<Begreb navn="Eksponentiel vækst">
+
+Vækst, hvor størrelsen bliver ganget med det samme tal $a$, hver gang $x$ vokser med 1. Forskriften er $f(x) = b \cdot a^x$. [formelsamlingen, s. 18–19, formel (44) og (50)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Fordoblingstid">
+
+Den tid, det tager for en størrelse i eksponentiel vækst at blive fordoblet. I formelsamlingen hedder den fordoblingskonstanten $T_2$, og den afhænger kun af fremskrivningsfaktoren. [formelsamlingen, s. 20, formel (52)–(54)](kilde:formelsamling)
+
+</Begreb>
+
+**Se også:** [Begyndelsesværdi](/fag/matematik/lineaere-funktioner/#begreb-begyndelsesvaerdi), [Fremskrivningsfaktor](/fag/matematik/procent-og-rentesregning/#begreb-fremskrivningsfaktor) og [Logistisk vækst](/fag/matematik/differentialligninger/#begreb-logistisk-vaekst).
+
+## Eksamenshjørnet
+
+**Den skriftlige prøve** varer fem timer og har opgaver inden for kernestoffet. [læreplanen, pkt. 4.2](kilde:laereplan) Opgaverne går ud fra, at du har matematik A og kan bruge digitale værktøjer og matematikprogrammer. [vejledningen, s. 25](kilde:vejledning) Analyse af vækstkurver er en af de opgavetyper, der ofte er med. [Lærerens hæfte, s. 11](kilde:laererens-haefte)
+
+- Afgræns først den del af data, du vil analysere, og begrund afgrænsningen. Argumentér derefter for den eksponentielle fase, og regn. [Lærerens hæfte, s. 21](kilde:laererens-haefte)
+- En graf skal have aksetitler med størrelse og enhed. Den kan ikke stå alene, så skriv kort og præcist, hvad den viser. Ved regression skal både datapunkterne og regressionslinjen kunne ses, og forskriften skal have enhed og det korrekte antal betydende cifre. [evalueringen, s. 8](kilde:evaluering)
+- Markér gerne de aflæsninger, du bruger, direkte på vækstkurven. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+- Brug fagets symboler og enheder, også når du regner i et CAS-program. [evalueringen, s. 8](kilde:evaluering)
+- Forhold dig til kontrolforsøgene og deres funktion. Det glemmer mange. [evalueringen, s. 10](kilde:evaluering)
+- Et rigtigt resultat er ikke nok. Du skal også dokumentere og begrunde. Skal du selv vælge en model, tæller det med, hvordan du diskuterer og dokumenterer den. [vejledningen, s. 27](kilde:vejledning)
+
+**Den mundtlige prøve.** En prøveopgave i bioteknologi skal samle kemisk og biologisk viden. [vejledningen, s. 25](kilde:vejledning) I fagkonsulenternes eksempel om yoghurt skal man fx komme ind på mikroorganismers vækst, på hvad der påvirker væksten, og på syre-base og pH. [emu.dk: eksempler på mundtlige prøveopgaver](kilde:emu-mundtlig)
+
+**Eksempler på problemstillinger**
+
+- Du har målt antallet af bakterier i en kultur hver halve time i ti timer. Afgræns den del af data, der hører til den eksponentielle fase, og begrund dit valg. Bestem en forskrift, og beregn fordoblingstiden.
+- Hvordan kan temperatur og pH påvirke, hvor hurtigt bakterier vokser i en fødevare, fx en sauce, der står på køkkenbordet? Brug Fødevarestyrelsens oversigt, og inddrag en vækstkurve.
+- En kultur vokser eksponentielt de første timer, men senere flader kurven ud. Sammenlign en eksponentiel og en logistisk model, og vurdér, hvilken der passer bedst til hele forløbet.
+
+Øv dig på rigtige opgaver: Skriftlige opgaver fra 2010 og frem ligger i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). [vejledningen, s. 31](kilde:vejledning) [emu.dk: Skriftlig prøve i bioteknologi](kilde:emu-skriftlig) Lærerens hæfte og eksemplerne på mundtlige prøveopgaver finder du på [emu.dk](https://emu.dk/stx/bioteknologi/proever-og-eksamen).
