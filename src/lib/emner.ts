@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { FagId } from '../data/fag';
-import { forklaringTilHtml, udtraekBegreber } from './begreber';
+import { findDubletter, forklaringTilHtml, udtraekBegreber } from './begreber';
 import { url } from './sti';
 
 export type Emne = CollectionEntry<'emner'>;
@@ -61,12 +61,20 @@ export interface Flashcard {
   verificeret: boolean;
 }
 
-/** Alle begreber fra emnesiderne */
+/** Alle begreber fra emnesiderne. Buildet stopper, hvis et begreb står på flere sider. */
 export async function hentFlashcards(): Promise<Flashcard[]> {
   const emner = await hentEmner();
-  return emner.flatMap((emne) => {
+  const sider = emner.map((emne) => ({ emne, side: emne.id, begreber: udtraekBegreber(emne.body ?? '') }));
+  const dubletter = findDubletter(sider);
+  if (dubletter.length > 0) {
+    const linjer = dubletter.map((d) => `"${d.navn}" står på ${d.sider.join(', ')}`);
+    throw new Error(
+      `Hvert begreb skal stå ét sted. Behold det ene, og link til det fra de andre sider:\n- ${linjer.join('\n- ')}`,
+    );
+  }
+  return sider.flatMap(({ emne, begreber }) => {
     const fil = new URL(emne.filePath ?? emne.id, 'file:///projekt/');
-    return udtraekBegreber(emne.body ?? '').map((begreb) => ({
+    return begreber.map((begreb) => ({
       id: `${emne.id}#${begreb.id}`,
       begreb: begreb.navn,
       forklaring: forklaringTilHtml(begreb.markdown, fil, emne.data.kilder),

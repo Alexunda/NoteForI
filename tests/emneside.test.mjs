@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { pathToFileURL } from 'node:url';
 import { describe, test } from 'node:test';
 import { markdownToHtml, mdxToJs } from 'satteri';
-import { forklaringTilHtml, udtraekBegreber } from '../src/lib/begreber.ts';
+import { findDubletter, forklaringTilHtml, udtraekBegreber } from '../src/lib/begreber.ts';
 import { AFSNIT, afsnitNoegle, begrebId, slug, tjekEmneAfsnit } from '../src/lib/emneside.ts';
 import { katexPlugin } from '../src/lib/markdown/katex.ts';
 import { emneAfsnit, emneTjek } from '../src/lib/markdown/emneside.ts';
@@ -129,6 +129,30 @@ Den procent, en størrelse vokser med pr. periode, skrevet som $r$. [læreplanen
 
   test('to begreber med samme navn på én side stopper buildet', () => {
     assert.throws(() => udtraekBegreber(`${kilde}\n<Begreb navn="Vækstrate">\n\nIgen\n\n</Begreb>\n`), /to gange/);
+  });
+
+  test('et begreb, der står på to sider, er en dublet', () => {
+    const begreber = udtraekBegreber(kilde);
+    const andenSide = udtraekBegreber('<Begreb navn="vækstrate">\n\nIgen\n\n</Begreb>\n');
+    assert.deepEqual(
+      findDubletter([
+        { side: 'matematik/eksponentielle-funktioner', begreber },
+        { side: 'matematik/procent-og-rentesregning', begreber: andenSide },
+      ]),
+      [{ navn: 'Vækstrate', sider: ['matematik/eksponentielle-funktioner', 'matematik/procent-og-rentesregning'] }],
+    );
+  });
+
+  test('begreber med fag i navnet er ikke dubletter', () => {
+    const matematik = udtraekBegreber('<Begreb navn="Vektor (matematik)">\n\nEn pil\n\n</Begreb>\n');
+    const biotek = udtraekBegreber('<Begreb navn="Vektor (bioteknologi)">\n\nEt DNA-molekyle\n\n</Begreb>\n');
+    assert.deepEqual(
+      findDubletter([
+        { side: 'matematik/vektorer-i-planen', begreber: matematik },
+        { side: 'bioteknologi/eksperimentelle-metoder', begreber: biotek },
+      ]),
+      [],
+    );
   });
 });
 

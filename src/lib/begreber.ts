@@ -62,6 +62,31 @@ export function udtraekBegreber(mdx: string): RaatBegreb[] {
   return begreber;
 }
 
+export interface Dublet {
+  navn: string;
+  /** Siderne, hvor begrebet står, fx "dansk/skrivning" */
+  sider: string[];
+}
+
+/**
+ * Finder begreber, der står på mere end én side (CLAUDE.md, Konventioner).
+ * Hvert begreb skal stå ét sted med én definition, og andre sider linker til
+ * det. Betyder et begreb noget forskelligt i to fag, får de hvert sit navn,
+ * fx "Vektor (matematik)" og "Vektor (bioteknologi)". Buildet stopper ved
+ * dubletter, så der heller ikke kommer dubletter i flashcards.
+ */
+export function findDubletter(sider: { side: string; begreber: RaatBegreb[] }[]): Dublet[] {
+  const fundet = new Map<string, Dublet>();
+  for (const { side, begreber } of sider) {
+    for (const begreb of begreber) {
+      const dublet = fundet.get(begreb.id) ?? { navn: begreb.navn, sider: [] };
+      dublet.sider.push(side);
+      fundet.set(begreb.id, dublet);
+    }
+  }
+  return [...fundet.values()].filter((d) => d.sider.length > 1);
+}
+
 /**
  * Laver en forklaring om til HTML med formler og kildehenvisninger, ligesom
  * på emnesiden. `fil` er emnesidens fil, og `kilder` er kilderne fra dens
