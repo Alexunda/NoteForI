@@ -7,10 +7,16 @@ export const NOEGLER = {
   tema: 'gh:v1:tema',
   klassetrin: 'gh:v1:klassetrin',
   nedtaelling: 'gh:v1:nedtaelling',
+  pensum: 'gh:v2:pensum',
+} as const;
+
+/** Nøgler fra tidligere versioner. Data flyttes derfra til de nye nøgler. */
+export const GAMLE_NOEGLER = {
   pensum: 'gh:v1:pensum',
 } as const;
 
 type Noegle = (typeof NOEGLER)[keyof typeof NOEGLER];
+type GammelNoegle = (typeof GAMLE_NOEGLER)[keyof typeof GAMLE_NOEGLER];
 
 /** Tjekker, om browseren vil gemme. Giver false, hvis storage er blokeret eller fuldt. */
 export function kanGemme(): boolean {
@@ -24,7 +30,7 @@ export function kanGemme(): boolean {
   }
 }
 
-export function hent(noegle: Noegle): string | null {
+export function hent(noegle: Noegle | GammelNoegle): string | null {
   try {
     return localStorage.getItem(noegle);
   } catch {
@@ -43,7 +49,7 @@ export function gem(noegle: Noegle, vaerdi: string): boolean {
 }
 
 /** Læser JSON. Giver null, hvis der ikke er noget, eller hvis det er ugyldigt. */
-export function hentJson(noegle: Noegle): unknown {
+export function hentJson(noegle: Noegle | GammelNoegle): unknown {
   const tekst = hent(noegle);
   if (tekst === null) return null;
   try {
@@ -51,6 +57,28 @@ export function hentJson(noegle: Noegle): unknown {
   } catch {
     return null;
   }
+}
+
+/**
+ * Henter pensumtjeklisten. Findes der kun data under gh:v1:pensum, laves de
+ * om med `omdan` (laesPensum, som giver hvert fag læreplanen null) og gemmes
+ * under gh:v2:pensum. Den gamle nøgle slettes kun, hvis de nye data blev
+ * gemt. Vil browseren ikke gemme, bruges de gamle data alligevel.
+ */
+export function hentPensum(omdan: (raa: unknown) => unknown): unknown {
+  const nye = hentJson(NOEGLER.pensum);
+  if (nye !== null) return nye;
+  const gamle = hentJson(GAMLE_NOEGLER.pensum);
+  if (gamle === null) return null;
+  const omdannet = omdan(gamle);
+  if (gem(NOEGLER.pensum, JSON.stringify(omdannet))) {
+    try {
+      localStorage.removeItem(GAMLE_NOEGLER.pensum);
+    } catch {
+      // Så bliver den gamle nøgle bare liggende
+    }
+  }
+  return omdannet;
 }
 
 /**

@@ -51,7 +51,34 @@ export function tjekGeneriskPensum(lister: readonly GeneriskListe[], emner: Read
     }
   }
 
+  // Har et fag og niveau lister til flere læreplaner, vælger eleven sin, og
+  // så skal hver liste sige, hvem den gælder for
+  for (const valg of Object.values(laereplanValg(lister))) {
+    for (const liste of valg) {
+      if (!liste.gaelder?.trim()) {
+        fejl.push(`${liste.fag} ${liste.niveau} (${liste.laereplan}): skriv i gaelder, hvem listen gælder for.`);
+      }
+    }
+  }
+
   return fejl;
+}
+
+/**
+ * Læreplanerne, eleven kan vælge imellem for hvert fag og niveau med lister
+ * til mere end én læreplan, fx { "dansk/A": [dansk 2026, dansk 2017] }.
+ * Den nyeste står først.
+ */
+export function laereplanValg<T extends { fag: string; niveau: string; laereplan: string }>(
+  lister: readonly T[],
+): Record<string, T[]> {
+  const valg: Record<string, T[]> = {};
+  for (const liste of lister) (valg[`${liste.fag}/${liste.niveau}`] ??= []).push(liste);
+  for (const noegle of Object.keys(valg)) {
+    if (valg[noegle].length < 2) delete valg[noegle];
+    else valg[noegle].sort((a, b) => b.laereplan.localeCompare(a.laereplan));
+  }
+  return valg;
 }
 
 /** Gør listerne klar til siden. `emneUrl` giver linket til hver emneside ud fra dens id. */
