@@ -51,6 +51,8 @@ kilder:
   - id: lex-henderson-hasselbalch
     navn: "lex.dk: Henderson-Hasselbalchs ligning (hentet 24. oktober 2026)"
     url: https://lex.dk/Henderson-Hasselbalchs_ligning
+  - id: egen
+    navn: "Egen forklaring, godkendt af redaktionen"
   - id: lex-surhedsgrad
     navn: "lex.dk: Surhedsgrad (hentet 24. oktober 2026)"
     url: https://lex.dk/surhedsgrad
@@ -80,10 +82,15 @@ Til bioteknologi A skal du kunne syre-basereaktioner og beregne pH i vandige opl
 - **Hvad en puffer er.** En puffer, også kaldet en buffer, er en opløsning, der holder sin pH nogenlunde stabil, selv om du hælder lidt syre eller base i. Typisk opløser man en svag syre sammen med dens korresponderende base i vand, ofte med samme stofmængde af hver. [lex.dk: Buffer](kilde:lex-buffer)
 - **I laboratoriet.** Puffere bruges fx ved biokemiske og mikrobiologiske undersøgelser, hvor pH skal holdes konstant. [lex.dk: Buffer](kilde:lex-buffer)
 - **I kroppen.** Enzymer og transportmolekyler virker kun optimalt i et bestemt pH-interval. I blodet hjælper kulsyre og hydrogencarbonat med at holde pH stabil, og i cellerne virker phosphat og proteiner som puffere. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad) Om enzymer og pH kan du læse under [pH-optimum](/fag/bioteknologi/enzymer/#begreb-ph-optimum).
-- **Et eksempel fra blodet.** I blodet er hydrogencarbonat, $\text{HCO}_3^-$, med til at holde pH stabil, fordi det virker som puffer. Ligningen, der beskriver dette system, blodets vigtigste puffersystem, kaldes Henderson-Hasselbalchs ligning. [lex.dk: Henderson-Hasselbalchs ligning](kilde:lex-henderson-hasselbalch)
+- **Et eksempel fra blodet.** I blodet er hydrogencarbonat, $\text{HCO}_3^-$, med til at holde pH stabil, fordi det virker som puffer. Ligningen, der beskriver dette system, blodets vigtigste puffersystem, kaldes Henderson-Hasselbalchs ligning. Med den kan man regne blodets pH ud [lex.dk: Henderson-Hasselbalchs ligning](kilde:lex-henderson-hasselbalch):
+
+$$
+\text{pH} = 6{,}1 + \log\frac{[\text{HCO}_3^-]}{[\text{CO}_2] + [\text{H}_2\text{CO}_3]}
+$$
+
 - **Kemi B.** Puffersystemer er ikke kernestof i kemi B. [vejledningen til kemi, s. 21](kilde:vejledning-kemi)
 
-Prøv selv: Tag minus logaritmen på begge sider af udtrykket for styrkekonstanten nedenfor, og brug, at $\text{pH} = -\log[\text{H}_3\text{O}^+]$ og $\text{p}K_A = -\log K_A$. Hvilket udtryk for pH får du? Hvad bliver pH, når $[\text{A}^-] = [\text{HA}]$?
+Prøv selv: Udled pufferligningen under Formler. Tag minus logaritmen på begge sider af udtrykket for styrkekonstanten, og brug, at $\text{pH} = -\log[\text{H}_3\text{O}^+]$ og $\text{p}K_A = -\log K_A$. Hvad bliver pH, når $[\text{A}^-] = [\text{HA}]$?
 
 ## Formler
 
@@ -163,6 +170,41 @@ Den positive løsning er $x \approx 9{,}95 \cdot 10^{-4}$, så $[\text{H}_3\text
 - At sætte startkoncentrationerne ind i stedet for koncentrationerne ved ligevægt. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
 - At blande $K_s$ og $\text{p}K_s$ sammen. $\text{p}K_s$ er minus logaritmen til $K_s$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
 - At bytte om på syre og base i brøken. Syren $\text{HA}$ står i nævneren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Pufferligningen" tex="\text{pH} = \text{p}K_A + \log\frac{[\text{A}^-]}{[\text{HA}]}" kilde="egen" henvisning="egen forklaring, bygget på formlerne for pH og styrkekonstanten">
+
+<Symboler>
+
+- $\text{p}K_A$: syrestyrkeeksponenten, $\text{p}K_A = -\log K_A$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
+- $[\text{A}^-]$: koncentrationen af baseformen.
+- $[\text{HA}]$: koncentrationen af syreformen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal regne pH ud i en puffer, altså en opløsning med en svag syre og dens korresponderende base. Formlen kommer fra styrkekonstanten ovenfor. Tager du minus logaritmen på begge sider af $K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}$, får du $\text{p}K_A = \text{pH} - \log\frac{[\text{A}^-]}{[\text{HA}]}$, og det kan du omskrive til pufferligningen. Er der lige meget af syreform og baseform, er $\text{pH} = \text{p}K_A$, fordi $\log 1 = 0$. Blodets ligning under Vigtige pointer har samme form med $6{,}1$ på pladsen for $\text{p}K_A$. [egen forklaring](kilde:egen)
+
+</Bruges>
+
+<Eksempel>
+
+En puffer har $\text{p}K_A = 4{,}8$. Koncentrationen af baseformen er $0{,}20\ \text{M}$, og koncentrationen af syreformen er $0{,}10\ \text{M}$. Så er
+
+$$
+\text{pH} = 4{,}8 + \log\frac{0{,}20}{0{,}10} = 4{,}8 + \log 2 \approx 5{,}1
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på syreform og baseform i brøken. I eksemplet ville du så få $\text{pH} \approx 4{,}5$.
+- At bruge formlen, når der kun er syre eller kun base i opløsningen. Så er det ikke en puffer.
 
 </Fejl>
 
