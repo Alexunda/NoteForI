@@ -43,7 +43,7 @@ Har du en tabel med datapunkter, kan et digitalt værktøj finde den model, der 
 
 - **Modeltypen står i opgaven.** Til den skriftlige prøve skal du kunne opstille modeller ved regression, men du forventes ikke at kunne begrunde, hvorfor én model er bedre end en anden. Derfor står modeltypen altid i opgaven. [vejledningen, s. 37](kilde:vejledning)
 - **Funktionstyperne.** Du skal kunne lave regression med [lineære funktioner](/fag/matematik/lineaere-funktioner/), [eksponentielle funktioner](/fag/matematik/eksponentielle-funktioner/), [potensfunktioner](/fag/matematik/potensfunktioner/), [andengradspolynomier](/fag/matematik/andengradspolynomier/) og de [trigonometriske funktioner](/fag/matematik/trigonometriske-funktioner/) cosinus og sinus. [vejledningen, s. 15](kilde:vejledning)
-- **Hvad betyder ”passer bedst”?** Regressionsmodellen er den model, der passer bedst til datapunkterne. [formelsamlingen, s. 30, formel (115) og (117)](kilde:formelsamling) Ved en ret linje bruger man ofte mindste kvadraters metode: For hvert datapunkt tager du afvigelsen mellem linjen og punktet og sætter den i anden. Den bedste linje er den, hvor summen af kvadraterne er mindst. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) [lex.dk: Regressionsanalyse](kilde:lex-regressionsanalyse) Med datapunkterne $(x_1, y_1), \ldots, (x_n, y_n)$ og linjen $y = a \cdot x + b$ er det summen $(a \cdot x_1 + b - y_1)^2 + \ldots + (a \cdot x_n + b - y_n)^2$, der skal være så lille som muligt. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) Se eksemplet med stearinlyset herunder.
+- **Hvad betyder ”passer bedst”?** Regressionsmodellen er den model, der passer bedst til datapunkterne. [formelsamlingen, s. 30, formel (115) og (117)](kilde:formelsamling) Ved en ret linje bruger man ofte mindste kvadraters metode: For hvert datapunkt tager du den lodrette afvigelse, altså forskellen mellem punktets $y$-værdi og linjens $y$-værdi, og sætter den i anden. Den bedste linje er den, hvor summen af kvadraterne er mindst. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) [lex.dk: Regressionsanalyse](kilde:lex-regressionsanalyse) Med datapunkterne $(x_1, y_1), \ldots, (x_n, y_n)$ og linjen $y = a \cdot x + b$ er det summen $(a \cdot x_1 + b - y_1)^2 + \ldots + (a \cdot x_n + b - y_n)^2$, der skal være så lille som muligt. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) Mindste kvadraters metode står ikke i læreplanen fra 2024, vejledningen eller formelsamlingen. Det, du skal kunne, er at lave regression med dit digitale værktøj og bruge modellen. [vejledningen, s. 15 og 37](kilde:vejledning) Forklaringen her er baggrund, så du ved, hvad »passer bedst« betyder. Se eksemplet med stearinlyset herunder.
 - **Tegn data og model sammen.** Tegn datapunkterne og grafen for modellen i samme koordinatsystem. Vælg et passende grafvindue, altså det udsnit af koordinatsystemet, du viser, så punkter og graf står tydeligt. [vejledningen, s. 15 og 41](kilde:vejledning)
 - **Brug modellen.** Med modellen kan du lave fremskrivninger og prognoser, altså bud på, hvordan udviklingen fortsætter. Du kan også fortolke tallene i forskriften og regne konkrete ting ud i sammenhængen. [vejledningen, s. 15](kilde:vejledning)
 - **Interpolation og ekstrapolation.** Når du bruger kendte værdier, fx fra en tabel, til at give et bud på en værdi, der ligger mellem dem, kaldes det interpolation. [lex.dk: Interpolation](kilde:lex-interpolation) Ligger værdien uden for det interval, de kendte værdier dækker, kaldes det ekstrapolation. [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation) Et bud uden for intervallet er mere usikkert. [lex.dk: Interpolation](kilde:lex-interpolation) Vejledningen nævner forskellen mellem at bruge en model til interpolation og til ekstrapolation som noget, I kan diskutere, når I arbejder med modeller. [vejledningen, s. 9 og 27](kilde:vejledning)
@@ -94,7 +94,7 @@ Grafen skærer $x$-aksen ved $x = 15$. Efter 15 timer giver modellen altså høj
 
 **Interpolation eller ekstrapolation?** Målingerne går fra 0 til 5 timer. Bruger du modellen efter 2,5 timer, er det interpolation, fordi 2,5 ligger mellem målingerne: $f(2{,}5) = -1{,}6 \cdot 2{,}5 + 24{,}0 = 20{,}0$. Prognosen under Formler, hvor lyset er 5 cm højt efter ca. 11,9 timer, er ekstrapolation, fordi 11,9 ligger uden for intervallet fra 0 til 5. [lex.dk: Interpolation](kilde:lex-interpolation) [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation)
 
-**Hvorfor netop denne linje?** De absolutte afvigelser mellem målingerne og modelværdierne er $0{,}1$, $-0{,}2$, $0{,}1$, $0{,}1$, $-0{,}2$ og $0{,}1$ cm. [formelsamlingen, s. 31, formel (120)](kilde:formelsamling) Summen af kvadraterne er
+**Ekstra: Hvorfor netop denne linje?** De absolutte afvigelser mellem målingerne og modelværdierne er $0{,}1$, $-0{,}2$, $0{,}1$, $0{,}1$, $-0{,}2$ og $0{,}1$ cm. [formelsamlingen, s. 31, formel (120)](kilde:formelsamling) Summen af kvadraterne er
 
 $$
 0{,}1^2 + (-0{,}2)^2 + 0{,}1^2 + 0{,}1^2 + (-0{,}2)^2 + 0{,}1^2 = 0{,}12
@@ -352,7 +352,7 @@ To variable kan se ud til at afhænge direkte af hinanden, selv om de i virkelig
 
 <Begreb navn="Mindste kvadraters metode">
 
-En metode til at finde den funktion, der passer bedst til en række målte datapunkter. Ved en ret linje sætter du hver afvigelse mellem linjen og et datapunkt i anden og lægger kvadraterne sammen. Den bedste linje er den, der giver den mindste sum. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode)
+En metode til at finde den funktion, der passer bedst til en række målte datapunkter. Ved en ret linje sætter du hver lodret afvigelse mellem et datapunkt og linjen i anden og lægger kvadraterne sammen. Den bedste linje er den, der giver den mindste sum. [lex.dk: Mindste kvadraters metode](kilde:lex-mindste-kvadraters-metode) Metoden står ikke i de officielle kilder til læreplanen fra 2024.
 
 </Begreb>
 
@@ -364,7 +364,7 @@ Et bud på en funktionsværdi, der ligger mellem nogle værdier, du kender, fx f
 
 <Begreb navn="Ekstrapolation">
 
-Et bud på en funktionsværdi uden for det interval, dine kendte værdier dækker. Du bygger det på de kendte værdier tættest på, og det er mere usikkert end interpolation. [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation) [lex.dk: Interpolation](kilde:lex-interpolation)
+Et bud på en funktionsværdi uden for det interval, dine kendte værdier dækker, fx med en model. Det er mere usikkert end interpolation. [lex.dk: Ekstrapolation](kilde:lex-ekstrapolation) [lex.dk: Interpolation](kilde:lex-interpolation)
 
 </Begreb>
 
