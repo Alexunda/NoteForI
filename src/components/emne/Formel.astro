@@ -30,7 +30,7 @@ interface Props {
 }
 
 const { navn, tex, henvisning, kildenavn, kildeurl } = Astro.props;
-if (!kildeurl) throw new Error(`Formlen "${navn}" har ingen kilde. Er <Formel> brugt uden for en emneside?`);
+if (!kildenavn) throw new Error(`Formlen "${navn}" har ingen kilde. Er <Formel> brugt uden for en emneside?`);
 const id = `formel-${slug(navn)}`;
 ---
 
@@ -38,7 +38,13 @@ const id = `formel-${slug(navn)}`;
   <h3 class="formel-navn" id={`${id}-navn`}>{navn}</h3>
   <div class="formel-tex" set:html={texTilHtml(tex, true)} />
   <p class="formel-kilde">
-    <a href={kildeurl} title={kildenavn}><span class="skjult-visuelt">Kilde: </span>{holdSammen(henvisning)}</a>
+    {
+      kildeurl ? (
+        <a href={kildeurl} title={kildenavn}><span class="skjult-visuelt">Kilde: </span>{holdSammen(henvisning)}</a>
+      ) : (
+        <span><span class="skjult-visuelt">Kilde: </span>{holdSammen(henvisning)}</span>
+      )
+    }
   </p>
   <div class="formel-dele">
     <slot />

@@ -3,6 +3,7 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { FAG_IDER } from './data/fag';
 import { KLASSETRIN } from './data/klassetrin';
+import { EGEN_FORKLARING } from './lib/huller';
 
 const aarstal = z.string().regex(/^\d{4}$/);
 
@@ -21,6 +22,28 @@ const kildeliste = z
       navn: z.string().min(1),
       url: z.url(),
     }),
+  )
+  .min(1)
+  .refine((kilder) => new Set(kilder.map((k) => k.id)).size === kilder.length, {
+    message: 'To kilder har samme id.',
+  });
+
+/**
+ * Kilderne på en emneside. Som kildeliste, men en kilde må mangle url, hvis
+ * redaktionen selv har skrevet forklaringen. Så hedder den "Egen forklaring,
+ * godkendt af redaktionen" (src/lib/huller.ts).
+ */
+const emneKildeliste = z
+  .array(
+    z
+      .object({
+        id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+        navn: z.string().min(1),
+        url: z.url().optional(),
+      })
+      .refine((k) => k.url !== undefined || k.navn === EGEN_FORKLARING, {
+        message: `En kilde uden url skal hedde "${EGEN_FORKLARING}".`,
+      }),
   )
   .min(1)
   .refine((kilder) => new Set(kilder.map((k) => k.id)).size === kilder.length, {
@@ -48,7 +71,7 @@ const emner = defineCollection({
     klassetrin: z.union([z.array(z.enum(KLASSETRIN)).min(1), z.literal('ukendt')]),
     /** Den læreplanversion, indholdet bygger på, fx "2024", eller flere, fx ["2017", "2026"] */
     laereplan: laereplaner,
-    kilder: kildeliste,
+    kilder: emneKildeliste,
     /** Sættes kun til true af repoets ejer, når siden er gennemlæst (CLAUDE.md, regel 3) */
     verificeret: z.boolean(),
   }),

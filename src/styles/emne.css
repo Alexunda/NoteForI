@@ -263,6 +263,19 @@
   margin-bottom: 0;
 }
 
+/* Et begreb, som siden ikke forklarer endnu (src/components/emne/Hul.astro) */
+.hul {
+  margin-block: var(--afstand-4);
+  padding: var(--afstand-3) var(--afstand-4);
+  border: 1px dashed var(--farve-kant-staerk);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.hul p {
+  margin: 0;
+}
+
 @media (min-width: 40rem) {
   .forskel-planer {
     grid-template-columns: 1fr 1fr;

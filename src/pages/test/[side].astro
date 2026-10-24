@@ -16,6 +16,7 @@ import Begreb from '../../components/emne/Begreb.astro';
 import Graf from '../../components/emne/Graf.astro';
 import Forskel from '../../components/emne/Forskel.astro';
 import Plan from '../../components/emne/Plan.astro';
+import Hul from '../../components/emne/Hul.astro';
 import Indhold, { frontmatter } from '../../../tests/komponenter.mdx';
 
 export function getStaticPaths() {
@@ -24,7 +25,7 @@ export function getStaticPaths() {
   return miljoe?.KOMPONENTTEST === '1' ? [{ params: { side: 'komponenter' } }] : [];
 }
 
-const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb, Graf, Forskel, Plan };
+const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb, Graf, Forskel, Plan, Hul };
 const kilder = frontmatter.kilder as { id: string; navn: string; url: string }[];
 ---
 
@@ -47,7 +48,7 @@ const kilder = frontmatter.kilder as { id: string; navn: string; url: string }[]
         {
           kilder.map((kilde) => (
             <li>
-              <a href={kilde.url}>{kilde.navn}</a>
+              {kilde.url ? <a href={kilde.url}>{kilde.navn}</a> : kilde.navn}
             </li>
           ))
         }

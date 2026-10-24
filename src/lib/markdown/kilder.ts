@@ -28,7 +28,8 @@ import {
 export interface Kilde {
   id: string;
   navn: string;
-  url: string;
+  /** Mangler kun, når redaktionen selv har skrevet forklaringen (src/lib/huller.ts) */
+  url?: string;
 }
 
 /** De mapper, hvis filer bruger kildehenvisningerne, og testsiden til komponenterne */
@@ -98,11 +99,11 @@ const kildePlugin = defineMdastPlugin({
     const foerAnden =
       erKildelink(soeskende[i + 1]) || (erMellemrum(soeskende[i + 1]) && erKildelink(soeskende[i + 2]));
 
-    const link = {
-      type: 'link',
-      url: kilde.url,
-      children: [element('skjult', 'span', 'skjult-visuelt', [{ type: 'text', value: 'Kilde: ' }]), ...linkTekst(node)],
-    } as MdastNode;
+    const tekst = [element('skjult', 'span', 'skjult-visuelt', [{ type: 'text', value: 'Kilde: ' }]), ...linkTekst(node)];
+    // En egen forklaring har ingen adresse, så den står uden link
+    const link = kilde.url
+      ? ({ type: 'link', url: kilde.url, children: tekst } as MdastNode)
+      : element('egen-kilde', 'span', 'kilde-egen', tekst);
     ctx.replaceNode(
       node,
       element('kildehenvisning', 'span', 'kilde', [
@@ -127,7 +128,7 @@ const kildePlugin = defineMdastPlugin({
       attributes: [
         ...node.attributes,
         { type: 'mdxJsxAttribute', name: 'kildenavn', value: kilde.navn },
-        { type: 'mdxJsxAttribute', name: 'kildeurl', value: kilde.url },
+        ...(kilde.url ? [{ type: 'mdxJsxAttribute', name: 'kildeurl', value: kilde.url } as const] : []),
       ],
     });
   },
