@@ -32,7 +32,7 @@ Den fulde plan står i `docs/projektplan.md`. Læs den, før du starter en ny fa
      - Tal, som kilderne er uenige om (fx ATP-udbyttet), kommer ikke på siden.
      - Opløselighed beskrives kvalitativt og ikke med tal.
    - **Huller:** Forklarer ingen tilladt kilde et begreb, som eleven skal kende, så står det i en `<Hul navn="…" />`-boks på siden og i `docs/huller.md`. Boksen har altid teksten "Det her forklarer siden ikke endnu. Brug dine noter, eller spørg din lærer." `npm test` tjekker, at de to passer sammen.
-   - **Egne forklaringer:** Matematiske huller (fx stedvektor) må redaktionen forklare selv. Kilden hedder "Egen forklaring, godkendt af redaktionen" (uden navn og url), og forklaringen står øverst på gennemlæsningslisten, til ejeren har godkendt den.
+   - **Egne forklaringer:** Matematiske huller (fx stedvektor og elimination) må redaktionen forklare selv. Kilden hedder "Egen forklaring, godkendt af redaktionen" (uden navn og url), og forklaringen står øverst på gennemlæsningslisten, til ejeren har godkendt den.
    - **Lærebøger er ikke tilladt** som kilde.
 2. **Læreplanversion.** Mærk alt indhold med `laereplan`. Flere fag har nye læreplaner (fx matematik 2024 og dansk A 2026), og brugerne kan være på forskellige versioner.
 3. **Nyt indhold får `verificeret: false`.** Kun repoets ejer sætter `true`, og først når siden er gennemlæst. "Gennemlæst" betyder, at hver formel og regel på sidens gennemlæsningsliste er tjekket mod sin kilde.
