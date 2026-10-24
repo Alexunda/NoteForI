@@ -1,0 +1,254 @@
+---
+titel: "Tangenter og Newtons metode"
+beskrivelse: "Tangentens ligning, tangenten som tilnærmelse og Newtons metode, der bruger tangenter til at finde et nulpunkt med tilnærmede tal."
+fag: matematik
+nummer: 19
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Tangenten til grafen for $f$ i punktet $P(x_0, f(x_0))$ er den rette linje gennem $P$, der har hældningen $f'(x_0)$. [formelsamlingen, s. 62 og 64, formel (248) og (253)](kilde:formelsamling) Dens ligning er $y = f'(x_0) \cdot (x - x_0) + f(x_0)$. [formelsamlingen, s. 64, formel (254)](kilde:formelsamling) Newtons metode bruger tangenter til at finde et nulpunkt for $f$ med tilnærmede tal, skridt for skridt. Et nulpunkt er et tal $x$, hvor $f(x) = 0$, altså der, hvor grafen rammer $x$-aksen. [formelsamlingen, s. 23 og 64, formel (72) og (255)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Et punkt og en hældning.** Tangenten er bestemt af røringspunktet $P(x_0, f(x_0))$, hvor den rører grafen, og af hældningen $f'(x_0)$, som er [differentialkvotienten](/fag/matematik/differentialkvotient/) i $x_0$. [formelsamlingen, s. 62 og 64, formel (248) og (253)](kilde:formelsamling) Sætter du dem ind i ligningen for en linje gennem et punkt med en given hældning, $y = a \cdot (x - x_1) + y_1$, får du tangentens ligning. [formelsamlingen, s. 49 og 64, formel (206) og (254)](kilde:formelsamling) Se også [analytisk plangeometri](/fag/matematik/analytisk-plangeometri/).
+- **Tre skridt.** Regn $f(x_0)$ ud. Find $f'(x)$, og regn $f'(x_0)$ ud. Sæt de to tal ind i tangentens ligning. [formelsamlingen, s. 64, formel (254)](kilde:formelsamling) Til $f'(x)$ skal du bruge [regnereglerne for differentiation](/fag/matematik/regneregler-for-differentiation/).
+- **To skrivemåder.** Tangentens ligning kan også skrives $y = a \cdot x + b$, hvor $a = f'(x_0)$ og $b = f(x_0) - a \cdot x_0$. [formelsamlingen, s. 64, formel (254)](kilde:formelsamling)
+- **Vandret tangent.** En vandret tangent har hældningen 0. Du finder $x$-værdien til røringspunktet ved at løse ligningen $f'(x) = 0$. [formelsamlingen, s. 65, formel (257)](kilde:formelsamling) Se også [monotoniforhold og optimering](/fag/matematik/monotoniforhold-og-optimering/).
+- **Tangenten som tilnærmelse.** Du kan bruge tangentens ligning til at beregne tilnærmede værdier. Vejledningen kalder tangentens ligning det approksimerende førstegradspolynomium. Approksimerende betyder tilnærmende. [vejledningen, s. 15](kilde:vejledning) I eksemplet under formlerne passer tilnærmelsen godt tæt på røringspunktet og dårligere længere væk.
+- **Newtons metode.** Du starter med et gæt $x_1$ tæt på nulpunktet. Formlen giver et nyt tal $x_2$, som du sætter ind i formlen igen, og sådan fortsætter du. [formelsamlingen, s. 64, formel (255)](kilde:formelsamling) Figuren i formelsamlingen viser, at hvert nyt tal ligger der, hvor tangenten i det forrige tal skærer $x$-aksen. [formelsamlingen, s. 64](kilde:formelsamling)
+- **Hvorfor virker formlen?** Tangenten i punktet $(x_n, f(x_n))$ har ligningen $y = f'(x_n) \cdot (x - x_n) + f(x_n)$. Sætter du $y = 0$ og isolerer $x$, får du $x = x_n - \frac{f(x_n)}{f'(x_n)}$. Det er netop $x_{n+1}$. [formelsamlingen, s. 64, formel (254) og (255)](kilde:formelsamling)
+- **Eksakt eller numerisk.** Newtons metode giver en numerisk løsning, altså et tilnærmet tal som $2{,}2361$, og ikke en eksakt løsning som $\sqrt{5}$. Metoden er en god lejlighed til at arbejde med algoritmer, dvs. opskrifter, du følger trin for trin. [vejledningen, s. 16](kilde:vejledning) Et regneark kan hjælpe dig med de mange udregninger. [vejledningen, s. 32](kilde:vejledning)
+- **Når metoden går i stå.** Er $f'(x_n) = 0$, kan du ikke dividere med det. Tangenten er så vandret. Prøv et andet startgæt. [formelsamlingen, s. 64–65, formel (255) og (257)](kilde:formelsamling)
+
+Prøv selv: Træk i skyderen x0, så røringspunktet $(x_0, f(x_0))$ flytter sig langs grafen for $f(x) = x^3 - 3x$. Hvor er tangenten vandret? Sæt så $x_0 = 2$. Hvor skærer tangenten $x$-aksen? Det er det næste tal i Newtons metode, når du starter i 2.
+
+<Graf
+  titel="Tangent med skyder for røringspunktet"
+  funktioner={[
+    { forskrift: 'f(x) = x^3 - 3 · x', tex: 'f(x) = x^3 - 3x' },
+    { forskrift: 't(x) = (3 · x0^2 - 3) · (x - x0) + x0^3 - 3 · x0', tex: 't(x) = (3x_0^2 - 3) \\cdot (x - x_0) + x_0^3 - 3x_0' },
+  ]}
+  parametre={{ x0: { min: -2.5, max: 2.5, start: 2, trin: 0.1 } }}
+  x={[-3, 3]}
+  y={[-5, 5]}
+/>
+
+Forskriften for $t$ er tangentens ligning med $f'(x_0) = 3x_0^2 - 3$ og $f(x_0) = x_0^3 - 3x_0$. [formelsamlingen, s. 64, formel (254)](kilde:formelsamling)
+
+## Formler
+
+<Formel navn="Tangentens ligning" tex="y = f'(x_0) \cdot (x - x_0) + f(x_0)" kilde="formelsamling" henvisning="formelsamlingen, s. 64, formel (254)">
+
+<Symboler>
+
+- $x_0$: førstekoordinaten til røringspunktet $P$.
+- $f(x_0)$: andenkoordinaten til $P$.
+- $f'(x_0)$: tangentens hældning.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal bestemme en ligning for tangenten til grafen for $f$ i et bestemt punkt.
+
+</Bruges>
+
+<Eksempel>
+
+Find tangenten til grafen for $f(x) = x^3 - 4x + 1$ i punktet med $x_0 = -1$. Først er
+
+$$
+f(-1) = (-1)^3 - 4 \cdot (-1) + 1 = 4
+$$
+
+Så er $f'(x) = 3x^2 - 4$, og
+
+$$
+f'(-1) = 3 \cdot (-1)^2 - 4 = -1
+$$
+
+Tangentens ligning er derfor
+
+$$
+y = -1 \cdot (x - (-1)) + 4 = -x - 1 + 4 = -x + 3
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge forskriften for $f'(x)$ som hældning i stedet for tallet $f'(x_0)$. Tangenten er en ret linje, så dens ligning har kun et $x$-led og et tal.
+- At glemme fortegnet, når $x_0$ er negativ: $x - (-1) = x + 1$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Tangentens ligning med a og b" tex="\begin{aligned} y &= a \cdot x + b \\ a &= f'(x_0) \\ b &= f(x_0) - a \cdot x_0 \end{aligned}" kilde="formelsamling" henvisning="formelsamlingen, s. 64, formel (254)">
+
+<Symboler>
+
+- $a$: tangentens hældning.
+- $b$: andenkoordinaten til det punkt, hvor tangenten skærer $y$-aksen.
+- $P(x_0, f(x_0))$: røringspunktet.
+
+</Symboler>
+
+<Bruges>
+
+Når du vil have tangentens ligning på den sædvanlige form $y = a \cdot x + b$, fx når du skal bruge tangenten til at beregne tilnærmede værdier.
+
+</Bruges>
+
+<Eksempel>
+
+Find tangenten til grafen for $f(x) = \sqrt{x}$ i punktet med $x_0 = 4$. Her er $f(4) = 2$, og formel (269) giver $f'(x) = \frac{1}{2\sqrt{x}}$. Så er
+
+$$
+a = f'(4) = \frac{1}{2 \cdot 2} = 0{,}25 \qquad b = 2 - 0{,}25 \cdot 4 = 1
+$$
+
+Tangenten har altså ligningen $y = 0{,}25x + 1$. Brug den til en tilnærmet værdi af $\sqrt{4{,}2}$:
+
+$$
+\sqrt{4{,}2} \approx 0{,}25 \cdot 4{,}2 + 1 = 2{,}05
+$$
+
+Lommeregneren giver $\sqrt{4{,}2} \approx 2{,}0494$, så tilnærmelsen er god.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme minusset i $b = f(x_0) - a \cdot x_0$.
+- At bruge tangenten langt fra røringspunktet. Den giver fx $0{,}25 \cdot 9 + 1 = 3{,}25$, men $\sqrt{9} = 3$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Newtons metode" tex="x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \quad n = 1, 2, 3, \ldots" kilde="formelsamling" henvisning="formelsamlingen, s. 64, formel (255)">
+
+<Symboler>
+
+- $x^*$: nulpunktet, du leder efter.
+- $x_1$: dit startgæt tæt på $x^*$.
+- $x_n$: det tal, du er nået til.
+- $x_{n+1}$: det næste tal.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde et nulpunkt for $f$ med tilnærmede tal, fx når ligningen $f(x) = 0$ er svær at løse i hånden.
+
+</Bruges>
+
+<Eksempel>
+
+Nulpunktet for $f(x) = x^2 - 5$ er $\sqrt{5}$. Her er $f'(x) = 2x$. Med startgættet $x_1 = 2$ er
+
+$$
+x_2 = 2 - \frac{2^2 - 5}{2 \cdot 2} = 2 - \frac{-1}{4} = 2{,}25
+$$
+
+$$
+x_3 = 2{,}25 - \frac{2{,}25^2 - 5}{2 \cdot 2{,}25} = 2{,}25 - \frac{0{,}0625}{4{,}5} \approx 2{,}236111
+$$
+
+Det næste skridt giver $x_4 \approx 2{,}236068$. Afrundet til fire decimaler giver $x_3$ og $x_4$ begge $2{,}2361$, og det passer med $\sqrt{5} \approx 2{,}2361$.
+
+</Eksempel>
+
+<Fejl>
+
+- At dividere med $f(x_n)$ i stedet for $f'(x_n)$ eller at bytte om på dem.
+- At runde for meget af undervejs. Regn videre med alle decimaler.
+- At vælge et startgæt, hvor $f'(x_1) = 0$. Så kan du ikke dividere.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Tangent">
+
+Den rette linje gennem et punkt $P(x_0, f(x_0))$ på grafen for $f$, der har hældningen $f'(x_0)$. [formelsamlingen, s. 62 og 64, formel (248) og (253)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Røringspunkt">
+
+Punktet, hvor tangenten rører grafen. For tangenten i $x_0$ er det $P(x_0, f(x_0))$. [formelsamlingen, s. 64, formel (253)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Vandret tangent">
+
+En tangent med hældningen 0. Du finder $x$-værdien til røringspunktet ved at løse $f'(x) = 0$. [formelsamlingen, s. 65, formel (257)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Approksimerende førstegradspolynomium">
+
+Tangentens ligning, når den bruges til at beregne tilnærmede værdier. Approksimerende betyder tilnærmende. [vejledningen, s. 15](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Newtons metode">
+
+En metode til at finde et nulpunkt med tilnærmede tal. Du starter med et gæt $x_1$ og regner $x_2$, $x_3$ osv. ud med $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$. [formelsamlingen, s. 64, formel (255)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Numerisk løsning">
+
+En løsning med tilnærmede tal, som du finder med en metode, der regner trin for trin, fx Newtons metode. Det modsatte er en eksakt løsning. [vejledningen, s. 16](kilde:vejledning)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Kernestoffet er tangent og tangentligning og numerisk bestemmelse af nulpunkter med Newtons metode. [læreplanen, pkt. 2.2](kilde:laereplan) Du skal kunne opstille tangentens ligning, og den kan bruges til at beregne tilnærmede værdier. [vejledningen, s. 15](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Til en tangent skal du finde $f'(x)$ i hånden, og regnereglerne skal du kunne bruge i delprøve 1. [vejledningen, s. 15](kilde:vejledning) Vis dine mellemregninger: $f(x_0)$, $f'(x)$, $f'(x_0)$ og til sidst ligningen. [vejledningen, s. 41](kilde:vejledning)
+
+- Ved den skriftlige prøve skal du også kunne bestemme en ligning for tangenten til en løsningskurve for en differentialligning uden CAS. [vejledningen, s. 17](kilde:vejledning) Se [differentialligninger](/fag/matematik/differentialligninger/).
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning) Newtons metode kan du fx regne i et regneark. [vejledningen, s. 32](kilde:vejledning) Forklar, hvordan du har brugt dit digitale værktøj. [vejledningen, s. 41](kilde:vejledning)
+
+I vejledningens afsnit om differentialregning står der ikke, at dele af emnet er undtaget fra den skriftlige prøve. [vejledningen, s. 15–16](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan)
+
+- Tangentens ligning skal opstilles. [vejledningen, s. 15](kilde:vejledning) Øv dig i at udlede den ud fra et punkt og en hældning, som under Vigtige pointer.
+- Newtons metode er et eksempel på en algoritme, og den viser forskellen på en eksakt og en numerisk løsning. [vejledningen, s. 16](kilde:vejledning) Øv dig i at forklare med en tegning, hvorfor formlen virker.
+- Tangenter kan også være et afsæt for tilnærmelser med polynomier af højere grad, fx Taylorpolynomier. [vejledningen, s. 16](kilde:vejledning) De står ikke i kernestoffet. [læreplanen, pkt. 2.2](kilde:laereplan)
+
+**Eksempler på problemstillinger**
+
+- Bestem en ligning for tangenten til grafen for $f(x) = \frac{8}{x}$ i punktet med $x$-koordinaten 2.
+- Brug tangenten til grafen for $f(x) = \sqrt{x}$ i $x_0 = 9$ til at finde en tilnærmet værdi af $\sqrt{9{,}3}$. Hvor stor er fejlen?
+- Brug Newtons metode med startgættet $x_1 = 1$ til at finde et nulpunkt for $f(x) = x^3 + x - 3$ med tre decimaler. Forklar med en tegning, hvad der sker i hvert skridt.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
