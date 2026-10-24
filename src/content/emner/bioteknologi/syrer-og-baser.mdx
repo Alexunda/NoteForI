@@ -36,6 +36,24 @@ kilder:
   - id: laereplan-kemi-c
     navn: "Læreplan for kemi C, stx, august 2017 (uvm.dk, PDF)"
     url: https://uvm.dk/media/ykrd5w53/kemi-c-stx-august-2017-ua.pdf
+  - id: lex-ph
+    navn: "lex.dk: pH (hentet 24. oktober 2026)"
+    url: https://lex.dk/pH
+  - id: lex-styrkekonstant
+    navn: "lex.dk: Styrkekonstant (hentet 24. oktober 2026)"
+    url: https://lex.dk/styrkekonstant
+  - id: lex-styrkeeksponent
+    navn: "lex.dk: Styrkeeksponent (hentet 24. oktober 2026)"
+    url: https://lex.dk/styrkeeksponent
+  - id: lex-buffer
+    navn: "lex.dk: Buffer (kemisk opløsning) (hentet 24. oktober 2026)"
+    url: https://lex.dk/buffer_-_kemisk_opl%C3%B8sning
+  - id: lex-henderson-hasselbalch
+    navn: "lex.dk: Henderson-Hasselbalchs ligning (hentet 24. oktober 2026)"
+    url: https://lex.dk/Henderson-Hasselbalchs_ligning
+  - id: lex-surhedsgrad
+    navn: "lex.dk: Surhedsgrad (hentet 24. oktober 2026)"
+    url: https://lex.dk/surhedsgrad
 verificeret: false
 ---
 
@@ -47,12 +65,113 @@ Til bioteknologi A skal du kunne syre-basereaktioner og beregne pH i vandige opl
 
 - **Definitionen.** Vejledningen skriver, at syre-basereaktioner tager udgangspunkt i Brønsteds definition af syrer og baser. [vejledningen, s. 12](kilde:vejledning)
 - **pH og oxonium.** pH hænger sammen med den aktuelle stofmængdekoncentration af oxonium, og sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Koncentrationen af oxonium skrives $[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+- **Formlen for pH.** I Lærerens hæfte til kemi A beregnes pH med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) pH er altså minus [titalslogaritmen](/fag/matematik/logaritmefunktioner/#begreb-titalslogaritme) til talværdien af koncentrationen, målt i mol pr. liter. [lex.dk: pH](kilde:lex-ph) Se formlen nedenfor.
+- **Sur, neutral og basisk.** I rent vand ved 25 °C er pH 7, og vandet er neutralt. En sur opløsning har pH under 7, og en basisk opløsning har pH over 7. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
 - **Det skal du kunne regne på.** pH i vandige opløsninger af både stærke og ikke-stærke syrer og baser og i puffersystemer. [vejledningen, s. 12](kilde:vejledning)
 - **Syrestyrke.** pKs kaldes syrestyrkeeksponenten. [Lærerens hæfte til kemi A, s. 22](kilde:laererens-haefte-kemi) Du kan finde pKs-værdier med dit kemiske tegneprogram. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+- **Styrkekonstant og styrkeeksponent.** En syres styrke i vand måles med styrkekonstanten, og syrestyrkeeksponenten er minus logaritmen til den. Jo stærkere syren er, jo svagere er dens korresponderende base. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant) [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent) Se formlen nedenfor.
 - **Aminer og aminosyrer.** Du skal kende aminers egenskab som baser og aminosyrers syre-baseegenskaber. [vejledningen, s. 10](kilde:vejledning) Aminosyrer skal især ses i forbindelse med, at proteiner dannes ved peptidbinding. [vejledningen, s. 10](kilde:vejledning)
 - **Ordene i opgaverne.** De skriftlige opgaver bruger ikke ordet hydronolyse, som nogle lærebøger bruger. I stedet bruger de hydronoverførsel, selvionisering og omdannelsesgrad. [Lærerens hæfte, s. 15](kilde:laererens-haefte)
 - **Titrering.** Syre-base-titrering for monohydrone syrer og baser, herunder at bruge titrerkurver til kvantitative undersøgelser, hører til de eksperimentelle metoder. [vejledningen, s. 13](kilde:vejledning) Sikkerhed: Følg skolens regler og din lærers anvisninger.
 - **I kemi afhænger det af niveauet.** Kemi C har syre-basereaktioner, herunder pH-begrebet. [læreplanen for kemi C, pkt. 2.2](kilde:laereplan-kemi-c) Kemi B har syre-basereaktioner, herunder beregning af pH for vandige opløsninger af syrer henholdsvis baser. [læreplanen for kemi B, pkt. 2.2](kilde:laereplan-kemi-b) Kemi A har det samme som bioteknologi A, altså også blandinger, puffersystemer og bjerrumdiagrammer. [læreplanen for kemi A, pkt. 2.2](kilde:laereplan-kemi-a)
+
+### Puffere
+
+- **Hvad en puffer er.** En puffer, også kaldet en buffer, er en opløsning, hvis pH kun ændrer sig lidt, når du tilsætter små mængder syre eller base. Den laves oftest ved at opløse lige store stofmængder af en svag syre og dens korresponderende base i vand. [lex.dk: Buffer](kilde:lex-buffer)
+- **I laboratoriet.** Puffere bruges fx ved biokemiske og mikrobiologiske undersøgelser, hvor pH skal holdes konstant. [lex.dk: Buffer](kilde:lex-buffer)
+- **I kroppen.** Enzymer og transportmolekyler virker kun optimalt i et bestemt pH-interval. I blodet hjælper kulsyre og hydrogencarbonat med at holde pH stabil, og i cellerne virker phosphat og proteiner som puffere. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad) Om enzymer og pH kan du læse under [pH-optimum](/fag/bioteknologi/enzymer/#begreb-ph-optimum).
+- **Et eksempel fra blodet.** Hydrogencarbonat, $\text{HCO}_3^-$, virker som puffer i blodet og dæmper udsving i pH. Henderson-Hasselbalchs ligning gælder for blodets vigtigste puffersystem, og med den kan blodets pH beregnes [lex.dk: Henderson-Hasselbalchs ligning](kilde:lex-henderson-hasselbalch):
+
+$$
+\text{pH} = 6{,}1 + \log\frac{[\text{HCO}_3^-]}{[\text{CO}_2] + [\text{H}_2\text{CO}_3]}
+$$
+
+- **Kemi B.** Puffersystemer er ikke kernestof i kemi B. [vejledningen til kemi, s. 21](kilde:vejledning-kemi)
+
+Prøv selv: Tag minus logaritmen på begge sider af udtrykket for styrkekonstanten nedenfor, og brug, at $\text{pH} = -\log[\text{H}_3\text{O}^+]$ og $\text{p}K_A = -\log K_A$. Hvilket udtryk for pH får du? Hvad bliver pH, når $[\text{A}^-] = [\text{HA}]$? Sammenlign med Henderson-Hasselbalchs ligning.
+
+## Formler
+
+<Formel navn="pH" tex="\text{pH} = -\log[\text{H}_3\text{O}^+]" kilde="laererens-haefte-kemi" henvisning="Lærerens hæfte til kemi A, s. 23">
+
+<Symboler>
+
+- $[\text{H}_3\text{O}^+]$: den aktuelle stofmængdekoncentration af oxonium. [vejledningen til kemi, s. 20](kilde:vejledning-kemi) Du sætter talværdien ind, målt i mol pr. liter. [lex.dk: pH](kilde:lex-ph)
+- $\log$: titalslogaritmen. [lex.dk: pH](kilde:lex-ph)
+
+</Symboler>
+
+<Bruges>
+
+Når du kender koncentrationen af oxonium og skal finde pH. Er syren ikke-stærk, finder du først $[\text{H}_3\text{O}^+]$ med styrkekonstanten og sætter derefter ind i formlen. Sådan gør eksemplet i Lærerens hæfte til kemi A. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Bruges>
+
+<Eksempel>
+
+En opløsning har $[\text{H}_3\text{O}^+] = 2{,}5 \cdot 10^{-4}\ \text{M}$. Så er
+
+$$
+\text{pH} = -\log(2{,}5 \cdot 10^{-4}) \approx 3{,}60
+$$
+
+Koncentrationen har to betydende cifre, så strengt taget skal pH have to decimaler. [Lærerens hæfte, s. 19](kilde:laererens-haefte) Til den skriftlige prøve accepteres det også at skrive 3,6. [evalueringen, s. 9](kilde:evaluering)
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme minus. Så får du en negativ pH for en sur opløsning.
+- At sætte den formelle koncentration af en ikke-stærk syre direkte ind. Find først $[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+- At bruge en færdig pH-formel uden at begrunde, hvorfor den passer. Bruger du pH-formler, skal du argumentere for dit valg. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Styrkekonstanten for en syre" tex="K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}" kilde="lex-styrkekonstant" henvisning="lex.dk: Styrkekonstant">
+
+<Symboler>
+
+- $\text{HA}$: syren. $\text{A}^-$: syrens korresponderende base. Sammen er de et korresponderende syre-base-par. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+- De firkantede parenteser: koncentrationerne ved ligevægt. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+- $K_A$: syrens styrkekonstant. I Lærerens hæfte til kemi A skrives den $K_s$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Syrestyrkeeksponenten er $\text{p}K_A = -\log K_A$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
+
+</Symboler>
+
+<Bruges>
+
+Formlen beskriver ligevægten $\text{HA} + \text{H}_2\text{O} \rightleftharpoons \text{A}^- + \text{H}_3\text{O}^+$, når syren er opløst i vand. Jo større $K_A$ er, jo stærkere er syren. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant) I Lærerens hæfte til kemi A bruges den i formen
+
+$$
+K_s = \frac{[\text{H}_3\text{O}^+]^2}{c_s - [\text{H}_3\text{O}^+]}
+$$
+
+til at finde $[\text{H}_3\text{O}^+]$ i en opløsning af en ikke-stærk syre, hvor $c_s$ er syrens formelle koncentration. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Bruges>
+
+<Eksempel>
+
+En ikke-stærk syre har $K_s = 1{,}00 \cdot 10^{-5}\ \text{M}$, og den formelle koncentration er $c_s = 0{,}100\ \text{M}$. Du kalder $[\text{H}_3\text{O}^+]$ for $x$ og løser ligningen med et CAS-program:
+
+$$
+1{,}00 \cdot 10^{-5} = \frac{x^2}{0{,}100 - x}
+$$
+
+Den positive løsning er $x \approx 9{,}95 \cdot 10^{-4}$, så $[\text{H}_3\text{O}^+] \approx 9{,}95 \cdot 10^{-4}\ \text{M}$ og $\text{pH} \approx 3{,}00$. Den negative løsning dur ikke, fordi en koncentration ikke kan være negativ. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte startkoncentrationerne ind i stedet for koncentrationerne ved ligevægt. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+- At blande $K_s$ og $\text{p}K_s$ sammen. $\text{p}K_s$ er minus logaritmen til $K_s$. [lex.dk: Styrkeeksponent](kilde:lex-styrkeeksponent)
+- At bytte om på syre og base i brøken. Syren $\text{HA}$ står i nævneren.
+
+</Fejl>
+
+</Formel>
 
 ## Centrale begreber
 
@@ -88,7 +207,19 @@ Den brøkdel af det oprindelige antal syremolekyler, som har reageret. [Læreren
 
 <Begreb navn="pH">
 
-Et tal, der hænger sammen med den aktuelle stofmængdekoncentration af oxonium. Sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Koncentrationen af oxonium skrives $[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
+Et tal, der hænger sammen med den aktuelle stofmængdekoncentration af oxonium. Sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Du beregner den med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Under 7 er opløsningen sur, og over 7 er den basisk. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
+
+</Begreb>
+
+<Begreb navn="Styrkekonstant">
+
+Et mål for en syres eller bases styrke i vand. For en syre HA er $K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}$, hvor koncentrationerne er dem ved ligevægt. Jo stærkere syren er, jo svagere er dens korresponderende base. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+
+</Begreb>
+
+<Begreb navn="Puffer">
+
+En opløsning, hvis pH kun ændrer sig lidt, når du tilsætter små mængder syre eller base. Den laves oftest af lige store stofmængder af en svag syre og dens korresponderende base. [lex.dk: Buffer](kilde:lex-buffer)
 
 </Begreb>
 

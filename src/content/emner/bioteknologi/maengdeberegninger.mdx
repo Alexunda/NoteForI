@@ -36,6 +36,12 @@ kilder:
   - id: laereplan-kemi-c
     navn: "Læreplan for kemi C, stx, august 2017 (uvm.dk, PDF)"
     url: https://uvm.dk/media/ykrd5w53/kemi-c-stx-august-2017-ua.pdf
+  - id: lex-stofmaengde
+    navn: "lex.dk: Stofmængde (hentet 24. oktober 2026)"
+    url: https://lex.dk/stofm%C3%A6ngde
+  - id: lex-molekylmasse
+    navn: "lex.dk: Molekylmasse (hentet 24. oktober 2026)"
+    url: https://lex.dk/molekylmasse
 verificeret: false
 ---
 
@@ -50,6 +56,8 @@ Mængdeberegninger handler om at regne med mængder af stof i reaktionsskemaer o
 - **Fra koncentration og volumen til stofmængde.** Kender du koncentrationen og volumenet af en opløsning, kan du finde stofmængden med $n = c \cdot V$. I Lærerens hæfte til kemi A bruges formlen omvendt, $c = \frac{n}{V}$, i en besvarelse til karakteren 12. [Lærerens hæfte til kemi A, s. 36](kilde:laererens-haefte-kemi) Evalueringen viser $n = c \cdot V$ som den korrekte måde at skrive formlen på. [evalueringen, s. 9](kilde:evaluering) Se formlen nedenfor.
 - **Formel og aktuel koncentration.** Du skal kunne bruge både den formelle og den aktuelle stofmængdekoncentration. [vejledningen, s. 11](kilde:vejledning) I Lærerens hæfte skrives en formel koncentration med $c$, fx $c(\text{HA})$, mens koncentrationerne i fordelingskonstanten står i firkantede parenteser, fx $[\text{HA}]$. [Lærerens hæfte, s. 15](kilde:laererens-haefte) Læs mere under [Kemisk ligevægt](/fag/bioteknologi/kemisk-ligevaegt/).
 - **Molarmasse og densitet.** Dem skal du også kunne bruge i beregninger. [vejledningen, s. 11](kilde:vejledning) Står molarmassen ikke i opgaven, kan du finde den med dit kemiske tegneprogram. Skriv så, hvor du har den fra. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+- **Fra masse til stofmængde.** Kender du massen $m$ af et stof og dets molarmasse $M$, finder du stofmængden med $n = \frac{m}{M}$. Molarmassen har enheden g/mol. Sådan regnes der i en besvarelse til karakteren 12 i Lærerens hæfte til kemi A. [Lærerens hæfte til kemi A, s. 36](kilde:laererens-haefte-kemi) Se formlen nedenfor.
+- **Hvor kommer tallet fra?** I praksis bestemmer man stofmængden som antallet af gram divideret med formelmassen. [lex.dk: Stofmængde](kilde:lex-stofmaengde) Formelmassen er summen af atommasserne for de atomer, der står i formlen. For $\text{CO}_2$ er den $12{,}01 + 2 \cdot 16{,}00 = 44{,}01$. [lex.dk: Molekylmasse](kilde:lex-molekylmasse)
 - **Enheder på alle tal.** Alle relevante værdier skal have enheder, og du skal bruge de internationalt accepterede enheder og symboler. [evalueringen, s. 9](kilde:evaluering) Enhedssymbolet står efter tallet uden punktum, og det ændres ikke i flertal. [SI-bekendtgørelsen, bilag 2, pkt. 1](kilde:si-bekendtgoerelsen) Skriv fx 3,76 g og ikke 3,76 gr. Koncentrationen 2 mol/L kan også skrives 2 M. [evalueringen, s. 9](kilde:evaluering)
 - **Liter og præfikser.** Liter kan skrives l eller L, og $1\ \text{L} = 1\ \text{dm}^3 = 10^{-3}\ \text{m}^3$. [SI-bekendtgørelsen, bilag 1, pkt. 1.4](kilde:si-bekendtgoerelsen) Et præfiks foran enheden ganger med en fast faktor: milli (m) betyder $10^{-3}$, mikro (µ) betyder $10^{-6}$, og kilo (k) betyder $10^{3}$. [SI-bekendtgørelsen, bilag 1, pkt. 1.3](kilde:si-bekendtgoerelsen) 25 mL er altså det samme som 0,025 L.
 - **Betydende cifre.** Til den skriftlige prøve accepteres det, at det tal med færrest betydende cifre bestemmer, hvor mange betydende cifre resultatet skal have. [evalueringen, s. 9](kilde:evaluering)
@@ -105,6 +113,44 @@ altså 20,0 mL.
 
 </Formel>
 
+<Formel navn="Stofmængde ud fra masse og molarmasse" tex="n = \frac{m}{M}" kilde="laererens-haefte-kemi" henvisning="Lærerens hæfte til kemi A, s. 36">
+
+<Symboler>
+
+- $n$: stofmængden. Enheden er mol. [SI-bekendtgørelsen, bilag 1, pkt. 1.1](kilde:si-bekendtgoerelsen)
+- $m$: massen af stoffet, fx i g. [Lærerens hæfte til kemi A, s. 36](kilde:laererens-haefte-kemi)
+- $M$: stoffets molarmasse, fx i g/mol. [Lærerens hæfte til kemi A, s. 36](kilde:laererens-haefte-kemi) Står den ikke i opgaven, kan du finde den med dit kemiske tegneprogram. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+
+</Symboler>
+
+<Bruges>
+
+Når du har en masse af et stof og skal finde stofmængden, fx før du beregner en koncentration med $c = \frac{n}{V}$. Omvendt finder du massen med $m = n \cdot M$. Begge dele står i en besvarelse til karakteren 12 i Lærerens hæfte til kemi A. [Lærerens hæfte til kemi A, s. 36–37](kilde:laererens-haefte-kemi)
+
+</Bruges>
+
+<Eksempel>
+
+Du har 2,20 g $\text{CO}_2$. Formelmassen for $\text{CO}_2$ er 44,01 [lex.dk: Molekylmasse](kilde:lex-molekylmasse), og du dividerer antallet af gram med den. [lex.dk: Stofmængde](kilde:lex-stofmaengde) Med molarmassen 44,01 g/mol er
+
+$$
+n = \frac{2{,}20\ \text{g}}{44{,}01\ \text{g/mol}} \approx 0{,}04999\ \text{mol} \approx 0{,}0500\ \text{mol}
+$$
+
+Massen har tre betydende cifre, så resultatet får også tre.
+
+</Eksempel>
+
+<Fejl>
+
+- At vende brøken om. Hold øje med enhederne: g divideret med g/mol giver mol. [Lærerens hæfte, s. 18–19](kilde:laererens-haefte)
+- At glemme enheden på molarmassen. Alle relevante værdier skal have enheder. [evalueringen, s. 9](kilde:evaluering)
+- At bruge en molarmasse uden at skrive, hvor du har den fra, når den ikke står i opgaven. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
+
+</Fejl>
+
+</Formel>
+
 ## Centrale begreber
 
 <Begreb navn="Stofmængde">
@@ -128,6 +174,12 @@ Tallet $6{,}022\,140\,76 \cdot 10^{23}$, altså antallet af elementære dele i e
 <Begreb navn="Stofmængdekoncentration">
 
 Stofmængden pr. volumen af opløsningen: $c = \frac{n}{V}$. [Lærerens hæfte til kemi A, s. 36](kilde:laererens-haefte-kemi) Enheden er fx mol/L, som også kan skrives M. [evalueringen, s. 9](kilde:evaluering)
+
+</Begreb>
+
+<Begreb navn="Molarmasse">
+
+Den størrelse, du dividerer massen med for at få stofmængden: $n = \frac{m}{M}$. Enheden er fx g/mol. [Lærerens hæfte til kemi A, s. 36](kilde:laererens-haefte-kemi) I praksis finder man stofmængden som antallet af gram divideret med formelmassen [lex.dk: Stofmængde](kilde:lex-stofmaengde), og formelmassen er summen af atommasserne i formlen. [lex.dk: Molekylmasse](kilde:lex-molekylmasse)
 
 </Begreb>
 
