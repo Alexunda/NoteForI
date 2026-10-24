@@ -34,7 +34,7 @@ Redaktionen har skrevet disse forklaringer selv, fordi ingen tilladt kilde forkl
 | Fil | Begreb | Status |
 |---|---|---|
 | `bioteknologi/syrer-og-baser.mdx` | Pufferligningen (udledt af formlerne for pH og styrkekonstanten) | Godkendt 24. oktober 2026 |
-| `kemi/faeldningsreaktioner.mdx` | Ionligningerne for fældningen af bariumsulfat og sølvchlorid | Godkendt 24. oktober 2026 |
+| `kemi/faeldningsreaktioner.mdx` | Ionligningerne for fældningen af bariumsulfat og sølvchlorid, og at de andre ioner bliver i opløsningen | Godkendt 24. oktober 2026 |
 | `kemi/organiske-reaktionstyper.mdx` | Elimination (Eliminationsreaktion) | Godkendt 24. oktober 2026 |
 | `matematik/differentialligninger.mdx` | Eulers metode (bygget på formel (254) og (313)) | Godkendt 24. oktober 2026 |
 | `matematik/vektorer-i-planen.mdx` | Stedvektor | Godkendt 24. oktober 2026 |
