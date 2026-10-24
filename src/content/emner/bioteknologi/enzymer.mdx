@@ -1,0 +1,225 @@
+---
+titel: "Enzymer og enzymkinetik"
+beskrivelse: "Enzymernes syv hovedklasser, Michaelis-Menten-kinetik med Km og vmax og forskellen på kompetitiv og nonkompetitiv hæmning."
+fag: bioteknologi
+nummer: 10
+omraade: "Biokemi"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2017"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for bioteknologi A, stx, august 2017 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/morjd5sk/bioteknologi-a-stx-august-2017.pdf
+  - id: vejledning
+    navn: "Vejledning til bioteknologi A, stx, 2025 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/011cm4jy/250819-vejledning-til-bioteknologi-a-stx-2025.pdf
+  - id: laererens-haefte
+    navn: "Lærerens hæfte 2025-26. Vejledning til skriftlig bioteknologi A stx (emu.dk, PDF)"
+    url: https://emu.dk/sites/default/files/2025-07/L%C3%A6rerens%20h%C3%A6fte%202025-26.%20Vejledning%20til%20skriftlig%20bioteknologi%20A%20stx.pdf
+  - id: evaluering
+    navn: "Evaluering af skriftlig prøve sommer 2024 i bioteknologi A stx (uvm.dk, PDF)"
+    url: https://uvm.dk/media/h52bjmz2/241218-evaluering-af-skriftlig-proeve-sommer-2024-i-bioteknologi-a-stx.pdf
+  - id: emu-mundtlig
+    navn: "Eksempler på opgaver til mundtlig prøve i bioteknologi A, fagkonsulenterne, opdateret 31. maj 2024 (emu.dk)"
+    url: https://emu.dk/stx/bioteknologi/proever-og-eksamen/eksempler-paa-opgaver-til-mundtlig-proeve-i-bioteknologi
+  - id: emu-skriftlig
+    navn: "Skriftlig prøve i bioteknologi, opdateret 19. januar 2026 (emu.dk)"
+    url: https://emu.dk/stx/bioteknologi/proever-og-eksamen/skriftlig-proeve-i-bioteknologi
+  - id: nhgri
+    navn: "Talking Glossary of Genomic and Genetic Terms, National Human Genome Research Institute (genome.gov, engelsk, hentet oktober 2026)"
+    url: https://www.genome.gov/genetics-glossary
+  - id: efsa-enzymer
+    navn: "Food enzymes, European Food Safety Authority, senest gennemset 19. december 2025 (efsa.europa.eu, engelsk)"
+    url: https://www.efsa.europa.eu/en/topics/topic/food-enzymes
+  - id: iubmb
+    navn: "IUBMB's enzymnomenklatur, Enzymes by Class, ExplorEnz (enzyme-database.org, engelsk, hentet oktober 2026)"
+    url: https://www.enzyme-database.org/class.php
+  - id: iubmb-regler
+    navn: "IUBMB: Classification and Nomenclature of Enzymes by the Reactions they Catalyse, ExplorEnz (enzyme-database.org, engelsk, hentet oktober 2026)"
+    url: https://www.enzyme-database.org/rules.php
+  - id: iubmb-kinetik
+    navn: "Symbolism and Terminology in Enzyme Kinetics, anbefalinger fra IUBMB's nomenklaturkomité (NC-IUB), 1981 (iubmb.qmul.ac.uk, engelsk)"
+    url: https://iubmb.qmul.ac.uk/kinetics/
+verificeret: false
+---
+
+## Kort fortalt
+
+Et enzym er en biologisk katalysator, der næsten altid er et protein. Det gør en bestemt kemisk reaktion hurtigere og bliver ikke brugt op. [NHGRI-ordlisten: Enzyme](kilde:nhgri) Enzymer inddeles i syv hovedklasser efter den reaktion, de katalyserer. [IUBMB, klasse EC 1–7](kilde:iubmb) [IUBMB's klassifikationsregler, afsnit 1](kilde:iubmb-regler) Enzymkinetik handler om, hvor hurtigt reaktionen går. I bioteknologi A er den begrænset til Michaelis-Menten-kinetik, herunder den lineære omskrivning og kompetitiv og nonkompetitiv hæmning. [vejledningen, s. 12](kilde:vejledning)
+
+## Vigtige pointer
+
+### Hvad et enzym gør
+
+- **En katalysator.** Enzymet gør en reaktion hurtigere, men bliver ikke ødelagt og kan bruges igen og igen. En celle har tusindvis af forskellige enzymer, og hvert enzym er specifikt for en bestemt reaktion. [NHGRI-ordlisten: Enzyme](kilde:nhgri)
+- **Substratet.** Det stof, enzymet virker på, kaldes substratet. Mange enzymer er opkaldt efter substratet med endelsen -ase, fx lactase, der spalter lactose. [IUBMB, klasse EC 3 og EC 3.2.1.108](kilde:iubmb)
+- **Binding til substratet.** Bindingerne mellem et enzym og dets substrat kan beskrives med intermolekylære bindinger. [vejledningen, s. 10](kilde:vejledning) Læs om dem på siden om [kemiske bindinger og isomeri](/fag/bioteknologi/kemiske-bindinger/).
+- **Cofaktorer.** Du skal kende eksempler på, hvad cofaktorer gør, og cofaktorernes roller i stofskiftet, fx ATP, $\text{NAD}^+$, FAD og coenzym A. [vejledningen, s. 11–12](kilde:vejledning) Når et enzym overfører en gruppe, er donoren ofte en cofaktor (et coenzym), der bærer gruppen. [IUBMB, klasse EC 2](kilde:iubmb) Alkoholdehydrogenase bruger coenzymet $\text{NAD}^+$ som acceptor. [IUBMB, EC 1.1.1.1](kilde:iubmb) [IUBMB's klassifikationsregler, klasse 1](kilde:iubmb-regler)
+- **pH.** Hastigheden af en enzymkatalyseret reaktion afhænger af pH og har ofte et maksimum ved et bestemt pH, enzymets pH-optimum. Store ændringer i pH har i de fleste tilfælde en virkning, der ikke går væk igen. [IUBMB om enzymkinetik, afsnit 8](kilde:iubmb-kinetik)
+- **Enzymer i produktion.** Enzymer har i århundreder været brugt til fx ost, øl og hævning af dej. I dag fremstilles de fleste enzymer til fødevareindustrien ved fermentering med mikroorganismer. De bruges fx til at nedbryde cellevægge i frugt, så saften er lettere at presse ud, eller til at omdanne stivelse til sukker, når der fremstilles alkohol. [EFSA: Food enzymes](kilde:efsa-enzymer)
+
+### De syv hovedklasser
+
+Enzymer klassificeres og navngives efter den reaktion, de katalyserer. [IUBMB's klassifikationsregler, afsnit 1](kilde:iubmb-regler) Hver hovedklasse har et nummer, og her er et eksempel på et enzym fra hver:
+
+- **EC 1, oxidoreduktaser,** katalyserer redoxreaktioner. Det stof, der oxideres, afgiver hydrogen eller elektroner. [IUBMB, klasse EC 1](kilde:iubmb) Eksempel: Alkoholdehydrogenase omdanner en primær alkohol til et aldehyd. [IUBMB, EC 1.1.1.1](kilde:iubmb) Læs mere på siden om [redoxreaktioner](/fag/bioteknologi/redoxreaktioner/).
+- **EC 2, transferaser,** overfører en gruppe, fx en methylgruppe eller en glycosylgruppe, fra én forbindelse (donoren) til en anden (acceptoren). [IUBMB, klasse EC 2](kilde:iubmb) Eksempel: Hexokinase overfører en phosphatgruppe fra ATP til en hexose, fx glucose. [IUBMB, EC 2.7.1.1](kilde:iubmb)
+- **EC 3, hydrolaser,** katalyserer hydrolyse af forskellige bindinger. [IUBMB, klasse EC 3](kilde:iubmb) Eksempel: Lactase spalter lactose til galactose og glucose. [IUBMB, EC 3.2.1.108](kilde:iubmb) Læs mere på siden om [kondensation og hydrolyse](/fag/bioteknologi/kondensation-og-hydrolyse/).
+- **EC 4, lyaser,** spalter bindinger mellem fx C og C, C og O eller C og N på anden måde end ved hydrolyse eller oxidation. Virker de på ét substrat, fraspaltes et molekyle, og der dannes en ny dobbeltbinding eller en ny ring. [IUBMB, klasse EC 4](kilde:iubmb) Eksempel: Pyruvatdecarboxylase fraspalter $\text{CO}_2$, så der dannes et aldehyd. [IUBMB, EC 4.1.1.1](kilde:iubmb)
+- **EC 5, isomeraser,** katalyserer ændringer inden for ét molekyle. [IUBMB, klasse EC 5](kilde:iubmb) Eksempel: Glucose-6-phosphat-isomerase omdanner glucose-6-phosphat til fructose-6-phosphat. [IUBMB, EC 5.3.1.9](kilde:iubmb)
+- **EC 6, ligaser,** kobler to molekyler eller to dele af et molekyle sammen, samtidig med at en binding i ATP eller et lignende triphosphat hydrolyseres. [IUBMB, klasse EC 6](kilde:iubmb) Eksempel: DNA-ligase samler to stykker DNA til ét. [IUBMB, EC 6.5.1.1](kilde:iubmb)
+- **EC 7, translokaser,** katalyserer transport af ioner eller molekyler gennem membraner. [IUBMB, klasse EC 7](kilde:iubmb) Eksempel: ATP-syntase i mitokondrier og grønkorn laver ATP, mens hydrogenioner ($\text{H}^+$) strømmer gennem membranen. [IUBMB, EC 7.1.2.2](kilde:iubmb)
+
+**EC-numre.** Et EC-nummer har fire tal: hovedklassen, underklassen, under-underklassen og enzymets løbenummer. [IUBMB's klassifikationsregler, afsnit 3](kilde:iubmb-regler) I alkoholdehydrogenase, EC 1.1.1.1, betyder det andet tal, at donoren har en CH–OH-gruppe. Det tredje tal betyder, at acceptoren er $\text{NAD}^+$ eller $\text{NADP}^+$. [IUBMB, EC 1.1](kilde:iubmb)
+
+### Enzymkinetik
+
+- **Starthastigheden.** Reaktionshastigheden angives som starthastigheden, altså hastigheden ført tilbage til reaktionens start (tiden nul). Den hedder $v_0$, men nullet udelades tit, så den bare hedder $v$. [IUBMB om enzymkinetik, afsnit 3.2](kilde:iubmb-kinetik)
+- **Hastigheden flader ud.** Ved meget små substratkoncentrationer er hastigheden proportional med substratkoncentrationen. Ved meget store substratkoncentrationer nærmer hastigheden sig en grænse. [IUBMB om enzymkinetik, afsnit 4.1 og 4.2](kilde:iubmb-kinetik)
+- **vmax.** Grænsen hedder $v_{max}$ i de danske opgaver. [evalueringen, s. 11](kilde:evaluering) IUBMB kalder den grænsehastigheden (limiting rate) og skriver $V$ eller $V_{max}$. Den er proportional med koncentrationen af enzymet. [IUBMB om enzymkinetik, afsnit 4.1](kilde:iubmb-kinetik)
+- **Km.** Michaelis-konstanten $K_m$ er den substratkoncentration, hvor hastigheden er halvdelen af $v_{max}$. Den er en koncentration, så den har en enhed som fx mol/L. $K_m$ og $v_{max}$ er konstanter, når temperaturen og enzymkoncentrationen ligger fast. [IUBMB om enzymkinetik, afsnit 4.2](kilde:iubmb-kinetik)
+- **Kun ved Michaelis-Menten.** Følger en reaktion ikke Michaelis-Menten-kinetik, skal du ikke bruge begrebet Michaelis-konstant. [IUBMB om enzymkinetik, afsnit 4.2 og 4.3](kilde:iubmb-kinetik)
+- **Lineær omskrivning.** Du skal kunne omskrive hastighedsudtrykket, så det giver en ret linje. [vejledningen, s. 12](kilde:vejledning) Evalueringen nævner Lineweaver-Burk som eksempel på en lineær omskrivning. [evalueringen, s. 11](kilde:evaluering) Én måde er at tage den reciprokke værdi på begge sider af Michaelis-Menten-ligningen. Se eksemplet under Formler.
+
+Prøv selv: Her er $x$ substratkoncentrationen, $V$ er $v_{max}$, og $K$ er $K_m$. Den vandrette linje ligger ved halvdelen af $V$. Hvor skærer den kurven? Træk $K$ op: Kurven stiger langsommere i starten, men nærmer sig stadig $V$. Træk $V$ ned: Hele kurven bliver lavere, men halvdelen af $V$ nås stadig ved samme $K$.
+
+<Graf
+  titel="Michaelis-Menten-kurve med skydere"
+  funktioner={[{ forskrift: 'v(x) = V · x / (K + x)', tex: 'v(x) = \\frac{V \\cdot x}{K + x}' }, { forskrift: 'h(x) = V / 2', tex: 'h(x) = \\frac{V}{2}' }]}
+  parametre={{ V: { min: 5, max: 50, start: 40, trin: 1 }, K: { min: 0.5, max: 10, start: 2, trin: 0.5 } }}
+  x={[0, 20]}
+  y={[0, 55]}
+/>
+
+### Hæmning
+
+- **Reversibel eller irreversibel.** Kan hæmningen fjernes ved at sænke koncentrationen af hæmmeren, fx ved fortynding, er den reversibel. Kommer enzymets virkning ikke tilbage, er hæmningen irreversibel, og enzymet er blevet inaktiveret. [IUBMB om enzymkinetik, afsnit 6.1](kilde:iubmb-kinetik)
+- **Kompetitiv hæmning.** En kompetitiv hæmmer gør reaktionen langsommere ved lave substratkoncentrationer, men ændrer ikke $v_{max}$. Derfor bliver den tilsyneladende $K_m$ større. [IUBMB om enzymkinetik, afsnit 4.1, 4.2 og 6.4](kilde:iubmb-kinetik) På grafen svarer det til at trække $K$ op.
+- **Nonkompetitiv hæmning.** Vejledningen bruger ordet nonkompetitiv. [vejledningen, s. 11–12](kilde:vejledning) IUBMB fraråder ordet, fordi det bruges i flere betydninger. Det klassiske tilfælde kalder IUBMB ren nonkompetitiv hæmning. Her nedsætter hæmmeren hastigheden med samme faktor ved lave og høje substratkoncentrationer, så $v_{max}$ bliver mindre, mens $K_m$ er uændret. [IUBMB om enzymkinetik, afsnit 4.2 og 6.4](kilde:iubmb-kinetik) På grafen svarer det til at trække $V$ ned.
+- **Sådan ses det på den rette linje.** Afbilder du $\frac{1}{v}$ mod $\frac{1}{[S]}$, påvirker den kompetitive del af en hæmning hældningen, mens den anden del påvirker skæringen med $\frac{1}{v}$-aksen. [IUBMB om enzymkinetik, afsnit 6.4](kilde:iubmb-kinetik) Ved kompetitiv hæmning ændres altså kun hældningen, og ved ren nonkompetitiv hæmning ændres begge dele.
+
+## Formler
+
+<Formel navn="Michaelis-Menten-ligningen" tex="v = \frac{v_{max} \cdot [S]}{K_m + [S]}" kilde="iubmb-kinetik" henvisning="IUBMB om enzymkinetik, afsnit 4.2, ligning (10)">
+
+<Symboler>
+
+- $v$: reaktionshastigheden, målt som starthastigheden, fx i µmol/min.
+- $v_{max}$: grænsehastigheden, som $v$ nærmer sig ved meget store substratkoncentrationer. IUBMB skriver $V$.
+- $[S]$: substratkoncentrationen, fx i mmol/L. IUBMB skriver $[A]$.
+- $K_m$: Michaelis-konstanten, altså den substratkoncentration, hvor $v$ er halvdelen af $v_{max}$.
+
+</Symboler>
+
+<Bruges>
+
+Når et enzym følger Michaelis-Menten-kinetik, og du vil beregne hastigheden ved en bestemt substratkoncentration, eller når du skal bestemme $K_m$ og $v_{max}$ ud fra målinger.
+
+</Bruges>
+
+<Eksempel>
+
+Et enzym har $K_m = 2{,}0\ \text{mmol/L}$ og $v_{max} = 40\ \mu\text{mol/min}$. Ved $[S] = 6{,}0\ \text{mmol/L}$ er
+
+$$
+v = \frac{40\ \mu\text{mol/min} \cdot 6{,}0\ \text{mmol/L}}{2{,}0\ \text{mmol/L} + 6{,}0\ \text{mmol/L}} = 30\ \mu\text{mol/min}
+$$
+
+Ved $[S] = 2{,}0\ \text{mmol/L}$, altså lige netop $K_m$, får du $v = 20\ \mu\text{mol/min}$. Det er halvdelen af $v_{max}$.
+
+Tager du den reciprokke værdi på begge sider af ligningen, får du
+
+$$
+\frac{1}{v} = \frac{K_m}{v_{max}} \cdot \frac{1}{[S]} + \frac{1}{v_{max}}
+$$
+
+Afbilder du $\frac{1}{v}$ mod $\frac{1}{[S]}$, får du altså en ret linje med hældningen $\frac{K_m}{v_{max}}$. Den skærer $\frac{1}{v}$-aksen i $\frac{1}{v_{max}}$, her $\frac{1}{40\ \mu\text{mol/min}} = 0{,}025\ \text{min}/\mu\text{mol}$.
+
+</Eksempel>
+
+<Fejl>
+
+- At forveksle $v$ og $v_{max}$.
+- At glemme, at $K_m$ er en koncentration og skal have en enhed, fx mmol/L.
+- At bruge $K_m$ og $v_{max}$, selvom målingerne ikke følger Michaelis-Menten-kinetik.
+- At tegne grafen uden aksetitler med størrelser og enheder.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Enzym">
+
+En biologisk katalysator, der næsten altid er et protein. Den gør en bestemt reaktion i cellen hurtigere og bliver ikke brugt op. [NHGRI-ordlisten: Enzyme](kilde:nhgri)
+
+</Begreb>
+
+<Begreb navn="EC-nummer">
+
+Et nummer med fire tal, der fortæller, hvilken hovedklasse, underklasse og under-underklasse et enzym hører til, og til sidst enzymets løbenummer. [IUBMB's klassifikationsregler, afsnit 3](kilde:iubmb-regler)
+
+</Begreb>
+
+<Begreb navn="Michaelis-konstant">
+
+Den substratkoncentration, hvor hastigheden er halvdelen af $v_{max}$. Den skrives $K_m$ og har en koncentrationsenhed, fx mol/L. [IUBMB om enzymkinetik, afsnit 4.2](kilde:iubmb-kinetik)
+
+</Begreb>
+
+<Begreb navn="vmax">
+
+Den grænse, som hastigheden af en enzymkatalyseret reaktion nærmer sig ved meget store substratkoncentrationer. IUBMB kalder den grænsehastigheden og skriver $V$. [IUBMB om enzymkinetik, afsnit 4.1 og 4.2](kilde:iubmb-kinetik)
+
+</Begreb>
+
+<Begreb navn="Kompetitiv hæmning">
+
+Hæmning, hvor hæmmeren gør reaktionen langsommere ved lave substratkoncentrationer, men ikke ændrer $v_{max}$. Den tilsyneladende $K_m$ bliver derfor større. [IUBMB om enzymkinetik, afsnit 4.2 og 6.4](kilde:iubmb-kinetik)
+
+</Begreb>
+
+<Begreb navn="Nonkompetitiv hæmning">
+
+I det klassiske tilfælde, som IUBMB kalder ren nonkompetitiv hæmning, nedsætter hæmmeren hastigheden med samme faktor ved alle substratkoncentrationer. $v_{max}$ bliver mindre, mens $K_m$ er uændret. [IUBMB om enzymkinetik, afsnit 4.2 og 6.4](kilde:iubmb-kinetik)
+
+</Begreb>
+
+<Begreb navn="Irreversibel hæmning">
+
+Hæmning, hvor enzymets virkning ikke kommer tilbage, når man sænker koncentrationen af hæmmeren. Enzymet er blevet inaktiveret. Kommer virkningen tilbage, er hæmningen reversibel. [IUBMB om enzymkinetik, afsnit 6.1](kilde:iubmb-kinetik)
+
+</Begreb>
+
+<Begreb navn="pH-optimum">
+
+Det pH, hvor hastigheden af en enzymkatalyseret reaktion er størst. [IUBMB om enzymkinetik, afsnit 8](kilde:iubmb-kinetik)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Enzymernes hovedklasser og enzymkinetik er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) Kinetikken er begrænset til Michaelis-Menten-kinetik med lineær omskrivning og kompetitiv og nonkompetitiv hæmning. [vejledningen, s. 12](kilde:vejledning) Desuden skal du kende reversibel og irreversibel hæmning og eksempler på, hvad cofaktorer gør. [vejledningen, s. 11](kilde:vejledning) At angive en enzymtype og at eftervise Michaelis-Menten-kinetik og bestemme $K_m$ og $v_{max}$ er blandt de opgavetyper, der ofte kommer til den skriftlige prøve. [Lærerens hæfte, s. 11](kilde:laererens-haefte)
+
+**Den skriftlige prøve** varer fem timer, og opgaverne er stillet inden for kernestoffet. [læreplanen, pkt. 4.2](kilde:laereplan)
+
+- **Km og vmax.** Du kan bestemme dem med en lineær omskrivning, fx Lineweaver-Burk, eller ved at fitte målingerne direkte til Michaelis-Menten-ligningen i et databehandlingsprogram. Fremgangsmåden skal fremgå tydeligt. [evalueringen, s. 11](kilde:evaluering)
+- **Grafen.** Den skal have aksetitler med størrelser og enheder og en kort, præcis tekst om, hvad den viser. Ved regression skal både datapunkterne og regressionslinjen kunne ses. [evalueringen, s. 8](kilde:evaluering)
+- **Hæmning.** Censorerne mener, at der bør være mere fokus på, hvordan et enzym kan hæmmes, kompetitivt eller nonkompetitivt. [evalueringen, s. 10](kilde:evaluering)
+- **Enzymklasse.** Skal du redegøre for, hvilken hovedklasse et enzym hører til, så tag udgangspunkt i, hvordan de funktionelle grupper ændres. I 2024 forventede censorerne også, at man tildelte oxidationstal og sagde, hvilket stof der oxideres eller reduceres. Da der kun stod "angiv", forventede de ikke en begrundelse med oxidationstal. [evalueringen, s. 13 og 16](kilde:evaluering)
+- **Kontrolforsøg.** Mange forholder sig ikke til kontrolforsøgene og deres funktion i opgaverne. [evalueringen, s. 10](kilde:evaluering)
+- **Digitale værktøjer.** Din dokumentation skal kunne forstås uden kendskab til det program, du har brugt, og formler, symboler og enheder skal skrives, som faget gør. [vejledningen, s. 27](kilde:vejledning) Se også listen over [typeord i skriftlige bioteknologiopgaver](https://www.emu.dk/sites/default/files/2024-08/Typeord%20i%20skriftlige%20bioteknologiopgaver%20p%C3%A5%20stx.pdf) på emu.dk.
+
+**Den mundtlige prøve.** Du holder et oplæg på op til ti minutter ud fra bilagene. Så følger en samtale, som også kan komme ind på andre dele af stoffet. [læreplanen, pkt. 4.2](kilde:laereplan) I et af eksemplerne på emu.dk skal man redegøre for enzymers opbygning og funktion, og bilagene viser fx enzymaktivitet som funktion af temperatur og pH og en energiprofil for en reaktion med og uden katalysator. I et andet eksempel skal man komme ind på enzymers opbygning og optimum. [emu.dk: eksempler på opgaver til mundtlig prøve](kilde:emu-mundtlig)
+
+- **Eksperimentelt arbejde.** Forsøg med enzymer er teknisk overskuelige. Du kan fx designe forsøg, der undersøger enzymers aktivitet ved forskellige temperaturer eller pH, og bruge resultaterne til at uddybe teorien, fx enzymkinetik. [vejledningen, s. 15](kilde:vejledning) Sikkerhed: Følg skolens regler og din lærers anvisninger.
+
+**Eksempler på problemstillinger**
+
+- Du har målt starthastigheden ved seks substratkoncentrationer. Vis, at enzymet følger Michaelis-Menten-kinetik, og bestem $K_m$ og $v_{max}$.
+- Et stof ligner substratet og binder til enzymet. Hvordan kan du med forsøg undersøge, om stoffet hæmmer kompetitivt eller nonkompetitivt?
+- Hvilken hovedklasse hører et enzym til, der spalter lactose? Begrund dit svar.
+
+Gamle opgavesæt ligger i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). [emu.dk: skriftlig prøve i bioteknologi](kilde:emu-skriftlig) Læs også om [skriftlige prøver](/eksamen/skriftlig/) og [mundtlige prøver](/eksamen/mundtlig/).
