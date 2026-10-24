@@ -25,7 +25,7 @@ Den fulde plan står i `docs/projektplan.md`. Læs den, før du starter en ny fa
 ## Regler, der ikke må brydes
 1. **Intet fagligt indhold fra hukommelsen.** Formler, faglige påstande og eksamensregler slås op i officielle kilder, før de skrives. Kilden angives i frontmatter.
    - Officielle kilder er uvm.dk-læreplaner og -vejledninger, emu.dk (også fagkonsulenternes materiale), prøvebanken.dk, retsinformation.dk og de myndigheder og officielle organisationer, der står i projektplanens afsnit 8.
-   - **lex.dk** må kun bruges til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Omskriv altid, citér ikke, og angiv artiklen som kilde. Grænsen er:
+   - **lex.dk** (også de andre værker på lex.dk, fx Trap Danmark og Gyldendal og Politikens Danmarkshistorie) må kun bruges til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Omskriv altid, citér ikke, og angiv artiklen som kilde. Grænsen er:
      - Forklaringer og baggrund (hvad, hvem, hvornår): lex.dk alene er nok.
      - Formler, konstanter og tal: brug helst en officiel kilde. Fysiske konstanter tages fra NIST (CODATA). Står noget kun på lex.dk, må det blive, men det markeres "kun lex.dk" på gennemlæsningslisten.
      - Har lex.dk en fejl, bruges artiklen ikke til det punkt.

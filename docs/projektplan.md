@@ -255,7 +255,8 @@ Hvert fag får en **overbliksside** med:
 | Fagkonsulenternes materiale på emu.dk | Fx "Lærerens hæfte" (bioteknologi og kemi), "Opgavetyper i samfundsfag", "De tre eksamensgenrer" (dansk), "Råd og vink" og FAQ'er | https://emu.dk/stx |
 | Andre myndigheder og officielle organisationer | Samfundsfag: Danmarks Statistik, Nationalbanken, Finansministeriet, De Økonomiske Råd, Beskæftigelsesministeriet, Konkurrence- og Forbrugerstyrelsen, Udenrigsministeriet, Statsministeriet, EU, NATO, UNDP og Verdensbanken. Dansk: Det Kgl. Bibliotek og Dansk Sprognævn. Bioteknologi og kemi: NHGRI, IUBMB og IUPAC-IUBMB, ICTV, Statens Serum Institut, sundhed.dk, WHO, Miljøstyrelsen, Fødevarestyrelsen, Energistyrelsen, EFSA og GEMET | Står i hver sides frontmatter |
 | kemisknomenklatur.dk | De danske oversættelser af IUPAC's navngivningsregler. Bioteknologi- og kemivejledningen henviser selv til den | https://kemisknomenklatur.dk/ |
-| lex.dk | Opslagsværk. Kun til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Grænsen for formler, konstanter og tal står i CLAUDE.md, regel 1 (se også afsnit 7) | https://lex.dk/ |
+| lex.dk | Opslagsværk, også de andre værker på lex.dk, fx Trap Danmark og Gyldendal og Politikens Danmarkshistorie. Kun til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Grænsen for formler, konstanter og tal står i CLAUDE.md, regel 1 (se også afsnit 7) | https://lex.dk/ |
+| Det Danske Filminstitut (dfi.dk og filmcentralen.dk) | Filmiske virkemidler og filmanalyse. Blokeret i skymiljøet i oktober 2026, så siderne bruger lex.dk, indtil den kan nås | https://www.dfi.dk/ |
 | NIST (CODATA) | Fysiske konstanter, fx Avogadros konstant og forholdet mellem protonens og elektronens masse | https://physics.nist.gov/cuu/Constants/ |
 
 Konteksten for tidsplanen er, at den store ungdomsuddannelsesreform (epx, skærpede adgangskrav) først træder i kraft i 2030. Den påvirker ikke de nuværende elever.
