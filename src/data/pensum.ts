@@ -2,7 +2,7 @@
 //
 // 1. Det generiske lag: for hvert fag og niveau en liste over det, eleven
 //    skal kunne ifølge læreplanen. Listerne skrives i fase 3 ud fra
-//    læreplanernes faglige mål og står i GENERISK_PENSUM nederst i filen.
+//    læreplanernes faglige mål og kernestof og står i GENERISK_PENSUM nederst i filen.
 // 2. Det personlige lag: elevens egne forløb, som hver får de faste punkter
 //    herunder. Elevens data gemmes kun i browseren (src/lib/pensum.ts).
 
@@ -44,7 +44,7 @@ export interface GeneriskPunkt {
    * afkrydsninger gemmes under id'et, så det må ikke ændres bagefter.
    */
   id: string;
-  /** Det, eleven skal kunne, skrevet ud fra læreplanens faglige mål */
+  /** Det, eleven skal kunne, skrevet ud fra læreplanens faglige mål (pkt. 2.1) eller kernestof (pkt. 2.2) */
   tekst: string;
   /** Valgfrit link til en emneside: id'et fra src/content/emner, fx "matematik/eksempel" */
   emne?: string;
@@ -68,9 +68,9 @@ export interface GeneriskVisning extends Omit<GeneriskListe, 'punkter'> {
 }
 
 /**
- * Det generiske lag: én liste pr. fag, niveau og læreplan. Den er tom,
- * indtil listerne er skrevet ud fra læreplanerne (fase 3). Buildet stopper,
- * hvis en liste har fejl (src/lib/generisk-pensum.ts).
+ * Det generiske lag: én liste pr. fag, niveau og læreplan, skrevet ud fra
+ * læreplanerne. Buildet stopper, hvis en liste har fejl
+ * (src/lib/generisk-pensum.ts).
  *
  * Eksempel på en liste:
  *
@@ -302,7 +302,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'kernestof-international-politik', tekst: 'Aktører, magt, sikkerhed, konflikter og integration i Europa og internationalt', emne: 'samfundsfag/international-politik' },
       { id: 'kernestof-danmarks-udenrigspolitik', tekst: 'Mål og muligheder i Danmarks udenrigspolitik', emne: 'samfundsfag/danmarks-udenrigspolitik' },
       { id: 'kernestof-globalisering-og-udvikling', tekst: 'Globalisering og samfundsudvikling i lande på forskellige udviklingstrin', emne: 'samfundsfag/globalisering-og-udvikling' },
-      { id: 'kernestof-samfundsfaglig-metode', tekst: 'Kvalitativ og kvantitativ metode, komparativ metode og casestudier', emne: 'samfundsfag/samfundsfaglig-metode' },
+      { id: 'kernestof-samfundsfaglig-metode', tekst: 'Kvalitativ og kvantitativ metode, også tilrettelæggelse og gennemførelse af undersøgelser og systematisk behandling af forskellige typer data, og komparativ metode og casestudier', emne: 'samfundsfag/samfundsfaglig-metode' },
       { id: 'kernestof-statistik-og-regression', tekst: 'Statistiske mål, også lineær regression og statistisk usikkerhed', emne: 'samfundsfag/statistik-og-regression' },
     ],
   },
@@ -333,13 +333,15 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'fagets-identitet', tekst: 'Vise viden om og reflektere over fagets identitet og metoder' },
       { id: 'undersoege-og-vurdere', tekst: 'Undersøge problemstillinger og udvikle og vurdere løsninger med fagets viden og metoder, også i samspil med andre fag' },
       // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
-      { id: 'kernestof-litteraer-analyse', tekst: 'Litteraturanalyse og -fortolkning, relevante litterære metoder, perspektivering og kreative arbejdsprocesser', emne: 'dansk/litteraer-analyse' },
-      { id: 'kernestof-litteraturhistorie', tekst: 'Tekster fra før 1700 til de seneste fem år og læsning af en afgrænset periode før 2000', emne: 'dansk/litteraturhistorie' },
+      { id: 'kernestof-litteraer-analyse', tekst: 'Litteraturanalyse og -fortolkning, relevante litterære metoder, litteratur-, kultur- og bevidsthedshistorisk perspektivering og kreative arbejdsprocesser med tekster', emne: 'dansk/litteraer-analyse' },
+      { id: 'kernestof-litteraturhistorie', tekst: 'Tekster fra før 1700, fra 1700- og 1800-tallet (også oplysningstid, romantik, romantisme og naturalisme), fra 1900-tallet (også realisme og modernisme) og fra 2000-tallet (også de seneste fem år) og læsning af en afgrænset periode før 2000', emne: 'dansk/litteraturhistorie' },
+      { id: 'kernestof-norden-og-verden', tekst: 'Norske og svenske tekster på originalsproget og verdenslitteratur i oversættelse', emne: 'dansk/litteraturhistorie' },
       { id: 'kernestof-kanon-2017', tekst: 'Kanon: mindst én folkevise og mindst én tekst af hver af de 14 kanonforfattere i læreplanen fra 2017', emne: 'dansk/kanon' },
       { id: 'kernestof-vaerklaesning', tekst: 'Mindst seks værker med historisk og genremæssig spredning, herunder roman, digtsamling og dokumentarfilm', emne: 'dansk/vaerklaesning' },
       { id: 'kernestof-sproglig-analyse', tekst: 'Sproglig analyse, fortolkning og vurdering', emne: 'dansk/sproglig-analyse' },
       { id: 'kernestof-retorik-og-argumentation', tekst: 'Retorisk analyse af kommunikationssituationen, appelformer og argumentation', emne: 'dansk/retorik-og-argumentation' },
-      { id: 'kernestof-medieanalyse', tekst: 'Kommunikationsanalyse, medieanalyse og -fortolkning med basale filmiske virkemidler og mediers funktion', emne: 'dansk/medieanalyse' },
+      { id: 'kernestof-medieanalyse', tekst: 'Kommunikationsanalyse, medieanalyse og -fortolkning, også basale filmiske virkemidler, og analyse og vurdering af mediers funktion i sociale, kulturelle og historiske sammenhænge', emne: 'dansk/medieanalyse' },
+      { id: 'kernestof-medietekster', tekst: 'Nyhedsformidling, visuelle udtryksformer og tekster fra sociale medier', emne: 'dansk/medieanalyse' },
       { id: 'kernestof-dokumentar', tekst: 'Dokumentartekster og dokumentarfilm', emne: 'dansk/dokumentar' },
       { id: 'kernestof-medieproduktion-og-remediering', tekst: 'Produktivt arbejde med medieudtryk, også kendskab til remediering', emne: 'dansk/medieproduktion-og-remediering' },
       { id: 'kernestof-skrivning', tekst: 'Udtryksfærdighed i dansk og andre fag, også forløb med særligt fokus på skriftlighed i 1.g og 3.g', emne: 'dansk/skrivning' },
@@ -372,13 +374,15 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'fagets-identitet', tekst: 'Vise viden om og reflektere over fagets identitet og metoder' },
       { id: 'undersoege-og-vurdere', tekst: 'Undersøge problemstillinger og udvikle og vurdere løsninger med fagets viden og metoder, også i samspil med andre fag' },
       // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
-      { id: 'kernestof-litteraer-analyse', tekst: 'Litteraturanalyse og -fortolkning, relevante litterære metoder, perspektivering og kreative arbejdsprocesser', emne: 'dansk/litteraer-analyse' },
-      { id: 'kernestof-litteraturhistorie', tekst: 'Tekster fra før 1700 til de seneste fem år og læsning af en afgrænset periode før 2000', emne: 'dansk/litteraturhistorie' },
+      { id: 'kernestof-litteraer-analyse', tekst: 'Litteraturanalyse og -fortolkning, relevante litterære metoder, litteratur-, kultur- og bevidsthedshistorisk perspektivering og kreative arbejdsprocesser med tekster', emne: 'dansk/litteraer-analyse' },
+      { id: 'kernestof-litteraturhistorie', tekst: 'Tekster fra før 1700, fra 1700- og 1800-tallet (også oplysningstid, romantik, romantisme og naturalisme), fra 1900-tallet (også realisme og modernisme) og fra 2000-tallet (også de seneste fem år) og læsning af en afgrænset periode før 2000', emne: 'dansk/litteraturhistorie' },
+      { id: 'kernestof-norden-og-verden', tekst: 'Norske og svenske tekster på originalsproget og verdenslitteratur i oversættelse', emne: 'dansk/litteraturhistorie' },
       { id: 'kernestof-kanon-2026', tekst: 'Kanon: mindst én tekst af hver af de 7 forfattere på den obligatoriske liste og fra 12 af forfatterne og genrerne på bruttolisten', emne: 'dansk/kanon' },
       { id: 'kernestof-vaerklaesning', tekst: 'Mindst seks værker med historisk og genremæssig spredning, herunder roman, digtsamling og dokumentarfilm', emne: 'dansk/vaerklaesning' },
       { id: 'kernestof-sproglig-analyse', tekst: 'Sproglig analyse, fortolkning og vurdering', emne: 'dansk/sproglig-analyse' },
       { id: 'kernestof-retorik-og-argumentation', tekst: 'Retorisk analyse af kommunikationssituationen, appelformer og argumentation', emne: 'dansk/retorik-og-argumentation' },
-      { id: 'kernestof-medieanalyse', tekst: 'Kommunikationsanalyse, medieanalyse og -fortolkning med basale filmiske virkemidler og mediers funktion', emne: 'dansk/medieanalyse' },
+      { id: 'kernestof-medieanalyse', tekst: 'Kommunikationsanalyse, medieanalyse og -fortolkning, også basale filmiske virkemidler, og analyse og vurdering af mediers funktion i sociale, kulturelle og historiske sammenhænge', emne: 'dansk/medieanalyse' },
+      { id: 'kernestof-medietekster', tekst: 'Nyhedsformidling, visuelle udtryksformer og tekster fra sociale medier', emne: 'dansk/medieanalyse' },
       { id: 'kernestof-dokumentar', tekst: 'Dokumentartekster og dokumentarfilm', emne: 'dansk/dokumentar' },
       { id: 'kernestof-medieproduktion-og-remediering', tekst: 'Produktivt arbejde med medieudtryk, også kendskab til remediering', emne: 'dansk/medieproduktion-og-remediering' },
       { id: 'kernestof-skrivning', tekst: 'Udtryksfærdighed i dansk og andre fag, også forløb med særligt fokus på skriftlighed i 1.g og 3.g', emne: 'dansk/skrivning' },
@@ -413,23 +417,23 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
       { id: 'kernestof-kemiske-bindinger', tekst: 'Kemiske bindingstyper, tilstandsformer, opløselighedsforhold, struktur- og stereoisomeri', emne: 'bioteknologi/kemiske-bindinger' },
       { id: 'kernestof-uorganisk-kemi', tekst: 'Opbygning og egenskaber for udvalgte uorganiske forbindelser, herunder ionforbindelser', emne: 'bioteknologi/uorganisk-kemi' },
-      { id: 'kernestof-organisk-kemi', tekst: 'Stofklasserne alkoholer, carboxylsyrer og estere og opbygning af carbonhydrider, aldehyder, ketoner, aminer, amider og aminosyrer', emne: 'bioteknologi/organisk-kemi' },
+      { id: 'kernestof-organisk-kemi', tekst: 'Navngivning, opbygning, egenskaber, isomeri og anvendelse for alkoholer, carboxylsyrer og estere og opbygning og relevante egenskaber for carbonhydrider, aldehyder, ketoner, aminer, amider og aminosyrer', emne: 'bioteknologi/organisk-kemi' },
       { id: 'kernestof-maengdeberegninger', tekst: 'Mængdeberegninger i relation til reaktionsskemaer og opløsninger', emne: 'bioteknologi/maengdeberegninger' },
-      { id: 'kernestof-kemisk-ligevaegt', tekst: 'Homogene kemiske ligevægte og fordelingsligevægte', emne: 'bioteknologi/kemisk-ligevaegt' },
-      { id: 'kernestof-syrer-og-baser', tekst: 'Syre-basereaktioner, pH, puffersystemer og bjerrumdiagrammer', emne: 'bioteknologi/syrer-og-baser' },
+      { id: 'kernestof-kemisk-ligevaegt', tekst: 'Homogene kemiske ligevægte og fordelingsligevægte, herunder hvordan de forskydes, kvalitativt og simpelt kvantitativt', emne: 'bioteknologi/kemisk-ligevaegt' },
+      { id: 'kernestof-syrer-og-baser', tekst: 'Syre-basereaktioner, herunder beregning af pH i vandige opløsninger af syrer, baser, blandinger af dem og puffersystemer, og bjerrumdiagrammer', emne: 'bioteknologi/syrer-og-baser' },
       { id: 'kernestof-redoxreaktioner', tekst: 'Redoxreaktioner, herunder anvendelse af oxidationstal', emne: 'bioteknologi/redoxreaktioner' },
-      { id: 'kernestof-kondensation-og-hydrolyse', tekst: 'Organiske reaktionstyper, kondensation og hydrolyse', emne: 'bioteknologi/kondensation-og-hydrolyse' },
-      { id: 'kernestof-makromolekyler', tekst: 'Carbohydrater, lipider, nucleinsyrer og proteiner, herunder enzymer, transportproteiner og receptorer', emne: 'bioteknologi/makromolekyler' },
+      { id: 'kernestof-kondensation-og-hydrolyse', tekst: 'Organiske reaktionstyper: kondensation og hydrolyse', emne: 'bioteknologi/kondensation-og-hydrolyse' },
+      { id: 'kernestof-makromolekyler', tekst: 'Opbygning, egenskaber og biologisk funktion af carbohydrater, lipider, nucleinsyrer og proteiner, herunder enzymer, transportproteiner og receptorer', emne: 'bioteknologi/makromolekyler' },
       { id: 'kernestof-enzymer', tekst: 'Enzymatiske hovedklasser og enzymkinetik', emne: 'bioteknologi/enzymer' },
-      { id: 'kernestof-fotosyntese-og-respiration', tekst: 'Fotosyntesens delprocesser, respiration og gæring og carbohydraternes intermediære stofskifte', emne: 'bioteknologi/fotosyntese-og-respiration' },
+      { id: 'kernestof-fotosyntese-og-respiration', tekst: 'Fotosyntesens overordnede delprocesser, respiration og gæring, herunder carbohydraternes intermediære stofskifte', emne: 'bioteknologi/fotosyntese-og-respiration' },
       { id: 'kernestof-virus', tekst: 'Virus, deres opbygning og formering', emne: 'bioteknologi/virus' },
       { id: 'kernestof-celler', tekst: 'Pro- og eucaryote celler, eucaryote celletyper, stamceller og membranprocesser', emne: 'bioteknologi/celler' },
-      { id: 'kernestof-mikrobiologi', tekst: 'Vækst, vækstmodeller og vækstfaktorer', emne: 'bioteknologi/mikrobiologi' },
+      { id: 'kernestof-mikrobiologi', tekst: 'Mikrobiologi: vækst, vækstmodeller og vækstfaktorer', emne: 'bioteknologi/mikrobiologi' },
       { id: 'kernestof-nedarvning', tekst: 'Nedarvningsprincipper, mitose og meiose', emne: 'bioteknologi/nedarvning' },
       { id: 'kernestof-molekylaerbiologi', tekst: 'Replikation, proteinsyntese, genregulering, mutation, genteknologi og anvendt bioinformatik', emne: 'bioteknologi/molekylaerbiologi' },
       { id: 'kernestof-evolution', tekst: 'Evolutionsmekanismer', emne: 'bioteknologi/evolution' },
-      { id: 'kernestof-fysiologi', tekst: 'Hormonel regulering, nervesystem, forplantning og immunsystem', emne: 'bioteknologi/fysiologi' },
-      { id: 'kernestof-oekologi', tekst: 'Energistrømme og produktion, samspil mellem arter og med miljøet, biodiversitet', emne: 'bioteknologi/oekologi' },
+      { id: 'kernestof-fysiologi', tekst: 'Fysiologi på organismeniveau og biokemisk niveau: hormonel regulering, nervesystem, forplantning og immunsystem', emne: 'bioteknologi/fysiologi' },
+      { id: 'kernestof-oekologi', tekst: 'Økologiske grundbegreber: energistrømme og produktion, eksempler på samspil mellem arter og mellem arter og miljøet, og biodiversitet', emne: 'bioteknologi/oekologi' },
       { id: 'kernestof-eksperimentelle-metoder', tekst: 'Celledyrkning, kloning, transformation, PCR, elektroforese, DNA-sekventering, ELISA, separation, titrering, spektrofotometri og chromatografi', emne: 'bioteknologi/eksperimentelle-metoder' },
     ],
   },
