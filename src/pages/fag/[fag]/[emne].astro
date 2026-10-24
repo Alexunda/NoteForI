@@ -5,7 +5,7 @@
 // (src/lib/emneside.ts), eller hvis siden ikke har nogen begreber.
 import 'katex/dist/katex.min.css';
 import '../../../styles/emne.css';
-import { render } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 import Side from '../../../layouts/Side.astro';
 import Maerkat from '../../../components/Maerkat.astro';
 import Formel from '../../../components/emne/Formel.astro';
@@ -38,6 +38,15 @@ const { titel, beskrivelse, fag, ogsaaFag, niveau, klassetrin, laereplan, kilder
   emne.data;
 const { Content, headings } = await render(emne);
 
+// Et emne, der også hører til andre fag, viser niveauet for hvert fag. De
+// andre fags niveau står på deres oversigtsside, fx kemi B.
+const niveauer = [{ fag, niveau }];
+for (const f of ogsaaFag) {
+  const side = await getEntry('fag', f);
+  if (!side) throw new Error(`${emne.filePath}: ogsaaFag nævner ${f}, men src/content/fag/${f}.mdx findes ikke.`);
+  niveauer.push({ fag: f, niveau: side.data.niveauer });
+}
+
 const fejl = tjekEmneAfsnit(headings);
 if (udtraekBegreber(emne.body ?? '').length === 0) {
   fejl.push('Afsnittet "Centrale begreber" skal have mindst ét <Begreb>.');
@@ -59,7 +68,17 @@ const komponenter = { Formel, Symboler, Bruges, Eksempel, Fejl, Begreb, Graf, Fo
       </p>
       <h1>{titel}</h1>
       <ul class="emne-fakta">
-        <li>Niveau {niveau.join(', ')}</li>
+        {
+          niveauer.length === 1 ? (
+            <li>Niveau {niveau.join(', ')}</li>
+          ) : (
+            niveauer.map((n) => (
+              <li>
+                {FAG_NAVNE[n.fag]} {n.niveau.join(', ')}
+              </li>
+            ))
+          )
+        }
         <li>{laereplan.length === 1 ? `Læreplan ${laereplan[0]}` : `Læreplan ${laereplan.join(' og ')}`}</li>
         {
           klassetrin === 'ukendt' ? (
