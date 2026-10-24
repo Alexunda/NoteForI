@@ -22,10 +22,10 @@ Emnesiderne til kemi B bygger på kernestoffet i læreplanen (pkt. 2.2) og vejle
 | 1 | Atomer og periodesystemet (`kemi/atomer-og-periodesystemet`) | grundstoffernes periodesystem, herunder atomets opbygning | s. 14–15 | kemi |
 | 2 | Formler og reaktionsskemaer (`kemi/formler-og-reaktionsskemaer`) | kemisk fagsprog, herunder navngivning, kemiske formler og reaktionsskemaer | s. 14–19 | kemi |
 | 3 | Fældningsreaktioner (`kemi/faeldningsreaktioner`) | fældningsreaktioner | s. 20 | kemi |
-| 4 | Kvalitativ analyse (`kemi/kvalitativ-analyse`) | stofidentifikation ved kvalitative analyser | s. 16–18 og 24 | kemi |
-| 5 | Substitution, addition og elimination (`kemi/organiske-reaktionstyper`) | organiske reaktionstyper: substitution, addition og elimination | s. 17 | kemi |
+| 4 | Kvalitativ analyse (`kemi/kvalitativ-analyse`) | stofidentifikation ved kvalitative analyser | s. 16–17 og 23 | kemi |
+| 5 | Substitution, addition og elimination (`kemi/organiske-reaktionstyper`) | organiske reaktionstyper: substitution, addition og elimination | s. 16–17 | kemi |
 | 6 | Reaktionshastighed og katalyse (`kemi/reaktionshastighed`) | reaktionshastighed på kvalitativt grundlag, herunder katalyse | s. 22 | kemi |
-| 7 | Eksperimentelle metoder i kemi (`kemi/eksperimentelle-metoder-kemi`) | kvalitative og kvantitative eksperimentelle metoder, herunder separation, simpel syntese, titrering, vejeanalyse, spektrofotometri og chromatografi | s. 23–24 | kemi |
+| 7 | Eksperimentelle metoder i kemi (`kemi/eksperimentelle-metoder-kemi`) | kvalitative og kvantitative eksperimentelle metoder, herunder separation, simpel syntese, titrering, vejeanalyse, spektrofotometri og chromatografi | s. 23 (også s. 12, 21 og 32) | kemi |
 | 8 | Kemikaliemærkning og sikkerhed (`kemi/kemikaliemaerkning`) | kemikaliemærkning og sikkerhedsvurdering ved eksperimentelt arbejde | s. 24 og 31–33 | kemi |
 
 "Eksempel på makromolekyler" (pkt. 2.2) dækkes af siden om makromolekyler i bioteknologi, hvis den får `ogsaaFag: [kemi]` og en kort note om, hvad kemi B kræver (vejledningen s. 16–17). Ellers skrives en kort side til kemi.
