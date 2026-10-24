@@ -105,11 +105,11 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
         id: 'begreber-teorier-og-metoder',
         tekst: 'Redegøre for et bredt udvalg af matematiske begreber, teorier og metoder og bruge dem til problemløsning og modellering',
       },
-      { id: 'raesonnementer-og-beviser', tekst: 'Følge og gennemføre matematiske ræsonnementer og beviser' },
+      { id: 'raesonnementer-og-beviser', tekst: 'Følge og gennemføre matematiske ræsonnementer og beviser og derigennem vise, at du ved, hvordan matematisk teori er bygget op' },
       { id: 'symbol-og-formelsprog', tekst: 'Forstå og bruge matematisk symbol- og formelsprog' },
       {
         id: 'repraesentationer',
-        tekst: 'Vælge, bruge og oversætte mellem forskellige repræsentationer af matematiske objekter, fx forskrift, tabel og graf',
+        tekst: 'Vælge, bruge og oversætte mellem forskellige repræsentationer af matematiske objekter',
       },
       { id: 'digitale-vaerktoejer', tekst: 'Bruge digitale værktøjer til modellering og matematisk problemløsning' },
       {
@@ -118,7 +118,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       },
       {
         id: 'modeller',
-        tekst: 'Opstille, bearbejde og fortolke matematiske modeller og diskutere, hvad de kan bruges til, og hvor langt de rækker',
+        tekst: 'Opstille, bearbejde og fortolke matematiske modeller, der beskriver fænomener i forskellige fag, og diskutere, hvad de kan bruges til, og hvor langt de rækker',
       },
       { id: 'matematiske-tekster', tekst: 'Læse og bearbejde tekster med matematisk indhold' },
       { id: 'formidling', tekst: 'Formidle matematik mundtligt og skriftligt' },
@@ -134,7 +134,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       // Kernestoffet (læreplanen pkt. 2.2). Hvert punkt linker til sin emneside.
       {
         id: 'kernestof-tal-og-algebra',
-        tekst: 'Kende mængder og talmængder og regne sikkert med regningsarternes hierarki, potenser, rødder og proportionalitet',
+        tekst: 'Kende mængder og talmængderne (hele, rationale og reelle tal) og regne med regningsarternes hierarki, algebraisk manipulation (bogstavregning), potenser og rødder og ligefrem og omvendt proportionalitet',
         emne: 'matematik/tal-og-algebra',
       },
       { id: 'kernestof-ligninger', tekst: 'Løse ligninger analytisk, grafisk og med digitale værktøjer', emne: 'matematik/ligninger' },
@@ -160,12 +160,12 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       },
       {
         id: 'kernestof-vektorer-i-planen',
-        tekst: 'Regne med vektorer i planen: længde, vinkel, skalarprodukt, projektion, determinant og parameterfremstillinger for linje og cirkel',
+        tekst: 'Regne med vektorer i planen: koordinater, længde, vinkel, skalarprodukt, projektion, determinant og areal af parallelogram, linjens ligning ud fra et punkt og en normalvektor, vinkel mellem linjer og parameterfremstillinger for linje og cirkel',
         emne: 'matematik/vektorer-i-planen',
       },
       {
         id: 'kernestof-vektorer-i-rummet',
-        tekst: 'Regne med vektorer i rummet: vektorprodukt, linjer, planer, kugler og skæring, afstande og vinkler',
+        tekst: 'Regne med vektorer i rummet: længde, vinkel, skalarprodukt, projektion og vektorprodukt, parameterfremstilling for linjer, planens ligning og parameterfremstilling, kugler og skæring, afstande og vinkler',
         emne: 'matematik/vektorer-i-rummet',
       },
       {
@@ -230,12 +230,12 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       },
       {
         id: 'kernestof-integralregning',
-        tekst: 'Bestemme stamfunktioner og ubestemte og bestemte integraler, også arealer, integration ved substitution og volumen af omdrejningslegemer',
+        tekst: 'Bestemme stamfunktioner og ubestemte og bestemte integraler, bruge regnereglerne for f + g, f − g og k · f og integration ved substitution og bruge integraler til arealer og volumen af omdrejningslegemer',
         emne: 'matematik/integralregning',
       },
       {
         id: 'kernestof-differentialligninger',
-        tekst: 'Løse og analysere første ordens differentialligninger, også med separationsmetoden og Eulers metode, og opstille simple modeller',
+        tekst: 'Løse og analysere første ordens differentialligninger, herunder y′ = f(x), y′ = k · y, y′ = b − a · y og y′ = a · y · (M − y), også med separationsmetoden og Eulers metode, og opstille simple modeller',
         emne: 'matematik/differentialligninger',
       },
       {
@@ -245,7 +245,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       },
       {
         id: 'kernestof-kombinatorik-og-sandsynlighed',
-        tekst: 'Regne med sandsynlighed, sandsynlighedsfelter, hændelser og kombinatorik, herunder kombinationer',
+        tekst: 'Regne med sandsynlighed, sandsynlighedsfelter (særligt symmetriske), hændelser og kombinatorik, herunder kombinationer',
         emne: 'matematik/kombinatorik-og-sandsynlighed',
       },
       {
@@ -273,8 +273,8 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
     ],
     verificeret: false,
     punkter: [
-      { id: 'undersoege-problemstillinger', tekst: 'Bruge og kombinere viden fra fagets discipliner til at undersøge aktuelle samfundsproblemer i Danmark og andre lande og diskutere løsninger, også dine egne' },
-      { id: 'teorier-og-begreber', tekst: 'Bruge viden, begreber og teorier fra kernestoffet til at forklare og diskutere samfundsproblemer og udviklingstendenser' },
+      { id: 'undersoege-problemstillinger', tekst: 'Bruge og kombinere viden fra fagets discipliner til at undersøge aktuelle samfundsmæssige problemstillinger i Danmark og andre lande og diskutere løsninger, også dine egne' },
+      { id: 'teorier-og-begreber', tekst: 'Bruge viden, begreber og sammenhænge fra kernestoffet og teorier fra fagets discipliner til at forklare og diskutere samfundsmæssige problemstillinger og udviklingstendenser' },
       { id: 'politikomraade', tekst: 'Undersøge og dokumentere et politikområde, også hvad EU og globale forhold betyder for det' },
       { id: 'samfundsforandringer', tekst: 'Forklare sammenhænge mellem samfundsforandringer og ændringer i sociale og kulturelle mønstre' },
       { id: 'oekonomiske-prioriteringer', tekst: 'Undersøge konkrete økonomiske prioriteringsproblemer nationalt, regionalt og globalt og diskutere løsninger' },
@@ -283,8 +283,8 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'fagets-identitet', tekst: 'Vise, at du kender fagets identitet og metoder' },
       { id: 'problemstillinger-og-hypoteser', tekst: 'Formulere præcise faglige problemstillinger og hypoteser og indsamle og bearbejde dansk og fremmedsproget materiale, også statistik, til at undersøge, diskutere og konkludere' },
       { id: 'kildekritik-og-undersoegelser', tekst: 'Forholde dig kritisk til materialer fra forskellige afsendere og bruge samfundsvidenskabelig metode til at lave mindre empiriske undersøgelser' },
-      { id: 'beregninger-og-diagrammer', tekst: 'Vise sammenhænge og udviklingstendenser med beregninger, tabeller, diagrammer og modeller, også med digitale hjælpemidler' },
-      { id: 'formidling', tekst: 'Analysere og formidle empiriske og teoretiske sammenhænge skriftligt og mundtligt, struktureret og nuanceret og med fagets begreber' },
+      { id: 'beregninger-og-diagrammer', tekst: 'Vise faglige sammenhænge og udviklingstendenser med færdige og egne beregninger, tabeller, diagrammer og modeller og bruge digitale hjælpemidler til det' },
+      { id: 'formidling', tekst: 'Analysere og formidle empiriske og teoretiske sammenhænge skriftligt og mundtligt, struktureret og nuanceret, på fagets taksonomiske niveauer og med fagets begreber' },
       { id: 'argumentation', tekst: 'Argumentere sammenhængende og nuanceret for dine egne synspunkter på et fagligt grundlag, placere dem i en teoretisk sammenhæng og indgå i en faglig dialog' },
     ],
   },
@@ -305,7 +305,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'sproglig-korrekthed', tekst: 'Beherske skriftsprogets normer for korrekthed og bruge grammatiske og stilistiske grundbegreber' },
       { id: 'sprogets-funktion', tekst: 'Vise indblik i sprogets funktion og variation, også dets samspil med kultur og samfund' },
       { id: 'mundtlige-fremstillingsformer', tekst: 'Bruge centrale mundtlige fremstillingsformer med formidlingsbevidsthed, fx holde faglige oplæg og argumentere for et synspunkt' },
-      { id: 'skriftlige-fremstillingsformer', tekst: 'Bruge centrale skriftlige fremstillingsformer med formidlingsbevidsthed: redegøre, diskutere, analysere, fortolke og vurdere' },
+      { id: 'skriftlige-fremstillingsformer', tekst: 'Bruge centrale skriftlige fremstillingsformer med formidlingsbevidsthed, fx redegøre, diskutere, analysere, fortolke og vurdere' },
       { id: 'analysere-tekster', tekst: 'Analysere, fortolke og perspektivere fiktive og ikke-fiktive tekster i alle medier' },
       { id: 'dansk-litteratur', tekst: 'Kende en bred repræsentation af dansk litteratur gennem tiderne med perspektiv til litteraturen i Norden, Europa og resten af verden' },
       { id: 'litteraturhistorie', tekst: 'Vise viden om træk af den danske litteraturs historie og perspektivere til den, også samspillet mellem tekst, kultur og samfund' },
@@ -332,7 +332,7 @@ export const GENERISK_PENSUM: GeneriskListe[] = [
       { id: 'sproglig-korrekthed', tekst: 'Beherske skriftsprogets normer for korrekthed og bruge grammatiske og stilistiske grundbegreber' },
       { id: 'sprogets-funktion', tekst: 'Vise indblik i sprogets funktion og variation, også dets samspil med kultur og samfund' },
       { id: 'mundtlige-fremstillingsformer', tekst: 'Bruge centrale mundtlige fremstillingsformer med formidlingsbevidsthed, fx holde faglige oplæg og argumentere for et synspunkt' },
-      { id: 'skriftlige-fremstillingsformer', tekst: 'Bruge centrale skriftlige fremstillingsformer med formidlingsbevidsthed: redegøre, diskutere, analysere, fortolke og vurdere' },
+      { id: 'skriftlige-fremstillingsformer', tekst: 'Bruge centrale skriftlige fremstillingsformer med formidlingsbevidsthed, fx redegøre, diskutere, analysere, fortolke og vurdere' },
       { id: 'analysere-tekster', tekst: 'Analysere, fortolke og perspektivere fiktive og ikke-fiktive tekster i alle medier' },
       { id: 'dansk-litteratur', tekst: 'Kende en bred repræsentation af dansk litteratur gennem tiderne med perspektiv til litteraturen i Norden, Europa og resten af verden' },
       { id: 'litteraturhistorie', tekst: 'Vise viden om træk af den danske litteraturs historie og perspektivere til den, også samspillet mellem tekst, kultur og samfund' },
