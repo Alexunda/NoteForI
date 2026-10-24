@@ -123,7 +123,7 @@ Punkterne kommer fra ministeriets evalueringer af de skriftlige prøver i 2024. 
 
 ### Det er snyd
 
-- **Oversættelsesprogrammer og chatbots.** Digitale ordbøger, der kan oversætte hele udtryk, sætninger eller længere tekst, må du ikke bruge. [hjælpemiddeloversigten, s. 9](kilde:hjaelpemidler) I fransk og spansk begyndersprog A foregår hele prøven på papir, så her må du kun bruge det, skolen deler ud. [hjælpemiddeloversigten, s. 15, 18, 20 og 21](kilde:hjaelpemidler)
+- **Oversættelsesprogrammer og ordbøger.** Digitale ordbøger, der kan oversætte hele udtryk, sætninger eller længere tekst, må du ikke bruge. [hjælpemiddeloversigten, s. 9](kilde:hjaelpemidler) I fransk og spansk begyndersprog A og i italiensk A foregår hele prøven på papir. Her må du slet ingen hjælpemidler bruge i 1. delprøve, og i 2. delprøve må du kun bruge Værktøjskassen, som skolen deler ud. [hjælpemiddeloversigten, s. 15, 18 og 21](kilde:hjaelpemidler) Chatbots hører under punktet om AI nedenfor.
 - **Internet og AI.** Som udgangspunkt må du kun bruge internettet til at hente og aflevere prøven. Andre undtagelser skal stå i undervisningsbeskrivelsen. Generativ AI må du ikke bruge. [prøvebekendtgørelsen § 30, stk. 2, og § 33](kilde:pb) [hjælpemiddeloversigten, s. 5](kilde:hjaelpemidler)
 - **Mobil og smartwatch.** Du må ikke have mobil, smartwatch eller andet, du kan kommunikere med, til prøven. [prøvebekendtgørelsen § 32](kilde:pb) [hjælpemiddeloversigten, s. 5](kilde:hjaelpemidler)
 - **Gamle opgaver.** Du må ikke aflevere dit eget tidligere bedømte arbejde uden at henvise til det. [prøvebekendtgørelsen § 37, stk. 1](kilde:pb)
