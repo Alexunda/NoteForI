@@ -227,7 +227,7 @@ Hvert fag får en **overbliksside** med:
    - Dansk A har en 2026-læreplan.
    
    Tjek hvilken læreplan der gælder for hvilken årgang, og mærk alt indhold med `laereplan`. Elever fra forskellige årgange kan være på forskellige versioner i samme fag.
-3. **Andre kilder end de officielle.** lex.dk må kun bruges til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Omskriv altid, citér ikke, og angiv artiklen som kilde. Lærebøger er ikke tilladt.
+3. **Andre kilder end de officielle.** lex.dk må kun bruges til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Omskriv altid, citér ikke, og angiv artiklen som kilde. Grænsen for formler, konstanter og tal, huller og egne forklaringer står i CLAUDE.md, regel 1. Fysiske konstanter tages fra NIST (CODATA). Lærebøger er ikke tilladt.
 4. **Navne staves rigtigt**, også når kilden staver dem forkert (fx Brønsted og Sennett).
 5. **Tal** har årstal og den dato, de er hentet, og en note om, at de kan være forældede, med link til kilden.
 6. **Ét sted pr. begreb.** Hvert begreb står ét sted med én definition, og andre sider linker til det. Betyder et begreb noget forskelligt i to fag, står det i begge med faget angivet.
@@ -255,7 +255,8 @@ Hvert fag får en **overbliksside** med:
 | Fagkonsulenternes materiale på emu.dk | Fx "Lærerens hæfte" (bioteknologi og kemi), "Opgavetyper i samfundsfag", "De tre eksamensgenrer" (dansk), "Råd og vink" og FAQ'er | https://emu.dk/stx |
 | Andre myndigheder og officielle organisationer | Samfundsfag: Danmarks Statistik, Nationalbanken, Finansministeriet, De Økonomiske Råd, Beskæftigelsesministeriet, Konkurrence- og Forbrugerstyrelsen, Udenrigsministeriet, Statsministeriet, EU, NATO, UNDP og Verdensbanken. Dansk: Det Kgl. Bibliotek og Dansk Sprognævn. Bioteknologi og kemi: NHGRI, IUBMB og IUPAC-IUBMB, ICTV, Statens Serum Institut, sundhed.dk, WHO, Miljøstyrelsen, Fødevarestyrelsen, Energistyrelsen, EFSA og GEMET | Står i hver sides frontmatter |
 | kemisknomenklatur.dk | De danske oversættelser af IUPAC's navngivningsregler. Bioteknologi- og kemivejledningen henviser selv til den | https://kemisknomenklatur.dk/ |
-| lex.dk | Opslagsværk. Kun til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet (se afsnit 7) | https://lex.dk/ |
+| lex.dk | Opslagsværk. Kun til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Grænsen for formler, konstanter og tal står i CLAUDE.md, regel 1 (se også afsnit 7) | https://lex.dk/ |
+| NIST (CODATA) | Fysiske konstanter, fx Avogadros konstant og forholdet mellem protonens og elektronens masse | https://physics.nist.gov/cuu/Constants/ |
 
 Konteksten for tidsplanen er, at den store ungdomsuddannelsesreform (epx, skærpede adgangskrav) først træder i kraft i 2030. Den påvirker ikke de nuværende elever.
 
