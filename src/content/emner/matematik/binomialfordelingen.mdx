@@ -1,0 +1,375 @@
+---
+titel: "Binomialfordelingen og hypotesetest"
+beskrivelse: "Stokastiske variable, binomialfordelingen med middelværdi og spredning og en tosidet hypotesetest om en sandsynlighed."
+fag: matematik
+nummer: 25
+omraade: "Sandsynlighedsregning og statistik"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En stokastisk variabel $X$ knytter et tal til hvert udfald af et eksperiment, fx antallet af seksere, når du slår 10 gange med en terning. [vejledningen, s. 18](kilde:vejledning) Er $X$ binomialfordelt, skriver du $X \sim b(n, p)$, hvor $n$ er antalsparameteren, og $p$ er sandsynlighedsparameteren. Formlen for $P(X = r)$ giver sandsynligheden for, at $X$ bliver præcis $r$. [formelsamlingen, s. 38, formel (159) og (161)](kilde:formelsamling) I en hypotesetest bruger du binomialfordelingen til at afgøre, om en påstand om $p$ passer med en stikprøve. [formelsamlingen, s. 39](kilde:formelsamling) Estimation og hypotesetest kommer ikke til den skriftlige prøve. [vejledningen, s. 19](kilde:vejledning)
+
+## Vigtige pointer
+
+- **Fordelingen i en tabel.** En stokastisk variabel kan tage værdierne $x_1, x_2, \ldots, x_n$ med sandsynlighederne $P(X = x_i) = p_i$. Det kan du skrive i en tabel. [formelsamlingen, s. 38, formel (155)](kilde:formelsamling) Sandsynlighederne giver 1 tilsammen. [formelsamlingen, s. 37, formel (148)](kilde:formelsamling) Du skal forstå og kunne bruge notation som $X \sim b(n, p)$ og $P(X \leq 8)$. [vejledningen, s. 18](kilde:vejledning)
+- **Middelværdi og spredning.** Middelværdien $\mu = E(X)$ får du ved at gange hver værdi med dens sandsynlighed og lægge det hele sammen. Spredningen $\sigma$ er kvadratroden af variansen $\text{Var}(X)$, som bygger på, hvor langt værdierne ligger fra $\mu$. [formelsamlingen, s. 38, formel (156)–(158)](kilde:formelsamling) Middelværdi og spredning af et observationsmateriale har deres egne formler under [deskriptiv statistik](/fag/matematik/deskriptiv-statistik/).
+- **Binomialfordelingen.** Er $X \sim b(n, p)$, er $P(X = r) = K(n, r) \cdot p^r \cdot (1 - p)^{n - r}$. [formelsamlingen, s. 38, formel (159) og (161)](kilde:formelsamling) Du kan tænke på $X$ som antallet af succeser, når et forsøg gentages $n$ gange. [vejledningen, s. 19](kilde:vejledning) Beviset for formlen bygger på, at $p$ er sandsynligheden for succes hver gang, og at gentagelserne er uafhængige. Se beviset i Eksamenshjørnet.
+- **Middelværdi og spredning i binomialfordelingen.** Her er $\mu = n \cdot p$ og $\sigma = \sqrt{n \cdot p \cdot (1 - p)}$. [formelsamlingen, s. 38, formel (162) og (163)](kilde:formelsamling)
+- **Flere værdier på én gang.** Er $X$ binomialfordelt, er $P(X \leq 3)$ sandsynligheden for, at $X$ er 0, 1, 2 eller 3. Du lægger de fire sandsynligheder sammen. [formelsamlingen, s. 37, formel (150)](kilde:formelsamling) Den samme tankegang ligger bag $P(X \geq x)$ i hypotesetesten.
+- **Estimation.** At estimere er at give et skøn ud fra data. Du estimerer basissandsynligheden, altså sandsynligheden for succes hver gang, som antallet af succeser divideret med antallet af gentagelser. [vejledningen, s. 19](kilde:vejledning) Svarer 28 ud af 80 adspurgte ja, er estimatet $\frac{28}{80} = 0{,}35$.
+- **Hypotesetest.** Du tester nulhypotesen $H_0\colon p = p_0$ mod den alternative hypotese $H_1\colon p \neq p_0$. Det er en tosidet test. [vejledningen, s. 19](kilde:vejledning) Hvis $H_0$ er sand, er $X \sim b(n, p_0)$. Ligger observationen i det kritiske område, forkastes $H_0$. Ligger den i acceptområdet, forkastes $H_0$ ikke. [formelsamlingen, s. 39](kilde:formelsamling)
+- **Sig det med almindelige ord.** Du skal kunne gøre rede for testens resultat og sige i hverdagssprog, hvad det siger om populationen. Vejledningen nævner også population, stikprøve, repræsentativitet og p-værdi som centrale begreber i hypotesetest. [vejledningen, s. 19](kilde:vejledning)
+
+## Formler
+
+<Formel navn="Middelværdi af en stokastisk variabel" tex="\mu = x_1 \cdot p_1 + x_2 \cdot p_2 + \ldots + x_n \cdot p_n" kilde="formelsamling" henvisning="formelsamlingen, s. 38, formel (156)">
+
+<Symboler>
+
+- $x_1, x_2, \ldots, x_n$: de værdier, $X$ kan tage.
+- $p_1, p_2, \ldots, p_n$: sandsynlighederne for værdierne.
+- $\mu$: middelværdien, som også skrives $E(X)$.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender fordelingen i en tabel og skal finde middelværdien, fx af gevinsten i et spil.
+
+</Bruges>
+
+<Eksempel>
+
+Et lykkehjul giver 0 kr. med sandsynligheden $0{,}5$, 10 kr. med sandsynligheden $0{,}3$ og 50 kr. med sandsynligheden $0{,}2$. Lad $X$ være gevinsten. Så er
+
+$$
+\mu = 0 \cdot 0{,}5 + 10 \cdot 0{,}3 + 50 \cdot 0{,}2 = 13
+$$
+
+Middelværdien er altså 13 kr.
+
+</Eksempel>
+
+<Fejl>
+
+- At tage gennemsnittet af værdierne uden at gange med sandsynlighederne. Her er $\frac{0 + 10 + 50}{3} = 20$ forkert.
+- At glemme at tjekke, at sandsynlighederne giver 1 tilsammen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Varians" tex="\text{Var}(X) = (x_1 - \mu)^2 \cdot p_1 + \ldots + (x_n - \mu)^2 \cdot p_n" kilde="formelsamling" henvisning="formelsamlingen, s. 38, formel (157)">
+
+<Symboler>
+
+- $x_1, \ldots, x_n$ og $p_1, \ldots, p_n$: værdierne og deres sandsynligheder.
+- $\mu$: middelværdien, som du skal finde først.
+- $\text{Var}(X)$: variansen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde spredningen. Variansen er et skridt på vejen.
+
+</Bruges>
+
+<Eksempel>
+
+Lykkehjulet fra før har $\mu = 13$. Så er
+
+$$
+\begin{aligned}
+\text{Var}(X) &= (0 - 13)^2 \cdot 0{,}5 + (10 - 13)^2 \cdot 0{,}3 \\
+&\quad + (50 - 13)^2 \cdot 0{,}2 \\
+&= 84{,}5 + 2{,}7 + 273{,}8 = 361
+\end{aligned}
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at sætte parentesen i anden, så du regner med $x_i - \mu$ i stedet for $(x_i - \mu)^2$.
+- At glemme at gange med sandsynlighederne.
+- At stoppe ved variansen, når der bliver spurgt om spredningen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Spredning af en stokastisk variabel" tex="\sigma = \sqrt{\text{Var}(X)}" kilde="formelsamling" henvisning="formelsamlingen, s. 38, formel (158)">
+
+<Symboler>
+
+- $\text{Var}(X)$: variansen.
+- $\sigma$: spredningen, som også skrives $\sigma(X)$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde spredningen af en stokastisk variabel. Fordi du tager kvadratroden, har spredningen den samme enhed som $X$, fx kr.
+
+</Bruges>
+
+<Eksempel>
+
+Lykkehjulet fra før har $\text{Var}(X) = 361$. Så er
+
+$$
+\sigma = \sqrt{361} = 19
+$$
+
+Spredningen er altså 19 kr.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme kvadratroden og svare med variansen.
+- At tage kvadratroden af hvert led for sig i stedet for af hele variansen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sandsynligheder i binomialfordelingen" tex="P(X = r) = K(n, r) \cdot p^r \cdot (1 - p)^{n - r}" kilde="formelsamling" henvisning="formelsamlingen, s. 38, formel (161)">
+
+<Symboler>
+
+- $n$: antalsparameteren, fx antallet af gentagelser.
+- $p$: sandsynlighedsparameteren, fx sandsynligheden for succes hver gang.
+- $r$: det antal succeser, du vil finde sandsynligheden for.
+- $K(n, r)$: binomialkoefficienten. Se [kombinatorik og sandsynlighed](/fag/matematik/kombinatorik-og-sandsynlighed/).
+
+</Symboler>
+
+<Bruges>
+
+Når $X \sim b(n, p)$, og du skal finde sandsynligheden for, at $X$ er præcis $r$.
+
+</Bruges>
+
+<Eksempel>
+
+Du gætter tilfældigt på 5 spørgsmål, der hver har 4 svarmuligheder og ét rigtigt svar. Antallet af rigtige svar $X$ er binomialfordelt med $n = 5$ og $p = \frac{1}{4}$. Sandsynligheden for præcis 2 rigtige er
+
+$$
+P(X = 2) = K(5, 2) \cdot \left(\frac{1}{4}\right)^2 \cdot \left(\frac{3}{4}\right)^3 = 10 \cdot \frac{1}{16} \cdot \frac{27}{64} \approx 0{,}264
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme $K(n, r)$. Så får du kun sandsynligheden for én bestemt rækkefølge af rigtige og forkerte svar.
+- At bytte om på eksponenterne, så $p$ får $n - r$ og $1 - p$ får $r$.
+- At bruge formlen, når sandsynligheden for succes ændrer sig fra gang til gang. Formlen bygger på, at den er den samme hver gang.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Middelværdi i binomialfordelingen" tex="\mu = n \cdot p" kilde="formelsamling" henvisning="formelsamlingen, s. 38, formel (162)">
+
+<Symboler>
+
+- $n$: antalsparameteren.
+- $p$: sandsynlighedsparameteren.
+- $\mu$: middelværdien af $X$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde middelværdien af en binomialfordelt variabel uden at lave en hel tabel.
+
+</Bruges>
+
+<Eksempel>
+
+Et frø spirer med sandsynligheden $0{,}3$. Du sår 200 frø, og de spirer uafhængigt af hinanden. Antallet $X$, der spirer, er binomialfordelt med $n = 200$ og $p = 0{,}3$. Så er
+
+$$
+\mu = 200 \cdot 0{,}3 = 60
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at middelværdien altid er en værdi, $X$ kan få. Med $n = 5$ og $p = \frac{1}{4}$ er $\mu = 1{,}25$, men du kan ikke få 1,25 rigtige svar.
+- At bruge $1 - p$ i stedet for $p$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Spredning i binomialfordelingen" tex="\sigma = \sqrt{n \cdot p \cdot (1 - p)}" kilde="formelsamling" henvisning="formelsamlingen, s. 38, formel (163)">
+
+<Symboler>
+
+- $n$: antalsparameteren.
+- $p$: sandsynlighedsparameteren.
+- $\sigma$: spredningen af $X$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde spredningen af en binomialfordelt variabel.
+
+</Bruges>
+
+<Eksempel>
+
+Frøene fra før har $n = 200$ og $p = 0{,}3$. Så er
+
+$$
+\sigma = \sqrt{200 \cdot 0{,}3 \cdot 0{,}7} = \sqrt{42} \approx 6{,}48
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme kvadratroden.
+- At bruge $p$ to gange i stedet for $p$ og $1 - p$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Kritisk område i en binomialtest" tex="P(X \leq x) \leq 2{,}5\,\% \quad \text{eller} \quad P(X \geq x) \leq 2{,}5\,\%" kilde="formelsamling" henvisning="formelsamlingen, s. 39">
+
+<Symboler>
+
+- $H_0\colon p = p_0$: nulhypotesen, altså den påstand om $p$, du tester.
+- $n$: stikprøvestørrelsen.
+- $X$: binomialfordelt med $n$ og $p_0$, hvis $H_0$ er sand.
+- $x$: observationen. Med signifikansniveauet 5 % ligger den i den venstre del af det kritiske område, hvis $P(X \leq x) \leq 2{,}5\,\%$, og i den højre del, hvis $P(X \geq x) \leq 2{,}5\,\%$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal teste en påstand om en sandsynlighed ud fra en stikprøve. Husk, at hypotesetest ikke kommer til den skriftlige prøve.
+
+</Bruges>
+
+<Eksempel>
+
+En skole påstår, at hver fjerde elev cykler til skole. Du spørger 60 tilfældigt valgte elever, og 23 af dem cykler. Nulhypotesen er $H_0\colon p = 0{,}25$. Hvis den er sand, er $X$ binomialfordelt med $n = 60$ og $p = 0{,}25$. Med dit digitale værktøj finder du:
+
+- $P(X \leq 8) \approx 0{,}021$ og $P(X \leq 9) \approx 0{,}045$. Den venstre del af det kritiske område er altså $\{0, 1, \ldots, 8\}$.
+- $P(X \geq 23) \approx 0{,}015$ og $P(X \geq 22) \approx 0{,}030$. Den højre del er altså $\{23, 24, \ldots, 60\}$.
+- Acceptområdet er $\{9, 10, \ldots, 22\}$.
+
+Observationen 23 ligger i det kritiske område, så $H_0$ forkastes. I hverdagssprog: Stikprøven passer ikke med skolens påstand, og den tyder på, at mere end hver fjerde elev cykler.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge 5 % i hver side. Med signifikansniveauet 5 % er grænsen 2,5 % i hver side.
+- At regne $P(X = x)$ i stedet for $P(X \leq x)$ eller $P(X \geq x)$.
+- At glemme den ene side. Testen er tosidet, så både meget små og meget store observationer kan ligge i det kritiske område.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Stokastisk variabel">
+
+En måde at knytte et tal til hvert udfald af et eksperiment, fx antallet af seksere i 10 slag med en terning. [vejledningen, s. 18](kilde:vejledning) I formelsamlingen hedder den $X$. [formelsamlingen, s. 38](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Middelværdi">
+
+For en stokastisk variabel er middelværdien $\mu = E(X) = x_1 \cdot p_1 + x_2 \cdot p_2 + \ldots + x_n \cdot p_n$, altså hver værdi gange dens sandsynlighed, lagt sammen. [formelsamlingen, s. 38, formel (156)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Spredning">
+
+Kvadratroden af variansen, $\sigma = \sqrt{\text{Var}(X)}$. Variansen lægger kvadratet på hver værdis afstand til $\mu$ sammen, ganget med værdiens sandsynlighed. [formelsamlingen, s. 38, formel (157) og (158)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Binomialfordeling">
+
+$X \sim b(n, p)$ betyder, at $X$ er binomialfordelt med antalsparameter $n$ og sandsynlighedsparameter $p$. Så er $P(X = r) = K(n, r) \cdot p^r \cdot (1 - p)^{n - r}$. [formelsamlingen, s. 38, formel (159) og (161)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Nulhypotese">
+
+Den påstand om sandsynligheden $p$, du tester, skrevet $H_0\colon p = p_0$. Hvis $H_0$ er sand, er $X \sim b(n, p_0)$. [formelsamlingen, s. 39](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Signifikansniveau">
+
+Signifikansniveauet bestemmer, hvor stort det kritiske område er. Med signifikansniveauet 5 % hører en observation $x$ til det kritiske område, hvis $P(X \leq x) \leq 2{,}5\,\%$ eller $P(X \geq x) \leq 2{,}5\,\%$. [formelsamlingen, s. 39](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Kritisk område">
+
+De observationer, der får dig til at forkaste nulhypotesen. Det har en venstre og en højre del. [formelsamlingen, s. 39](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Acceptområde">
+
+De observationer, der ikke ligger i det kritiske område. Ligger observationen her, forkastes nulhypotesen ikke. [formelsamlingen, s. 39](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Stokastisk variabel med middelværdi og spredning og binomialfordelingen med sandsynligheder, middelværdi og spredning er kernestof. Det samme gælder binomialfordelt statistisk materiale, estimation af basissandsynligheden og hypotesetest i binomialfordelingen. [læreplanen, pkt. 2.2](kilde:laereplan) Stokastiske variable skal du kun kende så godt, at du forstår og kan bruge notationen, fx $X \sim b(n, p)$. [vejledningen, s. 18](kilde:vejledning)
+
+**Estimation og hypotesetest kommer ikke til den skriftlige prøve.** Ved den skriftlige prøve stilles der ikke opgaver i estimation og hypotesetest i binomialfordelingen. [vejledningen, s. 19](kilde:vejledning) Stokastiske variable og binomialfordelingen er derimod ikke undtaget. [vejledningen, s. 18–19 og 36](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig i at bruge formlerne for $P(X = r)$, $\mu$ og $\sigma$ med små tal, og find $K(n, r)$ i Pascals trekant. [formelsamlingen, s. 36 og 38, formel (144) og (161)–(163)](kilde:formelsamling) Skriv formlen, før du sætter tal ind, og vis dine mellemregninger. [vejledningen, s. 41–42](kilde:vejledning)
+
+- Et eksempel: $X$ er binomialfordelt med $n = 4$ og $p = \frac{1}{2}$. Så er $P(X = 1) = K(4, 1) \cdot \left(\frac{1}{2}\right)^1 \cdot \left(\frac{1}{2}\right)^3 = 4 \cdot \frac{1}{16} = \frac{1}{4}$.
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning) Med dit digitale værktøj kan du fx finde $P(X \leq r)$ uden at lægge mange sandsynligheder sammen i hånden. Forklar, hvordan du bruger værktøjet, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) Formlen for binomialfordelingens punktsandsynligheder skal bevises, eventuelt ved at generalisere eksempler. [vejledningen, s. 18](kilde:vejledning) Det er nok at argumentere med taleksempler. [vejledningen, s. 23](kilde:vejledning)
+
+- **Idéen i beviset med et taleksempel:** Lad $X$ være binomialfordelt med $n = 4$, og find $P(X = 2)$. Skriv S for succes og F for fiasko. Én bestemt rækkefølge, fx SSFF, har sandsynligheden $p \cdot p \cdot (1 - p) \cdot (1 - p) = p^2 \cdot (1 - p)^2$, når gentagelserne er uafhængige. [formelsamlingen, s. 37, formel (152)](kilde:formelsamling) De 2 S'er kan placeres på $K(4, 2) = 6$ måder. [formelsamlingen, s. 36, formel (143)](kilde:formelsamling) Rækkefølgerne har ikke noget fælles udfald, så du lægger de 6 ens sandsynligheder sammen. [formelsamlingen, s. 37, formel (151)](kilde:formelsamling) Det giver $P(X = 2) = K(4, 2) \cdot p^2 \cdot (1 - p)^2$. Gør det samme med $n$ og $r$, så får du formel (161). [formelsamlingen, s. 38, formel (161)](kilde:formelsamling)
+- **Hypotesetest** er kernestof, og eksamensspørgsmålene dækker tilsammen i al væsentlighed kernestoffet. Derfor kan det indgå i den mundtlige prøve. [læreplanen, pkt. 2.2 og 4.2](kilde:laereplan) Du skal kunne teste $H_1\colon p \neq p_0$ mod $H_0\colon p = p_0$ på et givet signifikansniveau, gøre rede for resultatet og sige i hverdagssprog, hvad det siger om populationen. [vejledningen, s. 19](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- Et frø spirer med sandsynligheden $0{,}85$. Du sår 12 frø, som spirer uafhængigt af hinanden. Hvad er sandsynligheden for, at mindst 10 spirer? Hvad er middelværdien og spredningen af antallet, der spirer?
+- En kandidat til elevrådet påstår, at 40 % af eleverne vil stemme på hende. I en stikprøve på 50 elever vil 13 stemme på hende. Test påstanden med signifikansniveauet 5 %, og forklar resultatet i hverdagssprog.
+- Forklar med et taleksempel, hvorfor $P(X = 1) = K(3, 1) \cdot p \cdot (1 - p)^2$, når $X \sim b(3, p)$.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
