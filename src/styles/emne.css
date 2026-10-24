@@ -102,6 +102,9 @@
 
 /* Tabeller kan scrolles vandret på en smal skærm i stedet for at gøre siden bredere */
 .emne-indhold table {
+  /* position gør, at også tekst til skærmlæsere (.skjult-visuelt) bliver i
+     tabellens vandrette scroll og ikke gør hele siden bredere */
+  position: relative;
   display: block;
   max-width: 100%;
   margin-bottom: var(--afstand-4);

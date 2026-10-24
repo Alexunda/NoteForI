@@ -136,6 +136,12 @@ a:hover {
   white-space: nowrap;
 }
 
+/* Selve formlen må stadig knække efter fx = og +, så den ikke stikker ud på
+   mobilen */
+.formel-ord > .katex {
+  white-space: normal;
+}
+
 /* Klassetrin-mærker. Det klassetrin, man har valgt på forsiden, fremhæves. */
 .trin {
   display: inline-block;
