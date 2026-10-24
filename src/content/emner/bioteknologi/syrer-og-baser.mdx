@@ -65,7 +65,7 @@ Til bioteknologi A skal du kunne syre-basereaktioner og beregne pH i vandige opl
 
 - **Definitionen.** Vejledningen skriver, at syre-basereaktioner tager udgangspunkt i Brønsteds definition af syrer og baser. [vejledningen, s. 12](kilde:vejledning)
 - **pH og oxonium.** pH hænger sammen med den aktuelle stofmængdekoncentration af oxonium, og sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Koncentrationen af oxonium skrives $[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi)
-- **Formlen for pH.** I Lærerens hæfte til kemi A beregnes pH med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) pH er altså minus [titalslogaritmen](/fag/matematik/logaritmefunktioner/#begreb-titalslogaritme) til talværdien af koncentrationen, målt i mol pr. liter. [lex.dk: pH](kilde:lex-ph) Se formlen nedenfor.
+- **Formlen for pH.** I Lærerens hæfte til kemi A beregnes pH med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Du tager altså [titalslogaritmen](/fag/matematik/logaritmefunktioner/#begreb-titalslogaritme) til koncentrationen i mol/L (kun tallet, uden enhed) og skifter fortegn. [lex.dk: pH](kilde:lex-ph) Se formlen nedenfor.
 - **Sur, neutral og basisk.** I rent vand ved 25 °C er pH 7, og vandet er neutralt. En sur opløsning har pH under 7, og en basisk opløsning har pH over 7. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
 - **Det skal du kunne regne på.** pH i vandige opløsninger af både stærke og ikke-stærke syrer og baser og i puffersystemer. [vejledningen, s. 12](kilde:vejledning)
 - **Syrestyrke.** pKs kaldes syrestyrkeeksponenten. [Lærerens hæfte til kemi A, s. 22](kilde:laererens-haefte-kemi) Du kan finde pKs-værdier med dit kemiske tegneprogram. [Lærerens hæfte, s. 7](kilde:laererens-haefte)
@@ -77,18 +77,13 @@ Til bioteknologi A skal du kunne syre-basereaktioner og beregne pH i vandige opl
 
 ### Puffere
 
-- **Hvad en puffer er.** En puffer, også kaldet en buffer, er en opløsning, hvis pH kun ændrer sig lidt, når du tilsætter små mængder syre eller base. Den laves oftest ved at opløse lige store stofmængder af en svag syre og dens korresponderende base i vand. [lex.dk: Buffer](kilde:lex-buffer)
+- **Hvad en puffer er.** En puffer, også kaldet en buffer, er en opløsning, der holder sin pH nogenlunde stabil, selv om du hælder lidt syre eller base i. Typisk opløser man en svag syre sammen med dens korresponderende base i vand, ofte med samme stofmængde af hver. [lex.dk: Buffer](kilde:lex-buffer)
 - **I laboratoriet.** Puffere bruges fx ved biokemiske og mikrobiologiske undersøgelser, hvor pH skal holdes konstant. [lex.dk: Buffer](kilde:lex-buffer)
 - **I kroppen.** Enzymer og transportmolekyler virker kun optimalt i et bestemt pH-interval. I blodet hjælper kulsyre og hydrogencarbonat med at holde pH stabil, og i cellerne virker phosphat og proteiner som puffere. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad) Om enzymer og pH kan du læse under [pH-optimum](/fag/bioteknologi/enzymer/#begreb-ph-optimum).
-- **Et eksempel fra blodet.** Hydrogencarbonat, $\text{HCO}_3^-$, virker som puffer i blodet og dæmper udsving i pH. Henderson-Hasselbalchs ligning gælder for blodets vigtigste puffersystem, og med den kan blodets pH beregnes [lex.dk: Henderson-Hasselbalchs ligning](kilde:lex-henderson-hasselbalch):
-
-$$
-\text{pH} = 6{,}1 + \log\frac{[\text{HCO}_3^-]}{[\text{CO}_2] + [\text{H}_2\text{CO}_3]}
-$$
-
+- **Et eksempel fra blodet.** I blodet er hydrogencarbonat, $\text{HCO}_3^-$, med til at holde pH stabil, fordi det virker som puffer. Ligningen, der beskriver dette system, blodets vigtigste puffersystem, kaldes Henderson-Hasselbalchs ligning. [lex.dk: Henderson-Hasselbalchs ligning](kilde:lex-henderson-hasselbalch)
 - **Kemi B.** Puffersystemer er ikke kernestof i kemi B. [vejledningen til kemi, s. 21](kilde:vejledning-kemi)
 
-Prøv selv: Tag minus logaritmen på begge sider af udtrykket for styrkekonstanten nedenfor, og brug, at $\text{pH} = -\log[\text{H}_3\text{O}^+]$ og $\text{p}K_A = -\log K_A$. Hvilket udtryk for pH får du? Hvad bliver pH, når $[\text{A}^-] = [\text{HA}]$? Sammenlign med Henderson-Hasselbalchs ligning.
+Prøv selv: Tag minus logaritmen på begge sider af udtrykket for styrkekonstanten nedenfor, og brug, at $\text{pH} = -\log[\text{H}_3\text{O}^+]$ og $\text{p}K_A = -\log K_A$. Hvilket udtryk for pH får du? Hvad bliver pH, når $[\text{A}^-] = [\text{HA}]$?
 
 ## Formler
 
@@ -207,19 +202,19 @@ Den brøkdel af det oprindelige antal syremolekyler, som har reageret. [Læreren
 
 <Begreb navn="pH">
 
-Et tal, der hænger sammen med den aktuelle stofmængdekoncentration af oxonium. Sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Du beregner den med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Under 7 er opløsningen sur, og over 7 er den basisk. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
+Et tal, der hænger sammen med den aktuelle stofmængdekoncentration af oxonium. Sammenhængen er ikke lineær. [vejledningen til kemi, s. 20, afsnittet om kemi C](kilde:vejledning-kemi) Du beregner den med $\text{pH} = -\log[\text{H}_3\text{O}^+]$. [Lærerens hæfte til kemi A, s. 23](kilde:laererens-haefte-kemi) Ved 25 °C er opløsningen sur under pH 7 og basisk over pH 7. [lex.dk: Surhedsgrad](kilde:lex-surhedsgrad)
 
 </Begreb>
 
 <Begreb navn="Styrkekonstant">
 
-Et mål for en syres eller bases styrke i vand. For en syre HA er $K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}$, hvor koncentrationerne er dem ved ligevægt. Jo stærkere syren er, jo svagere er dens korresponderende base. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
+Fortæller, hvor stærk en syre eller en base er, når den er opløst i vand. For en syre HA er $K_A = \frac{[\text{A}^-][\text{H}_3\text{O}^+]}{[\text{HA}]}$, hvor koncentrationerne er dem ved ligevægt. Jo stærkere syren er, jo svagere er dens korresponderende base. [lex.dk: Styrkekonstant](kilde:lex-styrkekonstant)
 
 </Begreb>
 
 <Begreb navn="Puffer">
 
-En opløsning, hvis pH kun ændrer sig lidt, når du tilsætter små mængder syre eller base. Den laves oftest af lige store stofmængder af en svag syre og dens korresponderende base. [lex.dk: Buffer](kilde:lex-buffer)
+En opløsning, der holder sin pH nogenlunde stabil, når der kommer lidt syre eller base i. Den består typisk af en svag syre sammen med dens korresponderende base, tit med samme stofmængde af hver. [lex.dk: Buffer](kilde:lex-buffer)
 
 </Begreb>
 
