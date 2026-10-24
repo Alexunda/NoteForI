@@ -9,13 +9,13 @@ Begreber, som eleven skal kende, men som siden ikke forklarer, fordi ingen tilla
 | Fil | Hul | Hvorfor | Tjekket |
 |---|---|---|---|
 | `bioteknologi/mikrobiologi.mdx` | Hvad læreplanen mener med vækstfaktorer | Læreplanen (pkt. 2.2) nævner vækstfaktorer, men vejledningen (s. 12) siger ikke, hvad der menes. lex.dk: Vækstfaktorer handler om signalmolekyler i flercellede organismer. lex.dk: Levnedsmiddelmikrobiologi beskriver de faktorer, der styrer mikroorganismers vækst i fødevarer, men bruger ikke ordet, så det er ikke sikkert, at læreplanen mener det samme. Fødevarestyrelsen beskriver enkelte faktorer som temperatur, ilt og pH. | 24. oktober 2026 |
-| `dansk/dokumentar.mdx` | Filmiske virkemidler | Læreplanerne (pkt. 2.2) har de basale filmiske virkemidler i kernestoffet, og vejledningen (s. 16) nævner bevægelse, billedbeskæring, klipning, lyd, lys og forløbsstruktur uden at forklare dem. dfi.dk er blokeret i miljøet. Bemærk: lex.dk har en artikel om filmiske virkemidler (gemt i `_kilder/dansk/lex/`), som dækker de fleste af dem, så hullet kan sandsynligvis lukkes. | 24. oktober 2026 |
+| `dansk/dokumentar.mdx` | Lys og forløbsstruktur | Vejledningen (s. 16) nævner lys og forløbsstruktur blandt de basale filmiske virkemidler. lex.dk: Filmiske virkemidler nævner kun lys som en del af arrangementet og forklarer ikke forløbsstruktur. De øvrige filmiske virkemidler er forklaret med lex.dk på siden om medieanalyse. dfi.dk er blokeret i miljøet. | 24. oktober 2026 |
 | `dansk/dokumentar.mdx` | Faktakontrakt og fakta- og fiktionskoder | Vejledningen (s. 17) bruger begreberne uden at forklare dem. Hverken de officielle kilder eller lex.dk forklarer dem. | 24. oktober 2026 |
-| `dansk/medieanalyse.mdx` | Filmiske og visuelle virkemidler | Læreplanerne (pkt. 2.2) og vejledningen (s. 16) nævner de basale filmiske virkemidler og visuelle virkemidler som udsnit, perspektiv, farver og linjeføring uden at forklare dem. dfi.dk er blokeret i miljøet. Bemærk: lex.dk: Filmiske virkemidler dækker de fleste af de filmiske virkemidler, så den del kan sandsynligvis lukkes. | 24. oktober 2026 |
+| `dansk/medieanalyse.mdx` | Lys, forløbsstruktur, farver, linjeføring, motiver og kommunikationsforhold | Vejledningen (s. 16) nævner dem blandt de filmiske og visuelle virkemidler uden at forklare dem. lex.dk: Filmiske virkemidler nævner kun farver og lys og forklarer ikke forløbsstruktur, linjeføring, motiver eller kommunikationsforhold. lex.dk: Billedanalyse forklarer ingen af de enkelte visuelle virkemidler. dfi.dk er blokeret i miljøet. | 24. oktober 2026 |
 | `dansk/retorik-og-argumentation.mdx` | Toulmins model, hjemmel, nodalpunkt og skræmmeargument | De tre eksamensgenrer (s. 6 og 22) nævner Toulmin som eksempel og hjemmel, nodalpunkt og skræmmeargument som analysebegreber. Hverken de officielle kilder eller lex.dk forklarer dem. lex.dk har kun en artikel om Stephen Toulmin. | 24. oktober 2026 |
 | `kemi/kvalitativ-analyse.mdx` | Tollens' reagens | Et af eksemplerne på prøveopgaver til kemi B på emu.dk har Tollens' reagens som stikord. Hverken de officielle kilder eller lex.dk forklarer det. | 24. oktober 2026 |
 | `samfundsfag/aktoer-og-struktur.mdx` | Subjekt–objekt og voluntarisme–determinisme brugt om aktør og struktur | Vejledningen (s. 13) nævner begrebsparrene uden at forklare dem. lex.dk forklarer subjekt, objekt, voluntarisme og determinisme i filosofisk betydning, men ikke hvordan parrene bruges om aktør og struktur. | 24. oktober 2026 |
-| `samfundsfag/danmarks-udenrigspolitik.mdx` | Determinanter og tilpasningspolitik | Vejledningen (s. 17) nævner determinanter og tilpasningspolitik uden at forklare dem. lex.dk har ingen artikler om dem. Ordet tilpasningspolitik bruges kun om konkrete forløb, fx P. Munchs politik over for Tyskland i 1930'erne (lex.dk: P. Munch), og ikke som et begreb i udenrigspolitik. | 24. oktober 2026 |
+| `samfundsfag/danmarks-udenrigspolitik.mdx` | Determinanter | Vejledningen (s. 17) nævner determinanter uden at forklare dem. lex.dk har ingen artikel om determinanter i udenrigspolitik (søgningen giver kun matematik og immunologi). Tilpasningspolitik er nu forklaret med Gyldendal og Politikens Danmarkshistorie på lex.dk. | 24. oktober 2026 |
 | `samfundsfag/identitet-og-socialisering.mdx` | Dobbeltsocialisering | Vejledningen (s. 12) nævner dobbeltsocialisering uden at forklare det. lex.dk har ingen artikel om det. | 24. oktober 2026 |
 | `samfundsfag/ideologier-og-partier.mdx` | Lipsets bidrag til teorien om skillelinjer | Vejledningen (s. 14) nævner Lipset og Rokkan uden at forklare teorien. lex.dk forklarer Rokkans bidrag, men artiklen om Seymour Martin Lipset nævner ikke skillelinjer. | 24. oktober 2026 |
 | `samfundsfag/ideologier-og-partier.mdx` | Kaare Strøms teori om partistrategier | Vejledningen (s. 14) nævner teorien uden at forklare den. lex.dk har ingen artikel om Kaare Strøm eller teorien. | 24. oktober 2026 |
@@ -26,18 +26,18 @@ Begreber, som eleven skal kende, men som siden ikke forklarer, fordi ingen tilla
 | `samfundsfag/social-ulighed-og-kultur.mdx` | Monokulturelt samfund og pluralistisk integration | Vejledningen (s. 12) nævner begge uden at forklare dem. lex.dk har ingen artikel om monokulturelt samfund (artiklen om kultur nævner kun et kulturelt ensartet samfund) og forklarer ikke pluralistisk integration. | 24. oktober 2026 |
 | `samfundsfag/vaelgeradfaerd.mdx` | Retningsmodellen | Vejledningen (s. 14) nævner nærheds- og retningsmodellen uden at forklare dem. lex.dk: Vælgeradfærd beskriver tanken om nærhed, men ikke retningsmodellen. | 24. oktober 2026 |
 | `samfundsfag/vaelgeradfaerd.mdx` | Klasseanalyse som teori om vælgeradfærd | Vejledningen (s. 14) nævner klasseanalyse som teori om den socialiserede vælger uden at forklare den. lex.dk forklarer klasser, og at klasse betyder mindre for partivalget end før, men ikke klasseanalyse som teori. | 24. oktober 2026 |
-| `samfundsfag/velfaerdsstat-og-marked.mdx` | Selektiv velfærdsmodel | Vejledningen (s. 15) nævner en selektiv velfærdsmodel uden at forklare den. lex.dk: Velfærdsstat bruger ikke ordet, og rapporten fra Beskæftigelsesministeriet bruger det kun om ydelser (s. 19, boks 2.1) og ikke om en model. Bemærk: to artikler på trap.lex.dk (Velfærdsstatens historie og Velfærdssamfundet i Danmark) beskriver en selektiv model. Ejeren afgør, om trap.lex.dk må bruges. | 24. oktober 2026 |
 
-## Egne forklaringer, der venter på godkendelse
+## Egne forklaringer
 
-Redaktionen har skrevet disse forklaringer selv, fordi ingen tilladt kilde forklarer dem. Kilden hedder "Egen forklaring, godkendt af redaktionen". De står øverst på gennemlæsningslisten, og ejeren godkender dem.
+Redaktionen har skrevet disse forklaringer selv, fordi ingen tilladt kilde forklarer dem. Kilden hedder "Egen forklaring, godkendt af redaktionen". En ny forklaring står øverst på gennemlæsningslisten, til ejeren har godkendt den.
 
-| Fil | Begreb |
-|---|---|
-| `bioteknologi/syrer-og-baser.mdx` | Pufferligningen (udledt af formlerne for pH og styrkekonstanten) |
-| `kemi/organiske-reaktionstyper.mdx` | Elimination (Eliminationsreaktion) |
-| `matematik/differentialligninger.mdx` | Eulers metode (bygget på formel (254) og (313)) |
-| `matematik/vektorer-i-planen.mdx` | Stedvektor |
-| `matematik/vektorer-i-planen.mdx` | Vinklen mellem to linjer (bygget på formel (192)) |
-| `matematik/vektorer-i-rummet.mdx` | Vinklen mellem en linje og en plan (bygget på formel (232)) |
-| `matematik/vektorer-i-rummet.mdx` | Vinklen mellem to planer (bygget på formel (232)) |
+| Fil | Begreb | Status |
+|---|---|---|
+| `bioteknologi/syrer-og-baser.mdx` | Pufferligningen (udledt af formlerne for pH og styrkekonstanten) | Godkendt 24. oktober 2026 |
+| `kemi/faeldningsreaktioner.mdx` | Ionligningerne for fældningen af bariumsulfat og sølvchlorid | Godkendt 24. oktober 2026 |
+| `kemi/organiske-reaktionstyper.mdx` | Elimination (Eliminationsreaktion) | Godkendt 24. oktober 2026 |
+| `matematik/differentialligninger.mdx` | Eulers metode (bygget på formel (254) og (313)) | Godkendt 24. oktober 2026 |
+| `matematik/vektorer-i-planen.mdx` | Stedvektor | Godkendt 24. oktober 2026 |
+| `matematik/vektorer-i-planen.mdx` | Vinklen mellem to linjer (bygget på formel (192)) | Godkendt 24. oktober 2026 |
+| `matematik/vektorer-i-rummet.mdx` | Vinklen mellem en linje og en plan (bygget på formel (232)) | Godkendt 24. oktober 2026 |
+| `matematik/vektorer-i-rummet.mdx` | Vinklen mellem to planer (bygget på formel (232)) | Godkendt 24. oktober 2026 |
