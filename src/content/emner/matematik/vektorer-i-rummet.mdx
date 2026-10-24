@@ -1,0 +1,415 @@
+---
+titel: "Vektorer i rummet"
+beskrivelse: "Vektorer med tre koordinater: vektorprodukt, linjer og planer i rummet, kuglens ligning, skæring, afstande og vinkler."
+fag: matematik
+nummer: 8
+omraade: "Geometri, trigonometri og vektorer"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+I rummet har en vektor tre koordinater, fx $\vec{a} = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$. [formelsamlingen, s. 54, formel (221)](kilde:formelsamling) Formlerne for længde, regning med vektorer, skalarprodukt, vinkel og projektion ligner dem i planen, men har en koordinat mere. [formelsamlingen, s. 54–56, formel (222)–(235)](kilde:formelsamling) Det nye er vektorproduktet $\vec{a} \times \vec{b}$: en vektor, der står vinkelret på både $\vec{a}$ og $\vec{b}$. [formelsamlingen, s. 57, formel (236) og figuren](kilde:formelsamling) Med vektorerne beskriver du linjer og planer og regner afstande og vinkler ud. Kuglen har sin egen ligning. [formelsamlingen, s. 56–61, formel (232) og (240)–(247)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **En koordinat mere.** En vektor i rummet kan skrives som $\vec{a} = a_1 \cdot \vec{i} + a_2 \cdot \vec{j} + a_3 \cdot \vec{k}$, hvor $\vec{i}$, $\vec{j}$ og $\vec{k}$ er basisvektorerne langs de tre akser. Længden er $|\vec{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}$. [formelsamlingen, s. 54, formel (220) og (222)](kilde:formelsamling)
+- **Som i planen.** Forbindelsesvektor, regning med vektorer, enhedsvektor, skalarprodukt, vinkel og projektion regner du på samme måde som i [vektorer i planen](/fag/matematik/vektorer-i-planen/), bare med tre koordinater. [formelsamlingen, s. 54–56, formel (223)–(235)](kilde:formelsamling) Afstanden mellem to punkter er længden af forbindelsesvektoren mellem dem. [formelsamlingen, s. 54 og 60, formel (224) og (244)](kilde:formelsamling)
+- **Vektorproduktet afløser determinanten.** I planen viser determinanten, om to vektorer er parallelle, og den giver arealet af et parallelogram. [formelsamlingen, s. 48, formel (200) og (201)](kilde:formelsamling) I rummet gør vektorproduktet det: To vektorer er parallelle, netop når $\vec{a} \times \vec{b} = \vec{o}$, hvor $\vec{o}$ er nulvektoren. Arealet af parallelogrammet er $|\vec{a} \times \vec{b}|$. [formelsamlingen, s. 57 og 83, formel (238) og (239)](kilde:formelsamling)
+- **To måder at beskrive en plan.** En parameterfremstilling bygger på et punkt og to vektorer, der ligger i planen og udspænder den. Planens ligning bygger på et punkt og en normalvektor, som står vinkelret på planen. En linje i rummet beskrives med en parameterfremstilling. [formelsamlingen, s. 58–59, formel (240)–(242)](kilde:formelsamling) Omskrivning mellem planens ligning og parameterfremstilling hører med til emnet. [vejledningen, s. 13](kilde:vejledning)
+- **Normalvektor ud fra to vektorer.** På figuren ved vektorproduktet står $\vec{a} \times \vec{b}$ vinkelret på planen $\alpha$, som $\vec{a}$ og $\vec{b}$ ligger i. [formelsamlingen, s. 57, figuren ved formel (236)](kilde:formelsamling) Vektorproduktet af de to vektorer, der udspænder en plan, kan altså bruges som normalvektor, når du skal finde planens ligning.
+- **Tangentplan.** Tangentplanen rører kuglen i røringspunktet $P$. Den har $\overrightarrow{PC}$ som normalvektor, hvor $C$ er kuglens centrum. [formelsamlingen, s. 61, formel (247)](kilde:formelsamling)
+- **Skæring og vinkler.** Skæring mellem linje og plan, vinkler mellem linje og plan og vinkler mellem to planer hører også med. [vejledningen, s. 13](kilde:vejledning) Formelsamlingen har ingen formler med de navne, men den har formlen for vinklen mellem to vektorer. [formelsamlingen, s. 56, formel (232)](kilde:formelsamling) Se i dine noter, hvordan I har brugt den på linjer og planer.
+
+## Formler
+
+<Formel navn="Vinklen mellem to vektorer i rummet" tex="\cos(v) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}" kilde="formelsamling" henvisning="formelsamlingen, s. 56, formel (232)">
+
+<Symboler>
+
+- $v$: vinklen mellem $\vec{a}$ og $\vec{b}$. Den ligger mellem $0^\circ$ og $180^\circ$. [formelsamlingen, s. 83](kilde:formelsamling)
+- $\vec{a} \cdot \vec{b} = a_1 \cdot b_1 + a_2 \cdot b_2 + a_3 \cdot b_3$: skalarproduktet. [formelsamlingen, s. 56, formel (230)](kilde:formelsamling)
+- $|\vec{a}|$ og $|\vec{b}|$: længderne af de to vektorer.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde vinklen mellem to vektorer i rummet. Er skalarproduktet 0, er vektorerne ortogonale. [formelsamlingen, s. 56, formel (233)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Vektorerne er $\vec{a} = \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 2 \\ -1 \\ 2 \end{pmatrix}$. Skalarproduktet er $1 \cdot 2 + 2 \cdot (-1) + 2 \cdot 2 = 4$. Længderne er $|\vec{a}| = \sqrt{1^2 + 2^2 + 2^2} = 3$ og $|\vec{b}| = \sqrt{2^2 + (-1)^2 + 2^2} = 3$. Så er
+
+$$
+\cos(v) = \frac{4}{3 \cdot 3} = \frac{4}{9}
+$$
+
+og
+
+$$
+v = \cos^{-1}\left(\frac{4}{9}\right) \approx 63{,}6^\circ
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme den tredje koordinat i skalarproduktet eller i længderne.
+- At svare med $\cos(v)$ i stedet for $v$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Vektorproduktet" tex="\vec{a} \times \vec{b} = \begin{pmatrix} \begin{vmatrix} a_2 & b_2 \\ a_3 & b_3 \end{vmatrix} \\ \begin{vmatrix} a_3 & b_3 \\ a_1 & b_1 \end{vmatrix} \\ \begin{vmatrix} a_1 & b_1 \\ a_2 & b_2 \end{vmatrix} \end{pmatrix}" kilde="formelsamling" henvisning="formelsamlingen, s. 57, formel (236)">
+
+<Symboler>
+
+- $\vec{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}$: to vektorer i rummet.
+- $\vec{a} \times \vec{b}$: vektorproduktet, som også kaldes krydsproduktet. Det er en vektor.
+- Hver koordinat er en determinant, som du regner ud som i planen, fx $\begin{vmatrix} a_2 & b_2 \\ a_3 & b_3 \end{vmatrix} = a_2 \cdot b_3 - a_3 \cdot b_2$. [formelsamlingen, s. 48, formel (197) og (198)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde en vektor, der står vinkelret på to givne vektorer, fx en normalvektor til en plan. [formelsamlingen, s. 57, figuren ved formel (236)](kilde:formelsamling) Du bruger også vektorproduktet til arealer og til at se, om to vektorer er parallelle. [formelsamlingen, s. 57, formel (238) og (239)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Vektorerne er $\vec{a} = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}$. Så er
+
+$$
+\vec{a} \times \vec{b} = \begin{pmatrix} \begin{vmatrix} 1 & 3 \\ -1 & 2 \end{vmatrix} \\ \begin{vmatrix} -1 & 2 \\ 2 & 1 \end{vmatrix} \\ \begin{vmatrix} 2 & 1 \\ 1 & 3 \end{vmatrix} \end{pmatrix} = \begin{pmatrix} 1 \cdot 2 - (-1) \cdot 3 \\ (-1) \cdot 1 - 2 \cdot 2 \\ 2 \cdot 3 - 1 \cdot 1 \end{pmatrix}
+$$
+
+som giver
+
+$$
+\vec{a} \times \vec{b} = \begin{pmatrix} 5 \\ -5 \\ 5 \end{pmatrix}
+$$
+
+Tjek med skalarproduktet: $\vec{a} \cdot (\vec{a} \times \vec{b}) = 2 \cdot 5 + 1 \cdot (-5) + (-1) \cdot 5 = 0$ og $\vec{b} \cdot (\vec{a} \times \vec{b}) = 1 \cdot 5 + 3 \cdot (-5) + 2 \cdot 5 = 0$. Vektorproduktet står altså vinkelret på begge vektorer.
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om i den midterste determinant. Der står $a_3$ og $b_3$ øverst.
+- At bytte om på rækkefølgen. Her er $\vec{b} \times \vec{a} = \begin{pmatrix} -5 \\ 5 \\ -5 \end{pmatrix}$, altså ikke det samme som $\vec{a} \times \vec{b}$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Arealet af et parallelogram i rummet" tex="A = |\vec{a} \times \vec{b}|" kilde="formelsamling" henvisning="formelsamlingen, s. 57, formel (239)">
+
+<Symboler>
+
+- $A$: arealet af det parallelogram, som $\vec{a}$ og $\vec{b}$ udspænder.
+- $|\vec{a} \times \vec{b}|$: længden af vektorproduktet.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde arealet af et parallelogram i rummet, og du kender de to vektorer, der udspænder det.
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: $\vec{a} \times \vec{b} = \begin{pmatrix} 5 \\ -5 \\ 5 \end{pmatrix}$. Arealet af det parallelogram, som $\vec{a}$ og $\vec{b}$ udspænder, er derfor
+
+$$
+A = \sqrt{5^2 + (-5)^2 + 5^2} = \sqrt{75} \approx 8{,}66
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At svare med selve vektorproduktet. Arealet er et tal, nemlig længden af vektorproduktet.
+- At prøve at bruge determinanten fra planen. I rummet er det længden af vektorproduktet, der giver arealet.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Parameterfremstilling for en linje i rummet" tex="\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x_0 \\ y_0 \\ z_0 \end{pmatrix} + t \cdot \begin{pmatrix} r_1 \\ r_2 \\ r_3 \end{pmatrix}" kilde="formelsamling" henvisning="formelsamlingen, s. 58, formel (240)">
+
+<Symboler>
+
+- $P_0(x_0, y_0, z_0)$: et punkt på linjen.
+- $\vec{r} = \begin{pmatrix} r_1 \\ r_2 \\ r_3 \end{pmatrix}$: en retningsvektor for linjen.
+- $t$: parameteren. Hvert tal $t$ giver et punkt på linjen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal beskrive en linje i rummet, eller når du skal tjekke, om et punkt ligger på linjen.
+
+</Bruges>
+
+<Eksempel>
+
+Linjen $l$ går gennem $P_0(2, -1, 3)$ og har retningsvektoren $\vec{r} = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$. Så er
+
+$$
+\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} + t \cdot \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}
+$$
+
+$t = 1$ giver punktet $(4, 0, 2)$.
+
+Ligger $Q(8, 2, 0)$ på linjen? Alle tre koordinater giver $t = 3$: $2 + 2 \cdot 3 = 8$, $-1 + 3 = 2$ og $3 - 3 = 0$. Så $Q$ ligger på linjen.
+
+</Eksempel>
+
+<Fejl>
+
+- At tjekke kun to af koordinaterne. Punktet $R(6, 1, 0)$ giver $t = 2$ i de to første koordinater, men $t = 3$ i den sidste. Så $R$ ligger ikke på linjen.
+- At bytte om på punktet og retningsvektoren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Parameterfremstilling for en plan" tex="\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x_0 \\ y_0 \\ z_0 \end{pmatrix} + s \cdot \begin{pmatrix} p_1 \\ p_2 \\ p_3 \end{pmatrix} + t \cdot \begin{pmatrix} q_1 \\ q_2 \\ q_3 \end{pmatrix}" kilde="formelsamling" henvisning="formelsamlingen, s. 59, formel (241)">
+
+<Symboler>
+
+- $P_0(x_0, y_0, z_0)$: et punkt i planen.
+- $\vec{p}$ og $\vec{q}$: to vektorer, der udspænder planen.
+- $s$ og $t$: to parametre. Hvert valg af $s$ og $t$ giver et punkt i planen.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender et punkt i planen og to vektorer, der udspænder den, eller når du skal finde punkter i planen.
+
+</Bruges>
+
+<Eksempel>
+
+Planen $\alpha$ går gennem $P_0(2, -1, 3)$ og er udspændt af $\vec{a} = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix}$ og $\vec{b} = \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}$. Så er
+
+$$
+\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} + s \cdot \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix} + t \cdot \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}
+$$
+
+$s = 1$ og $t = 1$ giver punktet $(2 + 2 + 1, -1 + 1 + 3, 3 - 1 + 2) = (5, 3, 4)$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge den samme parameter foran begge vektorer. Der skal være to forskellige, fx $s$ og $t$.
+- At glemme punktet $P_0$ og kun skrive de to vektorer.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Planens ligning" tex="a \cdot (x - x_0) + b \cdot (y - y_0) + c \cdot (z - z_0) = 0" kilde="formelsamling" henvisning="formelsamlingen, s. 59, formel (242)">
+
+<Symboler>
+
+- $P_0(x_0, y_0, z_0)$: et punkt i planen.
+- $\vec{n} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}$: en normalvektor, altså en vektor, der står vinkelret på planen.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender et punkt i planen og en normalvektor og skal finde planens ligning. Ganger du parenteserne ud, får du formen $a \cdot x + b \cdot y + c \cdot z + d = 0$, hvor $d = -a \cdot x_0 - b \cdot y_0 - c \cdot z_0$. [formelsamlingen, s. 59, formel (243)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: Planen $\alpha$ går gennem $P_0(2, -1, 3)$, og vektorproduktet $\vec{a} \times \vec{b} = \begin{pmatrix} 5 \\ -5 \\ 5 \end{pmatrix}$ kan bruges som normalvektor. Så er
+
+$$
+5 \cdot (x - 2) - 5 \cdot (y + 1) + 5 \cdot (z - 3) = 0
+$$
+
+Gang ud, og del med 5. Så får du $x - y + z - 6 = 0$. Tjek med punktet $(5, 3, 4)$ fra før: $5 - 3 + 4 - 6 = 0$.
+
+Linjen $m$ har parameterfremstillingen
+
+$$
+\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + t \cdot \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
+$$
+
+Hvor skærer $m$ planen? Sæt linjens koordinater ind i planens ligning: $(1 + t) - 2t + (1 + 3t) - 6 = 0$. Det giver $2t - 4 = 0$, altså $t = 2$. Skæringspunktet er $(1 + 2, 0 + 4, 1 + 6) = (3, 4, 7)$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge en af de vektorer, der udspænder planen, som normalvektor. Normalvektoren skal stå vinkelret på planen.
+- At miste et fortegn, når en koordinat er negativ: $y - (-1) = y + 1$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Afstand fra et punkt til en plan" tex="\operatorname{dist}(P, \alpha) = \frac{|a \cdot x_1 + b \cdot y_1 + c \cdot z_1 + d|}{\sqrt{a^2 + b^2 + c^2}}" kilde="formelsamling" henvisning="formelsamlingen, s. 60, formel (245)">
+
+<Symboler>
+
+- $P(x_1, y_1, z_1)$: punktet.
+- $\alpha$: planen med ligningen $a \cdot x + b \cdot y + c \cdot z + d = 0$.
+- De lodrette streger i tælleren betyder den numeriske værdi.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde afstanden fra et punkt til en plan. Planens ligning skal stå på formen $a \cdot x + b \cdot y + c \cdot z + d = 0$.
+
+</Bruges>
+
+<Eksempel>
+
+Planen $\alpha$ har ligningen $x - y + z - 6 = 0$, og punktet er $P(1, 3, 2)$. Så er
+
+$$
+\operatorname{dist}(P, \alpha) = \frac{|1 - 3 + 2 - 6|}{\sqrt{1^2 + (-1)^2 + 1^2}} = \frac{|-6|}{\sqrt{3}} = \frac{6}{\sqrt{3}} \approx 3{,}46
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte tallene ind, før ligningen står med $= 0$. Står der $x - y + z = 6$, skal du først skrive $x - y + z - 6 = 0$.
+- At glemme kvadratroden i nævneren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Kuglens ligning" tex="(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = r^2" kilde="formelsamling" henvisning="formelsamlingen, s. 61, formel (246)">
+
+<Symboler>
+
+- $C(x_0, y_0, z_0)$: kuglens centrum.
+- $r$: kuglens radius.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal opstille en ligning for en kugle, aflæse centrum og radius eller tjekke, om et punkt ligger på kuglen. Kender du centrum, kan du også finde tangentplanen i et punkt på kuglen. [formelsamlingen, s. 61, formel (247)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Kuglen har centrum $C(2, 1, -3)$ og radius 6. Så er ligningen
+
+$$
+(x - 2)^2 + (y - 1)^2 + (z + 3)^2 = 36
+$$
+
+Punktet $P(4, 5, 1)$ ligger på kuglen, fordi $(4 - 2)^2 + (5 - 1)^2 + (1 + 3)^2 = 4 + 16 + 16 = 36$.
+
+Tangentplanen i $P$ har $\overrightarrow{PC} = \begin{pmatrix} -2 \\ -4 \\ -4 \end{pmatrix}$ som normalvektor. Med planens ligning får du
+
+$$
+-2 \cdot (x - 4) - 4 \cdot (y - 5) - 4 \cdot (z - 1) = 0
+$$
+
+Gang ud, og del med $-2$. Så får du $x + 2y + 2z - 16 = 0$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme at sætte radius i anden. Radius 6 giver 36 på højre side.
+- At aflæse centrum med forkert fortegn. $(z + 3)^2$ betyder, at $z_0 = -3$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Vektorprodukt">
+
+Vektoren $\vec{a} \times \vec{b}$, som du regner ud fra to vektorer i rummet. Den kaldes også krydsproduktet. Dens længde er arealet af det parallelogram, som $\vec{a}$ og $\vec{b}$ udspænder. [formelsamlingen, s. 57, formel (236) og (239)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Normalvektor til en plan">
+
+En vektor $\vec{n} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}$, der står vinkelret på planen. Tallene $a$, $b$ og $c$ står foran $x$, $y$ og $z$ i planens ligning. [formelsamlingen, s. 59, formel (242) og (243)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Parameterfremstilling for en plan">
+
+En beskrivelse af en plan ud fra et punkt og to vektorer, der udspænder planen. Hvert valg af de to tal $s$ og $t$ giver et punkt i planen. [formelsamlingen, s. 59, formel (241)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Kugle">
+
+En kugle er bestemt ved sit centrum $C(x_0, y_0, z_0)$ og sin radius $r$. Ligningen er $(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = r^2$. [formelsamlingen, s. 61, formel (246)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Tangentplan">
+
+Planen, der rører en kugle i røringspunktet $P$. Den har $\overrightarrow{PC}$ som normalvektor, hvor $C$ er kuglens centrum. [formelsamlingen, s. 61, formel (247)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Til vektorer i rummet hører vektorprodukt, parameterfremstilling for linje i rummet, planens ligning og parameterfremstilling, kuglen samt skæring, afstande og vinkler i rummet. Koordinatsæt, regning med vektorer, længde, vinkel mellem vektorer, skalarprodukt og projektion hører med både i planen og i rummet. [læreplanen, pkt. 2.2](kilde:laereplan) Ifølge vejledningen arbejder I med planens ligning og parameterfremstilling og med at omskrive mellem dem. Linjens parameterfremstilling, kuglens ligning, skæring mellem linje og plan, vinkler mellem linje og plan og mellem planer og afstande mellem punkter og fra et punkt til en plan hører også med. [vejledningen, s. 13](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen. [vejledningen, s. 36](kilde:vejledning) Her giver det god mening at vise dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Øv dig i at regne vektorproduktet, planens ligning og afstanden fra et punkt til en plan i hånden med pæne tal.
+
+- Skriv gerne formlens nummer, fx formel (236), når du bruger den. Det kan sikre dig point, hvis du laver en fejl undervejs. [vejledningen, s. 41](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle hjælpemidler. [vejledningen, s. 36](kilde:vejledning)
+
+- I delprøve 2 kommer der ikke opgaver, hvor det er nødvendigt at tegne objekter i rummet. [vejledningen, s. 13](kilde:vejledning)
+- Forklar, hvordan du bruger dit digitale værktøj, så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+- Står der ”Bestem ved beregning”, skal svaret bygge på en algebraisk beregning med en formel kombineret med en CAS-kommando og ikke på aflæsning. [vejledningen, s. 36](kilde:vejledning)
+
+**Kommaer i koordinater.** I opgavesættene skrives decimaltal i koordinater med punktum, hvis et komma kan misforstås, fx $P(2.5, 1, 4)$. [vejledningen, s. 37](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Overskriften kan fx være ”trigonometri og vektorregning”. [vejledningen, s. 38](kilde:vejledning) Står der ”redegør for”, skal du bevise eller udlede, og du skal også gøre rede for sætningens forudsætninger. [vejledningen, s. 39](kilde:vejledning) Vejledningen peger ikke på bestemte beviser om vektorer i rummet. Øv dig derfor i at forklare, hvorfor formlerne gælder, fx at vektorproduktet står vinkelret på begge vektorer, og ikke kun hvordan du bruger dem.
+
+**Eksempler på problemstillinger**
+
+- En lampe hænger under et loft, og lyset går i en bestemt retning. Hvor rammer lysstrålen en skrå væg, og hvor langt er lampen fra væggen?
+- Et skråt tag er givet ved tre hjørnepunkter i et koordinatsystem. Bestem en ligning for tagets plan og vinklen mellem taget og det vandrette gulv.
+- For hvilke værdier af $t$ er vektorerne $\begin{pmatrix} t \\ 1 \\ 2 \end{pmatrix}$ og $\begin{pmatrix} 3 \\ t \\ -4 \end{pmatrix}$ ortogonale? Kan de også være parallelle?
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kræver UNI-login). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)
