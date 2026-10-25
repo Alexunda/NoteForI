@@ -1,11 +1,12 @@
 // Pensumtjeklisten (projektplan afsnit 6.1). Øen holder elevens data, gemmer
-// dem under gh:v1:pensum efter hver ændring og skifter mellem oversigten og
+// dem under gh:v2:pensum efter hver ændring og skifter mellem oversigten og
 // det enkelte fag. Faget står i adressen (#fag=…), så browserens
 // tilbage-knap virker.
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { GeneriskVisning, PunktId } from '../../data/pensum';
-import { NOEGLER, gem, hentJson, kanGemme } from '../../lib/lager';
+import { laereplanValg } from '../../lib/generisk-pensum';
+import { NOEGLER, gem, hentJson, hentPensum, kanGemme } from '../../lib/lager';
 import {
   fagFejl,
   findFag,
@@ -25,6 +26,7 @@ import {
   sletForloeb,
   tilfoejFag,
   tilfoejForloeb,
+  vaelgLaereplan,
   type NytFag,
   type Pensum,
   type Svar,
@@ -52,7 +54,8 @@ interface Fokus {
 }
 
 export default function Pensumtjekliste({ generisk }: Props) {
-  const [pensum, saetPensum] = useState(() => laesPensum(hentJson(NOEGLER.pensum)));
+  // Data fra gh:v1:pensum flyttes til gh:v2:pensum første gang (src/lib/lager.ts)
+  const [pensum, saetPensum] = useState(() => laesPensum(hentPensum((raa) => laesPensum(raa))));
   const [gemmer, saetGemmer] = useState(kanGemme);
   const [visning, saetVisning] = useState(fagIAdressen);
   const [fortryd, saetFortryd] = useState<FortrydInfo | null>(null);
@@ -67,10 +70,14 @@ export default function Pensumtjekliste({ generisk }: Props) {
   const grundtitel = useRef(document.title);
 
   const aktivtFag = visning === null ? undefined : findFag(pensum, visning);
-  // Den nyeste læreplan først, hvis faget har lister til flere
-  const aktiveLister = generisk
-    .filter((liste) => liste.fag === aktivtFag?.fagside && liste.niveau === aktivtFag.niveau)
-    .sort((a, b) => b.laereplan.localeCompare(a.laereplan));
+  const laereplaner = useMemo(() => laereplanValg(generisk), [generisk]);
+  // Har faget lister til flere læreplaner, vises kun den, eleven har valgt.
+  // Har eleven ikke valgt endnu (fx data fra version 1), vælger eleven først.
+  const valgmuligheder = aktivtFag ? (laereplaner[`${aktivtFag.fagside}/${aktivtFag.niveau}`] ?? []) : [];
+  const aktiveLister =
+    valgmuligheder.length > 0
+      ? valgmuligheder.filter((liste) => liste.laereplan === aktivtFag?.laereplan)
+      : generisk.filter((liste) => liste.fag === aktivtFag?.fagside && liste.niveau === aktivtFag.niveau);
 
   // Flytter fokus efter en ændring, fx til overskriften, når et fag åbnes
   useLayoutEffect(() => {
@@ -301,6 +308,12 @@ export default function Pensumtjekliste({ generisk }: Props) {
           key={aktivtFag.id}
           fag={aktivtFag}
           generisk={aktiveLister}
+          laereplanValg={valgmuligheder}
+          laereplaner={laereplaner}
+          onVaelgLaereplan={(laereplan) => {
+            aendr(vaelgLaereplan(nu.current, aktivtFag.id, laereplan));
+            meddel(`Læreplanen fra ${laereplan} er valgt.`);
+          }}
           onVisOversigt={visOversigt}
           onTilfoejForloeb={(navne) => tilfoejNyeForloeb(aktivtFag.id, navne)}
           onPunkt={(forloebId, punkt, svar) => saetForloebPunkt(aktivtFag.id, forloebId, punkt, svar)}
@@ -312,7 +325,7 @@ export default function Pensumtjekliste({ generisk }: Props) {
           onSletFag={() => sletAktivtFag(aktivtFag.id)}
         />
       ) : (
-        <Oversigt pensum={pensum} onTilfoejFag={tilfoejNytFag} onVisFag={visFag} />
+        <Oversigt pensum={pensum} laereplaner={laereplaner} onTilfoejFag={tilfoejNytFag} onVisFag={visFag} />
       )}
 
       <p class="skjult-visuelt" role="status">

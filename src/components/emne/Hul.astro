@@ -1,0 +1,22 @@
+---
+// Et begreb, som eleven skal kende, men som siden ikke forklarer, fordi ingen
+// tilladt kilde forklarer det. Teksten i boksen er den samme overalt. Bruges i
+// MDX:
+//
+//   <Hul navn="Konkurrencedemokrati" />
+//
+// Alle huller står også i docs/huller.md. tests/huller.test.mjs tjekker, at
+// boksene og listen passer sammen.
+import { HUL_TEKST } from '../../lib/huller';
+
+interface Props {
+  /** Det eller de begreber, siden ikke forklarer, fx "Konkurrencedemokrati" */
+  navn: string;
+}
+
+const { navn } = Astro.props;
+---
+
+<aside class="hul" aria-label={`Ikke forklaret endnu: ${navn}`}>
+  <p><strong>{navn}.</strong> {HUL_TEKST}</p>
+</aside>

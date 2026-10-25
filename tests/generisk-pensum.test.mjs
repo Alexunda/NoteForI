@@ -2,7 +2,7 @@
 
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { tilVisning, tjekGeneriskPensum } from '../src/lib/generisk-pensum.ts';
+import { laereplanValg, tilVisning, tjekGeneriskPensum } from '../src/lib/generisk-pensum.ts';
 
 const EMNER = new Set(['matematik/eksempel']);
 
@@ -11,6 +11,7 @@ function liste(aendringer = {}) {
     fag: 'matematik',
     niveau: 'A',
     laereplan: '2024',
+    gaelder: 'Hold, der begynder fra 2024',
     kilder: [{ navn: 'Læreplan', url: 'https://uvm.dk/' }],
     verificeret: false,
     punkter: [
@@ -58,6 +59,21 @@ describe('tjekGeneriskPensum', () => {
       'matematik C (2024): listen skal have mindst én kilde.',
       'matematik C (2024): listen har ingen punkter.',
     ]);
+  });
+});
+
+describe('flere læreplaner til samme fag og niveau', () => {
+  test('hver liste skal sige, hvem den gælder for', () => {
+    assert.deepEqual(tjekGeneriskPensum([liste({ gaelder: undefined }), liste({ niveau: 'B', gaelder: undefined })], EMNER), []);
+    assert.deepEqual(tjekGeneriskPensum([liste(), liste({ laereplan: '2017', gaelder: ' ' })], EMNER), [
+      'matematik A (2017): skriv i gaelder, hvem listen gælder for.',
+    ]);
+  });
+
+  test('laereplanValg giver kun fag og niveauer med flere lister, den nyeste først', () => {
+    const valg = laereplanValg([liste({ laereplan: '2017' }), liste(), liste({ niveau: 'B' })]);
+    assert.deepEqual(Object.keys(valg), ['matematik/A']);
+    assert.deepEqual(valg['matematik/A'].map((l) => l.laereplan), ['2024', '2017']);
   });
 });
 

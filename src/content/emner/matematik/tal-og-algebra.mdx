@@ -1,0 +1,392 @@
+---
+titel: "Tal, algebra og proportionalitet"
+beskrivelse: "Talmængder, mængder og intervaller, regneregler for parenteser, brøker og potenser, kvadratsætningerne og ligefrem og omvendt proportionalitet."
+fag: matematik
+nummer: 1
+omraade: "Tal og algebra"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Tal og algebra er de redskaber, du bruger i resten af matematik, fx når du løser ligninger eller følger et bevis. Meget af det kender du fra folkeskolen, og nu skal du blive helt sikker i det. [vejledningen, s. 11](kilde:vejledning) Du skal kende talmængderne, kunne læse mængder og intervaller og regne med brøker, parenteser, potenser og rødder. Du skal også kunne skrive ”$y$ er proportional med $x$” som en formel. [vejledningen, s. 11](kilde:vejledning)
+
+## Vigtige pointer
+
+### Tal og mængder
+
+- **Talmængderne.** $\mathbb{N} = \{1, 2, 3, \ldots\}$ er de naturlige tal, og $\mathbb{Z} = \{\ldots, -2, -1, 0, 1, 2, \ldots\}$ er de hele tal. $\mathbb{Q}$ er de rationale tal, altså tal, der kan skrives som en brøk $\frac{p}{q}$, hvor $p \in \mathbb{Z}$ og $q \in \mathbb{N}$. $\mathbb{R}$ er de reelle tal, altså alle tal på tallinjen. [formelsamlingen, s. 78](kilde:formelsamling)
+- **Et helt tal er også rationalt.** Det kan nemlig skrives som en brøk med nævneren 1, fx $-3 = \frac{-3}{1}$. [formelsamlingen, s. 78](kilde:formelsamling)
+- **Mængder og intervaller.** En mængde kan skrives på listeform, fx $\{1, 5, 9\}$, og $5 \in \{1, 5, 9\}$ betyder, at 5 er et element i mængden. Et interval skrives med kantede parenteser: $[2; 5]$ svarer til $2 \le x \le 5$, og $]2; 5]$ svarer til $2 < x \le 5$. Vender parentesen ind mod tallet, er tallet med. Vender den væk, er tallet ikke med. [formelsamlingen, s. 78](kilde:formelsamling) Et interval kan også fortsætte i det uendelige, fx $[4; \infty[$, som svarer til $x \ge 4$. [vejledningen, s. 11](kilde:vejledning)
+- **Fællesmængde, foreningsmængde og komplementærmængde.** Fællesmængden $A \cap B$ er det, der er i både $A$ og $B$. Foreningsmængden $A \cup B$ er det, der er i $A$, i $B$ eller i begge. Komplementærmængden $\overline{A} = U \setminus A$ er det, der er tilbage, når du fjerner $A$ fra hele mængden $U$. [formelsamlingen, s. 79](kilde:formelsamling) Er $A = \{1, 2, 3, 4\}$ og $B = \{3, 4, 5\}$, så er $A \cap B = \{3, 4\}$ og $A \cup B = \{1, 2, 3, 4, 5\}$.
+- **Mængder bruges overalt.** Du skal kunne læse mængdenotation, når fx en definitionsmængde, en løsningsmængde eller en hændelse i sandsynlighedsregning er skrevet som en mængde eller et interval. [vejledningen, s. 11](kilde:vejledning)
+- **Tal kan skrives på flere måder.** Du skal kunne skifte mellem brøk, decimaltal og eksponentiel notation, hvor tallet skrives med en potens af 10. [vejledningen, s. 11](kilde:vejledning) Fx er $\frac{3}{8} = 0{,}375$ og $0{,}0045 = 4{,}5 \cdot 10^{-3}$.
+
+### Regning med bogstaver
+
+- **Regningsarternes hierarki.** Hierarkiet skal du være helt sikker i. [vejledningen, s. 11](kilde:vejledning) Først regner du det, der står i parenteser, så potenser og rødder, så gange og division og til sidst plus og minus. Fx er $2 + 3 \cdot 4^2 = 2 + 3 \cdot 16 = 2 + 48 = 50$, men med en parentes bliver det $(2 + 3) \cdot 4^2 = 5 \cdot 16 = 80$.
+- **Parenteser og brøker.** Parentesreglerne og brøkreglerne står i formelsamlingen. [formelsamlingen, s. 76, formel (325)–(327) og (331)–(337)](kilde:formelsamling) Pas især på minus foran en parentes: $-(a + b) = -a - b$, så $3 - (x - 2) = 3 - x + 2 = 5 - x$. [formelsamlingen, s. 76, formel (326)](kilde:formelsamling)
+- **Bogstavregning bruges i teorien.** Du skal kunne regne sikkert med brøker og omforme udtryk med bogstaver, så du kan følge udledninger og beviser. [vejledningen, s. 11](kilde:vejledning)
+- **Potens og rod.** Hertil hører kvadratsætningerne, kvadratkomplettering, potensregnereglerne og omskrivning mellem potens og rod. [vejledningen, s. 11](kilde:vejledning) Potensreglerne er bl.a. (for $a > 0$) $a^r \cdot a^s = a^{r+s}$, $\frac{a^r}{a^s} = a^{r-s}$, $(a^r)^s = a^{r \cdot s}$, $a^{-n} = \frac{1}{a^n}$ og $a^0 = 1$. [formelsamlingen, s. 77, formel (339)–(341), (344) og (346)](kilde:formelsamling)
+- **Kvadratkomplettering** betyder, at du skriver et andengradsudtryk som et kvadrat plus et tal. Du bruger kvadratsætningen (328) baglæns: Halvdelen af tallet foran $x$ kommer ind i parentesen, og så trækker du kvadratet på det tal fra igen. Fx er $x^2 + 8x + 3 = (x + 4)^2 - 16 + 3 = (x + 4)^2 - 13$, fordi $(x + 4)^2 = x^2 + 16 + 8x$. [vejledningen, s. 11](kilde:vejledning) [formelsamlingen, s. 76, formel (328)](kilde:formelsamling) Metoden bruges fx, når du skal finde centrum og radius for en cirkel, hvis ligning er ganget ud, se [analytisk plangeometri](/fag/matematik/analytisk-plangeometri/).
+- **Absolut værdi.** $|x|$ er den absolutte (numeriske) værdi af $x$. Fx er $|5| = 5$ og $|-5| = 5$. [formelsamlingen, s. 82](kilde:formelsamling) Du skal kunne bruge formler med absolut værdi [vejledningen, s. 11](kilde:vejledning), fx formlen for afstanden fra et punkt til en linje. [formelsamlingen, s. 52, formel (214) og (215)](kilde:formelsamling)
+- **Ikke alle forudsætninger står der.** Formelsamlingen skriver ikke ved hver formel, at en nævner ikke må være 0. Det skal du selv huske. [formelsamlingen, s. 3](kilde:formelsamling)
+
+### Proportionalitet
+
+- **Ligefrem proportionalitet.** $y$ er ligefrem proportional med $x$, når $y = k \cdot x$. Tallet $k$ hedder proportionalitetsfaktoren, og forholdet $\frac{y}{x} = k$ er det samme for alle sammenhørende værdier af $x$ og $y$. [formelsamlingen, s. 24, formel (76) og (77)](kilde:formelsamling) Grafen er en [ret linje](/fag/matematik/lineaere-funktioner/) gennem $(0, 0)$. [formelsamlingen, s. 24](kilde:formelsamling)
+- **Omvendt proportionalitet.** $x$ og $y$ er omvendt proportionale, når $y = k \cdot \frac{1}{x}$. Så er produktet $x \cdot y = k$ altid det samme. [formelsamlingen, s. 24, formel (78) og (79)](kilde:formelsamling)
+- **Fra ord til formel.** Står der, at $y$ er proportional med $x$, skal du kunne skrive det som en formel. Står der, at en væksthastighed er proportional med noget, skal du kunne skrive det som en differentialligning. [vejledningen, s. 11 og 15](kilde:vejledning)
+
+Prøv selv: Træk i skyderen, og se, hvad $k$ gør ved de to grafer. Den rette linje er $y = k \cdot x$, og kurven er $y = k \cdot \frac{1}{x}$. Hvad sker der med $y$ på hver af graferne, når du går fra $x = 2$ til $x = 4$?
+
+<Graf
+  titel="Ligefrem og omvendt proportionalitet"
+  funktioner={[
+    { forskrift: 'f(x) = k · x', tex: 'f(x) = k \\cdot x' },
+    { forskrift: 'g(x) = k · 1/x', tex: 'g(x) = k \\cdot \\frac{1}{x}' },
+  ]}
+  parametre={{ k: { min: 0.5, max: 5, start: 2, trin: 0.1 } }}
+  x={[-1, 8]}
+  y={[-1, 8]}
+/>
+
+## Formler
+
+<Formel navn="Kvadratet på en sum" tex="(a + b)^2 = a^2 + b^2 + 2a \cdot b" kilde="formelsamling" henvisning="formelsamlingen, s. 76, formel (328)">
+
+<Symboler>
+
+- $a$ og $b$: to tal eller udtryk, fx $3y$ og $2$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal gange en parentes i anden ud, og når du kvadratkompletterer. Med minus hedder reglen $(a - b)^2 = a^2 + b^2 - 2a \cdot b$. [formelsamlingen, s. 76, formel (329)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+Med $a = 3y$ og $b = 2$ får du
+
+$$
+(3y + 2)^2 = (3y)^2 + 2^2 + 2 \cdot 3y \cdot 2 = 9y^2 + 4 + 12y
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme leddet $2a \cdot b$: $(a + b)^2$ er ikke $a^2 + b^2$.
+- At glemme at sætte tallet foran bogstavet i anden: $(3y)^2 = 9y^2$ og ikke $3y^2$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sum gange differens" tex="(a + b) \cdot (a - b) = a^2 - b^2" kilde="formelsamling" henvisning="formelsamlingen, s. 76, formel (330)">
+
+<Symboler>
+
+- $a$ og $b$: to tal eller udtryk.
+- $a + b$ er summen af dem, og $a - b$ er differensen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal gange to parenteser ud, der kun er forskellige ved fortegnet foran $b$. Reglen virker også baglæns: $a^2 - b^2$ kan skrives som et produkt, så du kan forkorte en brøk.
+
+</Bruges>
+
+<Eksempel>
+
+Du kan regne $21 \cdot 19$ i hovedet:
+
+$$
+21 \cdot 19 = (20 + 1) \cdot (20 - 1) = 20^2 - 1^2 = 399
+$$
+
+Baglæns kan du forkorte en brøk, når $x \neq -3$:
+
+$$
+\frac{x^2 - 9}{x + 3} = \frac{(x + 3) \cdot (x - 3)}{x + 3} = x - 3
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At skrive $a^2 + b^2$ i stedet for $a^2 - b^2$.
+- At stryge noget, der er lagt til, i stedet for noget, der er ganget på. I $\frac{x^2 - 9}{x + 3}$ må du ikke bare stryge $x$ over og under brøkstregen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Dividere en brøk med en anden brøk" tex="\frac{\frac{a}{b}}{\frac{c}{d}} = \frac{a \cdot d}{b \cdot c}" kilde="formelsamling" henvisning="formelsamlingen, s. 76, formel (337)">
+
+<Symboler>
+
+- $\frac{a}{b}$: brøken i tælleren.
+- $\frac{c}{d}$: brøken i nævneren. Hverken $b$, $c$ eller $d$ må være 0.
+
+</Symboler>
+
+<Bruges>
+
+Når en brøk er divideret med en anden brøk. Resultatet er det samme som $\frac{a}{b} \cdot \frac{d}{c}$, altså at gange med den omvendte brøk. [formelsamlingen, s. 76, formel (334)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+$$
+\frac{\frac{2}{3}}{\frac{4}{9}} = \frac{2 \cdot 9}{3 \cdot 4} = \frac{18}{12} = \frac{3}{2}
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At gange tæller med tæller og nævner med nævner, som når man ganger to brøker.
+- At vende den forkerte brøk om.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Gange potenser med samme grundtal" tex="a^r \cdot a^s = a^{r+s}" kilde="formelsamling" henvisning="formelsamlingen, s. 77, formel (339)">
+
+<Symboler>
+
+- $a$: grundtallet, et positivt tal. [formelsamlingen, s. 3](kilde:formelsamling)
+- $r$ og $s$: eksponenterne.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal reducere et udtryk med potenser. Ved division trækker du eksponenterne fra hinanden: $\frac{a^r}{a^s} = a^{r-s}$. [formelsamlingen, s. 77, formel (340)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+$$
+\frac{x^4 \cdot x^3}{x^2} = \frac{x^{4+3}}{x^2} = \frac{x^7}{x^2} = x^{7-2} = x^5
+$$
+
+Tjek med tal: $2^3 \cdot 2^2 = 8 \cdot 4 = 32$, og $2^{3+2} = 2^5 = 32$.
+
+</Eksempel>
+
+<Fejl>
+
+- At gange eksponenterne: $x^4 \cdot x^3$ er ikke $x^{12}$.
+- At bruge reglen, når grundtallene er forskellige: $2^3 \cdot 3^2$ kan ikke samles til én potens på den måde.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Rod skrevet som potens" tex="a^{\frac{r}{s}} = \sqrt[s]{a^r}" kilde="formelsamling" henvisning="formelsamlingen, s. 77, formel (349)">
+
+<Symboler>
+
+- $a$: et positivt tal.
+- $s$: rodeksponenten, fx 3 for tredje rod.
+- $r$: eksponenten under rodtegnet.
+
+</Symboler>
+
+<Bruges>
+
+Når du vil skrive en rod som en potens, så du kan bruge potensreglerne. Kvadratroden er det særlige tilfælde $a^{\frac{1}{2}} = \sqrt{a}$. [formelsamlingen, s. 77, formel (351)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+$$
+8^{\frac{2}{3}} = \sqrt[3]{8^2} = \sqrt[3]{64} = 4
+$$
+
+Og med potensreglerne er $\sqrt{x} \cdot x = x^{\frac{1}{2}} \cdot x^1 = x^{\frac{3}{2}}$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på $r$ og $s$: $8^{\frac{2}{3}}$ er ikke $\sqrt{8^3}$.
+- At tro, at $a^{\frac{1}{2}}$ er det samme som $\frac{a}{2}$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Ligefrem proportionalitet" tex="y = k \cdot x" kilde="formelsamling" henvisning="formelsamlingen, s. 24, formel (76)">
+
+<Symboler>
+
+- $x$ og $y$: to størrelser, der hænger sammen.
+- $k$: proportionalitetsfaktoren. Du kan finde den som $k = \frac{y}{x}$. [formelsamlingen, s. 24, formel (77)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når der står, at $y$ er proportional eller ligefrem proportional med $x$. Bliver $x$ dobbelt så stor, bliver $y$ også dobbelt så stor.
+
+</Bruges>
+
+<Eksempel>
+
+Prisen for slik i løsvægt er ligefrem proportional med vægten, og 0,8 kg koster 20 kr. Så er
+
+$$
+k = \frac{20}{0{,}8} = 25
+$$
+
+altså 25 kr. pr. kg, og formlen er $y = 25 \cdot x$. Så koster 1,5 kg
+
+$$
+y = 25 \cdot 1{,}5 = 37{,}5
+$$
+
+altså 37,50 kr.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at to størrelser er proportionale, bare fordi begge vokser. Grafen skal være en ret linje gennem $(0, 0)$.
+- At bytte om på $x$ og $y$, når du beregner $k$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Omvendt proportionalitet" tex="y = k \cdot \frac{1}{x}" kilde="formelsamling" henvisning="formelsamlingen, s. 24, formel (78)">
+
+<Symboler>
+
+- $x$ og $y$: to størrelser, der hænger sammen.
+- $k$: en konstant. Produktet $x \cdot y$ er altid lig med $k$. [formelsamlingen, s. 24, formel (79)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når der står, at to størrelser er omvendt proportionale. Bliver $x$ dobbelt så stor, bliver $y$ halvt så stor.
+
+</Bruges>
+
+<Eksempel>
+
+Du skal køre 120 km. Tiden $t$ i timer er omvendt proportional med farten $v$ i km/t, og $k = 120$:
+
+$$
+t = 120 \cdot \frac{1}{v}
+$$
+
+Ved 60 km/t tager turen $t = 120 \cdot \frac{1}{60} = 2$ timer. Ved 80 km/t tager den $t = 120 \cdot \frac{1}{80} = 1{,}5$ timer.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $y$ falder med det samme tal, hver gang $x$ vokser med 1. Det gælder for en aftagende lineær funktion, ikke ved omvendt proportionalitet.
+- At glemme, at $x$ ikke må være 0.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Talmængde">
+
+En mængde af tal med sit eget symbol: de naturlige tal $\mathbb{N}$, de hele tal $\mathbb{Z}$, de rationale tal $\mathbb{Q}$ og de reelle tal $\mathbb{R}$. [formelsamlingen, s. 78](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Rationalt tal">
+
+Et tal, der kan skrives som en brøk $\frac{p}{q}$, hvor $p$ er et helt tal og $q$ et naturligt tal. Fx er $\frac{3}{4}$ og $-5 = \frac{-5}{1}$ rationale tal. [formelsamlingen, s. 78](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Interval">
+
+Alle tal mellem to endepunkter. $[a; b]$ er et lukket interval, hvor begge endepunkter er med, og $]a; b[$ er et åbent interval, hvor ingen af dem er med. [formelsamlingen, s. 78](kilde:formelsamling) Et interval kan også fortsætte i det uendelige, fx $[4; \infty[$. [vejledningen, s. 11](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Fællesmængde">
+
+Fællesmængden $A \cap B$ består af det, der er i både $A$ og $B$. [formelsamlingen, s. 79](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Foreningsmængde">
+
+Foreningsmængden $A \cup B$ består af det, der er i $A$, i $B$ eller i begge. [formelsamlingen, s. 79](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Potens">
+
+$a^n$ er et produkt af $n$ faktorer, der alle er $a$, fx $a^3 = a \cdot a \cdot a$. Her er $n$ et naturligt tal. $a$ hedder grundtallet, og $n$ hedder eksponenten. [formelsamlingen, s. 77, formel (338), og s. 82](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Absolut værdi">
+
+Den absolutte (numeriske) værdi $|x|$ af et tal $x$. Fx er $|7| = 7$ og $|-7| = 7$. Den skrives også $\text{abs}(x)$. [formelsamlingen, s. 82](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Proportionalitetsfaktor">
+
+Tallet $k$ i $y = k \cdot x$, når $y$ er ligefrem proportional med $x$. Det er forholdet $\frac{y}{x}$. [formelsamlingen, s. 24, formel (76) og (77)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Arbejdet med tal og algebra skal gøre dig sikker i det, du har lært i folkeskolen, fx regningsarternes hierarki, brøker og ligninger. [vejledningen, s. 11](kilde:vejledning) Hele emnet hører til kernestoffet, som er grundlaget for den skriftlige prøve, og vejledningen undtager ingen dele af det fra prøven. [vejledningen, s. 11 og 36](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig derfor i at reducere udtryk i hånden med reglerne for parenteser, brøker og potenser, og vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning)
+
+- Henvis gerne til formlens nummer, fx ”ifølge (328)”. Det kan sikre dig nogle point, hvis der sniger sig en fejl ind. [vejledningen, s. 41](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også CAS, altså et program, der kan regne med bogstaver. [vejledningen, s. 36](kilde:vejledning) [læreplanen, pkt. 3.3](kilde:laereplan) Skriv, hvad du gør med [GeoGebra](https://www.geogebra.org/), så man kan genskabe din løsning. [vejledningen, s. 41](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner ikke et bestemt bevis i dette emne, men du skal kunne følge algebraiske udledninger i teorien. [vejledningen, s. 11](kilde:vejledning) Øv dig fx i at vise kvadratsætningerne ved at gange parenteserne ud med formel (327). [formelsamlingen, s. 76, formel (327)–(330)](kilde:formelsamling)
+
+**Eksempler på problemstillinger**
+
+- Reducér $(2x - 3)^2 - (2x + 3) \cdot (2x - 3)$.
+- Skriv $\frac{\sqrt{a} \cdot a^3}{a^{-1}}$ som én potens af $a$.
+- Det tager 8 timer at tømme et bassin med 3 pumper. Tiden er omvendt proportional med antallet af pumper. Hvor lang tid tager det med 4 pumper?
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

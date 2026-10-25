@@ -1,0 +1,342 @@
+---
+titel: "Trigonometriske funktioner"
+beskrivelse: "Cosinus og sinus som funktioner: radianer, enhedscirklen, graferne og den harmoniske svingning A · sin(ωx + φ) + d."
+fag: matematik
+nummer: 15
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Cosinus og sinus kan bruges som funktioner af et tal $x$. Tallet $x$ er længden af en bue på enhedscirklen, altså cirklen med centrum i $(0, 0)$ og radius 1. Punktet for enden af buen har koordinaterne $(\cos(x), \sin(x))$. [formelsamlingen, s. 26, formel (96)](kilde:formelsamling) Graferne bølger op og ned og gentager sig, hver gang $x$ vokser med $2\pi$. [formelsamlingen, s. 27–28, formel (99), (100), (104) og (107)](kilde:formelsamling) Forskriften $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$ kaldes en harmonisk svingning, og du kan bruge den i modeller. [formelsamlingen, s. 29, formel (110)](kilde:formelsamling) [vejledningen, s. 15](kilde:vejledning)
+
+## Vigtige pointer
+
+- **Radianer.** Til de trigonometriske funktioner måler du vinkler i radianer i stedet for grader. [vejledningen, s. 14](kilde:vejledning) 180° svarer til $\pi$ radianer, og 360° svarer til $2\pi$ radianer. [formelsamlingen, s. 26 og 28, formel (94) og (102)](kilde:formelsamling)
+- **Punktet på enhedscirklen.** Går du buen $x$ mod uret fra punktet $(1, 0)$, ender du i punktet $P$. Dets førstekoordinat er $\cos(x)$, og dets andenkoordinat er $\sin(x)$. [formelsamlingen, s. 26, formel (96)](kilde:formelsamling)
+- **Definitions- og værdimængde.** Du kan sætte alle tal ind for $x$, også negative, så definitionsmængden, altså de $x$-værdier, funktionerne er defineret for, er alle reelle tal. Fordi $P$ ligger på enhedscirklen, ligger $\cos(x)$ og $\sin(x)$ altid mellem $-1$ og 1. Værdimængden, altså de værdier, funktionerne kan give, er derfor $[-1; 1]$. Det kan du også se på graferne. [formelsamlingen, s. 26–28, formel (96), (99), (100) og (105)](kilde:formelsamling)
+- **Periode.** Graferne gentager sig, hver gang $x$ vokser med $2\pi$: $\cos(x + 2\pi) = \cos(x)$ og $\sin(x + 2\pi) = \sin(x)$. Perioden for $\cos(x)$ og $\sin(x)$ er derfor $2\pi$. [formelsamlingen, s. 28–29, formel (104), (107) og (113)](kilde:formelsamling)
+- **Nulpunkter.** Et nulpunkt er et $x$, hvor funktionsværdien er 0, altså hvor grafen skærer $x$-aksen. Graferne for cosinus og sinus har mange nulpunkter. Fx er $\sin(0) = \sin(\pi) = 0$ og $\cos\left(\frac{\pi}{2}\right) = 0$. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling)
+- **Konstanterne i den harmoniske svingning.** I $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$ er $A$ amplituden, altså afstanden fra midterlinjen op til en top. $d$ er ligevægtsværdien, altså højden af midterlinjen. Perioden er $T = \frac{2\pi}{\omega}$. [formelsamlingen, s. 29, formel (110), (111) og (113)](kilde:formelsamling) Fordi sinus ligger mellem $-1$ og 1, svinger $f(x)$ mellem $d - A$ og $d + A$, når $A$ er positiv. [formelsamlingen, s. 27 og 29, formel (100) og (111)](kilde:formelsamling)
+- **Forskydninger.** $d$ flytter grafen op eller ned. $\varphi$ flytter grafen til siden: Du kan skrive $\omega \cdot x + \varphi = \omega \cdot \left(x + \frac{\varphi}{\omega}\right)$, så grafen er forskudt stykket $\frac{\varphi}{\omega}$ mod venstre i forhold til grafen for $A \cdot \sin(\omega \cdot x) + d$, når $\varphi$ og $\omega$ er positive. [formelsamlingen, s. 15, formel (36)](kilde:formelsamling)
+
+Prøv selv: Træk i skyderne, og se, hvad hver konstant gør. På skyderne hedder $\omega$ w, og $\varphi$ hedder p. Den stiplede graf er $\sin(x)$, så du kan sammenligne. $x$ er i radianer. Hvad sker der med perioden, når w bliver større? Og hvilken konstant flytter grafen op og ned?
+
+<Graf
+  titel="Harmonisk svingning med skydere"
+  funktioner={[
+    { forskrift: 'f(x) = A · sin(w · x + p) + d', tex: 'f(x) = A \\cdot \\sin(\\omega \\cdot x + \\varphi) + d' },
+    { forskrift: 'g(x) = sin(x)', tex: 'g(x) = \\sin(x)' },
+  ]}
+  parametre={{ A: { min: 0.5, max: 4, start: 1, trin: 0.5 }, w: { min: 0.5, max: 3, start: 1, trin: 0.1 }, p: { min: -3, max: 3, start: 0, trin: 0.1 }, d: { min: -3, max: 3, start: 0, trin: 0.5 } }}
+  x={[-1, 13]}
+  y={[-5, 5]}
+/>
+
+## Formler
+
+<Formel navn="Fra grader til radianer" tex="x = \frac{\pi}{180} \cdot v" kilde="formelsamling" henvisning="formelsamlingen, s. 26, formel (94)">
+
+<Symboler>
+
+- $v$: vinklen i grader.
+- $x$: den samme vinkel i radianer.
+- $\pi$: tallet pi, ca. $3{,}14$.
+
+</Symboler>
+
+<Bruges>
+
+Når en vinkel er givet i grader, og du skal bruge den i en trigonometrisk funktion.
+
+</Bruges>
+
+<Eksempel>
+
+En vinkel på 120° er i radianer
+
+$$
+x = \frac{\pi}{180} \cdot 120 = \frac{2\pi}{3} \approx 2{,}094
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på $\pi$ og 180.
+- At sætte et gradtal ind i en forskrift, hvor $x$ skal være i radianer.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Fra radianer til grader" tex="v = \frac{180}{\pi} \cdot x" kilde="formelsamling" henvisning="formelsamlingen, s. 26, formel (95)">
+
+<Symboler>
+
+- $x$: vinklen i radianer.
+- $v$: den samme vinkel i grader.
+
+</Symboler>
+
+<Bruges>
+
+Når du har et resultat i radianer og vil vide, hvor mange grader det er.
+
+</Bruges>
+
+<Eksempel>
+
+1 radian er
+
+$$
+v = \frac{180}{\pi} \cdot 1 \approx 57{,}3
+$$
+
+altså ca. 57,3°.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at 1 radian er det samme som 1°.
+- At bruge formlen den forkerte vej. Tjek dig selv: $\pi$ radianer skal give 180°.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Overgangsformel for sinus" tex="\sin(\pi - x) = \sin(x)" kilde="formelsamling" henvisning="formelsamlingen, s. 28, formel (109)">
+
+<Symboler>
+
+- $x$: et tal i radianer.
+- For cosinus gælder i stedet $\cos(-x) = \cos(x)$. Det er formel (105).
+
+</Symboler>
+
+<Bruges>
+
+Når du løser en ligning af typen $\sin(x) = c$. Er $x_0$ en løsning, er $\pi - x_0$ også en løsning.
+
+</Bruges>
+
+<Eksempel>
+
+Løs ligningen $\sin(x) = \frac{1}{2}$ for $0 \le x \le 2\pi$. I tabellen i formelsamlingen står $\sin\left(\frac{\pi}{6}\right) = \frac{1}{2}$, så $x = \frac{\pi}{6}$ er en løsning. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling) Den anden løsning er
+
+$$
+x = \pi - \frac{\pi}{6} = \frac{5\pi}{6}
+$$
+
+På enhedscirklen er der netop to punkter med andenkoordinaten $\frac{1}{2}$, så ligningen har netop de to løsninger mellem 0 og $2\pi$. [formelsamlingen, s. 26, formel (96)](kilde:formelsamling)
+
+</Eksempel>
+
+<Fejl>
+
+- At stoppe ved den første løsning, som lommeregneren giver.
+- At bruge $\pi - x_0$ ved en cosinusligning. Der skal du bruge $-x_0$, fordi $\cos(-x) = \cos(x)$. Skal løsningen ligge mellem 0 og $2\pi$, så læg $2\pi$ til, fordi $\cos(x + 2\pi) = \cos(x)$. [formelsamlingen, s. 28, formel (104)](kilde:formelsamling)
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Harmonisk svingning" tex="f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d" kilde="formelsamling" henvisning="formelsamlingen, s. 29, formel (110)">
+
+<Symboler>
+
+- $A$: amplituden, altså afstanden fra ligevægtsværdien op til en top.
+- $\omega$: bestemmer perioden. Jo større $\omega$ er, jo kortere er perioden.
+- $\varphi$: forskyder grafen vandret.
+- $d$: ligevægtsværdien, altså højden af den vandrette midterlinje.
+- $x$: den variable, fx tiden.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal opstille eller fortolke en model for noget, der svinger op og ned med en fast periode, fx ud fra amplitude og periode.
+
+</Bruges>
+
+<Eksempel>
+
+Et punkt på et hjul er mellem 2 m og 18 m over jorden, og hjulet drejer én omgang på 8 minutter. Til tiden 0 er punktet i midterhøjden på vej op. Så er
+
+$$
+d = \frac{18 + 2}{2} = 10 \quad \text{og} \quad A = \frac{18 - 2}{2} = 8
+$$
+
+Perioden er $T = 8$, så $\omega = \frac{2\pi}{8} = \frac{\pi}{4}$. Punktet starter i midterhøjden på vej op, så $\varphi = 0$, og forskriften er
+
+$$
+f(x) = 8 \cdot \sin\left(\frac{\pi}{4} \cdot x\right) + 10
+$$
+
+hvor $x$ er tiden i minutter. Tjek: Efter 2 minutter er punktet på toppen, og $f(2) = 8 \cdot \sin\left(\frac{\pi}{2}\right) + 10 = 18$.
+
+</Eksempel>
+
+<Fejl>
+
+- At tro, at $\varphi$ er det stykke, grafen er forskudt. Det er $\frac{\varphi}{\omega}$.
+- At sætte perioden $T$ ind i stedet for $\omega$.
+- At regne i grader, når $\omega \cdot x + \varphi$ skal være i radianer.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Perioden aflæst på grafen" tex="T = x_2 - x_1" kilde="formelsamling" henvisning="formelsamlingen, s. 29, formel (111) og (112)">
+
+<Symboler>
+
+- $x_1$ og $x_2$: $x$-værdierne for to bunde (eller to toppe) på grafen, der kommer lige efter hinanden.
+- $T$: perioden, som også kaldes svingningstiden.
+
+</Symboler>
+
+<Bruges>
+
+Når du har grafen og skal aflæse perioden. På samme graf kan du aflæse $d$ som højden af midterlinjen og $A$ som afstanden fra midterlinjen op til en top.
+
+</Bruges>
+
+<Eksempel>
+
+To bunde efter hinanden ligger ved $x = 1{,}5$ og $x = 7{,}5$. Så er
+
+$$
+T = 7{,}5 - 1{,}5 = 6
+$$
+
+og med formlen herunder er $\omega = \frac{2\pi}{6} = \frac{\pi}{3} \approx 1{,}047$.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge to bunde, der ikke kommer lige efter hinanden. Så får du flere perioder.
+- At måle fra en top til den næste bund. Det er kun en halv periode.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Perioden ud fra ω" tex="T = \frac{2\pi}{\omega}" kilde="formelsamling" henvisning="formelsamlingen, s. 29, formel (113)">
+
+<Symboler>
+
+- $T$: perioden, altså hvor meget $x$ skal vokse, før grafen gentager sig.
+- $\omega$: tallet, der ganges på $x$ inde i sinus.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender forskriften og skal finde perioden. Kender du perioden, kan du omvendt finde $\omega = \frac{2\pi}{T}$.
+
+</Bruges>
+
+<Eksempel>
+
+For $f(x) = 3 \cdot \sin(0{,}5 \cdot x) + 7$ er $\omega = 0{,}5$, så
+
+$$
+T = \frac{2\pi}{0{,}5} = 4\pi \approx 12{,}57
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At regne $\frac{\omega}{2\pi}$ i stedet for $\frac{2\pi}{\omega}$.
+- At bruge $A$ eller $d$ i stedet for $\omega$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Radian">
+
+Et vinkelmål, der bruges til de trigonometriske funktioner. 180° svarer til $\pi$ radianer. [vejledningen, s. 14](kilde:vejledning) [formelsamlingen, s. 26, formel (94)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Periode">
+
+Det stykke, $x$ skal vokse, før grafen gentager sig. For $\sin(x)$ og $\cos(x)$ er perioden $2\pi$. [formelsamlingen, s. 28–29, formel (104), (107) og (113)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Amplitude">
+
+Afstanden fra ligevægtsværdien op til en top på grafen. I $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$ er det $A$. [formelsamlingen, s. 29, formel (110) og (111)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Ligevægtsværdi">
+
+Højden af den vandrette linje midt mellem toppe og bunde. I $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$ er det $d$. [formelsamlingen, s. 29, formel (110) og (111)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Harmonisk svingning">
+
+En funktion med en forskrift af typen $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$. [formelsamlingen, s. 29, formel (110)](kilde:formelsamling)
+
+</Begreb>
+
+**Se også:** [Enhedscirklen](/fag/matematik/retvinklede-trekanter/#begreb-enhedscirklen). I de trigonometriske funktioner er $x$ en bue på enhedscirklen, og punktet for enden af buen har koordinaterne $(\cos(x), \sin(x))$. [formelsamlingen, s. 26, formel (96)](kilde:formelsamling)
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Cosinus og sinus som funktioner og deres grafiske forløb er kernestof i matematik A. [læreplanen, pkt. 2.2](kilde:laereplan) Radianer indføres som vinkelmål til de trigonometriske funktioner, og du skal kunne opstille og fortolke udtryk på formen $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$ ud fra fx amplitude og periode. [vejledningen, s. 14](kilde:vejledning) Kernestoffet er grundlaget for den skriftlige prøve. [vejledningen, s. 11](kilde:vejledning)
+
+- Har du løftet matematik fra B til A på et étårigt hold, er cos og sin som funktioner nyt stof i forhold til B-niveau. [vejledningen, s. 14](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Brug tabellen med udvalgte værdier af cos og sin, og vis dine mellemregninger. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling) [vejledningen, s. 41](kilde:vejledning)
+
+- Du skal kunne løse grundligninger, også med cos og sin, både alene og som en del af en større opgave. [vejledningen, s. 12](kilde:vejledning) Har ligningen flere løsninger, kan du finde dem med overgangsformlerne. [formelsamlingen, s. 28, formel (104)–(109)](kilde:formelsamling)
+
+**Med hjælpemidler (delprøve 2).** Du skal kunne modellere med cosinus og sinus, lave regression med dem og tegne data og model i et passende grafvindue. [vejledningen, s. 15](kilde:vejledning)
+
+- Modeltypen står altid i opgaven. [vejledningen, s. 37](kilde:vejledning)
+- Står der "Bestem ved aflæsning", skal svaret bygge på en præcis aflæsning med en indbygget kommando på en graf fra [GeoGebra](https://www.geogebra.org/). [vejledningen, s. 36](kilde:vejledning)
+- Tjek, at GeoGebra regner i radianer.
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) I undervisningen gennemgås sætninger og formler som hovedregel med bevis. [vejledningen, s. 23](kilde:vejledning) Øv dig fx i at forklare, hvorfor perioden er $T = \frac{2\pi}{\omega}$, når $\omega$ er positiv. Når $x$ vokser med $\frac{2\pi}{\omega}$, gælder
+
+$$
+\omega \cdot \left(x + \frac{2\pi}{\omega}\right) + \varphi = \omega \cdot x + \varphi + 2\pi
+$$
+
+og sinus har samme værdi, når tallet inde i parentesen vokser med $2\pi$. [formelsamlingen, s. 28–29, formel (107) og (113)](kilde:formelsamling) Øv dig også i at forklare grundrelationen $\cos^2(x) + \sin^2(x) = 1$ ud fra enhedscirklen. [formelsamlingen, s. 26 og 28, formel (96) og (103)](kilde:formelsamling)
+
+**Eksempler på problemstillinger**
+
+- Temperaturen i et rum svinger i en model mellem 18 °C og 24 °C med en periode på 24 timer. Opstil en forskrift af typen $f(x) = A \cdot \sin(\omega \cdot x + \varphi) + d$.
+- Grafen for en harmonisk svingning har to toppe efter hinanden ved $x = 1$ og $x = 5$. Bestem perioden og $\omega$.
+- Løs ligningen $\cos(x) = \frac{1}{2}$ for $0 \le x \le 2\pi$.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

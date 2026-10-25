@@ -4,6 +4,7 @@
 
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { TargetedMouseEvent } from 'preact';
+import type { GeneriskVisning } from '../../data/pensum';
 import { optael, optaelAlt, type Fag, type NytFag, type Pensum } from '../../lib/pensum';
 import FagFormular from './FagFormular';
 import { Fremdrift } from './Fremdrift';
@@ -11,6 +12,8 @@ import { Ikon } from './Ikon';
 
 interface Props {
   pensum: Pensum;
+  /** Læreplanerne, man kan vælge imellem, for hvert "fag/niveau" */
+  laereplaner: Record<string, GeneriskVisning[]>;
   onTilfoejFag: (nyt: NytFag) => string | null;
   onVisFag: (fagId: string) => void;
 }
@@ -49,7 +52,7 @@ function FagKort({ fag, onVis }: { fag: Fag; onVis: (fagId: string) => void }) {
   );
 }
 
-export default function Oversigt({ pensum, onTilfoejFag, onVisFag }: Props) {
+export default function Oversigt({ pensum, laereplaner, onTilfoejFag, onVisFag }: Props) {
   const [formularAaben, saetFormularAaben] = useState(false);
   const tilfoejKnap = useRef<HTMLButtonElement>(null);
   const lukketNu = useRef(false);
@@ -73,7 +76,12 @@ export default function Oversigt({ pensum, onTilfoejFag, onVisFag }: Props) {
             <li>Kryds af, efterhånden som du kan dem.</li>
           </ol>
         </section>
-        <FagFormular overskrift="Tilføj dit første fag" knaptekst="Tilføj faget" onGem={onTilfoejFag} />
+        <FagFormular
+          overskrift="Tilføj dit første fag"
+          knaptekst="Tilføj faget"
+          laereplaner={laereplaner}
+          onGem={onTilfoejFag}
+        />
       </>
     );
   }
@@ -104,6 +112,7 @@ export default function Oversigt({ pensum, onTilfoejFag, onVisFag }: Props) {
         <FagFormular
           overskrift="Tilføj et fag"
           knaptekst="Tilføj faget"
+          laereplaner={laereplaner}
           onGem={onTilfoejFag}
           onAnnuller={() => {
             lukketNu.current = true;

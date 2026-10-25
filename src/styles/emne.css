@@ -1,0 +1,286 @@
+/*
+ * Emnesiderne (src/pages/fag/[fag]/[emne].astro) og deres komponenter:
+ * <Formel>, <Begreb> og <Graf> (src/components/emne/).
+ *
+ * Afsnittene er pakket ind i <section class="emne-afsnit" data-afsnit="…">
+ * (src/lib/markdown/emneside.ts), så de kan få hver sit udseende.
+ */
+
+.emne {
+  max-width: var(--tekstbredde);
+}
+
+/* ---------- Sidehoved ---------- */
+
+.emne-fag {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--afstand-4);
+  margin-bottom: var(--afstand-1);
+}
+
+.emne-fag a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--trykflade);
+  font-weight: 600;
+}
+
+.emne-fakta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--afstand-2) var(--afstand-4);
+  padding: 0;
+  color: var(--farve-tekst-svag);
+  list-style: none;
+}
+
+.emne-trin {
+  display: flex;
+  gap: var(--afstand-1);
+}
+
+.emne-pladsholder {
+  padding: var(--afstand-3) var(--afstand-4);
+  border: 2px dashed var(--farve-accent);
+  border-radius: var(--radius-m);
+  background: var(--farve-accent-svag);
+}
+
+/* ---------- Afsnit ---------- */
+
+.emne-indhold :is(ul, ol) {
+  padding-left: 1.375rem;
+}
+
+.emne-indhold li + li {
+  margin-top: var(--afstand-2);
+}
+
+.emne-indhold li > :is(ul, ol) {
+  margin-top: var(--afstand-2);
+  margin-bottom: 0;
+}
+
+/* Kort fortalt og Eksamenshjørnet står i hver sin boks */
+.emne-afsnit:is([data-afsnit='kort-fortalt'], [data-afsnit='eksamenshjoernet']) {
+  margin-block: var(--afstand-6);
+  padding: var(--afstand-4);
+  border: 1px solid var(--farve-kant);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.emne-afsnit[data-afsnit='kort-fortalt'] {
+  border-left: 4px solid var(--farve-accent);
+}
+
+.emne-afsnit:is([data-afsnit='kort-fortalt'], [data-afsnit='eksamenshjoernet']) > h2 {
+  margin-top: 0;
+}
+
+.emne-afsnit:is([data-afsnit='kort-fortalt'], [data-afsnit='eksamenshjoernet']) > :last-child {
+  margin-bottom: 0;
+}
+
+/* Kildehenvisningen sidst i et punkt: lille og afdæmpet */
+.emne :is(.kilde, .formel-kilde) {
+  color: var(--farve-tekst-svag);
+  font-size: var(--skrift-lille);
+}
+
+.emne .kilde a {
+  color: inherit;
+}
+
+.emne-kilder a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--trykflade);
+}
+
+/* Tabeller kan scrolles vandret på en smal skærm i stedet for at gøre siden bredere */
+.emne-indhold table {
+  /* position gør, at også tekst til skærmlæsere (.skjult-visuelt) bliver i
+     tabellens vandrette scroll og ikke gør hele siden bredere */
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin-bottom: var(--afstand-4);
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.emne-indhold :is(th, td) {
+  padding: var(--afstand-2) var(--afstand-3);
+  border: 1px solid var(--farve-kant);
+  text-align: left;
+}
+
+.emne-indhold th {
+  background: var(--farve-flade);
+}
+
+/* ---------- Formler (KaTeX) ---------- */
+
+/* Lange formler kan scrolles vandret på mobilen */
+.emne .katex-display {
+  margin: var(--afstand-4) 0;
+  padding-block: var(--afstand-1);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.formel {
+  margin-block: var(--afstand-5);
+  border: 1px solid var(--farve-kant);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.formel-navn {
+  margin: 0;
+  padding: var(--afstand-4) var(--afstand-4) 0;
+}
+
+.formel-tex {
+  padding-inline: var(--afstand-4);
+}
+
+.formel-tex .katex-display {
+  margin-block: var(--afstand-3);
+  font-size: 1.1em;
+}
+
+.formel-kilde {
+  margin: 0;
+  padding: 0 var(--afstand-4) var(--afstand-2);
+}
+
+.formel-kilde a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--trykflade);
+  color: inherit;
+}
+
+.formel-del {
+  border-top: 1px solid var(--farve-kant);
+}
+
+.formel-del summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--afstand-2);
+  min-height: var(--trykflade);
+  padding: var(--afstand-2) var(--afstand-4);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Safari viser ellers sin egen trekant ved siden af pilen */
+.formel-del summary::-webkit-details-marker {
+  display: none;
+}
+
+.formel-del-pil {
+  flex-shrink: 0;
+  color: var(--farve-accent);
+}
+
+.formel-del[open] .formel-del-pil {
+  transform: rotate(180deg);
+}
+
+.formel-del-indhold {
+  padding: 0 var(--afstand-4) var(--afstand-2);
+}
+
+.formel-del-indhold > :last-child {
+  margin-bottom: var(--afstand-2);
+}
+
+/* ---------- Begreber ---------- */
+
+.begreb {
+  margin-block: var(--afstand-4);
+  padding-left: var(--afstand-4);
+  border-left: 3px solid var(--farve-accent);
+}
+
+.begreb-navn {
+  margin-bottom: var(--afstand-1);
+}
+
+.begreb-navn dfn {
+  font-style: normal;
+}
+
+.begreb-forklaring > :last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 60rem) {
+  .emne-afsnit:is([data-afsnit='kort-fortalt'], [data-afsnit='eksamenshjoernet']) {
+    padding: var(--afstand-5);
+  }
+}
+
+/* ---------- Forskel på læreplaner ---------- */
+
+.forskel {
+  margin-block: var(--afstand-5);
+  padding: var(--afstand-4);
+  border: 1px solid var(--farve-kant);
+  border-left: 4px solid var(--farve-gul);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.forskel-titel {
+  font-weight: 700;
+}
+
+.forskel-maerke {
+  display: block;
+  color: var(--farve-tekst-svag);
+  font-size: var(--skrift-lille);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.forskel-planer {
+  display: grid;
+  gap: var(--afstand-4);
+}
+
+.forskel-aar {
+  margin-bottom: var(--afstand-2);
+  font-weight: 700;
+}
+
+.forskel-plan > :last-child {
+  margin-bottom: 0;
+}
+
+/* Et begreb, som siden ikke forklarer endnu (src/components/emne/Hul.astro) */
+.hul {
+  margin-block: var(--afstand-4);
+  padding: var(--afstand-3) var(--afstand-4);
+  border: 1px dashed var(--farve-kant-staerk);
+  border-radius: var(--radius-m);
+  background: var(--farve-flade);
+}
+
+.hul p {
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .forskel-planer {
+    grid-template-columns: 1fr 1fr;
+  }
+}

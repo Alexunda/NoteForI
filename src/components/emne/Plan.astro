@@ -1,0 +1,15 @@
+---
+// Det, én læreplan siger, inde i en <Forskel>.
+
+interface Props {
+  /** Læreplanens årstal, fx "2026" */
+  aar: string;
+}
+
+const { aar } = Astro.props;
+---
+
+<div class="forskel-plan">
+  <p class="forskel-aar">Læreplanen fra {aar}</p>
+  <slot />
+</div>

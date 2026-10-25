@@ -29,7 +29,7 @@ try {
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 const MAPPE = fileURLToPath(new URL('../skaermbilleder/', import.meta.url));
 const BASE = (config.base ?? '/').replace(/\/+$/, '');
-const SIDER = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ['/', '/eksamen/', '/fag/matematik/eksempel/'];
+const SIDER = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ['/', '/eksamen/', '/fag/matematik/eksponentielle-funktioner/'];
 const BREDDER = [
   { bredde: 375, hoejde: 812 },
   { bredde: 1280, hoejde: 800 },
@@ -69,7 +69,7 @@ function startServer() {
 function findSmaaTrykflader() {
   const smaa = [];
   for (const el of document.querySelectorAll('a, button, input, select, textarea, summary')) {
-    if (el.closest('p, .emne-indhold, .guide-indhold') && el.tagName === 'A') continue;
+    if (el.closest('p, .emne-indhold, .guide-indhold, .fagside-indhold') && el.tagName === 'A') continue;
     const boks = el.getBoundingClientRect();
     if (boks.width === 0 && boks.height === 0) continue;
     if (getComputedStyle(el).visibility === 'hidden') continue;
@@ -107,6 +107,16 @@ for (const side of SIDER) {
       fane.on('pageerror', (fejl) => konsolfejl.push(fejl.message));
 
       await fane.goto(sideUrl, { waitUntil: 'networkidle' });
+      // Rul siden igennem, så øer med client:visible (fx grafer) bliver indlæst og tegnet
+      await fane.evaluate(async () => {
+        for (let y = 0; y < document.documentElement.scrollHeight; y += window.innerHeight / 2) {
+          window.scrollTo(0, y);
+          await new Promise((ok) => setTimeout(ok, 60));
+        }
+        window.scrollTo(0, 0);
+      });
+      await fane.waitForLoadState('networkidle');
+      await fane.waitForTimeout(300);
       const vandretScroll = await fane.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
       const smaa = await fane.evaluate(findSmaaTrykflader);
 

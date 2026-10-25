@@ -1,0 +1,259 @@
+---
+titel: "Lineære funktioner"
+beskrivelse: "Det samme tal lægges til hver gang: forskriften a · x + b, hældningskoefficient og begyndelsesværdi, topunktsformlen, skæring mellem linjer og lineære modeller."
+fag: matematik
+nummer: 10
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: [1g]
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En lineær funktion har forskriften $f(x) = a \cdot x + b$, og grafen er en ret linje. [formelsamlingen, s. 16, formel (37), og s. 49, formel (202)](kilde:formelsamling) Tallet $a$ er hældningskoefficienten: Hver gang $x$ vokser med 1, lægges $a$ til $f(x)$. Tallet $b$ er begyndelsesværdien, hvor grafen skærer $y$-aksen. [formelsamlingen, s. 16–17, formel (39) og (42)](kilde:formelsamling) Lineære funktioner og modellering med dem skal indgå i grundforløbet. [læreplanen, pkt. 3.1](kilde:laereplan) En matematisk model beskriver et fænomen, fx fra naturvidenskab eller samfundet, med matematik. At modellere er at opstille, bruge og fortolke sådan en model. [læreplanen, pkt. 1.2 og 2.1](kilde:laereplan)
+
+## Vigtige pointer
+
+- **Der lægges til, ikke ganges.** Når $x$ vokser med 1, lægges $a$ til $f(x)$. [formelsamlingen, s. 17, formel (42)](kilde:formelsamling) Ved en [eksponentiel funktion](/fag/matematik/eksponentielle-funktioner/) bliver $f(x)$ i stedet ganget med det samme tal hver gang. [formelsamlingen, s. 19, formel (50)](kilde:formelsamling)
+- **Fortegnet på $a$.** Er $a$ positiv, er funktionen [voksende](/fag/matematik/funktioner/). Er $a$ negativ, er den aftagende. [formelsamlingen, s. 16, formel (38)](kilde:formelsamling)
+- **Aflæs $a$ og $b$ på grafen.** $b$ er der, hvor grafen skærer $y$-aksen. Går du 1 til højre fra et punkt på grafen, skal du $a$ op for at ramme grafen igen. Er $a$ negativ, skal du ned. [formelsamlingen, s. 16, formel (39)](kilde:formelsamling)
+- **To punkter er nok.** Kender du to punkter på grafen, kan du beregne $a$ med topunktsformlen og derefter $b$. [formelsamlingen, s. 16, formel (40) og (41)](kilde:formelsamling)
+- **Tilvækster.** Hældningskoefficienten er $a = \frac{\Delta y}{\Delta x}$, altså ændringen i $y$ delt med ændringen i $x$. [formelsamlingen, s. 17, formel (43), og s. 80](kilde:formelsamling)
+- **Skæring mellem to linjer.** Skæringspunktet mellem graferne for to lineære funktioner hører til emnet. [vejledningen, s. 14](kilde:vejledning) I skæringspunktet har de to funktioner samme $x$ og samme $y$. Derfor løser du ligningen $f(x) = g(x)$ og sætter løsningen ind i en af forskrifterne. Se eksemplet under listen.
+- **Lineære modeller.** I en model fortæller $a$, hvor meget $y$ ændrer sig, når $x$ vokser med 1, og $b$ er værdien, når $x = 0$. [formelsamlingen, s. 17, formel (42)](kilde:formelsamling) Vejledningen foreslår lineær regression allerede i grundforløbet, fx på data fra naturvidenskabeligt grundforløb. [vejledningen, s. 22 og 28](kilde:vejledning) Ved lineær regression finder [GeoGebra](https://www.geogebra.org/) den model $f(x) = a \cdot x + b$, der passer bedst til datapunkterne. [formelsamlingen, s. 30, formel (115)](kilde:formelsamling)
+
+Et eksempel på skæring: $f(x) = 2x + 1$ og $g(x) = -x + 7$. Sæt forskrifterne lig med hinanden:
+
+$$
+2x + 1 = -x + 7 \quad \Leftrightarrow \quad 3x = 6 \quad \Leftrightarrow \quad x = 2
+$$
+
+Så er $f(2) = 2 \cdot 2 + 1 = 5$, og skæringspunktet er $(2, 5)$. Tjek: $g(2) = -2 + 7 = 5$.
+
+Prøv selv: Træk i skyderne, og se, hvad $a$ og $b$ gør ved grafen. Hvad sker der, når $a$ skifter fortegn? Og når $a = 0$? Hvor skærer grafen $y$-aksen?
+
+<Graf
+  titel="Lineær funktion med skydere"
+  funktioner={[{ forskrift: 'f(x) = a · x + b', tex: 'f(x) = a \\cdot x + b' }]}
+  parametre={{ a: { min: -3, max: 3, start: 0.5, trin: 0.1 }, b: { min: -5, max: 5, start: 1, trin: 0.5 } }}
+  x={[-6, 6]}
+  y={[-6, 6]}
+/>
+
+## Formler
+
+<Formel navn="Forskriften for en lineær funktion" tex="f(x) = a \cdot x + b" kilde="formelsamling" henvisning="formelsamlingen, s. 16, formel (37)">
+
+<Symboler>
+
+- $f(x)$: funktionsværdien.
+- $a$: hældningskoefficienten (stigningstallet), som lægges til $f(x)$, hver gang $x$ vokser med 1.
+- $b$: begyndelsesværdien, altså funktionsværdien, når $x = 0$. Det er der, grafen skærer $y$-aksen.
+
+</Symboler>
+
+<Bruges>
+
+Når en størrelse vokser eller aftager med det samme tal hver gang, fx en pris, der stiger med det samme beløb pr. minut.
+
+</Bruges>
+
+<Eksempel>
+
+Det koster 10 kr. at låse et el-løbehjul op og 2,50 kr. pr. minut at køre. Så er $b = 10$ og $a = 2{,}5$, og prisen i kr. for $x$ minutter er
+
+$$
+f(x) = 2{,}5 \cdot x + 10
+$$
+
+En tur på 12 minutter koster $f(12) = 2{,}5 \cdot 12 + 10 = 40$ kr.
+
+</Eksempel>
+
+<Fejl>
+
+- At bytte om på $a$ og $b$. Startprisen er $b$, og prisen pr. minut er $a$.
+- At glemme minus, når størrelsen falder. Falder noget med 3 pr. år, er $a = -3$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Topunktsformlen for hældningskoefficienten" tex="a = \frac{y_2 - y_1}{x_2 - x_1}" kilde="formelsamling" henvisning="formelsamlingen, s. 16, formel (40)">
+
+<Symboler>
+
+- $(x_1, y_1)$ og $(x_2, y_2)$: to punkter på grafen.
+- $a$: hældningskoefficienten.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to punkter på grafen eller to sammenhørende værdier i en tabel og skal finde forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+Grafen for en lineær funktion går gennem punkterne $(2, 3)$ og $(6, 11)$. Så er
+
+$$
+a = \frac{11 - 3}{6 - 2} = \frac{8}{4} = 2
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte $x$-værdierne i tælleren og $y$-værdierne i nævneren.
+- At tage punkterne i forskellig rækkefølge foroven og forneden, fx $\frac{y_2 - y_1}{x_1 - x_2}$. Så får du det forkerte fortegn.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Begyndelsesværdien ud fra ét punkt" tex="b = y_1 - a \cdot x_1" kilde="formelsamling" henvisning="formelsamlingen, s. 16, formel (41)">
+
+<Symboler>
+
+- $(x_1, y_1)$: et punkt på grafen.
+- $a$: hældningskoefficienten, som du skal kende i forvejen.
+- $b$: begyndelsesværdien.
+
+</Symboler>
+
+<Bruges>
+
+Når du har fundet $a$ og mangler $b$ for at kunne skrive forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+Fortsat fra før: $a = 2$, og punktet $(2, 3)$ ligger på grafen. Så er
+
+$$
+b = 3 - 2 \cdot 2 = -1
+$$
+
+og forskriften er $f(x) = 2x - 1$. Tjek med det andet punkt: $f(6) = 2 \cdot 6 - 1 = 11$.
+
+</Eksempel>
+
+<Fejl>
+
+- At lægge til i stedet for at trække fra: Det er $y_1 - a \cdot x_1$, ikke $y_1 + a \cdot x_1$.
+- At regne $b$ ud med det ene punkt uden at tjekke med det andet.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Hældningskoefficienten ud fra tilvækster" tex="a = \frac{\Delta y}{\Delta x}" kilde="formelsamling" henvisning="formelsamlingen, s. 17, formel (43)">
+
+<Symboler>
+
+- $\Delta x$: tilvæksten i $x$, altså hvor meget $x$ vokser.
+- $\Delta y$: tilvæksten i $y$, altså hvor meget $y$ ændrer sig samtidig. Den er negativ, når $y$ falder.
+- $a$: hældningskoefficienten.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender ændringerne i stedet for selve punkterne, fx fra en tabel eller en tekst.
+
+</Bruges>
+
+<Eksempel>
+
+En vandtank bliver tømt med samme fart hele tiden. På 8 minutter falder vandmængden fra 500 L til 340 L. Så er $\Delta x = 8$ og $\Delta y = 340 - 500 = -160$, og
+
+$$
+a = \frac{-160}{8} = -20
+$$
+
+Vandmængden falder altså med 20 L pr. minut.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme minus, når $y$ falder.
+- At dele omvendt og regne $\frac{\Delta x}{\Delta y}$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Lineær funktion">
+
+En funktion med en forskrift af typen $f(x) = a \cdot x + b$. Grafen er en ret linje. [formelsamlingen, s. 16, formel (37), og s. 49, formel (202)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Hældningskoefficient">
+
+Tallet $a$ i $f(x) = a \cdot x + b$. Det lægges til funktionsværdien, hver gang $x$ vokser med 1. Det kaldes også stigningstallet. [formelsamlingen, s. 16–17, formel (39) og (42)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Begyndelsesværdi">
+
+Tallet $b$ i $f(x) = a \cdot x + b$. Det er funktionsværdien, når $x = 0$, og grafen skærer $y$-aksen i $b$. [formelsamlingen, s. 16–17, formel (39) og (42)](kilde:formelsamling) I en eksponentiel funktion $f(x) = b \cdot a^x$ er begyndelsesværdien $b$. [formelsamlingen, s. 18, formel (47)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Topunktsformlen">
+
+Formlen $a = \frac{y_2 - y_1}{x_2 - x_1}$, som giver hældningskoefficienten ud fra to punkter på grafen. [formelsamlingen, s. 16, formel (40)](kilde:formelsamling) [vejledningen, s. 14](kilde:vejledning)
+
+</Begreb>
+
+<Begreb navn="Tilvækst">
+
+Hvor meget en størrelse ændrer sig. $\Delta x = x_2 - x_1$ er tilvæksten i $x$, og $\Delta y$ er den tilvækst i $y$, der hører til. [formelsamlingen, s. 80](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Arbejdet med lineære funktioner bygger videre på grundskolen. Det omfatter koordinatsystemet, hældningskoefficienten, topunktsformlen og skæringen mellem graferne for to lineære funktioner. [vejledningen, s. 14](kilde:vejledning) Du skal også kunne modellere med lineære funktioner og lave regression. [vejledningen, s. 15](kilde:vejledning)
+
+**I grundforløbet.** Grundforløbet slutter med en skriftlig screening på ca. to timer, og lineære funktioner og modellering med dem er med. Screeningen bruges til at vejlede dig om valg af studieretning. [læreplanen, pkt. 4.1](kilde:laereplan) Skolen laver selv screeningen og bestemmer reglerne for digitale værktøjer. Den skal ikke nødvendigvis have en karakter. [vejledningen, s. 34](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig i at bruge topunktsformlen og formlen for $b$ i hånden og i at finde skæringspunktet mellem to linjer. Vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Skriv formlen eller dens nummer i formelsamlingen, før du sætter tal ind. [vejledningen, s. 42](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her skal du kunne lave lineær regression og tegne data og model i et passende grafvindue. [vejledningen, s. 15](kilde:vejledning)
+
+- Modeltypen står altid i opgaven, så du skal ikke selv vælge den. [vejledningen, s. 37](kilde:vejledning)
+- Du skal kunne bruge modellen til fremskrivninger og forklare, hvad tallene i forskriften betyder i sammenhængen. [vejledningen, s. 15](kilde:vejledning)
+- Vurdér, om modellen passer: Ligger punkterne systematisk over eller under linjen? Du skal også kunne beregne absolut og relativ afvigelse. [vejledningen, s. 15](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Topunktsformlen for hældningskoefficienten bevises, og beviset kan indgå i grundforløbet som et eksempel på matematisk argumentation. [vejledningen, s. 13–14](kilde:vejledning) Idéen er, at begge punkter ligger på grafen, så $y_1 = a \cdot x_1 + b$ og $y_2 = a \cdot x_2 + b$. Træk den første ligning fra den anden, og isolér $a$. Husk at gøre rede for forudsætningerne, fx at $x_1 \neq x_2$. [vejledningen, s. 39](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- Et træningscenter tager et fast indmeldelsesgebyr og derefter 149 kr. om måneden. Efter 6 måneder har du i alt betalt 1093 kr. Bestem gebyret, og forklar, hvad $a$ og $b$ betyder i sammenhængen.
+- Efter en strømafbrydelse stiger temperaturen i en fryser med lige mange grader hver time. Efter 2 timer er den $-14$ °C, og efter 5 timer er den $-8$ °C. Opstil en forskrift, og bestem, hvornår temperaturen når 0 °C.
+- Elselskab A koster 30 kr. om måneden plus 2,10 kr. pr. kWh. Elselskab B koster 55 kr. om måneden plus 1,85 kr. pr. kWh. Bestem, hvornår de koster det samme, og forklar, hvad skæringspunktet betyder.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

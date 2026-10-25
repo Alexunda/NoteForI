@@ -1,0 +1,326 @@
+---
+titel: "Andengradspolynomier"
+beskrivelse: "Forskriften a · x² + b · x + c og parablen: konstanternes betydning, diskriminant, rødder, toppunkt og faktorisering."
+fag: matematik
+nummer: 11
+omraade: "Funktioner og infinitesimalregning"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+Et andengradspolynomium har forskriften $f(x) = a \cdot x^2 + b \cdot x + c$, og grafen kaldes en parabel. [formelsamlingen, s. 22, formel (65) og (67)](kilde:formelsamling) Tallet $a$ afgør, om parablens grene (de to ender af kurven) vender op eller ned, og parablen skærer $y$-aksen i punktet $(0, c)$. [formelsamlingen, s. 22, formel (68) og (70)](kilde:formelsamling) Diskriminanten $d = b^2 - 4a \cdot c$ fortæller, hvor mange gange parablen skærer $x$-aksen. Den bruges også til at finde rødderne, altså de $x$-værdier, hvor parablen rammer $x$-aksen, og toppunktet, som er parablens laveste eller højeste punkt. [formelsamlingen, s. 22–23, formel (66), (71), (72) og (73)](kilde:formelsamling)
+
+## Vigtige pointer
+
+- **Grenene.** Er $a > 0$, vender parablens grene opad. Er $a < 0$, vender de nedad. [formelsamlingen, s. 22, formel (68)](kilde:formelsamling)
+- **Skæring med $y$-aksen.** Parablen skærer $y$-aksen i punktet $(0, c)$. [formelsamlingen, s. 22, formel (70)](kilde:formelsamling)
+- **Tallet $b$** er hældningen af tangenten i parablens skæringspunkt med $y$-aksen. En tangent er en ret linje, der rører grafen i et punkt. [formelsamlingen, s. 22, formel (69), og s. 64, formel (253)](kilde:formelsamling)
+- **Diskriminanten** $d = b^2 - 4a \cdot c$ afgør, hvor mange gange parablen skærer $x$-aksen: to gange, hvis $d > 0$, og ingen gange, hvis $d < 0$. Er $d = 0$, rører parablen $x$-aksen én gang. [formelsamlingen, s. 22, formel (66) og (71)](kilde:formelsamling)
+- **Rødder.** Rødderne er nulpunkterne, altså løsningerne til andengradsligningen $a \cdot x^2 + b \cdot x + c = 0$. Du finder dem med formel (72). Er $d < 0$, er der ingen rødder. [formelsamlingen, s. 23, formel (72), og s. 75, formel (321) og (323)](kilde:formelsamling)
+- **Toppunktet** er parablens laveste punkt, når grenene vender opad, og det højeste, når de vender nedad. [formelsamlingen, s. 22–23, formel (68), (73) og (75)](kilde:formelsamling) Figuren i formelsamlingen viser tilfældet, hvor grenene vender opad.
+- **To andre skrivemåder.** Kender du rødderne, kan du faktorisere: $f(x) = a \cdot (x - x_1) \cdot (x - x_2)$. Kender du toppunktet $(h, k)$, kan du skrive $f(x) = a \cdot (x - h)^2 + k$. [formelsamlingen, s. 23, formel (74) og (75)](kilde:formelsamling) Den sidste er grafen for $a \cdot x^2$ [parallelforskudt](/fag/matematik/funktioner/) $h$ vandret og $k$ lodret. [formelsamlingen, s. 15, formel (36)](kilde:formelsamling)
+- **Nulreglen.** Er et produkt lig 0, er en af faktorerne 0. [formelsamlingen, s. 74, formel (320)](kilde:formelsamling) Fx giver $(x + 4) \cdot (x - 2) = 0$, at $x = -4$ eller $x = 2$.
+
+Prøv selv: Træk i skyderne. Hvad gør $a$ ved grenene? Hvad sker der med skæringen med $y$-aksen, når du ændrer $c$? Kan du få parablen til kun at røre $x$-aksen? Den stiplede linje $t(x) = b \cdot x + c$ er tangenten i parablens skæringspunkt med $y$-aksen. Den har hældningen $b$ og går gennem $(0, c)$. [formelsamlingen, s. 22, formel (69) og (70)](kilde:formelsamling)
+
+<Graf
+  titel="Andengradspolynomium med skydere"
+  funktioner={[
+    { forskrift: 'f(x) = a · x^2 + b · x + c', tex: 'f(x) = a \\cdot x^2 + b \\cdot x + c' },
+    { forskrift: 't(x) = b · x + c', tex: 't(x) = b \\cdot x + c' },
+  ]}
+  parametre={{ a: { min: -3, max: 3, start: 1, trin: 0.1 }, b: { min: -6, max: 6, start: -4, trin: 0.5 }, c: { min: -6, max: 6, start: 3, trin: 0.5 } }}
+  x={[-5, 7]}
+  y={[-6, 10]}
+/>
+
+## Formler
+
+<Formel navn="Forskriften for et andengradspolynomium" tex="f(x) = a \cdot x^2 + b \cdot x + c" kilde="formelsamling" henvisning="formelsamlingen, s. 22, formel (65)">
+
+<Symboler>
+
+- $a$: tallet foran $x^2$. Det afgør, om grenene vender op eller ned.
+- $b$: tallet foran $x$. Det er hældningen af tangenten der, hvor parablen skærer $y$-aksen.
+- $c$: konstantleddet, altså tallet uden $x$. Det er der, hvor parablen skærer $y$-aksen.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde konstanterne og bruge dem i formlerne for diskriminant, rødder og toppunkt.
+
+</Bruges>
+
+<Eksempel>
+
+I $f(x) = -2x^2 + 3x + 5$ er $a = -2$, $b = 3$ og $c = 5$. Grenene vender nedad, fordi $a < 0$, og parablen skærer $y$-aksen i $(0, 5)$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme fortegnet: I $f(x) = x^2 - 4x + 1$ er $b = -4$, ikke $4$.
+- At tro, at $a = 0$, når der ikke står et tal foran $x^2$. Så er $a = 1$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Diskriminanten" tex="d = b^2 - 4a \cdot c" kilde="formelsamling" henvisning="formelsamlingen, s. 22, formel (66)">
+
+<Symboler>
+
+- $a$, $b$ og $c$: konstanterne i $f(x) = a \cdot x^2 + b \cdot x + c$.
+- $d$: diskriminanten.
+
+</Symboler>
+
+<Bruges>
+
+Før du finder rødderne, og når du skal afgøre, hvor mange gange parablen skærer $x$-aksen.
+
+</Bruges>
+
+<Eksempel>
+
+For $f(x) = x^2 + 2x - 8$ er $a = 1$, $b = 2$ og $c = -8$. Så er
+
+$$
+d = 2^2 - 4 \cdot 1 \cdot (-8) = 4 + 32 = 36
+$$
+
+Da $d > 0$, skærer parablen $x$-aksen to gange.
+
+</Eksempel>
+
+<Fejl>
+
+- At regne $b^2$ forkert, når $b$ er negativ: $(-3)^2 = 9$, ikke $-9$.
+- At glemme fortegnet på $c$: $-4 \cdot 1 \cdot (-8) = 32$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Rødderne" tex="x_1 = \frac{-b - \sqrt{d}}{2a} \quad \text{og} \quad x_2 = \frac{-b + \sqrt{d}}{2a}" kilde="formelsamling" henvisning="formelsamlingen, s. 23, formel (72)">
+
+<Symboler>
+
+- $x_1$ og $x_2$: rødderne, altså nulpunkterne.
+- $a$ og $b$: konstanterne i forskriften.
+- $d$: diskriminanten. Formlen kræver, at $d \ge 0$.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal løse $f(x) = 0$ eller finde, hvor parablen skærer $x$-aksen. Er $d < 0$, er der ingen løsninger. [formelsamlingen, s. 75, formel (323)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+For $f(x) = x^2 + 2x - 8$ er $d = 36$. Så er
+
+$$
+x_1 = \frac{-2 - \sqrt{36}}{2 \cdot 1} = \frac{-8}{2} = -4 \quad \text{og} \quad x_2 = \frac{-2 + \sqrt{36}}{2 \cdot 1} = \frac{4}{2} = 2
+$$
+
+Parablen skærer altså $x$-aksen i $(-4, 0)$ og $(2, 0)$.
+
+</Eksempel>
+
+<Fejl>
+
+- At dele kun $\sqrt{d}$ med $2a$ i stedet for hele tælleren.
+- At skrive $b$ i stedet for $-b$ i tælleren.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Toppunktet" tex="T\left(\frac{-b}{2a}, \frac{-d}{4a}\right)" kilde="formelsamling" henvisning="formelsamlingen, s. 23, formel (73)">
+
+<Symboler>
+
+- $T$: toppunktet.
+- $\frac{-b}{2a}$: toppunktets førstekoordinat.
+- $\frac{-d}{4a}$: toppunktets andenkoordinat, hvor $d$ er diskriminanten.
+
+</Symboler>
+
+<Bruges>
+
+Når du skal finde parablens laveste eller højeste punkt, fx den største højde i en model.
+
+</Bruges>
+
+<Eksempel>
+
+For $f(x) = x^2 + 2x - 8$ er $a = 1$, $b = 2$ og $d = 36$. Så er
+
+$$
+T\left(\frac{-2}{2 \cdot 1}, \frac{-36}{4 \cdot 1}\right) = T(-1, -9)
+$$
+
+Tjek: $f(-1) = (-1)^2 + 2 \cdot (-1) - 8 = -9$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme minus foran $b$ eller $d$.
+- At bruge $c$ i stedet for $d$ i andenkoordinaten.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Faktorisering" tex="f(x) = a \cdot (x - x_1) \cdot (x - x_2)" kilde="formelsamling" henvisning="formelsamlingen, s. 23, formel (74)">
+
+<Symboler>
+
+- $x_1$ og $x_2$: rødderne.
+- $a$: tallet foran $x^2$ i forskriften.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender rødderne og skal skrive forskriften, eller når du vil løse $f(x) = 0$ med nulreglen.
+
+</Bruges>
+
+<Eksempel>
+
+$f(x) = 2x^2 - 2x - 12$ har rødderne $x_1 = -2$ og $x_2 = 3$. Dem kan du finde med formel (72). Så er
+
+$$
+f(x) = 2 \cdot (x - (-2)) \cdot (x - 3) = 2 \cdot (x + 2) \cdot (x - 3)
+$$
+
+Tjek: $2 \cdot (x + 2) \cdot (x - 3) = 2 \cdot (x^2 - x - 6) = 2x^2 - 2x - 12$.
+
+</Eksempel>
+
+<Fejl>
+
+- At glemme $a$ foran parenteserne.
+- At få fortegnet forkert: Roden $-2$ giver faktoren $(x + 2)$, ikke $(x - 2)$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Forskriften ud fra toppunktet" tex="f(x) = a \cdot (x - h)^2 + k" kilde="formelsamling" henvisning="formelsamlingen, s. 23, formel (75)">
+
+<Symboler>
+
+- $(h, k)$: parablens toppunkt.
+- $a$: tallet foran $x^2$. Det afgør, om grenene vender op eller ned.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender toppunktet og ét punkt mere og skal finde forskriften.
+
+</Bruges>
+
+<Eksempel>
+
+En parabel har toppunktet $(-1, 4)$ og går gennem punktet $(1, -4)$. Så er $f(x) = a \cdot (x + 1)^2 + 4$. Sæt punktet ind:
+
+$$
+-4 = a \cdot (1 + 1)^2 + 4 = 4a + 4
+$$
+
+Det giver $4a = -8$, så $a = -2$, og forskriften er $f(x) = -2 \cdot (x + 1)^2 + 4$.
+
+</Eksempel>
+
+<Fejl>
+
+- At læse $h$ med forkert fortegn: $(x + 1)^2$ betyder $h = -1$.
+- At glemme $k$, når du sætter punktet ind.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Andengradspolynomium">
+
+En funktion med forskriften $f(x) = a \cdot x^2 + b \cdot x + c$. [formelsamlingen, s. 22, formel (65)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Parabel">
+
+Grafen for et andengradspolynomium. Grenene vender opad, hvis $a > 0$, og nedad, hvis $a < 0$. [formelsamlingen, s. 22, formel (67) og (68)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Diskriminant">
+
+Tallet $d = b^2 - 4a \cdot c$. Det fortæller, om parablen skærer $x$-aksen to gange ($d > 0$), rører den én gang ($d = 0$) eller slet ikke skærer den ($d < 0$). [formelsamlingen, s. 22, formel (66) og (71)](kilde:formelsamling) Det svarer til, at andengradsligningen har to, én eller ingen løsninger. [formelsamlingen, s. 22, formel (71), og s. 75, formel (322) og (323)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Rod">
+
+Et andet ord for et nulpunkt, altså en løsning til $f(x) = 0$. Det er der, hvor parablen rammer $x$-aksen. [formelsamlingen, s. 23, formel (72)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Toppunkt">
+
+Parablens laveste punkt, når grenene vender opad, og højeste punkt, når de vender nedad. Det er $T\left(\frac{-b}{2a}, \frac{-d}{4a}\right)$. [formelsamlingen, s. 23, formel (73)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Faktorisering">
+
+At skrive forskriften som et produkt: $f(x) = a \cdot (x - x_1) \cdot (x - x_2)$, hvor $x_1$ og $x_2$ er rødderne. [formelsamlingen, s. 23, formel (74)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Du skal kende andengradspolynomiets graf, betydningen af konstanterne, toppunktet, formlen for rødderne med diskriminanten og faktorisering af andengradspolynomiet. [vejledningen, s. 14](kilde:vejledning) Du skal også kunne løse andengradsligninger og bruge nulreglen. [vejledningen, s. 12](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig i at finde $d$, rødderne, toppunktet og faktoriseringen i hånden med pæne tal. Vis dine mellemregninger. [vejledningen, s. 41](kilde:vejledning) Skriv formlen eller dens nummer i formelsamlingen, før du sætter tal ind. [vejledningen, s. 42](kilde:vejledning) Læg mærke til metodekrav: Står der fx, at du skal bruge nulreglen, får du ikke fuldt point for en anden metode, selvom svaret er rigtigt. [vejledningen, s. 36](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her skal du kunne lave regression med andengradspolynomier og tegne data og model i et passende grafvindue. [vejledningen, s. 15](kilde:vejledning)
+
+- Modeltypen står altid i opgaven, så du skal ikke selv vælge den. [vejledningen, s. 37](kilde:vejledning)
+- Står der "Aflæs", skal du aflæse præcist med en indbygget kommando på en graf, du har lavet i [GeoGebra](https://www.geogebra.org/), fx når du skal finde toppunktet. [vejledningen, s. 36](kilde:vejledning)
+
+**Til den mundtlige prøve** handler eksamensspørgsmålet især om ræsonnementer og beviser. [læreplanen, pkt. 4.2](kilde:laereplan) Vejledningen nævner udledningen af løsningsformlen for andengradsligningen som et eksempel på et sammenhængende matematisk ræsonnement. [vejledningen, s. 23](kilde:vejledning) Løsningsformlen er formel (323) og giver de samme tal som formel (72) for rødderne. [formelsamlingen, s. 23 og 75, formel (72) og (323)](kilde:formelsamling) Øv dig i at udlede den, og husk at gøre rede for forudsætningerne. [vejledningen, s. 39](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- En vandstråle fra et springvand har højden $f(x) = -0{,}5x^2 + 2x + 1$ meter, hvor $x$ er den vandrette afstand i meter. Bestem strålens største højde, og hvor langt væk den rammer jorden.
+- Forklar uden at tegne, hvad fortegnene for $a$, $c$ og $d$ fortæller om grafen for $f(x) = -x^2 + 3x + 4$.
+- Et andengradspolynomium har rødderne $-3$ og $1$. Forklar, hvorfor der findes mange andengradspolynomier med de rødder, og hvad $a$ gør ved grafen.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

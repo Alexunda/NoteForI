@@ -1,0 +1,321 @@
+---
+titel: "Vilkårlige trekanter"
+beskrivelse: "Cosinusrelationen, sinusrelationerne og arealformlen, så du kan beregne sider, vinkler og areal i alle trekanter."
+fag: matematik
+nummer: 5
+omraade: "Geometri, trigonometri og vektorer"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En vilkårlig trekant er en hvilken som helst trekant. Den behøver ikke at have en ret vinkel. Med cosinusrelationen og sinusrelationerne kan du beregne de sider og vinkler, du mangler. Med arealformlen finder du arealet ud fra to sider og vinklen mellem dem. [formelsamlingen, s. 12, formel (20)–(23)](kilde:formelsamling) At kunne beregne sider, vinkler og areal i vilkårlige trekanter er kernestof i matematik A. [læreplanen, pkt. 2.2](kilde:laereplan)
+
+## Vigtige pointer
+
+- **Navnene følger vinklerne.** Vinklerne hedder $A$, $B$ og $C$. Siden over for en vinkel har det samme bogstav, bare med lille: $a$ ligger over for $A$, $b$ over for $B$ og $c$ over for $C$. [formelsamlingen, s. 12](kilde:formelsamling)
+- **Vinkelsummen.** Vinklerne i en trekant giver tilsammen $180^\circ$. Kender du to vinkler, kender du altså også den tredje. [formelsamlingen, s. 12, formel (18)](kilde:formelsamling)
+- **Cosinusrelationen** bruger du, når du kender to sider og vinklen mellem dem og skal finde den tredje side. Du bruger den også, når du kender alle tre sider og skal finde en vinkel. [formelsamlingen, s. 12, formel (20) og (21)](kilde:formelsamling)
+- **Sinusrelationerne** forbinder hver side med sinus til vinklen over for den. Du bruger dem, når du kender en side og vinklen over for den og desuden en side eller en vinkel mere. [formelsamlingen, s. 12, formel (22)](kilde:formelsamling)
+- **Pas på med to mulige vinkler.** Sinus giver den samme værdi for $v$ og $180^\circ - v$. Fx er $\sin(30^\circ) = \sin(150^\circ) = 0{,}500$. [formelsamlingen, s. 28, formel (109), og s. 87–88](kilde:formelsamling) Finder du en vinkel med sinusrelationerne, så tjek, om også $180^\circ$ minus vinklen kan passe i trekanten.
+- **Cosinus afslører stumpe vinkler.** En stump vinkel er større end $90^\circ$. For vinkler mellem $90^\circ$ og $180^\circ$ er cosinus negativ, fx er $\cos(120^\circ) = -0{,}500$. [formelsamlingen, s. 88](kilde:formelsamling) Giver formel (21) et negativt tal, er vinklen altså stump.
+- **Arealet** kan du finde på to måder: med en højde og den side, højden står på, eller med to sider og vinklen mellem dem. [formelsamlingen, s. 12, formel (17) og (23)](kilde:formelsamling)
+- **Retvinklede trekanter er et særtilfælde.** Er $C = 90^\circ$, er $\cos(C) = 0$, og så bliver cosinusrelationen til $c^2 = a^2 + b^2$. Det er netop Pythagoras' sætning. [formelsamlingen, s. 12, formel (20), s. 28, formel (102), og s. 11, formel (13)](kilde:formelsamling) Se også [retvinklede trekanter og enhedscirklen](/fag/matematik/retvinklede-trekanter/).
+
+Prøv selv: Grafen viser arealet af en trekant med siderne $a$ og $b$ som funktion af vinklen mellem dem. Vinklen står ud ad $x$-aksen i grader. Træk i skyderne. Ved hvilken vinkel er arealet størst? Hvorfor er arealet det samme ved $30^\circ$ og ved $150^\circ$?
+
+<Graf
+  titel="Trekantens areal som funktion af vinklen"
+  funktioner={[{ forskrift: 'T(x) = a · b · sin(x · π / 180) / 2', tex: 'T(x) = \\frac{1}{2} \\cdot a \\cdot b \\cdot \\sin(x^\\circ)' }]}
+  parametre={{ a: { min: 1, max: 8, start: 4, trin: 0.5 }, b: { min: 1, max: 8, start: 5, trin: 0.5 } }}
+  x={[-10, 190]}
+  y={[-3, 15]}
+/>
+
+## Formler
+
+<Formel navn="Areal med højde og grundlinje" tex="T = \frac{1}{2} \cdot h \cdot g" kilde="formelsamling" henvisning="formelsamlingen, s. 12, formel (17)">
+
+<Symboler>
+
+- $T$: trekantens areal.
+- $g$: grundlinjen, altså den side, du regner ud fra.
+- $h$: højden på grundlinjen. Den går fra hjørnet over for grundlinjen og står vinkelret på grundlinjen eller på dens forlængelse. [formelsamlingen, s. 13, formel (24)](kilde:formelsamling)
+
+</Symboler>
+
+<Bruges>
+
+Når du kender en side og højden på den side.
+
+</Bruges>
+
+<Eksempel>
+
+Et trekantet bed har en side på 9 m, og højden på den side er 4 m. Så er
+
+$$
+T = \frac{1}{2} \cdot 4 \cdot 9 = 18
+$$
+
+Bedet har altså et areal på 18 m².
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge en side som højde, selv om den ikke står vinkelret på grundlinjen.
+- At glemme $\frac{1}{2}$.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Cosinusrelationen" tex="c^2 = a^2 + b^2 - 2 \cdot a \cdot b \cdot \cos(C)" kilde="formelsamling" henvisning="formelsamlingen, s. 12, formel (20)">
+
+<Symboler>
+
+- $a$ og $b$: to sider i trekanten.
+- $C$: vinklen mellem $a$ og $b$.
+- $c$: siden over for vinkel $C$.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to sider og vinklen mellem dem og skal finde den tredje side.
+
+</Bruges>
+
+<Eksempel>
+
+To lige stier går ud fra samme sted med en vinkel på $60^\circ$ mellem sig. Et træ står 7 m ude ad den ene sti og en bænk 5 m ude ad den anden. Afstanden $c$ mellem træet og bænken er givet ved
+
+$$
+c^2 = 7^2 + 5^2 - 2 \cdot 7 \cdot 5 \cdot \cos(60^\circ) = 49 + 25 - 70 \cdot \frac{1}{2} = 39
+$$
+
+så $c = \sqrt{39} \approx 6{,}2$. Der er altså ca. 6,2 m mellem træet og bænken. Her er $\cos(60^\circ) = \frac{1}{2}$ taget fra tabellen med eksakte værdier. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling)
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge en vinkel, der ikke ligger mellem de to kendte sider.
+- At regne $(a^2 + b^2 - 2 \cdot a \cdot b) \cdot \cos(C)$. Gangestykket $2 \cdot a \cdot b \cdot \cos(C)$ skal regnes først og trækkes fra bagefter.
+- At glemme kvadratroden til sidst.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Cosinusrelationen, når du skal finde en vinkel" tex="\cos(C) = \frac{a^2 + b^2 - c^2}{2 \cdot a \cdot b}" kilde="formelsamling" henvisning="formelsamlingen, s. 12, formel (21)">
+
+<Symboler>
+
+- $a$, $b$ og $c$: trekantens tre sider.
+- $C$: vinklen over for siden $c$.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender alle tre sider og skal finde en vinkel.
+
+</Bruges>
+
+<Eksempel>
+
+En trekant har siderne $a = 5$, $b = 6$ og $c = 8$. Så er
+
+$$
+\cos(C) = \frac{5^2 + 6^2 - 8^2}{2 \cdot 5 \cdot 6} = \frac{-3}{60} = -0{,}05
+$$
+
+og dermed
+
+$$
+C = \cos^{-1}(-0{,}05) \approx 92{,}9^\circ
+$$
+
+Cosinus er negativ, så vinklen er stump.
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte den forkerte side ind som $c$. Siden $c$ skal ligge over for den vinkel, du leder efter.
+- At glemme parenteser, når du taster brøken ind. Hele tælleren skal divideres med hele nævneren.
+- At tro, at du har regnet forkert, fordi $\cos(C)$ er negativ. Det betyder bare, at vinklen er stump.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sinusrelationerne" tex="\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}" kilde="formelsamling" henvisning="formelsamlingen, s. 12, formel (22)">
+
+<Symboler>
+
+- $a$, $b$ og $c$: trekantens sider.
+- $A$, $B$ og $C$: vinklerne over for dem.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender en side og vinklen over for den, og du desuden kender en side eller en vinkel mere.
+
+</Bruges>
+
+<Eksempel>
+
+I en trekant er $A = 40^\circ$, $B = 65^\circ$ og $a = 8$. Så er
+
+$$
+\frac{b}{\sin(65^\circ)} = \frac{8}{\sin(40^\circ)}
+$$
+
+og dermed
+
+$$
+b = \frac{8 \cdot \sin(65^\circ)}{\sin(40^\circ)} \approx 11{,}3
+$$
+
+Den sidste vinkel er $C = 180^\circ - 40^\circ - 65^\circ = 75^\circ$. [formelsamlingen, s. 12, formel (18)](kilde:formelsamling)
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte en side sammen med en vinkel, der ikke ligger over for den.
+- At glemme, at en vinkel, du finder med $\sin^{-1}$, også kan være $180^\circ$ minus vinklen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Areal med to sider og vinklen mellem dem" tex="T = \frac{1}{2} \cdot a \cdot b \cdot \sin(C)" kilde="formelsamling" henvisning="formelsamlingen, s. 12, formel (23)">
+
+<Symboler>
+
+- $T$: trekantens areal.
+- $a$ og $b$: to sider i trekanten.
+- $C$: vinklen mellem $a$ og $b$.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to sider og vinklen mellem dem. Så behøver du ikke at kende højden.
+
+</Bruges>
+
+<Eksempel>
+
+En trekant har $a = 6$, $b = 9$ og $C = 30^\circ$. Tabellen med eksakte værdier giver $\sin(30^\circ) = \frac{1}{2}$. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling) Så er
+
+$$
+T = \frac{1}{2} \cdot 6 \cdot 9 \cdot \frac{1}{2} = 13{,}5
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge en vinkel, der ikke ligger mellem de to sider.
+- At glemme $\frac{1}{2}$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Vilkårlig trekant">
+
+En hvilken som helst trekant, ikke kun en retvinklet. Formlerne på formelsamlingens side om vilkårlige trekanter gælder for alle trekanter. [formelsamlingen, s. 12](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Cosinusrelationen">
+
+Formlen $c^2 = a^2 + b^2 - 2 \cdot a \cdot b \cdot \cos(C)$, som forbinder trekantens tre sider med en af vinklerne. [formelsamlingen, s. 12, formel (20)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Sinusrelationerne">
+
+Formlen $\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}$. Forholdet mellem en side og sinus til vinklen over for den er det samme for alle tre sider. [formelsamlingen, s. 12, formel (22)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Højde">
+
+Højden $h_b$ fra $B$ er linjestykket fra $B$, der står vinkelret på siden $b$ eller på dens forlængelse. [formelsamlingen, s. 13, formel (24)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Median i en trekant">
+
+Medianen $m_b$ går fra $B$ til midtpunktet af siden $b$. [formelsamlingen, s. 13, formel (25)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Vinkelhalveringslinje">
+
+Vinkelhalveringslinjen $v_B$ deler vinkel $B$ i to lige store vinkler. [formelsamlingen, s. 13, formel (26)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Midtnormal">
+
+Midtnormalen $n$ for linjestykket $AB$ går gennem midtpunktet af $AB$ og står vinkelret på $AB$. [formelsamlingen, s. 13, formel (27)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Sinus- og cosinusrelationerne og beregning af sider, vinkler og areal i vilkårlige trekanter er kernestof. [læreplanen, pkt. 2.2](kilde:laereplan) Arealformlen $T = \frac{1}{2} \cdot a \cdot b \cdot \sin(C)$ skal udledes, og sinus- og cosinusrelationerne skal bevises. Begreber som højde, median, vinkelhalveringslinje og midtnormal bliver repeteret sammen med trekanterne. [vejledningen, s. 12](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Øv dig med vinkler, hvor formelsamlingen har eksakte værdier eller tabelværdier, og vis dine mellemregninger. [formelsamlingen, s. 28, formel (102), og s. 87–88](kilde:formelsamling) [vejledningen, s. 41](kilde:vejledning)
+
+- Et eksempel med pæne tal: En trekant har siderne $a = 3$, $b = 5$ og $c = 7$. Formel (21) giver $\cos(C) = \frac{9 + 25 - 49}{30} = -\frac{1}{2}$. Formel (106) og tabellen giver præcist $\cos(120^\circ) = -\cos(60^\circ) = -\frac{1}{2}$, fordi $120^\circ = 180^\circ - 60^\circ$. Altså er $C = 120^\circ$. [formelsamlingen, s. 28, formel (102) og (106)](kilde:formelsamling) Det passer med trigonometritabellen, hvor $\cos(120^\circ) = -0{,}500$. [formelsamlingen, s. 88](kilde:formelsamling)
+- Geometri giver god træning i at løse ligninger, hvor den ukendte ikke er $x$, men fx $a$, $\cos(A)$ eller $\sin(A)$. [vejledningen, s. 12](kilde:vejledning)
+- Skriv formlens navn eller nummer, før du sætter tal ind, fx »cosinusrelationen, formel (20)«. [vejledningen, s. 42](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader, også [GeoGebra](https://www.geogebra.org/). [vejledningen, s. 36](kilde:vejledning) Ifølge vejledningen skal det digitale værktøj kunne bruges til undersøgende og dynamisk arbejde med geometri, og for geometri gælder kravet kun plangeometri. [vejledningen, s. 32](kilde:vejledning)
+
+- Har opgaven en figur med de oplysninger, du skal bruge, er det nok at sætte et skærmklip af den ind i din besvarelse. [vejledningen, s. 42](kilde:vejledning)
+- Står der »Bestem ved beregning«, skal svaret bygge på en beregning med en formel. Står der »Bestem ved aflæsning«, skal svaret bygge på en præcis aflæsning med en indbygget kommando på en figur, du har lavet med GeoGebra. [vejledningen, s. 36](kilde:vejledning)
+- Vejledningen undtager ikke noget fra dette emne til den skriftlige prøve. [vejledningen, s. 12 og 36](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [vejledningen, s. 37](kilde:vejledning) Beviserne for sinus- og cosinusrelationerne og udledningen af arealformlen er derfor oplagte at øve, for vejledningen siger, at de skal bevises og udledes. [vejledningen, s. 12](kilde:vejledning) Står der »redegør for« i et spørgsmål, skal du bevise eller udlede. Husk også at sige, hvad sætningens forudsætninger er. [vejledningen, s. 39](kilde:vejledning)
+
+- **Idéen i udledningen af arealformlen:** Tegn højden $h$ fra $B$ på siden $b$. Den danner en retvinklet trekant med hypotenusen $a$, så $\sin(C) = \frac{h}{a}$ og dermed $h = a \cdot \sin(C)$. [formelsamlingen, s. 11, formel (15)](kilde:formelsamling) Sæt det ind i $T = \frac{1}{2} \cdot h \cdot g$, hvor grundlinjen er $g = b$. [formelsamlingen, s. 12, formel (17)](kilde:formelsamling) Er $C$ stump, falder højden uden for trekanten. Så skal du også bruge, at $\sin(180^\circ - C) = \sin(C)$. [formelsamlingen, s. 28, formel (109)](kilde:formelsamling)
+- **Idéen i beviset for sinusrelationerne:** Skriv arealet på tre måder, $T = \frac{1}{2} \cdot a \cdot b \cdot \sin(C) = \frac{1}{2} \cdot b \cdot c \cdot \sin(A) = \frac{1}{2} \cdot a \cdot c \cdot \sin(B)$, og divider med $\frac{1}{2} \cdot a \cdot b \cdot c$. Så får du $\frac{\sin(C)}{c} = \frac{\sin(A)}{a} = \frac{\sin(B)}{b}$, som er sinusrelationerne med brøkerne vendt om. [formelsamlingen, s. 12, formel (22) og (23)](kilde:formelsamling)
+- **Cosinusrelationen** kan bevises med en højde, Pythagoras' sætning og cosinus i en retvinklet trekant. [formelsamlingen, s. 11, formel (13) og (14)](kilde:formelsamling) Når du har lært om [vektorer i planen](/fag/matematik/vektorer-i-planen/), kan den også bevises nemt med vektorer. [vejledningen, s. 19](kilde:vejledning)
+- Et eksamensspørgsmål kan have en bred overskrift som »trigonometri og vektorregning«. [vejledningen, s. 38](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- En trekantet grund har to sider på 40 m og 55 m, og vinklen mellem dem er $48^\circ$. Bestem grundens areal og længden af den tredje side.
+- I trekant $ABC$ er $A = 35^\circ$, $a = 6$ og $b = 9$. Undersøg, om der er én eller to trekanter, der passer med oplysningerne.
+- Bevis cosinusrelationen. Hvad skal du gøre anderledes, hvis vinkel $C$ er stump?
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

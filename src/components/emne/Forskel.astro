@@ -1,0 +1,26 @@
+---
+// Viser tydeligt, hvor to læreplaner er forskellige (CLAUDE.md, regel 2).
+// Bruges på emnesider og fagsider:
+//
+//   <Forskel titel="Kanon">
+//   <Plan aar="2017">Det, læreplanen fra 2017 siger</Plan>
+//   <Plan aar="2026">Det, læreplanen fra 2026 siger</Plan>
+//   </Forskel>
+//
+// Planerne står ved siden af hinanden på en bred skærm og under hinanden på
+// mobilen.
+
+interface Props {
+  /** Hvad forskellen handler om, fx "Kanon" */
+  titel: string;
+}
+
+const { titel } = Astro.props;
+---
+
+<aside class="forskel" aria-label={`Forskel på læreplanerne: ${titel}`}>
+  <p class="forskel-titel"><span class="forskel-maerke">Forskel på læreplanerne</span> {titel}</p>
+  <div class="forskel-planer">
+    <slot />
+  </div>
+</aside>

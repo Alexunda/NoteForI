@@ -237,6 +237,25 @@ html:not(.js) .pensum-henter {
   flex: 1;
 }
 
+/* Hvem hver læreplan gælder for, under knapperne til at vælge den */
+.pensum-laereplan-hjaelp {
+  margin: var(--afstand-3) 0 0;
+  padding-left: var(--afstand-4);
+  color: var(--farve-tekst-svag);
+}
+
+.pensum-laereplan-hjaelp li + li {
+  margin-top: var(--afstand-1);
+}
+
+.pensum-vaelg-laereplan {
+  margin: var(--afstand-5) 0;
+}
+
+.pensum-vaelg-laereplan .pensum-knapper {
+  margin-top: var(--afstand-4);
+}
+
 .pensum-chip {
   position: relative;
   display: inline-flex;

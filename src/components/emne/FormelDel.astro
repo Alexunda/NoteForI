@@ -1,0 +1,21 @@
+---
+// En del af en <Formel>, der kan foldes ud og ind. Bruges af Symboler,
+// Bruges, Eksempel og Fejl.
+import Ikon from '../Ikon.astro';
+
+interface Props {
+  titel: string;
+}
+
+const { titel } = Astro.props;
+---
+
+<details class="formel-del">
+  <summary>
+    <span>{titel}</span>
+    <Ikon navn="pil-ned" class="formel-del-pil" />
+  </summary>
+  <div class="formel-del-indhold">
+    <slot />
+  </div>
+</details>

@@ -1,0 +1,343 @@
+---
+titel: "Retvinklede trekanter og enhedscirklen"
+beskrivelse: "Ensvinklede trekanter, Pythagoras' sætning og cosinus, sinus og tangens i retvinklede trekanter og på enhedscirklen."
+fag: matematik
+nummer: 4
+omraade: "Geometri, trigonometri og vektorer"
+niveau: [A]
+klassetrin: ukendt
+laereplan: "2024"
+kilder:
+  - id: laereplan
+    navn: "Læreplan for matematik A, stx, august 2024 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/yleizedu/240613-matematik-a-stx-august-2024.pdf
+  - id: vejledning
+    navn: "Vejledning til læreplanen i matematik A, stx, november 2025, version 2 (uvm.dk, PDF)"
+    url: https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf
+  - id: formelsamling
+    navn: "Matematisk formelsamling stx A, oktober 2025, til 2024-læreplanen (uvm.dk, PDF)"
+    url: https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf
+  - id: bek-711
+    navn: "Bekendtgørelse om læreplaner for en række matematikfag i de gymnasiale uddannelser, nr. 711 af 12. juni 2024 (retsinformation.dk)"
+    url: https://www.retsinformation.dk/eli/lta/2024/711
+verificeret: false
+---
+
+## Kort fortalt
+
+En retvinklet trekant har en vinkel på $90^\circ$. Siden over for den rette vinkel hedder hypotenusen, og de to andre sider hedder kateter. [formelsamlingen, s. 11](kilde:formelsamling) Med Pythagoras' sætning og med cosinus, sinus og tangens kan du regne sider og vinkler ud. [formelsamlingen, s. 11, formel (13)–(16)](kilde:formelsamling) Enhedscirklen giver en generel definition af cosinus, sinus og tangens. [vejledningen, s. 12](kilde:vejledning) Så kan du fx også finde cosinus og sinus til vinkler over $90^\circ$. [formelsamlingen, s. 88](kilde:formelsamling)
+
+## Vigtige pointer
+
+### Retvinklede trekanter
+
+- **Siderne har faste navne.** I formelsamlingen er $C$ den rette vinkel, og hypotenusen $c$ ligger over for den. Kateterne $a$ og $b$ er de to sider, der danner den rette vinkel. Set fra vinkel $A$ er $a$ den modstående katete (den ligger over for $A$), og $b$ er den hosliggende katete (den ligger ved siden af $A$). [formelsamlingen, s. 11](kilde:formelsamling)
+- **Pythagoras' sætning** siger, at $a^2 + b^2 = c^2$ i en retvinklet trekant. Kender du to af siderne, kan du altså finde den tredje. [formelsamlingen, s. 11, formel (13)](kilde:formelsamling)
+- **Cosinus, sinus og tangens er forhold mellem to sider.** $\cos(A)$ er den hosliggende katete divideret med hypotenusen. $\sin(A)$ er den modstående katete divideret med hypotenusen. $\tan(A)$ er den modstående katete divideret med den hosliggende katete. [formelsamlingen, s. 11, formel (14), (15) og (16)](kilde:formelsamling)
+- **Find en vinkel.** Kender du to sider, får du en ligning som $\sin(A) = 0{,}6$. Den løser du med den omvendte funktion $\sin^{-1}$, som også hedder Arcsin. [formelsamlingen, s. 82](kilde:formelsamling) Du kan også slå op i trigonometritabellen. Der står $\sin(37^\circ) = 0{,}602$, så $A \approx 37^\circ$. [formelsamlingen, s. 87](kilde:formelsamling)
+
+### Ensvinklede trekanter
+
+- **Samme vinkler, forskellig størrelse.** To trekanter er ensvinklede, når de har de samme vinkler. Så er hver side i den ene trekant $k$ gange den tilsvarende side i den anden. Tallet $k$ hedder skalafaktoren eller forstørrelsesfaktoren. [formelsamlingen, s. 9, formel (8) og (9)](kilde:formelsamling)
+- **Tilsvarende sider** ligger over for lige store vinkler, fx $a$ og $a_1$, der ligger over for vinklerne $A$ og $A_1$. [formelsamlingen, s. 9](kilde:formelsamling)
+
+### Enhedscirklen
+
+- **Enhedscirklen** er cirklen med centrum i $(0, 0)$ og radius 1. Tegn en vinkel $v$ ud fra den positive del af $x$-aksen. Der, hvor vinklens linje rammer cirklen, er førstekoordinaten ($x$-værdien) lig med $\cos(v)$, og andenkoordinaten ($y$-værdien) er lig med $\sin(v)$. [formelsamlingen, s. 10, formel (10) og (11)](kilde:formelsamling)
+- **Tangens** kan aflæses på den lodrette linje gennem $(1, 0)$. Det er andenkoordinaten til det punkt, hvor vinklens linje rammer den lodrette linje. [formelsamlingen, s. 10, formel (12)](kilde:formelsamling)
+- **Derfor passer de to definitioner sammen.** Er $v$ en spids vinkel (under $90^\circ$), kan du tegne en retvinklet trekant inde i enhedscirklen, hvor hypotenusen går fra $(0, 0)$ ud til cirklen. Hypotenusen er en radius, så den er 1. Så giver formel (14), at $\cos(v)$ er længden af den vandrette katete, og formel (15) giver, at $\sin(v)$ er længden af den lodrette katete. [formelsamlingen, s. 11, formel (14) og (15)](kilde:formelsamling)
+- **Også vinkler over** $90^\circ$. Er $v$ mellem $90^\circ$ og $180^\circ$, ligger punktet til venstre for $y$-aksen, og $\cos(v)$ er negativ. Det kan du se i trigonometritabellen. [formelsamlingen, s. 88](kilde:formelsamling)
+- **Eksakte værdier.** Nogle vinkler giver pæne tal, fx $\cos(60^\circ) = \frac{1}{2}$, $\sin(30^\circ) = \frac{1}{2}$ og $\tan(45^\circ) = 1$. De står i en tabel i formelsamlingen. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling)
+- **Radiantal.** Sammen med enhedscirklen møder du radiantal, som er et andet mål for vinkler. [vejledningen, s. 12](kilde:vejledning) $180^\circ$ svarer til $\pi$, og $90^\circ$ svarer til $\frac{\pi}{2}$. [formelsamlingen, s. 26, formel (94), og s. 28, formel (102)](kilde:formelsamling) Radiantal indføres især for at kunne arbejde med cosinus og sinus som funktioner. [vejledningen, s. 14](kilde:vejledning) Det kan du læse om under [trigonometriske funktioner](/fag/matematik/trigonometriske-funktioner/).
+
+## Formler
+
+<Formel navn="Skalafaktor" tex="k = \frac{a_1}{a} = \frac{b_1}{b} = \frac{c_1}{c}" kilde="formelsamling" henvisning="formelsamlingen, s. 9, formel (8)">
+
+<Symboler>
+
+- $a$, $b$ og $c$: siderne i den første trekant.
+- $a_1$, $b_1$ og $c_1$: de tilsvarende sider i den anden trekant.
+- $k$: skalafaktoren (forstørrelsesfaktoren). Den er den samme for alle tre par sider.
+
+</Symboler>
+
+<Bruges>
+
+Når to trekanter er ensvinklede, og du kender en side i den ene og den tilsvarende side i den anden. Så kan du finde $k$ og derefter de sider, du mangler, med $a_1 = k \cdot a$, $b_1 = k \cdot b$ og $c_1 = k \cdot c$. [formelsamlingen, s. 9, formel (9)](kilde:formelsamling)
+
+</Bruges>
+
+<Eksempel>
+
+En person, der er 1,8 m høj, kaster en skygge på 2,4 m. Samtidig kaster et træ en skygge på 10 m. Solens stråler rammer personen og træet med samme vinkel, og begge står lodret på vandret jord. Så er de to trekanter, der dannes af højde, skygge og solstråle, ensvinklede.
+
+Skyggerne er tilsvarende sider, så
+
+$$
+k = \frac{10}{2{,}4} \approx 4{,}17
+$$
+
+Træets højde er personens højde ganget med $k$:
+
+$$
+1{,}8 \cdot \frac{10}{2{,}4} = 7{,}5
+$$
+
+Træet er altså 7,5 m højt.
+
+</Eksempel>
+
+<Fejl>
+
+- At sætte sider sammen, der ikke svarer til hinanden. Tilsvarende sider ligger over for lige store vinkler.
+- At dividere den forkerte vej. Skalafaktoren fra den første til den anden trekant er den nye side divideret med den gamle.
+- At bruge formlen på to trekanter, der ikke er ensvinklede.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Pythagoras' sætning" tex="a^2 + b^2 = c^2" kilde="formelsamling" henvisning="formelsamlingen, s. 11, formel (13)">
+
+<Symboler>
+
+- $a$ og $b$: kateterne, altså de to sider, der danner den rette vinkel.
+- $c$: hypotenusen, altså siden over for den rette vinkel.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender to sider i en retvinklet trekant og skal finde den tredje.
+
+</Bruges>
+
+<Eksempel>
+
+En skærm er 60 cm bred og 45 cm høj. Bredden, højden og diagonalen danner en retvinklet trekant, hvor diagonalen er hypotenusen. Så er
+
+$$
+c = \sqrt{60^2 + 45^2} = \sqrt{5625} = 75
+$$
+
+Diagonalen er altså 75 cm. Kender du i stedet diagonalen og bredden, skal du trække fra for at finde højden:
+
+$$
+\sqrt{75^2 - 60^2} = \sqrt{2025} = 45
+$$
+
+</Eksempel>
+
+<Fejl>
+
+- At lægge sammen, når du skal finde en katete. Så skal du trække fra: $a^2 = c^2 - b^2$.
+- At glemme kvadratroden til sidst.
+- At bruge sætningen i en trekant uden en ret vinkel. Så skal du bruge cosinusrelationen fra [vilkårlige trekanter](/fag/matematik/vilkaarlige-trekanter/).
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Cosinus til vinkel A" tex="\cos(A) = \frac{b}{c} = \frac{\text{hosliggende katete}}{\text{hypotenusen}}" kilde="formelsamling" henvisning="formelsamlingen, s. 11, formel (14)">
+
+<Symboler>
+
+- $A$: en spids vinkel i den retvinklede trekant.
+- $b$: den hosliggende katete, altså den katete, der sammen med hypotenusen danner vinkel $A$.
+- $c$: hypotenusen.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender en vinkel og hypotenusen og skal finde den hosliggende katete. Eller når du kender de to sider og skal finde vinklen.
+
+</Bruges>
+
+<Eksempel>
+
+En rampe er 6 m lang og hælder $8^\circ$ i forhold til vandret. Rampen er hypotenusen, og den vandrette afstand $b$ er den hosliggende katete til vinklen. Så er
+
+$$
+\cos(8^\circ) = \frac{b}{6}
+$$
+
+Gang med 6 på begge sider:
+
+$$
+b = 6 \cdot \cos(8^\circ) \approx 5{,}94
+$$
+
+Rampen fylder altså ca. 5,94 m vandret.
+
+</Eksempel>
+
+<Fejl>
+
+- At have lommeregneren eller [GeoGebra](https://www.geogebra.org/) sat til radianer i stedet for grader.
+- At bytte om på den hosliggende og den modstående katete.
+- At bruge formlen i en trekant, der ikke er retvinklet.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Sinus til vinkel A" tex="\sin(A) = \frac{a}{c} = \frac{\text{modstående katete}}{\text{hypotenusen}}" kilde="formelsamling" henvisning="formelsamlingen, s. 11, formel (15)">
+
+<Symboler>
+
+- $A$: en spids vinkel i den retvinklede trekant.
+- $a$: den modstående katete, altså den katete, der ligger over for vinkel $A$.
+- $c$: hypotenusen.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender en vinkel og hypotenusen og skal finde den modstående katete. Eller når du kender de to sider og skal finde vinklen.
+
+</Bruges>
+
+<Eksempel>
+
+En 4 m lang stige står op ad en lodret mur og når 3,6 m op. Stigen er hypotenusen, og højden på muren er den modstående katete til vinklen $A$ ved jorden. Så er
+
+$$
+\sin(A) = \frac{3{,}6}{4} = 0{,}9
+$$
+
+og dermed
+
+$$
+A = \sin^{-1}(0{,}9) \approx 64{,}2^\circ
+$$
+
+Stigen danner altså en vinkel på ca. $64{,}2^\circ$ med jorden.
+
+</Eksempel>
+
+<Fejl>
+
+- At regne $\sin(0{,}9)$ i stedet for $\sin^{-1}(0{,}9)$, når du skal finde vinklen.
+- At dividere med den hosliggende katete i stedet for hypotenusen.
+
+</Fejl>
+
+</Formel>
+
+<Formel navn="Tangens til vinkel A" tex="\tan(A) = \frac{a}{b} = \frac{\text{modstående katete}}{\text{hosliggende katete}}" kilde="formelsamling" henvisning="formelsamlingen, s. 11, formel (16)">
+
+<Symboler>
+
+- $A$: en spids vinkel i den retvinklede trekant.
+- $a$: den modstående katete.
+- $b$: den hosliggende katete.
+
+</Symboler>
+
+<Bruges>
+
+Når du kender de to kateter, eller den ene katete og en vinkel, og hypotenusen ikke er med i opgaven.
+
+</Bruges>
+
+<Eksempel>
+
+Du står på vandret jord 15 m fra et lodret træ. Sigtelinjen fra dine fødder op til toppen af træet danner en vinkel på $40^\circ$ med jorden. Afstanden til træet er den hosliggende katete, og træets højde $a$ er den modstående katete. Så er
+
+$$
+\tan(40^\circ) = \frac{a}{15}
+$$
+
+og dermed
+
+$$
+a = 15 \cdot \tan(40^\circ) \approx 12{,}6
+$$
+
+Træet er altså ca. 12,6 m højt.
+
+</Eksempel>
+
+<Fejl>
+
+- At bruge hypotenusen. Tangens bruger kun de to kateter.
+- At bytte om på tæller og nævner, så du regner $\frac{b}{a}$ i stedet for $\frac{a}{b}$.
+
+</Fejl>
+
+</Formel>
+
+## Centrale begreber
+
+<Begreb navn="Retvinklet trekant">
+
+En trekant med en ret vinkel, altså en vinkel på $90^\circ$. I formelsamlingen er den rette vinkel $C$. [formelsamlingen, s. 11](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Hypotenuse">
+
+Siden over for den rette vinkel i en retvinklet trekant. I formelsamlingen hedder den $c$. [formelsamlingen, s. 11](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Katete">
+
+En af de to sider, der danner den rette vinkel. Set fra en spids vinkel er der en hosliggende katete, som ligger ved vinklen, og en modstående katete, som ligger over for den. [formelsamlingen, s. 11](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Ensvinklede trekanter">
+
+To trekanter med de samme vinkler. Siderne i den ene trekant er $k$ gange de tilsvarende sider i den anden. [formelsamlingen, s. 9, formel (8) og (9)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Skalafaktor">
+
+Tallet $k$, som siderne i en trekant skal ganges med for at give siderne i en ensvinklet trekant. Den kaldes også forstørrelsesfaktoren. [formelsamlingen, s. 9, formel (8) og (9)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Enhedscirklen">
+
+Cirklen med centrum i $(0, 0)$ og radius 1. Punktet på cirklen ved vinklen $v$ har koordinaterne $(\cos(v), \sin(v))$. [formelsamlingen, s. 10, formel (10) og (11)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Retningspunkt">
+
+Punktet på enhedscirklen, der hører til en bestemt vinkel. Dets førstekoordinat er cosinus til vinklen, og dets andenkoordinat er sinus til vinklen. [formelsamlingen, s. 26, formel (96)](kilde:formelsamling)
+
+</Begreb>
+
+<Begreb navn="Radiantal">
+
+Et andet mål for vinkler end grader. $180^\circ$ svarer til $\pi$ radianer. [formelsamlingen, s. 26, formel (94) og (95)](kilde:formelsamling)
+
+</Begreb>
+
+## Eksamenshjørnet
+
+**Det skal du kunne.** Til kernestoffet hører trekanter, herunder ensvinklede og retvinklede trekanter, Pythagoras' sætning og sinus, cosinus og tangens anvendt på retvinklede trekanter. [læreplanen, pkt. 2.2](kilde:laereplan) Det bygger videre på det, du har lært om trekanter i grundskolen. Desuden indføres skalafaktoren, og sammen med en generel definition af sinus, cosinus og tangens indføres enhedscirklen og radiantal. [vejledningen, s. 12](kilde:vejledning)
+
+**Til den skriftlige prøve** kan der både være rene ligningsopgaver og opgaver, hvor du selv skal opstille, løse og fortolke en ligning, fx i et konkret trigonometrisk problem fra virkeligheden. [vejledningen, s. 12](kilde:vejledning) Skal du tegne en model af en geometrisk situation, skal tegningen vise de egenskaber, der kendetegner figurerne, også størrelsesforholdene. [vejledningen, s. 37](kilde:vejledning) Vejledningen undtager ikke noget fra dette emne til den skriftlige prøve. [vejledningen, s. 12 og 36](kilde:vejledning)
+
+**Uden hjælpemidler (delprøve 1).** I delprøve 1 må du kun bruge formelsamlingen, og den skal være ren, altså uden tilføjelser som fx dine egne noter. Skolen stiller den til rådighed. [vejledningen, s. 36](kilde:vejledning) Den har både en tabel med eksakte værdier og en trigonometritabel. [formelsamlingen, s. 28, formel (102), og s. 87–88](kilde:formelsamling) Vis dine mellemregninger, og skriv navnet eller nummeret på den formel, du bruger. [vejledningen, s. 41–42](kilde:vejledning)
+
+- Du skal kunne løse grundligninger, hvor den ukendte er en vinkel, fx $\cos(v) = \frac{1}{2}$. [vejledningen, s. 12](kilde:vejledning) Er $v$ en spids vinkel, giver tabellen $v = 60^\circ$. [formelsamlingen, s. 28, formel (102)](kilde:formelsamling)
+- Trigonometri giver god træning i at løse ligninger, hvor den ukendte ikke er $x$, men fx en side $a$ eller $\cos(A)$. [vejledningen, s. 12](kilde:vejledning)
+
+**Med hjælpemidler (delprøve 2).** Her må du bruge alle de hjælpemidler, som eksamensreglerne og hjælpemiddeloversigten tillader. [vejledningen, s. 36](kilde:vejledning) Du skal kunne løse ligningerne med GeoGebra. [vejledningen, s. 12](kilde:vejledning)
+
+**Til den mundtlige prøve** er eksamensspørgsmålet fortrinsvis teoretisk med fokus på ræsonnement og bevisførelse. [læreplanen, pkt. 4.2](kilde:laereplan) For retvinklede trekanter nævner vejledningen ikke et bestemt bevis. Men den skriver, at geometri og trigonometri har sætninger med beviser, som egner sig godt til at øve matematisk argumentation. [vejledningen, s. 12](kilde:vejledning) Når du gennemgår en sætning og dens bevis, så sig, hvilke forudsætninger der er, fx at trekanten skal være retvinklet. [vejledningen, s. 39](kilde:vejledning) På et treårigt hold kan et spørgsmål i trigonometri også få krav om vektorregning. [vejledningen, s. 38](kilde:vejledning)
+
+**Eksempler på problemstillinger**
+
+- En 6 m lang stige skal danne en vinkel på $75^\circ$ med jorden. Hvor højt når den op ad muren, og hvor langt fra muren skal foden stå?
+- To trekanter er ensvinklede med skalafaktoren 3. Undersøg, hvad der sker med arealet, når alle siderne bliver tre gange så lange.
+- Forklar ud fra enhedscirklen, hvorfor $\cos(v)$ og $\sin(v)$ altid ligger mellem $-1$ og $1$.
+
+Øv dig på rigtige opgaver: [vejledende enkeltopgaver til 2024-læreplanen](https://uvm.dk/media/0dwpqmip/251218-vejledende-enkeltopgaver-matematik-a-stx-2024.pdf) og gamle eksamenssæt i [Prøvebanken](https://www.xn--prvebanken-1cb.dk/) (kun lærere har adgang, så spørg din lærer). Sættene fra før sommeren 2027 følger læreplanen fra 2017, så de kan have opgaver, der ikke passer helt til din læreplan. [BEK nr. 711 af 12. juni 2024, § 4, stk. 2](kilde:bek-711)

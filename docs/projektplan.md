@@ -37,7 +37,7 @@ Siden er til STX-elever i alle tre klassetrin:
 | Samfundsfag A | 2017 (vejledning 2024) | |
 | Dansk A | 2017 og 2026 | Elever fra forskellige årgange kan være på hver sin version |
 | Bioteknologi A | 2017 (vejledning 2025) | Findes kun på A-niveau på STX. Overlapper med kemi, så emnesiderne linker til hinanden |
-| Kemi *[niveau ÅBENT]* | 2017 (vejledning 2025) | |
+| Kemi B | 2017 (vejledning 2025) | Niveauet er besluttet i oktober 2026. Ni emner deles med bioteknologi A og står kun ét sted, så de vises under begge fag |
 
 De øvrige obligatoriske fag (fx engelsk og historie) kommer bagefter.
 - **Privatliv:** Repoet er offentligt. Der må ikke stå navne, skole, klasse eller andre personoplysninger om brugerne i koden eller indholdet.
@@ -63,7 +63,7 @@ De øvrige obligatoriske fag (fx engelsk og historie) kommer bagefter.
 |---|---|---|
 | Framework | **Astro** (statisk output) | Indhold i Markdown, intet JavaScript som standard, interaktive "øer" kun hvor der er brug for dem |
 | Indhold | Astro content collections (Markdown/MDX) med frontmatter-skema | Ensartet struktur, og fejl i frontmatter fanges ved build |
-| Formler | KaTeX via `remark-math` + `rehype-katex` | Pæne formler, der renderes ved build |
+| Formler | KaTeX via `@astrojs/markdown-satteri` (Astros Markdown-motor) + `katex` | Pæne formler, der renderes ved build. KaTeX' CSS og skrifttyper ligger på siden selv |
 | Søgning | Pagefind | Statisk fuldtekstsøgning uden server |
 | Værktøjer | Vanilla TypeScript eller små Preact-øer | Små og hurtige |
 | Styling | Almindelig CSS med custom properties (design tokens) | Ingen tung UI-ramme |
@@ -202,7 +202,7 @@ Hvert fag får en **overbliksside** med:
   - **Regression:** man indsætter datapunkter (fx kopieret fra et regneark) og vælger en model, fx lineær, eksponentiel eller potens. Tjek i læreplanen og formelsamlingen, hvilke modeller der er kernestof. Siden viser forskriften og grafen sammen med punkterne. Værktøjet er også nyttigt i samfundsfag, kemi og bioteknologi.
   - Hvert resultat linker til den emneside, der forklarer det, fx "Hvad er et nulpunkt?".
 - **Om lommeregner og grafværktøj:**
-  - Begge er øveværktøjer, der skal give forståelse. De erstatter ikke skolens CAS-værktøj, og det står tydeligt på siderne.
+  - Begge er øveværktøjer, der skal give forståelse. De erstatter ikke GeoGebra, som er CAS-værktøjet i matematik, og det står tydeligt på siderne.
   - Til eksamen bruger eleven det værktøj, skolen har valgt, så siden linker til det og opfordrer til at øve i det.
   - Den samme grafkomponent med skydere bruges inde på matematikkens emnesider, fx ved eksponentielle funktioner.
 - **Python-værksted (valgfrit, fase 5):** en side med en lille Python-editor og matplotlib via Pyodide. Den indlæses kun, når man åbner siden.
@@ -227,13 +227,17 @@ Hvert fag får en **overbliksside** med:
    - Dansk A har en 2026-læreplan.
    
    Tjek hvilken læreplan der gælder for hvilken årgang, og mærk alt indhold med `laereplan`. Elever fra forskellige årgange kan være på forskellige versioner i samme fag.
-3. **`verificeret: false`** står på alt nyt indhold, indtil et menneske har læst det igennem. Ikke-gennemlæste sider viser en diskret mærkat: "Ikke gennemlæst endnu".
-4. **Ophavsret.** Siden må ikke kopiere lærebøger eller andre beskyttede tekster. Officielle PDF'er (formelsamlinger, læreplaner, eksamenssæt) linkes og genudgives ikke.
-5. **Forberedelse, ikke hjælpemiddel.** Siden er til at læse op, ikke til brug under eksamen.
+3. **Andre kilder end de officielle.** lex.dk må kun bruges til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Omskriv altid, citér ikke, og angiv artiklen som kilde. Grænsen for formler, konstanter og tal, huller og egne forklaringer står i CLAUDE.md, regel 1. Fysiske konstanter tages fra NIST (CODATA). Lærebøger er ikke tilladt.
+4. **Navne staves rigtigt**, også når kilden staver dem forkert (fx Brønsted og Sennett).
+5. **Tal** har årstal og den dato, de er hentet, og en note om, at de kan være forældede, med link til kilden.
+6. **Ét sted pr. begreb.** Hvert begreb står ét sted med én definition, og andre sider linker til det. Betyder et begreb noget forskelligt i to fag, står det i begge med faget angivet.
+7. **`verificeret: false`** står på alt nyt indhold, indtil et menneske har læst det igennem. Ikke-gennemlæste sider viser en diskret mærkat: "Ikke gennemlæst endnu".
+8. **Ophavsret.** Siden må ikke kopiere lærebøger eller andre beskyttede tekster. Officielle PDF'er (formelsamlinger, læreplaner, eksamenssæt) linkes og genudgives ikke.
+9. **Forberedelse, ikke hjælpemiddel.** Siden er til at læse op, ikke til brug under eksamen.
    - Den må ikke indeholde modelbesvarelser af eksamenssæt.
    - Henvis til skolens eksamensreglement om tilladte hjælpemidler.
-6. **Tone.** Kort, konkret og venlig. Brug eksempler, og forklar fagord første gang.
-7. **Ingen personoplysninger** om brugerne i repoet.
+10. **Tone.** Kort, konkret og venlig. Brug eksempler, og forklar fagord første gang.
+11. **Ingen personoplysninger** om brugerne i repoet.
 
 ---
 
@@ -243,11 +247,17 @@ Hvert fag får en **overbliksside** med:
 |---|---|---|
 | Undervisningsministeriet | Læreplaner, vejledninger og formelsamlinger for STX (alle fag og niveauer) | https://uvm.dk/uddannelse-til-unge/gymnasiale-uddannelser/fag-og-laereplaner/stx-laereplaner/ |
 | emu.dk | Temaer og vejledningsmateriale pr. fag | https://emu.dk/stx |
-| Prøvebanken | Tidligere skriftlige eksamenssæt og vejledende sæt (kræver UNI-login) | https://www.prøvebanken.dk/ |
+| Prøvebanken | Tidligere skriftlige eksamenssæt og vejledende sæt (kun lærere har adgang, så spørg din lærer) | https://www.prøvebanken.dk/ |
 | Formelsamling Matematik A, stx (2024-læreplan) | Den formelsamling, der hører til 2024-læreplanen | https://uvm.dk/media/jcpfecb2/251201-matematisk-formelsamling-stx-a-niveau-oktober-2025-2024-laereplan-v2.pdf |
 | Vejledning Matematik A, stx (2024-læreplan) | Hvad der kræves med og uden CAS | https://uvm.dk/media/umtizhv0/251124-vejledning-til-laereplan-i-matematik-a-stx-november-2025-v2.pdf |
 | Retsinformation | Bekendtgørelse om gymnasiale prøver (nævnt i skolers eksamensreglementer fra 2026; tjek at det er den gældende version) | https://www.retsinformation.dk/eli/lta/2026/3 |
 | borger.dk | Overblik over STX: antal prøver, beståelseskrav | https://www.borger.dk/skole-og-uddannelse/ungdomsuddannelser/gymnasiet |
+| Fagkonsulenternes materiale på emu.dk | Fx "Lærerens hæfte" (bioteknologi og kemi), "Opgavetyper i samfundsfag", "De tre eksamensgenrer" (dansk), "Råd og vink" og FAQ'er | https://emu.dk/stx |
+| Andre myndigheder og officielle organisationer | Samfundsfag: Danmarks Statistik, Nationalbanken, Finansministeriet, De Økonomiske Råd, Beskæftigelsesministeriet, Konkurrence- og Forbrugerstyrelsen, Udenrigsministeriet, Statsministeriet, EU, NATO, UNDP og Verdensbanken. Dansk: Det Kgl. Bibliotek og Dansk Sprognævn. Bioteknologi og kemi: NHGRI, IUBMB og IUPAC-IUBMB, ICTV, Statens Serum Institut, sundhed.dk, WHO, Miljøstyrelsen, Fødevarestyrelsen, Energistyrelsen, EFSA og GEMET | Står i hver sides frontmatter |
+| kemisknomenklatur.dk | De danske oversættelser af IUPAC's navngivningsregler. Bioteknologi- og kemivejledningen henviser selv til den | https://kemisknomenklatur.dk/ |
+| lex.dk | Opslagsværk, også de andre værker på lex.dk, fx Trap Danmark og Gyldendal og Politikens Danmarkshistorie. Kun til begrebsforklaringer, når de officielle kilder ikke forklarer begrebet. Grænsen for formler, konstanter og tal står i CLAUDE.md, regel 1 (se også afsnit 7) | https://lex.dk/ |
+| Det Danske Filminstitut (dfi.dk og filmcentralen.dk) | Filmiske virkemidler og filmanalyse. Blokeret i skymiljøet i oktober 2026, så siderne bruger lex.dk, indtil den kan nås | https://www.dfi.dk/ |
+| NIST (CODATA) | Fysiske konstanter, fx Avogadros konstant og forholdet mellem protonens og elektronens masse | https://physics.nist.gov/cuu/Constants/ |
 
 Konteksten for tidsplanen er, at den store ungdomsuddannelsesreform (epx, skærpede adgangskrav) først træder i kraft i 2030. Den påvirker ikke de nuværende elever.
 
@@ -291,8 +301,8 @@ Konteksten for tidsplanen er, at den store ungdomsuddannelsesreform (epx, skærp
 ## 12. Åbne spørgsmål
 
 - [x] De første fag: matematik A, samfundsfag A, dansk A, bioteknologi A og kemi
-- [ ] Niveauet i kemi
-- [ ] Hvilket CAS-værktøj bruger skolen (fx GeoGebra, WordMat, TI-Nspire eller Maple)? Siden linker til det, og lommeregnerens skrivemåde bør ligne det
+- [x] Niveauet i kemi: B
+- [x] CAS-værktøjet er GeoGebra (besluttet i oktober 2026). Matematiksiderne skriver "GeoGebra" og linker til geogebra.org, og lommeregnerens skrivemåde bør ligne GeoGebras
 - [ ] Sidens navn
-- [ ] Hvem læser indhold igennem og sætter `verificeret: true`? Forslag: ejeren af repoet, og brugerne melder fejl, de finder
+- [x] Hvem læser indhold igennem og sætter `verificeret: true`? Ejeren af repoet, når hver formel og regel på gennemlæsningslisten er tjekket mod sin kilde. Før det tjekker en separat agent kildehenvisningerne (CLAUDE.md, regel 3)
 - [ ] Eksamensdatoer kendes først fra Lectio i foråret. Nedtællingen lader brugerne selv indtaste datoerne
